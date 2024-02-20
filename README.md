@@ -88,7 +88,7 @@ La cámara es fija con una vista cenital y muestra la mesa de billar en su total
 ### 3.4.3. Otros	
 | Nombre | Imagen | Descripción |
 |:------:|:------:|:-----------:|
-| Milk & Tea |  | Gatos que forman parte del escenario. Se les puede ver en uno de los lados de la mesa dando apoyo emocional al jugador. Sus bocas se abren cada vez que ocurre una colisión. **Son meramente decorativos.** |
+| Milk & Tea | ![](/documents/images/GDD/milk_tea.png) | Gatos que forman parte del escenario. Se les puede ver en uno de los lados de la mesa dando apoyo emocional al jugador. Sus bocas se abren cada vez que ocurre una colisión. **Son meramente decorativos.** |
 | Puntuación |  | Al terminar el nivel, se muestra una pantalla en la que se indica la puntuación que ha obtenido el jugador en el nivel. La puntuación obtenida depende del tiempo y las vidas restantes. |
 
 ### 4. Reglas	
@@ -109,6 +109,20 @@ La puntuación del jugador depende del tiempo y las vidas restantes que le han q
 ### 5. HUD	
 
 ### 5.1. Mockup del HUD	
+<table>
+    <thead>
+        <tr>
+            <th align="center" valign="center"> 
+              <image src="/documents/images/GDD/hud_mockup.png" alt="game_flow" width="90%" height="90%">
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="center" valign="center"><i> (Los elementos azules no pertenecen al HUD) </i></td>
+        </tr>
+    </tbody>
+</table>
 
 ### 5.2. Explicación de los elementos del HUD	
 | Nombre | Descripción |
@@ -123,6 +137,20 @@ El juego tendrá una estética sobria y casual como resultado de adaptar la est�
 A pesar de tener un toque arcade y ser un minijuego se tratará de mantener un aspecto algo elegante.
 
 ### 7. Menús y flujo de juego	
+| Menús |
+|:-----:|
+| ![](/documents/images/GDD/main_menu_mockup.png) |
+| *Menú principal* |
+| ![](/documents/images/GDD/options_menu_mockup.png) |
+| *Menú de opciones* |
+| ![](/documents/images/GDD/pause_menu_mockup.png) |
+| *Menú de pausa* |
+| ![](/documents/images/GDD/end_menu_mockup.png) |
+| *Menú de victoria/derrota (El botón “Continue” sólo aparecerá cuando el jugador haya ganado y cuando aún queden niveles por completar)* |
+
+| Diagrama de flujo de juego |
+|:-----:|
+| ![](/documents/images/GDD/scenes_graph.png) |
 
 ### 8. Referencias	
 
