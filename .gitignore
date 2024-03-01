@@ -1,32 +1,20 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+# Ignora todos los archivos con los siguientes formatos
 *.exe
-*.out
-*.app
+*.pdb
+*.lib
+*.idb
+*.dll
+*.exp
+*.log
+*.vcxproj.user
+
+# Ignora los siguientes directorios
+.vs
+temp
+lib
+
+# Ignora todas los directorios que se llamen 'build'
+build/
+
+# No ignora
+!cmake.exe
