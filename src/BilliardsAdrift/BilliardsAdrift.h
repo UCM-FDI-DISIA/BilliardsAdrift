@@ -1,10 +1,10 @@
 #pragma once
+#include <Windows.h>
 #include <iostream>
 #include <vector>
 #include "Utilities/defs.h"
 
 class ComponentFactory;
-class defs;
 
 using namespace Tapioca;
 #define JUEGO_API __declspec(dllexport)
