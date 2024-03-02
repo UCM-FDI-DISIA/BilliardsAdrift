@@ -7,7 +7,8 @@ JUEGO_API void function(const char* var)
     std::cout << "I love BilliardsAdrift" << var << "<3\n";
 }
 
-JUEGO_API FactoryInfo** getComponentFactories(int& count)
-{
-    return nullptr;
+JUEGO_API FactoryInfo** getComponentFactories(int& count) {
+    count = 0;
+    FactoryInfo** factories = new FactoryInfo*[0];
+    return factories;
 }

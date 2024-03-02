@@ -46,7 +46,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
-    <TargetName>game</TargetName>
+    <TargetName>game_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\</OutDir>
@@ -67,7 +67,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Command>
+      <Command>$(SolutionDir)TapiocaEngine\buildEngine.bat
+xcopy "$(SolutionDir)bin\game_d.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -88,7 +89,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Command>
+      <Command>$(SolutionDir)TapiocaEngine\buildEngine.bat
+xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
