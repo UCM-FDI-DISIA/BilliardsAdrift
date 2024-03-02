@@ -9,6 +9,6 @@ JUEGO_API void function(const char* var)
 
 JUEGO_API FactoryInfo** getComponentFactories(int& count) {
     count = 0;
-    FactoryInfo** factories = new FactoryInfo*[0];
+    FactoryInfo** factories = new FactoryInfo*[count];
     return factories;
 }
