@@ -35,8 +35,8 @@ namespace TapiocaGame {
 
 	void CueController::start()
 	{
-		rb = object->getComponent<Tapioca::RigidBody>();
-		tr = object->getComponent<Tapioca::Transform>();
+		rb = parent->getComponent<Tapioca::RigidBody>();
+		tr = parent->getComponent<Tapioca::Transform>();
 		inputMng = Tapioca::InputManager::instance();
 	}
 
