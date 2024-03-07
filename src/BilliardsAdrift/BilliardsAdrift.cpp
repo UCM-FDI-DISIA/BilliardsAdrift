@@ -1,20 +1,25 @@
 #include "BilliardsAdrift.h"
 
 #include "Structure/FactoryManager.h"
+#include "SceneManager.h"
 #include "Structure/ComponentBuilder.h"
 #include "EjemploComponentFactory.h"
 
-#ifdef _DEBUG
-#include <iostream>
-#endif
-
-JUEGO_API void init(Tapioca::FactoryManager* manager) {
-	addComponentFactories(manager);
+void init(Tapioca::FactoryManager* factMngr, Tapioca::SceneManager* sceneMngr) {
+    name();
+    addComponentFactories(factMngr);
+    sceneMngr->loadScene("BilliardsAdrift.lua");
 }
 
-JUEGO_API void addComponentFactories(Tapioca::FactoryManager* manager) {
+void name() {
 #ifdef _DEBUG
-	std::cout << "Anadiendo las factorias del juego\n";
+    std::cout << "Billiards Adrift\n";
 #endif
-	manager->addFactory("EjemploComponent", new BilliardsAdrift::EjemploComponentFactory());
+}
+
+void addComponentFactories(Tapioca::FactoryManager* factMngr) {
+#ifdef _DEBUG
+    std::cout << "Anadiendo las factorias del juego\n";
+#endif
+    factMngr->addFactory("EjemploComponent", new BilliardsAdrift::EjemploComponentFactory());
 }

@@ -1,18 +1,21 @@
 #pragma once
+#include "defs.h"
 namespace Tapioca {
-	class FactoryManager;
+class FactoryManager;
+class SceneManager;
 }
 
-#define JUEGO_API __declspec(dllexport)
-
 extern "C" {
-/*
-* @brief Saluda a una persona
-* @param nombre Nombre de la persona a saludar
+/**
+* @brief Punto de entrada del juego
 */
-JUEGO_API void init(Tapioca::FactoryManager* manager);
+JUEGO_API void init(Tapioca::FactoryManager* factMngr, Tapioca::SceneManager* sceneMngr);
+/**
+* @brief Nombre del juego
+*/
+JUEGO_API void name();
 /**
 * @brief Anade las factorias de componentes del juego
 */
-JUEGO_API void addComponentFactories(Tapioca::FactoryManager* manager);
+JUEGO_API void addComponentFactories(Tapioca::FactoryManager* factMngr);
 }

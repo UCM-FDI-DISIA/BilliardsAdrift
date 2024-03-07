@@ -3,7 +3,7 @@
 #include "Structure/Component.h"
 
 namespace BilliardsAdrift {
-class EjemploComponentFactory : public Tapioca::ComponentBuilder {
+class TAPIOCA_API EjemploComponentFactory : public Tapioca::ComponentBuilder {
 public:
     Tapioca::Component* createComponent() override;
 };
