@@ -1,2 +1,10 @@
 #pragma once
-#define NUM_FACTORIES 1
+#ifdef JUEGO_EXPORTS
+#define JUEGO_API __declspec(dllexport)
+#else
+#define JUEGO_API __declspec(dllimport)
+#endif
+
+#ifdef _DEBUG
+#include <iostream>
+#endif

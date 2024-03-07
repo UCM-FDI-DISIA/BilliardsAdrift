@@ -1,9 +1,9 @@
 #pragma once
-#include "Structure/Component.h"
 #include <string>
+#include "Structure/Component.h"
 
 namespace BilliardsAdrift {
-class EjemploComponent : public Tapioca::Component {
+class TAPIOCA_API EjemploComponent : public Tapioca::Component {
 private:
     int a;
     float b;
