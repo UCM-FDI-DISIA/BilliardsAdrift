@@ -76,16 +76,19 @@ scene = {
                     positionX = 0.0,
                     positionY = -4.0,
                     positionZ = 0.0,
-                    scaleX = 10.0,
-                    scaleY = 10.0,
-                    scaleZ = 10.0,
+                    scaleX = 0.1,
+                    scaleY = 0.02,
+                    scaleZ = 0.2,
                     rotationX = 0.0,
                     rotationY = 0.0,
                     rotationZ = 0.0
                 },
-                -- MeshRenderer = {
-                --     meshName = "Table/Table.mesh",
-                -- },
+                MeshRenderer = {
+                    meshName = "meshes/cube.mesh",
+                    materialName= "green"
+                    --     }--]]--
+                -- + componentes 
+                },
                 RigidBody = {    
                     colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                     colliderScaleX=6.0,
