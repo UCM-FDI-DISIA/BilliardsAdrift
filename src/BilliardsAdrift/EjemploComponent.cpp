@@ -11,7 +11,7 @@ bool EjemploComponent::initComponent(const CompMap& variables) {
            setValueFromMap(d, "d", variables);
 }
 
-// void EjemploComponent::update(const uint64_t deltaTime) { }
-// void EjemploComponent::handleEvents() { }
-// void EjemploComponent::fixedUpdate() { }
+ void EjemploComponent::update(const uint64_t deltaTime) { }
+ //void EjemploComponent::handleEvents() { }
+ void EjemploComponent::fixedUpdate() { }
 }

@@ -69,5 +69,13 @@ events = {
         src = "ie_mouseButtonUp",
         control = 3     -- SDL_BUTTON_RIGHT
     },
+    ev_MouseButtonDownRight = {
+        src = "ie_mouseButtonDown",
+        control = 3     -- SDL_BUTTON_RIGHT
+    },
+    ev_MouseButtonDownLeft = {
+        src = "ie_mouseButtonDown",
+        control = 1     -- SDL_BUTTON_LEFT
+    }
 
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "Component.h"
+#include "Structure/Component.h"
 #include "Utilities/Vector2.h"
 #include "Utilities/Vector3.h"
 
@@ -7,12 +7,13 @@ namespace Tapioca {
 	class InputManager;
 	class RigidBody;
 	class Transform;
-	/*template<IsComponent TComp> 
+	/*template<IsComponent TComp>
 	class BasicBuilder;*/
 }
 
-namespace TapiocaGame {
-	class CueController : public Tapioca::Component {
+
+namespace BilliardsAdrift {
+	class TAPIOCA_API CueController : public Tapioca::Component {
 	private:
 		Tapioca::RigidBody* rb;
 		Tapioca::Transform* tr;
@@ -35,6 +36,7 @@ namespace TapiocaGame {
 		bool initComponent(const CompMap& variables) override;
 		void start() override;
 		void update(const uint64_t deltaTime) override;
+		void handleEvent(std::string const& id, void* info)override;
 		//void handleEvents() override;
 	};
 }

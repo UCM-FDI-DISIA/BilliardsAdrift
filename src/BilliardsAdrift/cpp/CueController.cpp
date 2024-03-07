@@ -2,11 +2,10 @@
 #include "InputManager.h"
 #include "Components/RigidBody.h"
 #include "Components/Transform.h"
-#include "GameObject.h"
-#include "BasicBuilder.h"
+#include "Structure/GameObject.h"
 #include <math.h>
 
-namespace TapiocaGame {
+namespace BilliardsAdrift {
 
 	bool CueController::initComponent(const CompMap& variables)
 	{
@@ -35,24 +34,34 @@ namespace TapiocaGame {
 
 	void CueController::start()
 	{
-		rb = parent->getComponent<Tapioca::RigidBody>();
-		tr = parent->getComponent<Tapioca::Transform>();
+		rb = object->getComponent<Tapioca::RigidBody>();
+		tr = object->getComponent<Tapioca::Transform>();
 		inputMng = Tapioca::InputManager::instance();
 	}
 
 	void CueController::update(const uint64_t deltaTime)
 	{
-		if (inputMng->eventHappened("ie_mouseButtonRight")) {increasePower();
-		}
-		else if (inputMng->eventHappened("ie_mouseButtonLeft")) { hit(); }
 		updatePosition();
 		updateRotation();
+	}
+
+	void CueController::handleEvent(std::string const& id, void* info)
+	{
+		if (id == "ev_MouseButtonDownRight") {
+			increasePower();
+		}
+		else if (id == "ev_MouseButtonDownLeft") {
+			hit();
+		}
 	}
 
 	void CueController::updatePosition()
 	{
 		mouseLastPosition.x = inputMng->getMousePos().first;
 		mouseLastPosition.y = inputMng->getMousePos().second;
+#ifdef _DEBUG
+		//std::cout << "mouse: " << mouseLastPosition.x << "\n";
+#endif
 	}
 	void CueController::updateRotation()
 	{
@@ -65,11 +74,14 @@ namespace TapiocaGame {
 	{
 		tr->setPosition(tr->forward() - moveFactor);
 		actualPower += powerFactor;
+#ifdef _DEBUG
+		std::cout << "IncreasePower: "<<actualPower<<"\n";
+#endif
 	}
 
 	void CueController::hit()
 	{
-		rb->addForce(tr->forward() * actualPower);
+		rb->addImpulse(tr->forward() * actualPower);
 		actualPower = 0;
 	}
 
