@@ -60,7 +60,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)TapiocaEngine\src\Core\;$(SolutionDir)TapiocaEngine\src\Core\Structure\;$(SolutionDir)TapiocaEngine\src\Physics\;$(SolutionDir)TapiocaEngine\src\Physics\Components\;$(SolutionDir)TapiocaEngine\src\Main\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TapiocaEngine\src\Core\;$(SolutionDir)TapiocaEngine\src\Core\Structure\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -99,14 +99,14 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\BilliardsAdrift\BilliardsAdrift.cpp" />
-    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\ComponentFactory.cpp" />
-    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\CueController.cpp" />
+    <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponent.cpp" />
+    <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BilliardsAdrift\BilliardsAdrift.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\defs.h" />
-    <ClInclude Include="..\..\src\BilliardsAdrift\header\ComponentFactory.h" />
-    <ClInclude Include="..\..\src\BilliardsAdrift\header\CueController.h" />
+    <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponent.h" />
+    <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

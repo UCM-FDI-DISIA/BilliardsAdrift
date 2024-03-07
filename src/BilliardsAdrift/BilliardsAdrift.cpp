@@ -1,19 +1,20 @@
 #include "BilliardsAdrift.h"
-#include "Structure/ComponentBuilder.h"
-#include "header/ComponentFactory.h"
-#include "defs.h"
 
-JUEGO_API void function(const char* var)
-{
-    std::cout << "I love BilliardsAdrift" << var << "<3\n";
+#include "Structure/FactoryManager.h"
+#include "Structure/ComponentBuilder.h"
+#include "EjemploComponentFactory.h"
+
+#ifdef _DEBUG
+#include <iostream>
+#endif
+
+JUEGO_API void init(Tapioca::FactoryManager* manager) {
+	addComponentFactories(manager);
 }
 
-JUEGO_API FactoryInfo** getComponentFactories(int& count) {
-    count = NUM_FACTORIES;
-    FactoryInfo** factories = new FactoryInfo * [NUM_FACTORIES];
-    factories[0] = new FactoryInfo();
-    factories[0]->name = "CueController";
-    factories[0]->builder = new TapiocaGame::ComponentFactory();
-
-    return factories;
+JUEGO_API void addComponentFactories(Tapioca::FactoryManager* manager) {
+#ifdef _DEBUG
+	std::cout << "Anadiendo las factorias del juego\n";
+#endif
+	manager->addFactory("EjemploComponent", new BilliardsAdrift::EjemploComponentFactory());
 }

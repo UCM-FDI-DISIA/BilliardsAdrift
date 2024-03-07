@@ -18,10 +18,10 @@
     <ClCompile Include="..\..\src\BilliardsAdrift\BilliardsAdrift.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\CueController.cpp">
+    <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\ComponentFactory.cpp">
+    <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,10 +32,10 @@
     <ClInclude Include="..\..\src\BilliardsAdrift\defs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BilliardsAdrift\header\CueController.h">
+    <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BilliardsAdrift\header\ComponentFactory.h">
+    <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
