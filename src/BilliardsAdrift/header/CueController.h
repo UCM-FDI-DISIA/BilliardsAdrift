@@ -11,7 +11,6 @@ namespace Tapioca {
 	class BasicBuilder;*/
 }
 
-
 namespace BilliardsAdrift {
 	class TAPIOCA_API CueController : public Tapioca::Component {
 	private:
@@ -31,12 +30,11 @@ namespace BilliardsAdrift {
 	public:
 		COMPONENT_ID("CueController");
 
-		CueController() {};
+		CueController();
 		~CueController() { }
 		bool initComponent(const CompMap& variables) override;
 		void start() override;
 		void update(const uint64_t deltaTime) override;
 		void handleEvent(std::string const& id, void* info)override;
-		//void handleEvents() override;
 	};
 }
