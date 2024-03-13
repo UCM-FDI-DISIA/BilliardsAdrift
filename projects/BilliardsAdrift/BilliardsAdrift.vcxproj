@@ -101,6 +101,7 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
     <ClCompile Include="..\..\src\BilliardsAdrift\BilliardsAdrift.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\cpp\CueControllerComponentFactory.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\cpp\CueController.cpp" />
+    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\GameManager.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponent.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.cpp" />
   </ItemGroup>
@@ -111,6 +112,7 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
     <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\header\CueControllerComponentFactory.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\header\CueController.h" />
+    <ClInclude Include="..\..\src\BilliardsAdrift\header\GameManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

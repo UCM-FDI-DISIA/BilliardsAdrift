@@ -1,6 +1,7 @@
 #include "BilliardsAdrift.h"
 
 #include "Structure/FactoryManager.h"
+#include "Structure/BasicBuilder.h"
 #include "SceneManager.h"
 #include "Structure/ComponentBuilder.h"
 #include "EjemploComponentFactory.h"
@@ -25,4 +26,5 @@ void addComponentFactories() {
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
     factMngr->addFactory("EjemploComponent", new BilliardsAdrift::EjemploComponentFactory());
     factMngr->addFactory("CueController", new BilliardsAdrift::CueControllerComponentFactory());
+    //factMngr->addFactory("GameManager", new Tapioca::BasicBuilder());
 }

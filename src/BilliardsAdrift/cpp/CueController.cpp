@@ -57,7 +57,7 @@ void CueController::updatePosition() {
     mouseLastPosition.x = inputMng->getMousePos().first;
     mouseLastPosition.y = inputMng->getMousePos().second;
 #ifdef _DEBUG
-    //std::cout << "mouse: " << mouseLastPosition.x << "\n";
+    std::cout << "mouse: " << mouseLastPosition.x << "\n";
 #endif
 }
 void CueController::updateRotation() {
