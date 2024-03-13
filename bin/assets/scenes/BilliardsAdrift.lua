@@ -63,6 +63,9 @@ scene = {
                 friction=2.0,
                 damping=0.4,
                 bounciness=0.5
+            },
+            Animator = {
+                playbackSpeed=1.0
             }
             }
         -- + entidades
