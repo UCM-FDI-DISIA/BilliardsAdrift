@@ -32,7 +32,41 @@ scene = {
             }
             }
         -- + entidades
-     }, 
+     },
+     Milk={
+            components={
+            Transform = {
+                positionX = 0.0,
+                positionY = 0.0,
+                positionZ = 8.0,
+                scaleX = 0.35,
+                scaleY = 0.35,
+                scaleZ = 0.35,
+                rotationX = -90.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "meshes/cat.mesh",
+                materialName= "cat"
+                --     }--]]--
+            -- + componentes 
+            },
+            RigidBody = {    
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=1.0,
+                colliderScaleY=1.0,
+                colliderScaleZ=1.0,
+                isTrigger=false,
+                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+            }
+        -- + entidades
+     },
      Cue={
         components={
         Transform = {
