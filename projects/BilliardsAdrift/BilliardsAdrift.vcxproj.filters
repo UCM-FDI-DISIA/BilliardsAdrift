@@ -24,18 +24,30 @@
     <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\CueControllerComponentFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\CueController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BilliardsAdrift\BilliardsAdrift.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BilliardsAdrift\defs.h">
+    <ClInclude Include="..\..\src\BilliardsAdrift\gameDefs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\BilliardsAdrift\header\CueControllerComponentFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\BilliardsAdrift\header\CueController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

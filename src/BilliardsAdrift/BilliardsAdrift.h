@@ -1,15 +1,11 @@
 #pragma once
-#include "defs.h"
-namespace Tapioca {
-class FactoryManager;
-class SceneManager;
-}
+#include "gameDefs.h"
 
 extern "C" {
 /**
 * @brief Punto de entrada del juego
 */
-JUEGO_API void init(Tapioca::FactoryManager* factMngr, Tapioca::SceneManager* sceneMngr);
+JUEGO_API void init();
 /**
 * @brief Nombre del juego
 */
@@ -17,5 +13,5 @@ JUEGO_API void name();
 /**
 * @brief Anade las factorias de componentes del juego
 */
-JUEGO_API void addComponentFactories(Tapioca::FactoryManager* factMngr);
+JUEGO_API void addComponentFactories();
 }

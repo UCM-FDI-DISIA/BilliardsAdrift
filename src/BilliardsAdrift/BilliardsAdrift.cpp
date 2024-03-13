@@ -6,10 +6,10 @@
 #include "EjemploComponentFactory.h"
 #include "header/CueControllerComponentFactory.h"
 
-void init(Tapioca::FactoryManager* factMngr, Tapioca::SceneManager* sceneMngr) {
+void init() {
     name();
-    addComponentFactories(factMngr);
-    sceneMngr->loadScene("BilliardsAdrift.lua");
+    addComponentFactories();
+    Tapioca::SceneManager::instance()->loadScene("BilliardsAdrift.lua");
 }
 
 void name() {
@@ -18,10 +18,11 @@ void name() {
 #endif
 }
 
-void addComponentFactories(Tapioca::FactoryManager* factMngr) {
+void addComponentFactories() {
 #ifdef _DEBUG
     std::cout << "Anadiendo las factorias del juego\n";
 #endif
-    //factMngr->addFactory("EjemploComponent", new BilliardsAdrift::EjemploComponentFactory());
+    Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
+    factMngr->addFactory("EjemploComponent", new BilliardsAdrift::EjemploComponentFactory());
     factMngr->addFactory("CueController", new BilliardsAdrift::CueControllerComponentFactory());
 }
