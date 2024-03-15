@@ -6,13 +6,12 @@
 
 namespace BilliardsAdrift {
 class JUEGO_API GameManager : public Tapioca::Component {
-    //friend Tapioca::Singleton<GameManager>;
 
 private:
     //al inicializarse
-    GameManager();
     int INIT_LIFE;
     uint64_t INIT_TIME;
+    static GameManager* instance;
 
     //actuales
     int score;
@@ -26,13 +25,10 @@ private:
 public:
     COMPONENT_ID("GameManager");
 
+    GameManager();
     ~GameManager() { }
-    // Para evitar copiar/mover la instancia
-   /* GameManager(GameManager&) = delete;
-    GameManager(GameManager&&) = delete;
-    GameManager& operator=(GameManager&) = delete;
-    GameManager& operator=(GameManager&&) = delete;*/
 
+    GameManager* getInstance() { return instance; }
     bool initComponent(const CompMap& variables) override;
     void start() override;
     void update(const uint64_t deltaTime) override;

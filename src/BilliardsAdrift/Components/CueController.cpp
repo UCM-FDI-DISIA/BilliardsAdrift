@@ -34,6 +34,7 @@ bool CueController::initComponent(const CompMap& variables) {
 #endif
         return false;
     }
+
     return true;
 }
 
@@ -44,8 +45,8 @@ void CueController::start() {
 }
 
 void CueController::update(const uint64_t deltaTime) {
-    updatePosition();
     updateRotation();
+    updatePosition();
 }
 
 void CueController::handleEvent(std::string const& id, void* info) {
@@ -65,13 +66,13 @@ void CueController::updatePosition() {
 #endif
 }
 void CueController::updateRotation() {
-    float opposite = inputMng->getMousePos().first - mouseLastPosition.x;
+   /* float opposite = inputMng->getMousePos().first - mouseLastPosition.x;
     float adjacent = inputMng->getMousePos().second - mouseLastPosition.y;
-    tr->setRotation(Tapioca::Vector3(atan2(opposite, adjacent), 0, 0));
+    tr->setRotation(tr->up() * mouseLastPosition.x * 2);*/
 }
 
 void CueController::increasePower() {
-    tr->setPosition(tr->forward() - moveFactor);
+    /*tr->setPosition(tr->forward() - moveFactor);*/
     actualPower += powerFactor;
 #ifdef _DEBUG
     std::cout << "IncreasePower: " << actualPower << "\n";
@@ -79,7 +80,8 @@ void CueController::increasePower() {
 }
 
 void CueController::hit() {
-    rb->addImpulse(tr->forward() * actualPower);
+   // std::cout << "AAAAAAAAAA "<< tr->forward().x << " " << tr->forward().y << " " << tr->forward().z << "\n";
+    //rb->addImpulse(tr->forward() * actualPower);
     actualPower = 0;
 }
 }

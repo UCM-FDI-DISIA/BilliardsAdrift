@@ -2,7 +2,9 @@
 
 namespace BilliardsAdrift {
 
-GameManager::GameManager(){ }
+
+GameManager* GameManager::instance = nullptr;
+GameManager::GameManager() { instance = this; }
 
 bool initComponent(const CompMap& variables) { return false; }
 
@@ -23,7 +25,7 @@ bool GameManager::initComponent(const CompMap& variables) {
         return false;
     }
     INIT_TIME = timeAux;
-   // create();
+    // create();
     onStart();
 
     return true;
