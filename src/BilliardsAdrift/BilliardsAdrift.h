@@ -5,7 +5,7 @@ extern "C" {
 /**
 * @brief Punto de entrada del juego
 */
-JUEGO_API void init();
+JUEGO_API bool init();
 /**
 * @brief Nombre del juego
 */

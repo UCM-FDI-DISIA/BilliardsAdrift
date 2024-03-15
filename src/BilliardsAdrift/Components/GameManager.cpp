@@ -1,4 +1,4 @@
-#include "../header/GameManager.h"
+#include "GameManager.h"
 
 namespace BilliardsAdrift {
 

@@ -13,22 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{912bf59a-bab3-4db9-8b41-0268e2dfb7c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\BilliardsAdrift\BilliardsAdrift.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponent.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\CueController.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\CueControllerComponentFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\BilliardsAdrift\cpp\CueController.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\GameManager.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -36,19 +33,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BilliardsAdrift\gameDefs.h">
-      <Filter>Header Files</Filter>
+      <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponent.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\CueController.h">
+      <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\BilliardsAdrift\EjemploComponentFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\BilliardsAdrift\header\CueControllerComponentFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\BilliardsAdrift\header\CueController.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\GameManager.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

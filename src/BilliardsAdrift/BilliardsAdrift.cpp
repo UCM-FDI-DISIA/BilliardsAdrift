@@ -1,18 +1,18 @@
 #include "BilliardsAdrift.h"
 
+#include "SceneManager.h"
 #include "Structure/FactoryManager.h"
 #include "Structure/BasicBuilder.h"
-#include "SceneManager.h"
+
+// TODO: PRUEBA
 #include "GraphicsEngine.h"
 #include "Viewport.h"
-#include "Structure/ComponentBuilder.h"
-#include "EjemploComponentFactory.h"
-#include "header/CueControllerComponentFactory.h"
 
-void init() {
+#include "Components/CueController.h"
+
+bool init() {
     name();
     addComponentFactories();
-    Tapioca::SceneManager::instance()->loadScene("BilliardsAdrift.lua");
 
     // PRUEBA (deja memory leaks)
     auto graphics = Tapioca::GraphicsEngine::instance();
@@ -22,6 +22,8 @@ void init() {
     viewport->setBackground(Tapioca::Vector3(0.925f, 0.698f, 0.941f));
     auto node = graphics->createNode();
     auto light = graphics->createLightDirectional(node, Tapioca::Vector3(0.0f, -1.0f, -1.0f));
+    
+    return Tapioca::SceneManager::instance()->loadScene("BilliardsAdrift.lua");
 }
 
 void name() {
@@ -35,7 +37,5 @@ void addComponentFactories() {
     std::cout << "Anadiendo las factorias del juego\n";
 #endif
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
-    factMngr->addFactory("EjemploComponent", new BilliardsAdrift::EjemploComponentFactory());
-    factMngr->addFactory("CueController", new BilliardsAdrift::CueControllerComponentFactory());
-    //factMngr->addFactory("GameManager", new Tapioca::BasicBuilder());
+    factMngr->addFactory("CueController", new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
 }

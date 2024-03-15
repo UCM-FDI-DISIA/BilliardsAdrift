@@ -1,11 +1,15 @@
-#include "../header/CueController.h"
+#include "CueController.h"
+#include <math.h>
+
 #include "InputManager.h"
 #include "Components/RigidBody.h"
 #include "Components/Transform.h"
 #include "Structure/GameObject.h"
-#include <math.h>
+#include "Structure/BasicBuilder.h"
 
 namespace BilliardsAdrift {
+template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::CueController>;
+
 CueController::CueController()
     : inputMng(nullptr), rb(nullptr), tr(nullptr), actualPower(0), moveFactor(0), powerFactor(0) { }
 
