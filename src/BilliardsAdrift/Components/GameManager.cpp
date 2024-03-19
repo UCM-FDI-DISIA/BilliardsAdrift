@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "SceneManager.h"
 
 namespace BilliardsAdrift {
 
@@ -53,9 +54,21 @@ int GameManager::getLife() { return life; }
 
 uint64_t GameManager::getTime() { return time; }
 
-void GameManager::setScore(int s) { score = s; }
+bool GameManager::changeScene(std::string const& scene) const {
+    std::string end = ".lua";
 
-void GameManager::setLife(int l) { life = l; }
+    //Si el nombre de escena no termina en .lua (else) se aniade
+    if (scene.length() >= end.length()) {
+        return Tapioca::SceneManager::instance()->loadScene(scene);
+    }
+    else {
+        return Tapioca::SceneManager::instance()->loadScene(scene + end);
+    }
+}
+
+void GameManager::setScore(const int s) { score = s; }
+
+void GameManager::setLife(const int l) { life = l; }
 
 void GameManager::setTime(uint64_t t) { time = t; }
 

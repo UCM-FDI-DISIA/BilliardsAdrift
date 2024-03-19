@@ -3,6 +3,7 @@
 #include "Utilities/Singleton.h"
 #include "Structure/BasicBuilder.h"
 #include "../gameDefs.h"
+#include <string>
 
 namespace BilliardsAdrift {
 class JUEGO_API GameManager : public Tapioca::Component {
@@ -38,18 +39,20 @@ public:
     int getLife();
     uint64_t getTime();
 
+    bool changeScene(std::string const& scene) const;
+
     //setear valor absoluto de puntuación
-    void setScore(int s);
+    void setScore(const int s);
     //setear valor absoluto de vida
-    void setLife(int l);
+    void setLife(const int l);
     //setear valor absoluto de tiempo
-    void setTime(uint64_t t);
+    void setTime(const uint64_t t);
 
     //incrementar/decrementar x cantidad de puntuación
-    void changeScore(int s);
+    void changeScore(const int s);
     //incrementar/decrementar x cantidad de vida
-    void changeLife(int l);
+    void changeLife(const int l);
     //incrementar/decrementar x cantidad de tiempo
-    void changeTime(uint64_t t);
+    void changeTime(const uint64_t t);
 };
 }
