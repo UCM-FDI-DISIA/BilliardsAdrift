@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- exporter: blender2ogre 0.8.5 -->
+<!-- export_time: Tue, 19 Mar 2024 08:44:59 +0000 -->
+<!-- previous_export_time: Tue, 19 Mar 2024 08:34:08 +0000 -->
+<scene author="usuario" formatVersion="1.1" >
+  <nodes >
+    <node name="Material3.002" >
+      <position x="0.000000" y="0.000000" z="-0.000000" />
+      <rotation qw="0.497517" qx="-0.495806" qy="-0.502448" qz="0.504182" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <entity meshFile="Ball1.mesh" name="Material3.002" >
+        <userData />
+      </entity>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="Color_D01.001.material" />
+    </item>
+    <item type="material" >
+      <file name="Color_008.001.material" />
+    </item>
+    <item type="material" >
+      <file name="Color_000.001.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground b="0.050876" g="0.050876" r="0.050876" />
+  </environment>
+</scene>
