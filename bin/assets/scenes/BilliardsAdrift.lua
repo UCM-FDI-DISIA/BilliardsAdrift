@@ -129,4 +129,34 @@ scene = {
             }
         }
     },
+    Ball1={
+        components={
+            Transform = {
+                positionX = 0.0,
+                positionY = 5.0,
+                positionZ = 6.0,
+                scaleX = 0.8,
+                scaleY = 0.8,
+                scaleZ = 0.8,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "Ball1/Ball1.mesh"
+            },
+            RigidBody = {    
+                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=1.0,
+                colliderScaleY=1.0,
+                colliderScaleZ=1.0,
+                isTrigger=false,
+                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    }
 }
