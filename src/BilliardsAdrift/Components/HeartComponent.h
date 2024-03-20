@@ -8,10 +8,13 @@ class Transform;
 }
 
 namespace BilliardsAdrift {
+class GameManager;
+
 class JUEGO_API HeartComponent : public Tapioca::Component {
 private:
     Tapioca::RigidBody* rb;
     Tapioca::Transform* tr;
+    GameManager* gameM;
 
     //bool active;
 

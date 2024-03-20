@@ -3,11 +3,12 @@
 #include "Structure/BasicBuilder.h"
 #include "Components/RigidBody.h"
 #include "Components/Transform.h"
+#include "GameManager.h"
 
 namespace BilliardsAdrift {
 template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>;
 
-HeartComponent::HeartComponent() : rb(nullptr), tr(nullptr) { }
+HeartComponent::HeartComponent() : rb(nullptr), tr(nullptr), gameM(new GameManager()) { }
 
 HeartComponent ::~HeartComponent() { }
 
@@ -31,7 +32,8 @@ void HeartComponent::update(const uint64_t deltaTime) { }
 
 void HeartComponent::handleEvent(std::string const& id, void* info) {
     if (id == "onCollisionEnter") {
-
+        gameM->setLife(gameM->getLife() + 1);
+        std::cout << gameM->getLife() << "\n";
     }
 }
 }
