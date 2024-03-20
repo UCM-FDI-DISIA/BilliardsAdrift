@@ -158,5 +158,67 @@ scene = {
                 bounciness=0.5
             }
         }
+    },
+    Ball2={
+        components={
+            Transform = {
+                positionX = 0.0,
+                positionY = 10.0,
+                positionZ = 6.0,
+                scaleX = 0.8,
+                scaleY = 0.8,
+                scaleZ = 0.8,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "Ball2/Ball2.mesh"
+            },
+            RigidBody = {    
+                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=1.0,
+                colliderScaleY=1.0,
+                colliderScaleZ=1.0,
+                isTrigger=false,
+                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    },
+    Heart={
+        components={
+            Transform = {
+                positionX = 10.0,
+                positionY = 0.0,
+                positionZ = 10.0,
+                scaleX = 0.6,
+                scaleY = 0.6,
+                scaleZ = 0.6,
+                rotationX = -90.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "meshes/heart.mesh",
+                materialName = "heart"
+            },
+            RigidBody = {    
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=0.6,
+                colliderScaleY=0.6,
+                colliderScaleZ=0.6,
+                isTrigger=true,
+                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            },
+            HeartComponent = { }
+        }
     }
 }

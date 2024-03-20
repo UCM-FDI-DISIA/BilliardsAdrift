@@ -1,0 +1,11 @@
+material heart {
+    receive_shadows on
+    technique {
+        pass {
+            diffuse 0.6 0.0 0.0 1.0
+            specular 0.6 0.0 0 0 0
+        }
+    }
+}
+
+
