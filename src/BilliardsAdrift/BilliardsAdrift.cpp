@@ -9,6 +9,7 @@
 #include "Viewport.h"
 
 #include "Components/CueController.h"
+#include "Components/HeartComponent.h"
 
 bool init() {
     name();
@@ -38,4 +39,5 @@ void addComponentFactories() {
 #endif
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
     factMngr->addFactory("CueController", new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
+    factMngr->addFactory("HeartComponent", new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
 }

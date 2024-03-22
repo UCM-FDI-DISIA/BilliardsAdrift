@@ -99,13 +99,17 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\BilliardsAdrift\BilliardsAdrift.cpp" />
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\ColoredHole.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\CueController.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\GameManager.cpp" />
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\HeartComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BilliardsAdrift\BilliardsAdrift.h" />
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\ColoredHole.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\CueController.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\GameManager.h" />
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\HeartComponent.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\gameDefs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
