@@ -5,7 +5,7 @@
 #include "Structure/BasicBuilder.h"
 
 // TODO: PRUEBA
-#include "GraphicsEngine.h"
+#include "GraphicsManager.h"
 #include "Viewport.h"
 
 #include "Components/CueController.h"
@@ -16,7 +16,7 @@ bool init() {
     addComponentFactories();
 
     // PRUEBA (deja memory leaks)
-    auto graphics = Tapioca::GraphicsEngine::instance();
+    auto graphics = Tapioca::GraphicsManager::instance();
     auto nodeCamera = graphics->createNode(Tapioca::Vector3(20.0f, 0.0f, 20.0f));
     auto camera = graphics->createCamera(nodeCamera, "Hola");
     auto viewport = graphics->createViewport(camera, 1);
