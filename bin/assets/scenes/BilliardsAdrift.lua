@@ -36,7 +36,7 @@ scene = {
         components={
             Transform = {
                 positionX = 0.0,
-                positionY = 0.0,
+                positionY = -2.0,
                 positionZ = 0.0,--offset
                 scaleX = 10.0,
                 scaleY = 10.0,
@@ -118,7 +118,43 @@ scene = {
     --     }
     --     }
     -- },
-   
+    MovableWall1={
+        components={
+            Transform = {
+                positionX = 0.0,
+                positionY = 0.0,
+                positionZ = -2.0,
+                scaleX = 0.05,
+                scaleY = 0.01,
+                scaleZ = 0.1,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            MeshRenderer = {
+                meshName = "meshes/cube.mesh",
+                materialName= "grey"
+            },
+            RigidBody = {    
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=3.0,
+                colliderScaleY=0.5,
+                colliderScaleZ=5.0,
+                isTrigger=false,
+                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=0.0,
+                friction=1.0,
+                damping=0.0,
+                bounciness=1.0
+            },
+            MovableWall = {    
+                speed=0.02,
+                destX=8.0,
+                destZ=-2.0
+              
+            }
+        }
+    },
     Ground={
         components={
             Transform = {
@@ -142,7 +178,7 @@ scene = {
                 colliderScaleY=1.0,
                 colliderScaleZ=10.0,
                 isTrigger=false,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass=0.0,
                 friction=1.0,
                 damping=0.0,

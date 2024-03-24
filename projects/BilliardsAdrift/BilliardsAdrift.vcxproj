@@ -103,6 +103,7 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\CueController.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\GameManager.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\HeartComponent.cpp" />
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\MovableWall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BilliardsAdrift\BilliardsAdrift.h" />
@@ -110,6 +111,7 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\CueController.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\GameManager.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\HeartComponent.h" />
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\MovableWall.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\gameDefs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

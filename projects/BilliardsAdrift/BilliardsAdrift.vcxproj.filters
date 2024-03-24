@@ -33,6 +33,9 @@
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\ColoredHole.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\MovableWall.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BilliardsAdrift\BilliardsAdrift.h">
@@ -51,6 +54,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\ColoredHole.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\MovableWall.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
