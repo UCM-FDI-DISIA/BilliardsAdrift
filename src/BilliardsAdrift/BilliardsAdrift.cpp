@@ -9,6 +9,7 @@
 #include "Viewport.h"
 
 #include "Components/CueController.h"
+#include "Components/GameManager.h"
 #include "Components/HeartComponent.h"
 #include "Components/MovableWall.h"
 
@@ -39,6 +40,7 @@ void addComponentFactories() {
     std::cout << "Anadiendo las factorias del juego\n";
 #endif
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
+    factMngr->addFactory("GameManager", new Tapioca::BasicBuilder<BilliardsAdrift::GameManager>());
     factMngr->addFactory("CueController", new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
     factMngr->addFactory("HeartComponent", new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
     factMngr->addFactory("MovableWall", new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());

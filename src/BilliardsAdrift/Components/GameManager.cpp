@@ -2,10 +2,10 @@
 #include "SceneManager.h"
 
 namespace BilliardsAdrift {
+template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::GameManager>;
 
-
-GameManager* GameManager::instance = nullptr;
-GameManager::GameManager() { instance = this; }
+GameManager* GameManager::instance_ = nullptr;
+GameManager::GameManager() { instance_ = this; }
 
 bool initComponent(const CompMap& variables) { return false; }
 
@@ -32,16 +32,22 @@ bool GameManager::initComponent(const CompMap& variables) {
     return true;
 }
 
-void GameManager::start() { }
-
-void GameManager::update(const uint64_t deltaTime) { }
-
-void GameManager::handleEvent(std::string const& id, void* info) { }
-
-void GameManager::onStart() {
+void GameManager::start() {
     life = INIT_LIFE;
     time = INIT_TIME;
     score = 0;
+}
+
+void GameManager::update(const uint64_t deltaTime) { }
+
+void GameManager::handleEvent(std::string const& id, void* info) { 
+    if (id == "ev_Pause") {
+        changeScene("PauseMenu.lua");
+    }
+}
+
+void GameManager::onStart() {
+
 }
 
 void GameManager::onGameOver() { }
@@ -55,15 +61,7 @@ int GameManager::getLife() { return life; }
 uint64_t GameManager::getTime() { return time; }
 
 bool GameManager::changeScene(std::string const& scene) const {
-    std::string end = ".lua";
-
-    //Si el nombre de escena no termina en .lua (else) se aniade
-    if (scene.length() >= end.length()) {
-        return Tapioca::SceneManager::instance()->loadScene(scene);
-    }
-    else {
-        return Tapioca::SceneManager::instance()->loadScene(scene + end);
-    }
+    return Tapioca::SceneManager::instance()->loadScene(scene);
 }
 
 void GameManager::setScore(const int s) { score = s; }

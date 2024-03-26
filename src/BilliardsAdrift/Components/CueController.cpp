@@ -67,7 +67,7 @@ void CueController::updatePosition() {
     mouseLastPosition.y = inputMng->getMousePos().second;
 }
 void CueController::updateRotation() { 
-   tr->getRotation();
+    tr->getRotation();
     tr->rotate(Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * 0.2f);
    // tr->getParent()->rotate(Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * 0.1f);
   //  std::cout <<rb->getMovementType() << "\n";

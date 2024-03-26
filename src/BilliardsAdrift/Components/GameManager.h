@@ -2,7 +2,7 @@
 #include "Structure/Component.h"
 #include "Utilities/Singleton.h"
 #include "Structure/BasicBuilder.h"
-#include "../gameDefs.h"
+#include "gameDefs.h"
 #include <string>
 
 namespace BilliardsAdrift {
@@ -12,7 +12,7 @@ private:
     //al inicializarse
     int INIT_LIFE;
     uint64_t INIT_TIME;
-    static GameManager* instance;
+    static GameManager* instance_;
 
     //actuales
     int score;
@@ -23,13 +23,28 @@ private:
     void onGameOver();
     void onWin();
 
+    static GameManager* create() {
+        //assert(instance_.get() == nullptr, "Instance already exists");
+        if (instance_ == nullptr) instance_ = new GameManager();
+#ifdef _DEBUG
+        else
+            std::cout << "Instance already exists\n";
+#endif
+        return instance_;
+    }
+
 public:
     COMPONENT_ID("GameManager");
 
     GameManager();
     ~GameManager() { }
 
-    GameManager* getInstance() { return instance; }
+    static GameManager* instance() {         // Si no existe, se crea
+        if (instance_ == nullptr) create();
+
+        // Entonces, devuelve el puntero
+        return instance_;
+    }
     bool initComponent(const CompMap& variables) override;
     void start() override;
     void update(const uint64_t deltaTime) override;

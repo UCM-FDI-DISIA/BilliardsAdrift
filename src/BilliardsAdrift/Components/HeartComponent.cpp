@@ -9,7 +9,7 @@
 namespace BilliardsAdrift {
 template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>;
 
-HeartComponent::HeartComponent() : rb(nullptr), tr(nullptr), gameM(new GameManager()) { }
+HeartComponent::HeartComponent() : rb(nullptr), tr(nullptr), gameM(nullptr) { }
 
 HeartComponent ::~HeartComponent() { }
 
@@ -27,7 +27,7 @@ bool HeartComponent::initComponent(const CompMap& variables) {
     return true;
 }
 
-void HeartComponent::start() { }
+void HeartComponent::start() { gameM = GameManager::instance(); }
 
 void HeartComponent::update(const uint64_t deltaTime) { }
 

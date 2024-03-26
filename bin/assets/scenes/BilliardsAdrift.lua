@@ -17,6 +17,10 @@ scene = {
                 bgColorR = 0.925,
                 bgColorG = 0.698,
                 bgColorB = 0.941
+            },
+            GameManager = {
+                initLife = 3,
+                initTime = 9999.0
             }
         }
     },
