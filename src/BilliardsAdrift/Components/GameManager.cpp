@@ -1,11 +1,13 @@
 #include "GameManager.h"
 #include "SceneManager.h"
 
-namespace BilliardsAdrift {
-template class JUEGO_API Tapioca::Singleton<GameManager>;
+
+template class JUEGO_API Tapioca::Singleton<BilliardsAdrift::GameManager>;
 
 template<>
-GameManager* Tapioca::Singleton<GameManager>::instance_ = nullptr;
+BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::instance_ = nullptr;
+
+namespace BilliardsAdrift {
 
 template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::GameManager>;
 

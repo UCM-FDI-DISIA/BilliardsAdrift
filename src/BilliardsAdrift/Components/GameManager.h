@@ -1,7 +1,7 @@
 #pragma once
 #include "Structure/Component.h"
 #include "Utilities/Singleton.h"
-#include "Structure/BasicBuilder.h"
+#include "Structure/ComponentBuilder.h"
 #include "gameDefs.h"
 #include <string>
 
@@ -26,15 +26,15 @@ private:
     void onGameOver();
     void onWin();
 
-    static GameManager* create() {
-        //assert(instance_.get() == nullptr, "Instance already exists");
-        if (instance_ == nullptr) instance_ = new GameManager();
-#ifdef _DEBUG
-        else
-            std::cout << "Instance already exists\n";
-#endif
-        return instance_;
-    }
+//    static GameManager* create() {
+//        //assert(instance_.get() == nullptr, "Instance already exists");
+//        if (instance_ == nullptr) instance_ = new GameManager();
+//#ifdef _DEBUG
+//        else
+//            std::cout << "Instance already exists\n";
+//#endif
+//        return instance_;
+//    }
 
 public:
     COMPONENT_ID("GameManager");
@@ -68,5 +68,10 @@ public:
     void changeLife(const int l);
     //incrementar/decrementar x cantidad de tiempo
     void changeTime(const uint64_t t);
+};
+
+class JUEGO_API GameManagerBuilder : public Tapioca::ComponentBuilder {
+public:
+    inline Tapioca::Component* createComponent() override { return GameManager::create(); }
 };
 }
