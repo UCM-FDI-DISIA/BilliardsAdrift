@@ -1,4 +1,25 @@
 scene = {
+    {
+        components = {
+            Transform = {
+                positionX = 20.0,
+                positionY = 0.0,
+                positionZ = 20.0,
+                scaleX = 1.0,
+                scaleY = 1.0,
+                scaleZ = 1.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            CameraComponent = {
+                zOrder = 0,
+                bgColorR = 0.925,
+                bgColorG = 0.698,
+                bgColorB = 0.941
+            }
+        }
+    },
     Sinbad={
         components={
             Transform = {
