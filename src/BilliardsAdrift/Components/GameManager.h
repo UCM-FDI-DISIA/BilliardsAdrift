@@ -6,18 +6,21 @@
 #include <string>
 
 namespace BilliardsAdrift {
-class JUEGO_API GameManager : public Tapioca::Component {
-
+class JUEGO_API GameManager : public Tapioca::Component, public Tapioca::Singleton<GameManager> {
 private:
+    friend Singleton<GameManager>;
+
     //al inicializarse
     int INIT_LIFE;
     uint64_t INIT_TIME;
-    static GameManager* instance;
+    //static GameManager* instance_;
 
     //actuales
     int score;
     int life;
     uint64_t time;
+
+    GameManager();
 
     void onStart();
     void onGameOver();
@@ -26,10 +29,11 @@ private:
 public:
     COMPONENT_ID("GameManager");
 
-    GameManager();
-    ~GameManager() { }
+    GameManager(GameManager&) = delete;
+    GameManager(GameManager&&) = delete;
+    GameManager& operator=(GameManager&) = delete;
+    GameManager& operator=(GameManager&&) = delete;
 
-    GameManager* getInstance() { return instance; }
     bool initComponent(const CompMap& variables) override;
     void start() override;
     void update(const uint64_t deltaTime) override;
