@@ -9,8 +9,6 @@ BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::
 
 namespace BilliardsAdrift {
 
-template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::GameManager>;
-
 GameManager::GameManager() { }
 
 bool initComponent(const CompMap& variables) { return false; }
