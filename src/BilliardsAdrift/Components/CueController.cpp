@@ -6,6 +6,7 @@
 #include "Components/Transform.h"
 #include "Structure/GameObject.h"
 #include "Structure/BasicBuilder.h"
+#include <cmath>
 
 namespace BilliardsAdrift {
 template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::CueController>;
@@ -39,9 +40,12 @@ bool CueController::initComponent(const CompMap& variables) {
 }
 
 void CueController::start() {
-    rb = object->getComponent<Tapioca::RigidBody>();
+  //  rb = object->getComponent<Tapioca::RigidBody>();
     tr = object->getComponent<Tapioca::Transform>();
     inputMng = Tapioca::InputManager::instance();
+
+  /*  rb->setGravity(0);
+    rb->setTensor(Tapioca::Vector3(0, 10000, 0));*/
 }
 
 void CueController::update(const uint64_t deltaTime) {
@@ -61,27 +65,26 @@ void CueController::handleEvent(std::string const& id, void* info) {
 void CueController::updatePosition() {
     mouseLastPosition.x = inputMng->getMousePos().first;
     mouseLastPosition.y = inputMng->getMousePos().second;
-#ifdef _DEBUG
-    //std::cout << "mouse: " << mouseLastPosition.x << "\n";
-#endif
 }
-void CueController::updateRotation() {
-   /* float opposite = inputMng->getMousePos().first - mouseLastPosition.x;
-    float adjacent = inputMng->getMousePos().second - mouseLastPosition.y;
-    tr->setRotation(tr->up() * mouseLastPosition.x * 2);*/
+void CueController::updateRotation() { 
+    tr->getRotation();
+    tr->rotate(Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * 0.2f);
+   // tr->getParent()->rotate(Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * 0.1f);
+  //  std::cout <<rb->getMovementType() << "\n";
 }
 
 void CueController::increasePower() {
-    /*tr->setPosition(tr->forward() - moveFactor);*/
+    tr->translate(tr->forward() * (- moveFactor));
     actualPower += powerFactor;
 #ifdef _DEBUG
-    std::cout << "IncreasePower: " << actualPower << "\n";
+   // std::cout << "IncreasePower: " << actualPower << "\n";
 #endif
 }
 
 void CueController::hit() {
-   // std::cout << "AAAAAAAAAA "<< tr->forward().x << " " << tr->forward().y << " " << tr->forward().z << "\n";
-    //rb->addImpulse(tr->forward() * actualPower);
+   // // std::cout << "AAAAAAAAAA "<< tr->forward().x << " " << tr->forward().y << " " << tr->forward().z << "\n";
+  // rb->setVelocity(tr->forward() * 100000);
+    tr->translate(tr->forward() * (actualPower));
     actualPower = 0;
 }
 }

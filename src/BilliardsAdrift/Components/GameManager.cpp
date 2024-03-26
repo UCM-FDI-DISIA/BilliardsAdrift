@@ -36,11 +36,7 @@ bool GameManager::initComponent(const CompMap& variables) {
     return true;
 }
 
-void GameManager::start() {
-    life = INIT_LIFE;
-    time = INIT_TIME;
-    score = 0;
-}
+void GameManager::start() { }
 
 void GameManager::update(const uint64_t deltaTime) { }
 

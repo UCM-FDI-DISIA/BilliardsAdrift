@@ -70,24 +70,24 @@ events = {
         control = 3     -- SDL_BUTTON_RIGHT
     },    
 	ev_ACCEPT_9 = {
-        src = "ie_keyDown",
+        src = "ie_keyUp",
         control = 49     -- SDLK_1
     },
 	ev_ACCEPT_10 = {
-        src = "ie_keyDown",
+        src = "ie_keyUp",
         control = 50     -- SDLK_2
     },
 	ev_ACCEPT_11 = {
-        src = "ie_keyDown",
+        src = "ie_keyUp",
         control = 51     -- SDLK_3
     },
 	ev_ACCEPT_12 = {
-        src = "ie_keyDown",
+        src = "ie_keyUp",
         control = 52     -- SDLK_4
     },
-	ev_ACCEPT_13 = {
-        src = "ie_keyDown",
-        control = 53     -- SDLK_5
+	ev_Pause = {
+        src = "ie_keyUp",
+        control = 112     -- SDLK_p
     },
     ev_MouseButtonDownRight = {
         src = "ie_mouseButtonDown",

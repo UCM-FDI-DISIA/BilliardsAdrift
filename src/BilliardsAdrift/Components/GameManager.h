@@ -2,7 +2,7 @@
 #include "Structure/Component.h"
 #include "Utilities/Singleton.h"
 #include "Structure/BasicBuilder.h"
-#include "../gameDefs.h"
+#include "gameDefs.h"
 #include <string>
 
 namespace BilliardsAdrift {
@@ -25,6 +25,16 @@ private:
     void onStart();
     void onGameOver();
     void onWin();
+
+    static GameManager* create() {
+        //assert(instance_.get() == nullptr, "Instance already exists");
+        if (instance_ == nullptr) instance_ = new GameManager();
+#ifdef _DEBUG
+        else
+            std::cout << "Instance already exists\n";
+#endif
+        return instance_;
+    }
 
 public:
     COMPONENT_ID("GameManager");

@@ -8,8 +8,6 @@ namespace Tapioca {
 class InputManager;
 class RigidBody;
 class Transform;
-/*template<IsComponent TComp>
-	class BasicBuilder;*/
 }
 
 namespace BilliardsAdrift {
@@ -17,6 +15,7 @@ class JUEGO_API CueController : public Tapioca::Component {
 private:
     Tapioca::RigidBody* rb;
     Tapioca::Transform* tr;
+   
     // Tapioca::MeshRenderer* meshComp;
     Tapioca::InputManager* inputMng;
     Tapioca::Vector2 mouseLastPosition;
