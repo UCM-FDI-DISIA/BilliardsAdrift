@@ -14,7 +14,7 @@ if exist %LNK_DIR% (
     echo %LNK_DIR% ya existe, eliminando
     rmdir %LNK_DIR%
 )
-mklink /D %LNK_NAME% %PARENT_DIR%%LNK_NAME%
+mklink /d %BAT_DIR%%LNK_NAME% %PARENT_DIR%%LNK_NAME%
 if errorlevel 1 (
     echo Error al crear enlace con el motor
 ) else (
