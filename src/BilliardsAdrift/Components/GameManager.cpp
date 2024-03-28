@@ -1,11 +1,15 @@
 #include "GameManager.h"
 #include "SceneManager.h"
 
-namespace BilliardsAdrift {
-template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::GameManager>;
 
-GameManager* GameManager::instance_ = nullptr;
-GameManager::GameManager() { instance_ = this; }
+template class JUEGO_API Tapioca::Singleton<BilliardsAdrift::GameManager>;
+
+template<>
+BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::instance_ = nullptr;
+
+namespace BilliardsAdrift {
+
+GameManager::GameManager() { }
 
 bool initComponent(const CompMap& variables) { return false; }
 
@@ -32,11 +36,7 @@ bool GameManager::initComponent(const CompMap& variables) {
     return true;
 }
 
-void GameManager::start() {
-    life = INIT_LIFE;
-    time = INIT_TIME;
-    score = 0;
-}
+void GameManager::start() { }
 
 void GameManager::update(const uint64_t deltaTime) { }
 
