@@ -57,6 +57,25 @@ scene = {
             }
         }
     },
+    Plano={
+        components={
+            Transform = {
+                positionX = 0.0,
+                positionY = -2.0,
+                positionZ = 0.0,--offset
+                scaleX = 10.0,
+                scaleY = 10.0,
+                scaleZ = 10.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            PlaneComponent = {
+                planeName = "Prueba",
+                materialName = "green"
+            }
+        }
+    },
     CueContainer={
         components={
             Transform = {
