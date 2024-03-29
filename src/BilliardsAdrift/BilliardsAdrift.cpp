@@ -12,6 +12,7 @@
 #include "Components/GameManager.h"
 #include "Components/HeartComponent.h"
 #include "Components/MovableWall.h"
+#include "Components/Accelerator.h"
 
 bool init() {
     name();
@@ -45,4 +46,5 @@ void addComponentFactories() {
     factMngr->addFactory("CueController", new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
     factMngr->addFactory("HeartComponent", new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
     factMngr->addFactory("MovableWall", new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
+    factMngr->addFactory("Accelerator", new Tapioca::BasicBuilder<BilliardsAdrift::Accelerator>());
 }

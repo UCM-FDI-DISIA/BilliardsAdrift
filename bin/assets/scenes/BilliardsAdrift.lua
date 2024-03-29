@@ -62,7 +62,7 @@ scene = {
             Transform = {
                 positionX = 0.0,
                 positionY = -2.0,
-                positionZ = 0.0,--offset
+                positionZ =13.0,--offset
                 scaleX = 10.0,
                 scaleY = 10.0,
                 scaleZ = 10.0,
@@ -91,7 +91,7 @@ scene = {
             }
         }
     },
- 
+ --NO BORRAR
     -- Cue={
     --     components={
     --         Transform = {
@@ -177,6 +177,49 @@ scene = {
                 destX=8.0,
                 destZ=-2.0
               
+            }
+        }
+    },
+    Accelerator1={
+        components={
+            Transform = {
+                positionX = 0.0,
+                positionY = -2.8,
+                positionZ = 0.0,
+                scaleX = 5.0,
+                scaleY = 5.0,
+                scaleZ = 5.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            -- MeshRenderer = {
+            --     meshName = "meshes/cube.mesh",
+            --     materialName= "grey"
+            -- },
+            RigidBody = {    
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=2.0,
+                colliderScaleY=2.0,
+                colliderScaleZ=2.0,
+                isTrigger=true,
+                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=0.0,
+                friction=0.0,
+                damping=0.0,
+                bounciness=0.0
+            },
+            Accelerator = {    
+                speedFactor=1.5,
+            },
+            PlaneComponent = {  
+                planeName="Accelerator1",  
+                materialName="lighting",
+                initRotationX=-90.0,
+                initRotationY=0.0,
+                initRotationZ=0.0
+                -- width=200.0,
+                -- height=200.0
             }
         }
     },
