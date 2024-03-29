@@ -36,8 +36,11 @@
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\MovableWall.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\BilliardsAdrift\Components\Accelerator.cpp">
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\ExplosiveComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\Accelerator.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +63,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\MovableWall.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\ExplosiveComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\Accelerator.h">

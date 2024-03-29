@@ -9,14 +9,11 @@
 namespace BilliardsAdrift {
 template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>;
 
-HeartComponent::HeartComponent() : rb(nullptr), tr(nullptr), gameM(nullptr) { }
+HeartComponent::HeartComponent() : gameM(nullptr) { }
 
 HeartComponent ::~HeartComponent() { }
 
 bool HeartComponent::initComponent(const CompMap& variables) {
-    rb = nullptr;
-    tr = nullptr;
-
     /*bool activeSet = setValueFromMap(active, "active", variables);
     if (!activeSet) {
 #ifdef _DEBUG

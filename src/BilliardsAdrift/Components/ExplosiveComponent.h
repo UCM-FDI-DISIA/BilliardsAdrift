@@ -3,27 +3,25 @@
 #include "Structure/Component.h"
 
 namespace Tapioca {
-class RigidBody;
-class Transform;
+class GameObject;
 }
 
 namespace BilliardsAdrift {
-class GameManager;
-
-class JUEGO_API HeartComponent : public Tapioca::Component {
+class JUEGO_API ExplosiveComponent : public Tapioca::Component {
 private:
-    GameManager* gameM;
-
-    //bool active;
+    float force;
+    float duration;
+    Tapioca::GameObject* gO; 
+    void explode(const uint64_t deltaTime);
 
 public:
-    COMPONENT_ID("HeartComponent");
-    
-    HeartComponent();
-    ~HeartComponent();
+    COMPONENT_ID("ExplosiveComponent");
+
+    ExplosiveComponent();
+    ~ExplosiveComponent();
     bool initComponent(const CompMap& variables) override;
-    void start() override;
     void update(const uint64_t deltaTime) override;
     void handleEvent(std::string const& id, void* info) override;
 };
+
 }
