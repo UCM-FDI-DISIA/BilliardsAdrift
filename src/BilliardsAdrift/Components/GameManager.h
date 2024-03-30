@@ -76,6 +76,8 @@ public:
 
 class JUEGO_API GameManagerBuilder : public Tapioca::ComponentBuilder {
 public:
+    GameManagerBuilder() : Tapioca::ComponentBuilder(GameManager::id) { }
+
     inline Tapioca::Component* createComponent() override { return GameManager::create(); }
 };
 }

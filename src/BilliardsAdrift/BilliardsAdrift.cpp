@@ -43,10 +43,10 @@ void addComponentFactories() {
 #endif
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
     //factMngr->addFactory("GameManager", new Tapioca::BasicBuilder<BilliardsAdrift::GameManager>());
-    factMngr->addFactory("GameManager", new BilliardsAdrift::GameManagerBuilder());
-    factMngr->addFactory("CueController", new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
-    factMngr->addFactory("HeartComponent", new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
-    factMngr->addFactory("MovableWall", new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
-    factMngr->addFactory("Accelerator", new Tapioca::BasicBuilder<BilliardsAdrift::Accelerator>());
-    factMngr->addFactory("ExplosiveComponent", new Tapioca::BasicBuilder<BilliardsAdrift::ExplosiveComponent>());
+    factMngr->addFactory(new BilliardsAdrift::GameManagerBuilder());
+    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
+    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
+    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
+    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::Accelerator>());
+    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::ExplosiveComponent>());
 }
