@@ -10,15 +10,19 @@ class JUEGO_API GameManager : public Tapioca::Component, public Tapioca::Singlet
 private:
     friend Singleton<GameManager>;
 
+    enum State { MainMenu,InGame,GameOver,Pause};
+
+    State state;
+
     //al inicializarse
     int INIT_LIFE;
-    uint64_t INIT_TIME;
+    long long int INIT_TIME;
     //static GameManager* instance_;
 
     //actuales
     int score;
     int life;
-    uint64_t time;
+    long long int time;
 
     GameManager();
 

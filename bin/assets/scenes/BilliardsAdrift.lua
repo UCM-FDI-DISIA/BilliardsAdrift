@@ -20,7 +20,28 @@ scene = {
             },
             GameManager = {
                 initLife = 3,
-                initTime = 9999.0
+                initTime = 5.0
+            }
+        }
+    },
+    TimerText={
+        components = {
+            Transform = {
+                positionX = WINDOW_WIDTH / 2 - 25,
+                positionY = WINDOW_HEIGHT / 2 - 60,
+                positionZ = 0.0,
+                scaleX = 0.0,
+                scaleY = 0.0,
+                scaleZ = 0.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            Text = {
+                name = "TimerText",
+                text = "xxxx",
+                --textSize = 20.0,
+                textFontName = "AGENCYB.TTF"
             }
         }
     },

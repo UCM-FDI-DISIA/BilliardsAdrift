@@ -2,6 +2,8 @@
 #include "SceneManager.h"
 
 
+#include <iomanip>
+
 template class JUEGO_API Tapioca::Singleton<BilliardsAdrift::GameManager>;
 
 template<>
@@ -9,11 +11,12 @@ BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::
 
 namespace BilliardsAdrift {
 
-GameManager::GameManager() { }
+GameManager::GameManager() : INIT_TIME(0), INIT_LIFE(0), time(0),life(0),state(MainMenu),score(0) { }
 
 bool initComponent(const CompMap& variables) { return false; }
 
 bool GameManager::initComponent(const CompMap& variables) {
+
     bool initLifeSet = setValueFromMap(INIT_LIFE, "initLife", variables);
     if (!initLifeSet) {
 #ifdef _DEBUG
@@ -29,25 +32,38 @@ bool GameManager::initComponent(const CompMap& variables) {
 #endif
         return false;
     }
-    INIT_TIME = timeAux;
+    INIT_TIME = (long long int)timeAux;
     // create();
     onStart();
 
     return true;
 }
 
-void GameManager::start() { }
+void GameManager::start() { state = InGame; }
 
-void GameManager::update(const uint64_t deltaTime) { }
+void GameManager::update(const uint64_t deltaTime) {
+    if (state == InGame) {
+        time -= deltaTime;
+#ifdef _DEBUG
+        std::cout << std::fixed << std::setprecision(2) << time / 1000. << "\n";
+#endif
+        if (time <= 0) {
+            state = Pause;
+            changeScene("PauseMenu.lua");
+        }
+    }
+}
 
-void GameManager::handleEvent(std::string const& id, void* info) { 
+void GameManager::handleEvent(std::string const& id, void* info) {
     if (id == "ev_Pause") {
         changeScene("PauseMenu.lua");
     }
 }
 
 void GameManager::onStart() {
-
+    time = INIT_TIME * 1000;
+    score = 0;
+    life = INIT_LIFE;
 }
 
 void GameManager::onGameOver() { }
@@ -58,7 +74,7 @@ int GameManager::getScore() { return score; }
 
 int GameManager::getLife() { return life; }
 
-uint64_t GameManager::getTime() { return time; }
+uint64_t GameManager::getTime() { return (uint64_t)(time / 1000.f); }
 
 bool GameManager::changeScene(std::string const& scene) const {
     return Tapioca::SceneManager::instance()->loadScene(scene);
@@ -68,12 +84,12 @@ void GameManager::setScore(const int s) { score = s; }
 
 void GameManager::setLife(const int l) { life = l; }
 
-void GameManager::setTime(uint64_t t) { time = t; }
+void GameManager::setTime(uint64_t t) { time = t*1000; }
 
 void GameManager::changeScore(int s) { score += s; }
 
 void GameManager::changeLife(int l) { life += l; }
 
-void GameManager::changeTime(uint64_t t) { time += t; }
+void GameManager::changeTime(uint64_t t) { time += t*1000; }
 
 }

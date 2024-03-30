@@ -40,7 +40,7 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\Accelerator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
