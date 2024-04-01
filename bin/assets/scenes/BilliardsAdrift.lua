@@ -23,7 +23,7 @@ scene = {
             },
             GameManager = {
                 initLife = 3,
-                initTime = 5.0
+                initTime = 9999.0
             }
         }
     },
@@ -48,39 +48,39 @@ scene = {
             }
         }
     },
-    Sinbad={
-        components={
-            Transform = {
-                positionX = 0.0,
-                positionY = 0.0,
-                positionZ = -8.0,
-                scaleX = 0.6,
-                scaleY = 0.6,
-                scaleZ = 0.6,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
-            }, 
-            MeshRenderer = {
-                meshName = "Sinbad.mesh",
-            },
-            RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=1.0,
-                colliderScaleY=1.0,
-                colliderScaleZ=1.0,
-                isTrigger=false,
-                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
-                damping=0.4,
-                bounciness=0.5
-            },
-            Animator = {
-                playbackSpeed=0.001
-            }
-        }
-    },
+    -- Sinbad={
+    --    components={
+    --        Transform = {
+    --            positionX = 0.0,
+    --            positionY = 0.0,
+    --            positionZ = -8.0,
+    --            scaleX = 0.6,
+    --            scaleY = 0.6,
+    --            scaleZ = 0.6,
+    --            rotationX = 0.0,
+    --            rotationY = 0.0,
+    --            rotationZ = 0.0
+    --        }, 
+    --        MeshRenderer = {
+    --            meshName = "Sinbad.mesh",
+    --        },
+    --        RigidBody = {    
+    --            colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+    --            colliderScaleX=1.0,
+    --            colliderScaleY=1.0,
+    --            colliderScaleZ=1.0,
+    --            isTrigger=false,
+    --            movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+    --            mass=3.0,
+    --            friction=2.0,
+    --            damping=0.4,
+    --            bounciness=0.5
+    --        },
+    --        Animator = {
+    --            playbackSpeed=0.001
+    --        }
+    --    }
+   -- },
     CueContainer={
         components={
             Transform = {
@@ -173,15 +173,15 @@ scene = {
                 positionX = 0.0,
                 positionY = 0.0,
                 positionZ = -2.0,
-                scaleX = 0.05,
-                scaleY = 0.01,
-                scaleZ = 0.1,
+                scaleX = 2.6,
+                scaleY = 0.52,
+                scaleZ = 5.2,
                 rotationX = 0.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
             MeshRenderer = {
-                meshName = "meshes/cube.mesh",
+                meshName = "meshes/cube2.mesh",
                 materialName= "grey"
             },
             RigidBody = {    
@@ -253,15 +253,15 @@ scene = {
                 positionX = 0.0,
                 positionY = -4.0,
                 positionZ = 0.0,
-                scaleX = 0.1,
-                scaleY = 0.02,
-                scaleZ = 0.2,
+                scaleX = 5.2,
+                scaleY = 1.04,
+                scaleZ = 10.4,
                 rotationX = 0.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
             MeshRenderer = {
-                meshName = "meshes/cube.mesh",
+                meshName = "meshes/cube2.mesh",
                 materialName= "green"
             },
             RigidBody = {    
