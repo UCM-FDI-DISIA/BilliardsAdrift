@@ -1,5 +1,6 @@
 #include "BilliardsAdrift.h"
 
+#include "WindowManager.h"
 #include "SceneManager.h"
 #include "Structure/FactoryManager.h"
 #include "Structure/BasicBuilder.h"
@@ -16,6 +17,7 @@
 #include "Components/ExplosiveComponent.h"
 
 bool init() {
+    Tapioca::WindowManager::instance()->setWindowName("Billiards Adrift");
     name();
     addComponentFactories();
 
