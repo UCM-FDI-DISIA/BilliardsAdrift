@@ -6,7 +6,7 @@
 
 // TODO: PRUEBA
 #include "GraphicsManager.h"
-#include "Viewport.h"
+#include "LightDirectional.h"
 
 #include "Components/CueController.h"
 #include "Components/GameManager.h"
@@ -21,13 +21,10 @@ bool init() {
 
     // PRUEBA (deja memory leaks)
     auto graphics = Tapioca::GraphicsManager::instance();
-    /*auto nodeCamera = graphics->createNode(Tapioca::Vector3(20.0f, 0.0f, 20.0f));
-    auto camera = graphics->createCamera(nodeCamera, "Hola");
-    auto viewport = graphics->createViewport(camera, 1);
-    viewport->setBackground(Tapioca::Vector3(0.925f, 0.698f, 0.941f));*/
     auto node = graphics->createNode();
     auto light = graphics->createLightDirectional(node, Tapioca::Vector3(0.0f, -1.0f, -1.0f));
-    
+    light->produceShadows(true);
+
     return Tapioca::SceneManager::instance()->loadScene("BilliardsAdrift.lua");
 }
 

@@ -16,7 +16,10 @@ scene = {
                 zOrder = 0,
                 bgColorR = 0.925,
                 bgColorG = 0.698,
-                bgColorB = 0.941
+                bgColorB = 0.941,
+                targetToLookX = 0.0,
+                targetToLookY = 0.0,
+                targetToLookZ = 0.0
             },
             GameManager = {
                 initLife = 3,
