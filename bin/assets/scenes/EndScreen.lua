@@ -13,7 +13,7 @@ scene = {
                 rotationZ = 0.0
             },
             MeshRenderer = {
-                meshName = "meshes/cube.mesh",
+                meshName = "models/cube.mesh",
                 materialName= "green"
             },
             RigidBody = {    

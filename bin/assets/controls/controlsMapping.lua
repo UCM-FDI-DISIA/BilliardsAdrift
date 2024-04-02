@@ -37,54 +37,6 @@ events = {
         src = "ie_keyDown",
         control = 27    -- SDLK_ESCAPE
     },
-    ev_ACCEPT_1 = {
-        src = "ie_keyDown",
-        control = 97    -- SDLK_a
-    },
-    ev_ACCEPT_2 = {
-        src = "ie_keyUp",
-        control = 119   -- SDLK_w
-    },
-    ev_ACCEPT_3 = {
-        src = "ie_ctrlButtonDown",
-        control = 0     -- SDL_CONTROLLER_BUTTON_A
-    },
-    ev_ACCEPT_4 = {
-        src = "ie_ctrlButtonUp",
-        control = 1     -- SDL_CONTROLLER_BUTTON_B
-    },
-    ev_ACCEPT_5 = {
-        src = "ie_ctrlAxisMotion",
-        control = 3     -- SDL_CONTROLLER_AXIS_RIGHTY
-    },
-    ev_ACCEPT_6 = {
-        src = "ie_mouseButtonDown",
-        control = 1     -- SDL_BUTTON_LEFT
-    },
-    ev_ACCEPT_7 = {
-        src = "ie_mouseButtonDown",
-        control = 2     -- SDL_BUTTON_MIDDLE
-    },
-    ev_ACCEPT_8 = {
-        src = "ie_mouseButtonUp",
-        control = 3     -- SDL_BUTTON_RIGHT
-    },    
-	ev_ACCEPT_9 = {
-        src = "ie_keyUp",
-        control = 49     -- SDLK_1
-    },
-	ev_ACCEPT_10 = {
-        src = "ie_keyUp",
-        control = 50     -- SDLK_2
-    },
-	ev_ACCEPT_11 = {
-        src = "ie_keyUp",
-        control = 51     -- SDLK_3
-    },
-	ev_ACCEPT_12 = {
-        src = "ie_keyUp",
-        control = 52     -- SDLK_4
-    },
 	ev_Pause = {
         src = "ie_keyUp",
         control = 112     -- SDLK_p

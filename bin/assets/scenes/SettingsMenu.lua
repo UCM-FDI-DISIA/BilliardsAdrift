@@ -13,7 +13,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "CueStick/CueStick.mesh",
+                meshName = "models/CueStick/CueStick.mesh",
             },
             RigidBody = {    
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -47,7 +47,7 @@ scene = {
                 rotationZ = 0.0
             },
             MeshRenderer = {
-                meshName = "meshes/cube.mesh",
+                meshName = "models/cube.mesh",
                 materialName= "green"
             },
             RigidBody = {    

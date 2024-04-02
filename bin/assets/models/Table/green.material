@@ -1,0 +1,11 @@
+import ShadowTemplateColor from "Shadows.material"
+
+material green : ShadowTemplateColor {
+    receive_shadows on
+    technique {
+        pass Decal {
+            diffuse 0.1 0.3 0.1 1.0
+            specular 0.5 0.0 0 0 0
+        }
+    }
+}

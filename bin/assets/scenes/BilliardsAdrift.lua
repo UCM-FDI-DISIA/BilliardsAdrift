@@ -62,7 +62,7 @@ scene = {
     --            rotationZ = 0.0
     --        }, 
     --        MeshRenderer = {
-    --            meshName = "Sinbad.mesh",
+    --            meshName = "models/Sinbad/Sinbad.mesh",
     --        },
     --        RigidBody = {    
     --            colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -95,7 +95,7 @@ scene = {
             rotationZ = 0.0
         }, 
         MeshRenderer = {
-            meshName = "CueStick/CueStick.mesh",
+            meshName = "models/CueStick/CueStick.mesh",
         },
         -- RigidBody = {    
         --     colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -134,7 +134,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "Ball1/Ball1.mesh",
+                meshName = "models/Ball1/Ball1.mesh",
                 materialName="white"
             },
             RigidBody = {    
@@ -183,7 +183,7 @@ scene = {
     --                 rotationZ = 0.0
     --             }, 
     --             MeshRenderer = {
-    --                 meshName = "CueStick/CueStick.mesh",
+    --                 meshName = "models/CueStick/CueStick.mesh",
     --             },
     --             RigidBody = {    
     --                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -219,7 +219,7 @@ scene = {
                 rotationZ = 0.0
             },
             MeshRenderer = {
-                meshName = "meshes/cube2.mesh",
+                meshName = "models/cube2.mesh",
                 materialName= "grey"
             },
             RigidBody = {    
@@ -256,7 +256,7 @@ scene = {
                 rotationZ = 0.0
             },
             -- MeshRenderer = {
-            --     meshName = "meshes/cube.mesh",
+            --     meshName = "models/cube.mesh",
             --     materialName= "grey"
             -- },
             RigidBody = {    
@@ -305,7 +305,7 @@ scene = {
                 rotationZ = 0.0
             },
             MeshRenderer = {
-                meshName = "meshes/cube2.mesh",
+                meshName = "models/cube2.mesh",
                 materialName= "green"
             },
             RigidBody = {    
@@ -336,7 +336,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "Ball1/Ball1.mesh"
+                meshName = "models/Ball1/Ball1.mesh"
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -366,7 +366,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "Ball2/Ball2.mesh"
+                meshName = "models/Ball2/Ball2.mesh"
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -396,7 +396,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "Ball3/Ball3.mesh"
+                meshName = "models/Ball3/Ball3.mesh"
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -426,7 +426,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "Ball4/Ball4.mesh"
+                meshName = "models/Ball4/Ball4.mesh"
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -456,7 +456,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "Ball5/Ball5.mesh"
+                meshName = "models/Ball5/Ball5.mesh"
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -486,7 +486,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "Ball6/Ball6.mesh"
+                meshName = "models/Ball6/Ball6.mesh"
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -516,7 +516,7 @@ scene = {
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "meshes/heart.mesh",
+                meshName = "models/heart/heart.mesh",
                 materialName = "heart"
             },
             RigidBody = {    
@@ -537,7 +537,7 @@ scene = {
     Hole1 = {
         components = {
             MeshRenderer = {
-                meshName = "Sinbad.mesh"
+                meshName = "models/Sinbad/Sinbad.mesh"
             },
             ColoredHole = {
                 ballName = "Ball1"
