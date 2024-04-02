@@ -8,8 +8,6 @@
 #include <string>
 
 namespace BilliardsAdrift {
-template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::Accelerator>;
-
 Accelerator::Accelerator() : rb(nullptr), speedFactor(0) { }
 
 bool Accelerator::initComponent(const CompMap& variables) {

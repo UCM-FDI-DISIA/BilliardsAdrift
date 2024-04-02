@@ -6,8 +6,6 @@
 #include "Utilities/Vector3.h"
 
 namespace BilliardsAdrift {
-template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::ExplosiveComponent>;
-
 void ExplosiveComponent::explode(const uint64_t deltaTime) { 
     Tapioca::RigidBody* rb = gO->getComponent<Tapioca::RigidBody>();
     Tapioca::Transform* tr = gO->getComponent<Tapioca::Transform>();

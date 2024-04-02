@@ -7,8 +7,6 @@
 #include "GameManager.h"
 
 namespace BilliardsAdrift {
-template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>;
-
 HeartComponent::HeartComponent() : gameM(nullptr) { }
 
 HeartComponent ::~HeartComponent() { }

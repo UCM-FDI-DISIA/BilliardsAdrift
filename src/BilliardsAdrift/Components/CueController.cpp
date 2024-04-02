@@ -9,8 +9,6 @@
 #include <cmath>
 
 namespace BilliardsAdrift {
-template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::CueController>;
-
 CueController::CueController()
     : inputMng(nullptr), rb(nullptr), tr(nullptr), actualPower(0), moveFactor(0), powerFactor(0) { }
 

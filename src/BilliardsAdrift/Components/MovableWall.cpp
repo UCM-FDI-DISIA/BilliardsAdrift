@@ -7,8 +7,6 @@
 #include "Structure/Game.h"
 
 namespace BilliardsAdrift {
-template class JUEGO_API Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>;
-
 MovableWall::MovableWall() : rb(nullptr), tr(nullptr), actualDest(-1, -1), origin(-1, -1), dest(-1, -1), speed(0) { }
 
 bool MovableWall::initComponent(const CompMap& variables) {

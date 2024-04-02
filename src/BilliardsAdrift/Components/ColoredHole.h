@@ -4,10 +4,14 @@
 
 class JUEGO_API ColoredHole : public Tapioca::Component {
 private:
+    std::string ballName;
+    Tapioca::GameObject* ball;
 
 public:
     COMPONENT_ID("ColoredHole");
 
-    ColoredHole() = default;
-
+    ColoredHole();
+    bool initComponent(const CompMap& variables) override;
+    void handleEvent(std::string const& id, void* info) override;
+    void start() override;
 };

@@ -399,5 +399,27 @@ scene = {
             },
             HeartComponent = { }
         }
+    },
+    Hole1 = {
+        components = {
+            MeshRenderer = {
+                meshName = "Sinbad.mesh"
+            },
+            ColoredHole = {
+                ballName = "Ball1"
+            },
+            RigidBody = {
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=0.6,
+                colliderScaleY=0.6,
+                colliderScaleZ=0.6,
+                isTrigger=true,
+                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
     }
 }
