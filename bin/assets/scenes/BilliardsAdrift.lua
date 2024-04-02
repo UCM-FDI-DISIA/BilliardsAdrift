@@ -398,6 +398,66 @@ scene = {
             }
         }
     },
+    Ball5={
+        components={
+            Transform = {
+                positionX = 6.0,
+                positionY = 2.0,
+                positionZ = 5.0,
+                scaleX = 0.8,
+                scaleY = 0.8,
+                scaleZ = 0.8,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "Ball5/Ball5.mesh"
+            },
+            RigidBody = {    
+                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=1.0,
+                colliderScaleY=1.0,
+                colliderScaleZ=1.0,
+                isTrigger=false,
+                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    },
+    Ball6={
+        components={
+            Transform = {
+                positionX = 3.0,
+                positionY = 3.0,
+                positionZ = 3.0,
+                scaleX = 0.8,
+                scaleY = 0.8,
+                scaleZ = 0.8,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "Ball6/Ball6.mesh"
+            },
+            RigidBody = {    
+                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=1.0,
+                colliderScaleY=1.0,
+                colliderScaleZ=1.0,
+                isTrigger=false,
+                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    },
     Heart={
         components={
             Transform = {
