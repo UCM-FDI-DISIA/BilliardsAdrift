@@ -81,39 +81,77 @@ scene = {
     --        }
     --    }
    -- },
-    CueContainer={
+   CueContainer={
+    components={
+        Transform = {
+            positionX = 0.0,
+            positionY = 0.0,
+            positionZ =13.0,--offset
+            scaleX = 10.0,
+            scaleY = 10.0,
+            scaleZ = 10.0,
+            rotationX = 0.0,
+            rotationY = 0.0,
+            rotationZ = 0.0
+        }, 
+        MeshRenderer = {
+            meshName = "CueStick/CueStick.mesh",
+        },
+        -- RigidBody = {    
+        --     colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+        --     colliderScaleX=0.3,
+        --     colliderScaleY=0.3,
+        --     colliderScaleZ=5.0,
+        --     isTrigger=false,
+        --     movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+        --     mass=10.0,
+        --     friction=1.0,
+        --     damping=0.4,
+        --     bounciness=0.0
+        -- },
+        CueController = {    
+            powerFactor=3.0,
+            moveBackwardFactor=0.5,
+            rotateFactor=0.5,
+            ballDistanceOffsetX=0.0,
+            ballDistanceOffsetY=0.0,
+            ballDistanceOffsetZ=2.0,
+            impulseFactor=0.05
+        }
+    }
+},
+    BallPlayer={
         components={
             Transform = {
                 positionX = 0.0,
                 positionY = -2.0,
-                positionZ =13.0,--offset
-                scaleX = 10.0,
-                scaleY = 10.0,
-                scaleZ = 10.0,
+                positionZ = 0.0,
+                scaleX = 0.8,
+                scaleY = 0.8,
+                scaleZ = 0.8,
                 rotationX = 0.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
-                meshName = "CueStick/CueStick.mesh",
+                meshName = "Ball1/Ball1.mesh",
+                materialName="white"
             },
             RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.3,
-                colliderScaleY=0.3,
-                colliderScaleZ=5.0,
+                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=1.0,
+                colliderScaleY=1.0,
+                colliderScaleZ=1.0,
                 isTrigger=false,
-                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=10.0,
-                friction=1.0,
+                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
                 damping=0.4,
-                bounciness=0.0
-            },
-            CueController = {    
-                powerFactor=3.0,
-                moveFactor=1.0
+                bounciness=0.5
             }
         }
+            
+           
     },
  --NO BORRAR
     -- Cue={
@@ -239,7 +277,13 @@ scene = {
             PlaneComponent = {  
                 planeName="Accelerator1",  
                 materialName="lighting",
-                initRotationX=-90.0,
+                upX=0.0,
+                upY=0.0,
+                upZ=1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                initRotationX=0.0,
                 initRotationY=0.0,
                 initRotationZ=0.0
                 -- width=200.0,

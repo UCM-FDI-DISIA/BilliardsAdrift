@@ -6,21 +6,28 @@
 
 namespace Tapioca {
 class InputManager;
-class RigidBody;
+
 class Transform;
+class GameObject;
+class RigidBody;
 }
 
 namespace BilliardsAdrift {
 class JUEGO_API CueController : public Tapioca::Component {
 private:
-    Tapioca::RigidBody* rb;
     Tapioca::Transform* tr;
-   
+    Tapioca::Transform* ballTr;
+    Tapioca::RigidBody* ballRb;
+    Tapioca::GameObject* ball;
     // Tapioca::MeshRenderer* meshComp;
     Tapioca::InputManager* inputMng;
     Tapioca::Vector2 mouseLastPosition;
+    Tapioca::Vector3 ballDistanceOffset;
     float powerFactor;   //incremento de fuerza para tirar la bola
     float moveFactor;    //factor de movimiento del palo
+    float rotateFactor;   //factor de movimiento del palo hacia atrás
+    float impulseFactor;   //factor de movimiento del palo hacia delante (impulso)
+    
     float actualPower;   //fuerza acumulada para tirar la bola
 
     void updatePosition();
