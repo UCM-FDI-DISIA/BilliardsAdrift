@@ -2737,7 +2737,7 @@
         </vertexbuffer>
     </sharedgeometry>
     <submeshes>
-        <submesh material="Ball3Mat1" operationtype="triangle_list" use32bitindexes="False" usesharedvertices="true">
+        <submesh material="Ball3M1" operationtype="triangle_list" use32bitindexes="False" usesharedvertices="true">
             <faces count="548">
                 <face v1="0" v2="1" v3="2"/>
                 <face v1="1" v2="3" v3="2"/>
@@ -3289,7 +3289,7 @@
                 <face v1="315" v2="314" v3="131"/>
             </faces>
         </submesh>
-        <submesh material="Ball3Mat2" operationtype="triangle_list" use32bitindexes="False" usesharedvertices="true">
+        <submesh material="Ball3M2" operationtype="triangle_list" use32bitindexes="False" usesharedvertices="true">
             <faces count="86">
                 <face v1="316" v2="317" v3="318"/>
                 <face v1="317" v2="319" v3="318"/>
@@ -3379,7 +3379,7 @@
                 <face v1="492" v2="493" v3="494"/>
             </faces>
         </submesh>
-        <submesh material="Ball3Mat3" operationtype="triangle_list" use32bitindexes="False" usesharedvertices="true">
+        <submesh material="Ball3M3" operationtype="triangle_list" use32bitindexes="False" usesharedvertices="true">
             <faces count="138">
                 <face v1="495" v2="496" v3="497"/>
                 <face v1="498" v2="497" v3="496"/>
@@ -3523,8 +3523,8 @@
         </submesh>
     </submeshes>
     <submeshnames>
-        <submesh index="0" name="Ball3Mat1"/>
-        <submesh index="1" name="Ball3Mat2"/>
-        <submesh index="2" name="Ball3Mat3"/>
+        <submesh index="0" name="Ball3M1"/>
+        <submesh index="1" name="Ball3M2"/>
+        <submesh index="2" name="Ball3M3"/>
     </submeshnames>
 </mesh>
