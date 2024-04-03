@@ -294,25 +294,24 @@ scene = {
     Ground={
         components={
             Transform = {
-                positionX = 0.0,
-                positionY = -4.0,
-                positionZ = 0.0,
-                scaleX = 5.2,
-                scaleY = 1.04,
-                scaleZ = 10.4,
-                rotationX = 0.0,
+                positionX = 5.0,
+                positionY = -9.0,
+                positionZ = 5.0,
+                scaleX = 0.05,
+                scaleY = 0.05,
+                scaleZ = 0.05,
+                rotationX = -90.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
             MeshRenderer = {
-                meshName = "models/cube2.mesh",
-                materialName= "green"
+                meshName = "models/Table2/Table.mesh"
             },
             RigidBody = {    
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=6.0,
-                colliderScaleY=1.0,
-                colliderScaleZ=10.0,
+                colliderScaleX=17.0,
+                colliderScaleY=8.5,
+                colliderScaleZ=3.7,
                 isTrigger=false,
                 movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass=0.0,
@@ -322,7 +321,7 @@ scene = {
             }
         }
     },
-    Ball1={
+    BallYellow={
         components={
             Transform = {
                 positionX = 0.0,
@@ -332,8 +331,8 @@ scene = {
                 scaleY = 0.8,
                 scaleZ = 0.8,
                 rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                rotationY = -90.0,
+                rotationZ = 90.0
             }, 
             MeshRenderer = {
                 meshName = "models/Ball1/Ball1.mesh"
@@ -352,7 +351,7 @@ scene = {
             }
         }
     },
-    Ball2={
+    BallBlue={
         components={
             Transform = {
                 positionX = 10.0,
@@ -362,8 +361,8 @@ scene = {
                 scaleY = 0.8,
                 scaleZ = 0.8,
                 rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                rotationY = -90.0,
+                rotationZ = 90.0
             }, 
             MeshRenderer = {
                 meshName = "models/Ball2/Ball2.mesh"
@@ -382,7 +381,7 @@ scene = {
             }
         }
     },
-    Ball3={
+    BallRed={
         components={
             Transform = {
                 positionX = 6.0,
@@ -392,8 +391,8 @@ scene = {
                 scaleY = 0.8,
                 scaleZ = 0.8,
                 rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                rotationY = -90.0,
+                rotationZ = 90.0
             }, 
             MeshRenderer = {
                 meshName = "models/Ball3/Ball3.mesh"
@@ -412,7 +411,7 @@ scene = {
             }
         }
     },
-    Ball4={
+    BallPurple={
         components={
             Transform = {
                 positionX = 6.0,
@@ -422,8 +421,8 @@ scene = {
                 scaleY = 0.8,
                 scaleZ = 0.8,
                 rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                rotationY = -90.0,
+                rotationZ = 90.0
             }, 
             MeshRenderer = {
                 meshName = "models/Ball4/Ball4.mesh"
@@ -442,7 +441,7 @@ scene = {
             }
         }
     },
-    Ball5={
+    BallOrange={
         components={
             Transform = {
                 positionX = 6.0,
@@ -452,8 +451,8 @@ scene = {
                 scaleY = 0.8,
                 scaleZ = 0.8,
                 rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                rotationY = -90.0,
+                rotationZ = 90.0
             }, 
             MeshRenderer = {
                 meshName = "models/Ball5/Ball5.mesh"
@@ -472,7 +471,7 @@ scene = {
             }
         }
     },
-    Ball6={
+    BallGreen={
         components={
             Transform = {
                 positionX = 3.0,
@@ -482,8 +481,8 @@ scene = {
                 scaleY = 0.8,
                 scaleZ = 0.8,
                 rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                rotationY = -90.0,
+                rotationZ = 90.0
             }, 
             MeshRenderer = {
                 meshName = "models/Ball6/Ball6.mesh"
@@ -534,13 +533,13 @@ scene = {
             HeartComponent = { }
         }
     },
-    Hole1 = {
+    HoleYellow = {
         components = {
             MeshRenderer = {
                 meshName = "models/Sinbad/Sinbad.mesh"
             },
             ColoredHole = {
-                ballName = "Ball1"
+                ballName = "BallYellow"
             },
             RigidBody = {
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
