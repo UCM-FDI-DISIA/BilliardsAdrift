@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- exporter: blender2ogre 0.8.5 -->
-<!-- export_time: Wed, 03 Apr 2024 20:42:15 +0000 -->
+<!-- export_time: Wed, 03 Apr 2024 19:42:49 +0000 -->
 <!-- previous_export_time: Wed, 03 Apr 2024 16:00:05 +0000 -->
 <scene author="usuario" formatVersion="1.1" >
   <nodes >
@@ -15,16 +15,7 @@
   </nodes>
   <externals >
     <item type="material" >
-      <file name="TableM1.material" />
-    </item>
-    <item type="material" >
-      <file name="TableM2.material" />
-    </item>
-    <item type="material" >
-      <file name="TableM3.material" />
-    </item>
-    <item type="material" >
-      <file name="TableM4.material" />
+      <file name="TableBake.material" />
     </item>
   </externals>
   <environment >
