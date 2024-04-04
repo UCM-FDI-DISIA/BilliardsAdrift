@@ -45,7 +45,7 @@ void GameManager::update(const uint64_t deltaTime) {
     if (state == InGame) {
         time -= deltaTime;
 #ifdef _DEBUG
-        std::cout << std::fixed << std::setprecision(2) << time / 1000. << "\n";
+        //std::cout << std::fixed << std::setprecision(2) << time / 1000. << "\n";
 #endif
         if (time <= 0) {
             state = Pause;

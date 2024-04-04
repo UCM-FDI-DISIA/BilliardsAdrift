@@ -4,6 +4,7 @@
 #include "InputManager.h"
 #include "Components/RigidBody.h"
 #include "Components/Transform.h"
+#include "Components/MeshRenderer.h"
 #include "Structure/GameObject.h"
 #include "Structure/BasicBuilder.h"
 #include "Structure/Scene.h"
@@ -12,7 +13,7 @@
 namespace BilliardsAdrift {
 CueController::CueController()
     : inputMng(nullptr), ballRb(nullptr), ballTr(nullptr), ball(nullptr), tr(nullptr), actualPower(0), moveFactor(0),
-      powerFactor(0) { }
+      powerFactor(0), hitting(false), moveSpeed(0) { }
 
 bool CueController::initComponent(const CompMap& variables) {
 
@@ -35,13 +36,6 @@ bool CueController::initComponent(const CompMap& variables) {
         return false;
     }
 
-    bool impulseFactorSet = setValueFromMap(impulseFactor, "impulseFactor", variables);
-    if (!impulseFactorSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: CueController: no se pudo inicializar impulseFactor.\n";
-#endif
-        return false;
-    }
 
     bool rotateFactorSet = setValueFromMap(rotateFactor, "rotateFactor", variables);
     if (!rotateFactorSet) {
@@ -51,7 +45,26 @@ bool CueController::initComponent(const CompMap& variables) {
         return false;
     }
 
-    bool ballDistanceOffsetSet = setValueFromMap(ballDistanceOffset.x, "ballDistanceOffsetX", variables) &&
+    float impulse;
+    bool impulseTimeSet = setValueFromMap(impulse, "impulseTime", variables);
+    if (!impulseTimeSet) {
+#ifdef _DEBUG
+        std::cerr << "Error: CueController: no se pudo inicializar impulseTime.\n";
+#endif
+        return false;
+    }
+
+    impulseTime = impulse * 1000;
+
+    bool impulseFactorSet = setValueFromMap(impulseFactor, "impulseFactor", variables);
+    if (!impulseFactorSet) {
+#ifdef _DEBUG
+        std::cerr << "Error: CueController: no se pudo inicializar impulseFactor.\n";
+#endif
+        return false;
+    }
+
+    /*  bool ballDistanceOffsetSet = setValueFromMap(ballDistanceOffset.x, "ballDistanceOffsetX", variables) &&
         setValueFromMap(ballDistanceOffset.y, "ballDistanceOffsetY", variables) &&
         setValueFromMap(ballDistanceOffset.z, "ballDistanceOffsetZ", variables);
     if (!ballDistanceOffsetSet) {
@@ -59,7 +72,8 @@ bool CueController::initComponent(const CompMap& variables) {
         std::cerr << "Error: CueController: no se pudo inicializar ballDistanceOffset.\n";
 #endif
         return false;
-    }
+    }*/
+
 
     return true;
 }
@@ -67,18 +81,33 @@ bool CueController::initComponent(const CompMap& variables) {
 void CueController::start() {
     //  rb = object->getComponent<Tapioca::RigidBody>();
     tr = object->getComponent<Tapioca::Transform>();
+    ballDistanceOffset = tr->getGlobalPosition();
     inputMng = Tapioca::InputManager::instance();
     ball = object->getScene()->getHandler("BallPlayer");
     ballTr = ball->getComponent<Tapioca::Transform>();
     ballRb = ball->getComponent<Tapioca::RigidBody>();
-    tr->setPosition(ballTr->getGlobalPosition() + Tapioca::Vector3(0, 0, 2));
+    mesh = object->getComponent<Tapioca::MeshRenderer>();
+  //  tr->getParent()->setPosition(ballTr->getGlobalPosition());
+    //tr->setPosition(ballDistanceOffset);
     /*  rb->setTensor(Tapioca::Vector3(0, 1, 0));
     rb->setGravity(0);*/
 }
 
 void CueController::update(const uint64_t deltaTime) {
-    updateRotation();
-    updatePosition();
+    if (hitting) {
+        tr->translate(moveSpeed * deltaTime);
+        Tapioca::Vector3 distance = tr->getGlobalPosition() + tr->forward() * 6.f - ballTr->getGlobalPosition();
+        distance.y = 0;
+        std::cout << distance.magnitude() << "\n";
+        if (distance.magnitude() <=1.f) {
+
+            hit();
+        }
+    }
+    else {
+        updateRotation();
+        updatePosition();
+    }
 }
 
 void CueController::handleEvent(std::string const& id, void* info) {
@@ -86,7 +115,9 @@ void CueController::handleEvent(std::string const& id, void* info) {
         increasePower();
     }
     else if (id == "ev_MouseButtonDownLeft") {
-        hit();
+        hitting = true;
+        moveSpeed = (ballTr->getGlobalPosition() - (tr->getGlobalPosition() + tr->forward()*6.f)) / impulseTime;
+        moveSpeed.y = 0;
     }
 }
 
@@ -94,12 +125,14 @@ void CueController::updatePosition() {
     mouseLastPosition.x = inputMng->getMousePos().first;
     mouseLastPosition.y = inputMng->getMousePos().second;
 }
+
 void CueController::updateRotation() {
-    tr->getRotation();
+
     Tapioca::Vector3 v =
         Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * rotateFactor;
+    //tr->getParent()->rotate(v);
     tr->rotate(v);
-    std::cout << v.x << " " << v.y << " " << v.z << "\n";
+    /*  std::cout << v.x << " " << v.y << " " << v.z << "\n";*/
     // tr->getParent()->rotate(Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * 0.1f);
     //  std::cout <<rb->getMovementType() << "\n";
 }
@@ -113,10 +146,14 @@ void CueController::increasePower() {
 }
 
 void CueController::hit() {
+
+    hitting = false;
     // // std::cout << "AAAAAAAAAA "<< tr->forward().x << " " << tr->forward().y << " " << tr->forward().z << "\n";
     // rb->setVelocity(tr->forward() * 100000);
-    tr->translate(tr->forward() * (actualPower)*impulseFactor);
+  //  tr->translate(tr->forward() * (actualPower));
     ballRb->addImpulse(tr->forward() * (actualPower));
+    active = false;
+    mesh->setVisible(false);
     //  rb->addForce(tr->forward() * (actualPower));
     actualPower = 0;
 }

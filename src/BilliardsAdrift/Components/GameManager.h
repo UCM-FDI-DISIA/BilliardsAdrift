@@ -16,13 +16,13 @@ private:
 
     //al inicializarse
     int INIT_LIFE;
-    long long int INIT_TIME;
+    int64_t INIT_TIME;
     //static GameManager* instance_;
 
     //actuales
     int score;
     int life;
-    long long int time;
+    int64_t time;
 
     GameManager();
 
