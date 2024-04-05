@@ -1,14 +1,15 @@
 #include "ColoredHole.h"
 #include <Structure/GameObject.h>
 #include <Structure/Scene.h>
+#include "ColoredBall.h"
 
-ColoredHole::ColoredHole() : ballName(""), ball(nullptr) { }
+ColoredHole::ColoredHole() : ballId("") { }
 
 bool ColoredHole::initComponent(const CompMap& variables) {
-    bool fine = setValueFromMap(ballName, "ballName", variables);
+    bool fine = setValueFromMap(ballId, "ballId", variables);
     if (!fine) {
 #ifdef _DEBUG
-        std::cerr << "[ERROR] ColoredHole: No se pudo inicializar ballName. Se necesita esta variable.\n";
+        std::cerr << "[ERROR] ColoredHole: No se pudo inicializar ballId. Se necesita esta variable.\n";
 #endif
         return false;
     }
@@ -18,21 +19,13 @@ bool ColoredHole::initComponent(const CompMap& variables) {
 
 void ColoredHole::handleEvent(std::string const& id, void* info) {
     if (id == "onCollisionEnter") {
-        if (info == ball) {
+        Tapioca::GameObject* obj = (Tapioca::GameObject*)info;
+        ColoredBall* ball = obj->getComponent<ColoredBall>();
+        if (ball != nullptr && ball->getID() == ballId) {
 #ifdef _DEBUG
-            std::cerr << "ColoredHole: La bola " << ballName << " ha entrado en su agujero.\n";
+            std::cerr << "ColoredHole: La bola con ID " << ballId << " ha entrado en su agujero.\n";
 #endif
-            ball->die();
+            obj->die();
         }
-    }
-}
-
-void ColoredHole::start() {
-    ball = object->getScene()->getHandler(ballName);
-    if (ball == nullptr) {
-#ifdef _DEBUG
-        std::cerr << "[ERROR] ColoredHole: No se ha encontrado la bola con la id " << ballName << ".\n";
-#endif
-        alive = false;
     }
 }

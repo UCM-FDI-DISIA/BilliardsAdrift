@@ -325,6 +325,9 @@ scene = {
                 friction=2.0,
                 damping=0.4,
                 bounciness=0.5
+            },
+            ColoredBall = {
+                ballId = "yellow"
             }
         }
     },
@@ -355,6 +358,9 @@ scene = {
                 friction=2.0,
                 damping=0.4,
                 bounciness=0.5
+            },
+            ColoredBall = {
+                ballId = "blue"
             }
         }
     },
@@ -385,6 +391,9 @@ scene = {
                 friction=2.0,
                 damping=0.4,
                 bounciness=0.5
+            },
+            ColoredBall = {
+                ballId = "red"
             }
         }
     },
@@ -415,6 +424,9 @@ scene = {
                 friction=2.0,
                 damping=0.4,
                 bounciness=0.5
+            },
+            ColoredBall = {
+                ballId = "purple"
             }
         }
     },
@@ -445,6 +457,9 @@ scene = {
                 friction=2.0,
                 damping=0.4,
                 bounciness=0.5
+            },
+            ColoredBall = {
+                ballId = "orange"
             }
         }
     },
@@ -475,6 +490,9 @@ scene = {
                 friction=2.0,
                 damping=0.4,
                 bounciness=0.5
+            },
+            ColoredBall = {
+                ballId = "green"
             }
         }
     },
@@ -516,7 +534,7 @@ scene = {
                 meshName = "models/Sinbad/Sinbad.mesh"
             },
             ColoredHole = {
-                ballName = "BallYellow"
+                ballId = "yellow"
             },
             RigidBody = {
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE

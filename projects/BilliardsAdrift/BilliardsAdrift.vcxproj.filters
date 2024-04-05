@@ -42,6 +42,9 @@
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\Accelerator.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\ColoredBall.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BilliardsAdrift\BilliardsAdrift.h">
@@ -69,6 +72,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\Accelerator.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\ColoredBall.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

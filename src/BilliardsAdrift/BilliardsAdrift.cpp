@@ -16,6 +16,7 @@
 #include "Components/Accelerator.h"
 #include "Components/ExplosiveComponent.h"
 #include "Components/ColoredHole.h"
+#include "Components/ColoredBall.h"
 
 bool init() {
     Tapioca::WindowManager::instance()->setWindowName("Billiards Adrift");
@@ -50,4 +51,5 @@ void addComponentFactories() {
     factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::Accelerator>());
     factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::ExplosiveComponent>());
     factMngr->addFactory(new Tapioca::BasicBuilder<ColoredHole>());
+    factMngr->addFactory(new Tapioca::BasicBuilder<ColoredBall>());
 }

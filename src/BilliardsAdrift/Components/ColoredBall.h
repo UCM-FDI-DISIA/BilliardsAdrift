@@ -2,14 +2,14 @@
 #include <Structure/Component.h>
 #include "../gameDefs.h"
 
-class JUEGO_API ColoredHole : public Tapioca::Component {
+class JUEGO_API ColoredBall : public Tapioca::Component {
 private:
     std::string ballId;
 
 public:
-    COMPONENT_ID("ColoredHole");
+    COMPONENT_ID("ColoredBall");
 
-    ColoredHole();
+    ColoredBall();
     bool initComponent(const CompMap& variables) override;
-    void handleEvent(std::string const& id, void* info) override;
+    std::string getID() const { return ballId; }
 };

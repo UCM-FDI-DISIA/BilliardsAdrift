@@ -100,6 +100,7 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
   <ItemGroup>
     <ClCompile Include="..\..\src\BilliardsAdrift\BilliardsAdrift.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\Accelerator.cpp" />
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\ColoredBall.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\ColoredHole.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\CueController.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\ExplosiveComponent.cpp" />
@@ -110,6 +111,7 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
   <ItemGroup>
     <ClInclude Include="..\..\src\BilliardsAdrift\BilliardsAdrift.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\Accelerator.h" />
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\ColoredBall.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\ColoredHole.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\CueController.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\ExplosiveComponent.h" />
