@@ -11,7 +11,7 @@ BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::
 
 namespace BilliardsAdrift {
 
-GameManager::GameManager() : INIT_TIME(0), INIT_LIFE(0), time(0),life(0),state(MainMenu),score(0) { }
+GameManager::GameManager() : INIT_TIME(0), INIT_LIFE(0), time(0), life(0), state(MainMenu), score(0) { }
 
 bool initComponent(const CompMap& variables) { return false; }
 
@@ -50,6 +50,10 @@ void GameManager::update(const uint64_t deltaTime) {
         if (time <= 0) {
             state = Pause;
             changeScene("PauseMenu.lua");
+#ifdef _DEBUG 
+            std::cout << "El jugador se ha quedado sin tiempo.\n";
+#endif
+            pushEvent("ev_GameOver", nullptr);
         }
     }
 }
@@ -57,6 +61,9 @@ void GameManager::update(const uint64_t deltaTime) {
 void GameManager::handleEvent(std::string const& id, void* info) {
     if (id == "ev_Pause") {
         changeScene("PauseMenu.lua");
+    }
+    if (id == "ev_GameOver") {
+        onGameOver();
     }
 }
 
@@ -84,12 +91,23 @@ void GameManager::setScore(const int s) { score = s; }
 
 void GameManager::setLife(const int l) { life = l; }
 
-void GameManager::setTime(uint64_t t) { time = t*1000; }
+void GameManager::setTime(uint64_t t) { time = t * 1000; }
 
 void GameManager::changeScore(int s) { score += s; }
 
 void GameManager::changeLife(int l) { life += l; }
 
-void GameManager::changeTime(uint64_t t) { time += t*1000; }
+void GameManager::changeTime(uint64_t t) { time += t * 1000; }
 
+void GameManager::loseLife() {
+    if (life > 0) {
+        life--;
+    }
+    else {
+#ifdef _DEBUG
+        std::cout << "El jugador se ha quedado sin vidas.\n";
+#endif
+        pushEvent("ev_GameOver", nullptr);
+    }
+}
 }

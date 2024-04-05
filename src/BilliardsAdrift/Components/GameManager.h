@@ -10,7 +10,7 @@ class JUEGO_API GameManager : public Tapioca::Component, public Tapioca::Singlet
 private:
     friend Singleton<GameManager>;
 
-    enum State { MainMenu,InGame,GameOver,Pause};
+    enum State { MainMenu, InGame, GameOver, Pause };
 
     State state;
 
@@ -30,15 +30,15 @@ private:
     void onGameOver();
     void onWin();
 
-//    static GameManager* create() {
-//        //assert(instance_.get() == nullptr, "Instance already exists");
-//        if (instance_ == nullptr) instance_ = new GameManager();
-//#ifdef _DEBUG
-//        else
-//            std::cout << "Instance already exists\n";
-//#endif
-//        return instance_;
-//    }
+    //    static GameManager* create() {
+    //        //assert(instance_.get() == nullptr, "Instance already exists");
+    //        if (instance_ == nullptr) instance_ = new GameManager();
+    //#ifdef _DEBUG
+    //        else
+    //            std::cout << "Instance already exists\n";
+    //#endif
+    //        return instance_;
+    //    }
 
 public:
     COMPONENT_ID("GameManager");
@@ -72,6 +72,9 @@ public:
     void changeLife(const int l);
     //incrementar/decrementar x cantidad de tiempo
     void changeTime(const uint64_t t);
+
+    //resta una vida a la vida total del jugador
+    void loseLife();
 };
 
 class JUEGO_API GameManagerBuilder : public Tapioca::ComponentBuilder {
