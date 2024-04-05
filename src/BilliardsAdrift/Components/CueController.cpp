@@ -98,7 +98,9 @@ void CueController::update(const uint64_t deltaTime) {
         tr->translate(moveSpeed * deltaTime);
         Tapioca::Vector3 distance = tr->getGlobalPosition() + tr->forward() * 6.f - ballTr->getGlobalPosition();
         distance.y = 0;
+#ifdef _DEBUG
         std::cout << distance.magnitude() << "\n";
+#endif
         if (distance.magnitude() <= 1.f) {
 
             hit();

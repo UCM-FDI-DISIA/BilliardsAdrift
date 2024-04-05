@@ -31,7 +31,7 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2 - 25,
-                positionY = WINDOW_HEIGHT / 2 - 60,
+                positionY = 5.0,
                 positionZ = 0.0,
                 scaleX = 0.0,
                 scaleY = 0.0,
@@ -42,7 +42,7 @@ scene = {
             },
             Text = {
                 name = "TimerText",
-                text = "xxxx",
+                text = "Timer",
                 --textSize = 20.0,
                 textFontName = "AGENCYB.TTF"
             }
