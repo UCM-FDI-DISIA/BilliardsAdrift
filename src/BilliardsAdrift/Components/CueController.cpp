@@ -87,7 +87,7 @@ void CueController::start() {
     ballTr = ball->getComponent<Tapioca::Transform>();
     ballRb = ball->getComponent<Tapioca::RigidBody>();
     mesh = object->getComponent<Tapioca::MeshRenderer>();
-  //  tr->getParent()->setPosition(ballTr->getGlobalPosition());
+    //  tr->getParent()->setPosition(ballTr->getGlobalPosition());
     //tr->setPosition(ballDistanceOffset);
     /*  rb->setTensor(Tapioca::Vector3(0, 1, 0));
     rb->setGravity(0);*/
@@ -99,7 +99,7 @@ void CueController::update(const uint64_t deltaTime) {
         Tapioca::Vector3 distance = tr->getGlobalPosition() + tr->forward() * 6.f - ballTr->getGlobalPosition();
         distance.y = 0;
         std::cout << distance.magnitude() << "\n";
-        if (distance.magnitude() <=1.f) {
+        if (distance.magnitude() <= 1.f) {
 
             hit();
         }
@@ -116,8 +116,11 @@ void CueController::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_MouseButtonDownLeft") {
         hitting = true;
-        moveSpeed = (ballTr->getGlobalPosition() - (tr->getGlobalPosition() + tr->forward()*6.f)) / impulseTime;
+        moveSpeed = (ballTr->getGlobalPosition() - (tr->getGlobalPosition() + tr->forward() * 6.f)) / impulseTime;
         moveSpeed.y = 0;
+    }
+    else if (id == "ev_endProcessing") {
+        mesh->setVisible(active = true);
     }
 }
 
@@ -150,10 +153,11 @@ void CueController::hit() {
     hitting = false;
     // // std::cout << "AAAAAAAAAA "<< tr->forward().x << " " << tr->forward().y << " " << tr->forward().z << "\n";
     // rb->setVelocity(tr->forward() * 100000);
-  //  tr->translate(tr->forward() * (actualPower));
+    //  tr->translate(tr->forward() * (actualPower));
     ballRb->addImpulse(tr->forward() * (actualPower));
-    active = false;
-    mesh->setVisible(false);
+
+    mesh->setVisible(active = false);
+    pushEvent("ev_Processing", nullptr, true);
     //  rb->addForce(tr->forward() * (actualPower));
     actualPower = 0;
 }

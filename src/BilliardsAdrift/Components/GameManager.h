@@ -4,6 +4,11 @@
 #include "Structure/ComponentBuilder.h"
 #include "gameDefs.h"
 #include <string>
+#include <unordered_set>
+
+namespace Tapioca {
+class GameObject;
+}
 
 namespace BilliardsAdrift {
 class JUEGO_API GameManager : public Tapioca::Component, public Tapioca::Singleton<GameManager> {
@@ -23,6 +28,10 @@ private:
     int score;
     int life;
     int64_t time;
+
+    std::unordered_set<Tapioca::GameObject*> balls;
+
+    bool processing;   //tras golpear el palo
 
     GameManager();
 

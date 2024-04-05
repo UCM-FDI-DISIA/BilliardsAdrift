@@ -25,6 +25,7 @@ void ColoredHole::handleEvent(std::string const& id, void* info) {
 #ifdef _DEBUG
             std::cerr << "ColoredHole: La bola con ID " << ballId << " ha entrado en su agujero.\n";
 #endif
+            pushEvent("BallShot", info, true);
             obj->die();
         }
     }

@@ -1,6 +1,8 @@
 #include "GameManager.h"
 #include "SceneManager.h"
-
+#include "Structure/GameObject.h"
+#include "Structure/Scene.h"
+#include "Components/RigidBody.h"
 
 #include <iomanip>
 
@@ -11,7 +13,8 @@ BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::
 
 namespace BilliardsAdrift {
 
-GameManager::GameManager() : INIT_TIME(0), INIT_LIFE(0), time(0), life(0), state(MainMenu), score(0) { }
+GameManager::GameManager()
+    : INIT_TIME(0), INIT_LIFE(0), time(0), life(0), state(MainMenu), score(0), processing(false) { }
 
 bool initComponent(const CompMap& variables) { return false; }
 
@@ -34,26 +37,47 @@ bool GameManager::initComponent(const CompMap& variables) {
     }
     INIT_TIME = (long long int)timeAux;
     // create();
-    onStart();
 
     return true;
 }
 
-void GameManager::start() { state = InGame; }
+void GameManager::start() {
+    state = InGame;
+    onStart();
+}
 
 void GameManager::update(const uint64_t deltaTime) {
     if (state == InGame) {
         time -= deltaTime;
+
 #ifdef _DEBUG
         //std::cout << std::fixed << std::setprecision(2) << time / 1000. << "\n";
-#endif
         if (time <= 0) {
             state = Pause;
             changeScene("PauseMenu.lua");
-#ifdef _DEBUG 
+#ifdef _DEBUG
             std::cout << "El jugador se ha quedado sin tiempo.\n";
 #endif
             pushEvent("ev_GameOver", nullptr);
+        }
+#endif
+        //comprobar que todas las bolas están inmovilizadas
+        if (processing) {
+            auto it = balls.begin();
+
+            while (it != balls.end()) {
+
+                auto v = (*it)->getComponent<Tapioca::RigidBody>()->getVelocity();
+                if (std::abs(v.x < 1e-3) && std::abs(v.y < 1e-3) && std::abs(v.z < 1e-3)) {
+                    ++it;
+                }
+                else
+                    break;
+            }
+            if (it == balls.end()) {
+                processing = false;
+                pushEvent("ev_endProcessing", nullptr, true);
+            }
         }
     }
 }
@@ -62,15 +86,31 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     if (id == "ev_Pause") {
         changeScene("PauseMenu.lua");
     }
-    if (id == "ev_GameOver") {
+    else if (id == "ev_Processing") {
+        processing = true;
+    }
+    else if (id == "BallShot") {
+        Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
+        balls.erase(b);
+    }
+    else if (id == "ev_GameOver") {
         onGameOver();
     }
 }
+
 
 void GameManager::onStart() {
     time = INIT_TIME * 1000;
     score = 0;
     life = INIT_LIFE;
+    auto v = object->getScene()->getObjects();
+    for (auto& g : v) {
+        std::string s = "Ball";
+        if (strstr(g->getHandler().c_str(), s.c_str())) {
+
+            balls.insert(g);
+        }
+    }
 }
 
 void GameManager::onGameOver() { }
