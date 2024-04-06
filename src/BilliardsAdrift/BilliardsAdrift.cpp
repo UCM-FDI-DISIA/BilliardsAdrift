@@ -18,9 +18,7 @@
 #include "Components/ColoredHole.h"
 #include "Components/ColoredBall.h"
 
-bool init() {
-    Tapioca::WindowManager::instance()->setWindowName("Billiards Adrift");
-    name();
+void init() {
     addComponentFactories();
 
     // PRUEBA (deja memory leaks)
@@ -28,14 +26,6 @@ bool init() {
     auto node = graphics->createNode();
     auto light = graphics->createLightDirectional(node, Tapioca::Vector3(0.0f, -1.0f, -1.0f));
     light->produceShadows(true);
-
-    return Tapioca::SceneManager::instance()->loadScene("BilliardsAdrift.lua");
-}
-
-void name() {
-#ifdef _DEBUG
-    std::cout << "Billiards Adrift\n";
-#endif
 }
 
 void addComponentFactories() {
@@ -53,3 +43,8 @@ void addComponentFactories() {
     factMngr->addFactory(new Tapioca::BasicBuilder<ColoredHole>());
     factMngr->addFactory(new Tapioca::BasicBuilder<ColoredBall>());
 }
+
+std::string getWindowName() { return "Billiards Adrift"; }
+
+std::string getInitScene() { return "BilliardsAdrift.lua"; }
+
