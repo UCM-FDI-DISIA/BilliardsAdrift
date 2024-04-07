@@ -1,16 +1,27 @@
 scene = {
     {
         components = {
+            -- Transform = {
+            --     positionX = 20.0,
+            --     positionY = 0.0,
+            --     positionZ = 20.0,
+            --     scaleX = 1.0,
+            --     scaleY = 1.0,
+            --     scaleZ = 1.0,
+            --     rotationX = 0.0,
+            --     rotationY = 0.0,
+            --     rotationZ = 0.0
+            -- },
             Transform = {
-                positionX = 20.0,
-                positionY = 0.0,
-                positionZ = 20.0,
+                positionX = 0.0,
+                positionY = 30.0,
+                positionZ = 0.0,
                 scaleX = 1.0,
                 scaleY = 1.0,
                 scaleZ = 1.0,
                 rotationX = 0.0,
                 rotationY = 0.0,
-                rotationZ = 0.0
+                rotationZ = 90.0
             },
             CameraComponent = {
                 zOrder = 0,
@@ -286,15 +297,125 @@ scene = {
             },
             RigidBody = {    
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=17.0,
-                colliderScaleY=8.5,
-                colliderScaleZ=3.7,
+                colliderScaleX=19.0,
+                colliderScaleY=7.5,
+                colliderScaleZ=3.5,
                 isTrigger=false,
                 movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass=0.0,
                 friction=1.0,
                 damping=0.0,
                 bounciness=1.0
+            }
+        },
+        children = {
+            Wall1 = {
+                components = {
+                    Transform = {
+                        positionX = -14.5,
+                        positionY = 4.0,
+                        positionZ = 0.0,
+                        scaleX = 0.05,
+                        scaleY = 0.05,
+                        scaleZ = 0.05,
+                        rotationX = -90.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    },
+                    RigidBody = {    
+                        colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX=1.0,
+                        colliderScaleY=1.0,
+                        colliderScaleZ=8.0,
+                        isTrigger=false,
+                        movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass=0.0,
+                        friction=1.0,
+                        damping=0.0,
+                        bounciness=1.0
+                    }
+                }
+            },
+            Wall2 = {
+                components = {
+                    Transform = {
+                        positionX = 14.5,
+                        positionY = 4.0,
+                        positionZ = 0.0,
+                        scaleX = 0.05,
+                        scaleY = 0.05,
+                        scaleZ = 0.05,
+                        rotationX = -90.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    },
+                    RigidBody = {    
+                        colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX=1.0,
+                        colliderScaleY=1.0,
+                        colliderScaleZ=8.0,
+                        isTrigger=false,
+                        movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass=0.0,
+                        friction=1.0,
+                        damping=0.0,
+                        bounciness=1.0
+                    }
+                }
+            },
+            Wall3 = {
+                components = {
+                    Transform = {
+                        positionX = 0.0,
+                        positionY = 4.0,
+                        positionZ = -8.5,
+                        scaleX = 0.05,
+                        scaleY = 0.05,
+                        scaleZ = 0.05,
+                        rotationX = -90.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    },
+                    RigidBody = {    
+                        colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX=16.0,
+                        colliderScaleY=1.0,
+                        colliderScaleZ=1.0,
+                        isTrigger=false,
+                        movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass=0.0,
+                        friction=1.0,
+                        damping=0.0,
+                        bounciness=1.0
+                    }
+                }
+            },
+            Wall4 = {
+                components = {
+                    Transform = {
+                        positionX = 0.0,
+                        positionY = 4.0,
+                        positionZ = 8.5,
+                        scaleX = 0.05,
+                        scaleY = 0.05,
+                        scaleZ = 0.05,
+                        rotationX = -90.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    },
+                    RigidBody = {    
+                        colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX=16.0,
+                        colliderScaleY=1.0,
+                        colliderScaleZ=1.0,
+                        isTrigger=false,
+                        movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass=0.0,
+                        friction=1.0,
+                        damping=0.0,
+                        bounciness=1.0
+                    }
+                }
             }
         }
     },
