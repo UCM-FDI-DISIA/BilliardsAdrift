@@ -92,35 +92,35 @@ scene = {
     --        }
     --    }
    -- },
-   CueContainer={
-    components={
-        Transform = {
-            positionX = 0.0,
-            positionY = -4.0,
-            positionZ =6.0,--offset
-            scaleX = 10.0,
-            scaleY = 10.0,
-            scaleZ = 10.0,
-            rotationX = 0.0,
-            rotationY = 0.0,
-            rotationZ = 0.0
-        }, 
-        MeshRenderer = {
-            meshName = "models/CueStick/CueStick.mesh",
-        },
-        CueController = {    
-            powerFactor=3.0,
-            moveBackwardFactor=0.5,
-            rotateFactor=0.5,
-            impulseTime=0.5,
-            impulseFactor=0.05
-        }
-    }
-},
+--    CueContainer={
+--     components={
+--         Transform = {
+--             positionX = 0.0,
+--             positionY = -4.0,
+--             positionZ =6.0,--offset
+--             scaleX = 10.0,
+--             scaleY = 10.0,
+--             scaleZ = 10.0,
+--             rotationX = 0.0,
+--             rotationY = 0.0,
+--             rotationZ = 0.0
+--         }, 
+--         MeshRenderer = {
+--             meshName = "models/CueStick/CueStick.mesh",
+--         },
+--         CueController = {    
+--             powerFactor=3.0,
+--             moveBackwardFactor=0.5,
+--             rotateFactor=0.5,
+--             impulseTime=0.5,
+--             impulseFactor=0.05
+--         }
+--     }
+-- },
     BallPlayer={
         components={
             Transform = {
-                positionX = 0.0,
+                positionX = 4.0,
                 positionY = -2.0,
                 positionZ = 0.0,
                 scaleX = 0.8,
@@ -151,85 +151,88 @@ scene = {
            
     },
  --NO BORRAR
-    -- Cue={
+    Cue={
+        components={
+            MeshRenderer = {
+                meshName = "models/CueStick/CueStick.mesh",
+            },
+            Transform = {
+                positionX = 0.0,
+                positionY = 0.0,
+                positionZ = 0.0,
+                scaleX = 1.0,
+                scaleY = 1.0,
+                scaleZ = 1.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            } 
+         },
+        children ={
+            CueContainer={
+                components={
+                    Transform = {
+                        positionX = 0.0,
+                        positionY = 0.0,
+                        positionZ =-8.0,--offset
+                        scaleX = 10.0,
+                        scaleY = 10.0,
+                        scaleZ = 10.0,
+                        rotationX = 0.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    }, 
+                    MeshRenderer = {
+                        meshName = "models/CueStick/CueStick.mesh",
+                    },
+                    CueController = {    
+                        powerFactor=3.0,
+                        moveBackwardFactor=0.5,
+                        rotateFactor=0.3,
+                        impulseTime=0.5,
+                        impulseFactor=0.05
+                    }
+                }
+            }
+        }
+    },
+    -- MovableWall1={
     --     components={
     --         Transform = {
     --             positionX = 0.0,
     --             positionY = 0.0,
-    --             positionZ = 0.0,
-    --             scaleX = 1.0,
-    --             scaleY = 1.0,
-    --             scaleZ = 1.0,
+    --             positionZ = -2.0,
+    --             scaleX = 2.6,
+    --             scaleY = 0.52,
+    --             scaleZ = 5.2,
     --             rotationX = 0.0,
     --             rotationY = 0.0,
     --             rotationZ = 0.0
-    --         } 
-    --      },
-    --     children ={
-    --         CueContainer={
-    --             components={
-    --                 Transform = {
-    --                     positionX = 0.0,
-    --                     positionY = 0.0,
-    --                     positionZ =5.0,--offset
-    --                     scaleX = 10.0,
-    --                     scaleY = 10.0,
-    --                     scaleZ = 10.0,
-    --                     rotationX = 0.0,
-    --                     rotationY = 0.0,
-    --                     rotationZ = 0.0
-    --                 }, 
-    --                 MeshRenderer = {
-    --                     meshName = "models/CueStick/CueStick.mesh",
-    --                 },
-    --                 CueController = {    
-    --                     powerFactor=3.0,
-    --                     moveBackwardFactor=0.5,
-    --                     rotateFactor=0.5,
-    --                     impulseTime=0.5,
-    --                     impulseFactor=0.05
-    --                 }
-    --             }
+    --         },
+    --         MeshRenderer = {
+    --             meshName = "models/cube2.mesh",
+    --             materialName= "grey"
+    --         },
+    --         RigidBody = {    
+    --             colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+    --             colliderScaleX=3.0,
+    --             colliderScaleY=0.5,
+    --             colliderScaleZ=5.0,
+    --             isTrigger=false,
+    --             movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+    --             mass=0.0,
+    --             friction=1.0,
+    --             damping=0.0,
+    --             bounciness=1.0
+    --         },
+    --         MovableWall = {    
+    --             speed=0.02,
+    --             destX=8.0,
+    --             destZ=-2.0
+              
     --         }
     --     }
     -- },
-    MovableWall1={
-        components={
-            Transform = {
-                positionX = 0.0,
-                positionY = 0.0,
-                positionZ = -2.0,
-                scaleX = 2.6,
-                scaleY = 0.52,
-                scaleZ = 5.2,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
-            },
-            MeshRenderer = {
-                meshName = "models/cube2.mesh",
-                materialName= "grey"
-            },
-            RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=3.0,
-                colliderScaleY=0.5,
-                colliderScaleZ=5.0,
-                isTrigger=false,
-                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=0.0,
-                friction=1.0,
-                damping=0.0,
-                bounciness=1.0
-            },
-            MovableWall = {    
-                speed=0.02,
-                destX=8.0,
-                destZ=-2.0
-              
-            }
-        }
-    },
     Accelerator1={
         components={
             Transform = {
@@ -651,9 +654,9 @@ scene = {
     },
     HoleYellow = {
         components = {
-            MeshRenderer = {
-                meshName = "models/Sinbad/Sinbad.mesh"
-            },
+            -- MeshRenderer = {
+            --     meshName = "models/Sinbad/Sinbad.mesh"
+            -- },
             ColoredHole = {
                 ballId = "yellow"
             },
