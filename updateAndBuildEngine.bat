@@ -1,4 +1,5 @@
 @echo off
+git submodule init
 git submodule update --remote
 
 set BAT_DIR=%~dp0
