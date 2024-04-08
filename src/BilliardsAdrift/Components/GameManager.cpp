@@ -69,7 +69,7 @@ void GameManager::update(const uint64_t deltaTime) {
             while (it != balls.end()) {
 
                 auto v = (*it)->getComponent<Tapioca::RigidBody>()->getVelocity();
-                if (std::abs(v.x < 1e-3) && std::abs(v.y < 1e-3) && std::abs(v.z < 1e-3)) {
+                if (std::abs(v.x < 1e-2) && std::abs(v.y < 1e-2) && std::abs(v.z < 1e-2)) {
                     ++it;
                 }
                 else

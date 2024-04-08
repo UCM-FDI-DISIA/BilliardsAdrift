@@ -113,6 +113,8 @@ void CueController::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_endProcessing") {
         mesh->setVisible(active = true);
+        tr->getParent()->setPosition(ballTr->getGlobalPosition());
+        tr->setPosition(ballDistanceOffset);
     }
 }
 
