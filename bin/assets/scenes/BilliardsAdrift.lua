@@ -266,7 +266,6 @@ scene = {
                 speedFactor=1.5,
             },
             PlaneComponent = {  
-                planeName="Accelerator1",  
                 materialName="lighting",
                 upX=0.0,
                 upY=0.0,
@@ -274,9 +273,6 @@ scene = {
                 rkNormalX=0.0,
                 rkNormalY=1.0,
                 rkNormalZ=0.0,
-                initRotationX=0.0,
-                initRotationY=0.0,
-                initRotationZ=0.0
                 -- width=200.0,
                 -- height=200.0
             }
@@ -654,9 +650,9 @@ scene = {
     },
     HoleYellow = {
         components = {
-            -- MeshRenderer = {
-            --     meshName = "models/Sinbad/Sinbad.mesh"
-            -- },
+            MeshRenderer = {
+                 meshName = "models/Sinbad/Sinbad.mesh"
+            },
             ColoredHole = {
                 ballId = "yellow"
             },
