@@ -15,7 +15,7 @@ scene = {
             LightDirComp = {
                 directionX = 0.0,
                 directionY = -1.0,
-                directionZ = -1.0,
+                directionZ = 0.0,
                 mainLight = true,
             }
         }
