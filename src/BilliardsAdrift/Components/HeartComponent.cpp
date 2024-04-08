@@ -28,8 +28,11 @@ void HeartComponent::update(const uint64_t deltaTime) { }
 
 void HeartComponent::handleEvent(std::string const& id, void* info) {
     if (id == "onCollisionEnter") {
-        gameM->setLife(gameM->getLife() + 1);
-        object->die();
+        Tapioca::GameObject* ball = (Tapioca::GameObject*)info;
+        if (ball->getHandler() == "BallPlayer") {
+            gameM->setLife(gameM->getLife() + 1);
+            object->die();        
+        }
     }
 }
 }
