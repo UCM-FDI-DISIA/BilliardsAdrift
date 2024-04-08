@@ -35,6 +35,12 @@ scene = {
             GameManager = {
                 initLife = 3,
                 initTime = 9999.0
+            },
+            LightDirComp = {
+                directionX = 0.0,
+                directionY = -1.0,
+                directionZ = -1.0,
+                mainLight = true,
             }
         }
     },
@@ -92,28 +98,48 @@ scene = {
     --        }
     --    }
    -- },
-   CueContainer={
+   Cue={
     components={
-        Transform = {
-            positionX = 0.0,
-            positionY = -4.0,
-            positionZ =6.0,--offset
-            scaleX = 10.0,
-            scaleY = 10.0,
-            scaleZ = 10.0,
-            rotationX = 0.0,
-            rotationY = 0.0,
-            rotationZ = 0.0
-        }, 
         MeshRenderer = {
             meshName = "models/CueStick/CueStick.mesh",
         },
-        CueController = {    
-            powerFactor=3.0,
-            moveBackwardFactor=0.5,
-            rotateFactor=0.5,
-            impulseTime=0.5,
-            impulseFactor=0.05
+        Transform = {
+            positionX = 0.0,
+            positionY = 0.0,
+            positionZ = 0.0,
+            scaleX = 1.0,
+            scaleY = 1.0,
+            scaleZ = 1.0,
+            rotationX = 0.0,
+            rotationY = 0.0,
+            rotationZ = 0.0
+        } 
+     },
+    children ={
+        CueContainer={
+            components={
+                Transform = {
+                    positionX = 0.0,
+                    positionY = 0.0,
+                    positionZ =-8.0,--offset
+                    scaleX = 10.0,
+                    scaleY = 10.0,
+                    scaleZ = 10.0,
+                    rotationX = 0.0,
+                    rotationY = 0.0,
+                    rotationZ = 0.0
+                }, 
+                MeshRenderer = {
+                    meshName = "models/CueStick/CueStick.mesh",
+                },
+                CueController = {    
+                    powerFactor=3.0,
+                    moveBackwardFactor=0.5,
+                    rotateFactor=0.3,
+                    impulseTime=0.5,
+                    impulseFactor=0.05
+                }
+            }
         }
     }
 },
@@ -647,11 +673,172 @@ scene = {
     },
     HoleYellow = {
         components = {
-            MeshRenderer = {
-                meshName = "models/Sinbad/Sinbad.mesh"
-            },
+            -- MeshRenderer = {
+            --     meshName = "models/Sinbad/Sinbad.mesh"
+            -- },
+            Transform = {
+                positionX = 28.5,
+                positionY = 7.5,
+                positionZ = -15.0,
+                scaleX = 0.6,
+                scaleY = 0.6,
+                scaleZ = 0.6,
+                rotationX = -90.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
             ColoredHole = {
                 ballId = "yellow"
+            },
+            RigidBody = {
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=0.6,
+                colliderScaleY=0.6,
+                colliderScaleZ=0.6,
+                isTrigger=true,
+                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    },
+    HoleOrange = {
+        components = {
+            Transform = {
+                positionX = 0.0,
+                positionY = 7.5,
+                positionZ = -15.0,
+                scaleX = 0.6,
+                scaleY = 0.6,
+                scaleZ = 0.6,
+                rotationX = -90.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            ColoredHole = {
+                ballId = "orange"
+            },
+            RigidBody = {
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=0.6,
+                colliderScaleY=0.6,
+                colliderScaleZ=0.6,
+                isTrigger=true,
+                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    },
+    HoleGreen = {
+        components = {
+            Transform = {
+                positionX = -28.5,
+                positionY = 7.5,
+                positionZ = -15.0,
+                scaleX = 0.6,
+                scaleY = 0.6,
+                scaleZ = 0.6,
+                rotationX = -90.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            ColoredHole = {
+                ballId = "green"
+            },
+            RigidBody = {
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=0.6,
+                colliderScaleY=0.6,
+                colliderScaleZ=0.6,
+                isTrigger=true,
+                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    },
+    HoleRed = {
+        components = {
+            Transform = {
+                positionX = 28.5,
+                positionY = 7.5,
+                positionZ = 15.0,
+                scaleX = 0.6,
+                scaleY = 0.6,
+                scaleZ = 0.6,
+                rotationX = -90.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            ColoredHole = {
+                ballId = "red"
+            },
+            RigidBody = {
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=0.6,
+                colliderScaleY=0.6,
+                colliderScaleZ=0.6,
+                isTrigger=true,
+                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    },
+    HoleBlue = {
+        components = {
+            Transform = {
+                positionX = 0.0,
+                positionY = 7.5,
+                positionZ = 15.0,
+                scaleX = 0.6,
+                scaleY = 0.6,
+                scaleZ = 0.6,
+                rotationX = -90.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            ColoredHole = {
+                ballId = "blue"
+            },
+            RigidBody = {
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=0.6,
+                colliderScaleY=0.6,
+                colliderScaleZ=0.6,
+                isTrigger=true,
+                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            }
+        }
+    },
+    HolePurple = {
+        components = {
+            Transform = {
+                positionX = 28.5,
+                positionY = 7.5,
+                positionZ = 15.0,
+                scaleX = 0.6,
+                scaleY = 0.6,
+                scaleZ = 0.6,
+                rotationX = -90.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            ColoredHole = {
+                ballId = "purple"
             },
             RigidBody = {
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
