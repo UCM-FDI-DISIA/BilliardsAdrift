@@ -115,7 +115,7 @@ void CueController::updateRotation() {
 #endif
     tr->getParent()->rotate(v);
     Tapioca::Vector3 u = tr->getRotationPosition();
-    Tapioca::logInfo((std::string(u.x) + ' ' + std::string(u.y) + ' ' + std::string(u.z)).c_str());
+    Tapioca::logInfo((std::to_string(u.x) + ' ' + std::to_string(u.y) + ' ' + std::to_string(u.z)).c_str());
     //  std::cout << u.x << " " << u.y << " " << u.z << "\n";
     //tr->rotate(v);
     /*  std::cout << v.x << " " << v.y << " " << v.z << "\n";*/

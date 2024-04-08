@@ -23,14 +23,14 @@ void addComponentFactories() {
     std::cout << "Anadiendo las factorias del juego\n";
 #endif
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
-    factMngr->addFactory(new BilliardsAdrift::GameManagerBuilder());
-    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
-    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
-    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
-    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::Accelerator>());
-    factMngr->addFactory(new Tapioca::BasicBuilder<BilliardsAdrift::ExplosiveComponent>());
-    factMngr->addFactory(new Tapioca::BasicBuilder<ColoredHole>());
-    factMngr->addFactory(new Tapioca::BasicBuilder<ColoredBall>());
+    factMngr->addBuilder(new BilliardsAdrift::GameManagerBuilder());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::Accelerator>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::ExplosiveComponent>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<ColoredHole>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<ColoredBall>());
 }
 
 std::string getWindowName() { return "Billiards Adrift"; }
