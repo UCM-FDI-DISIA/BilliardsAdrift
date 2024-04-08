@@ -92,7 +92,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_ToggleAnim") {
         Tapioca::Animator* animator =
-            getObject()->getScene()->getHandler("HoleYellow")->getComponent<Tapioca::Animator>();
+            getObject()->getScene()->getHandler("Sinbad")->getComponent<Tapioca::Animator>();
 
         animator->playAnim("Dance");
 

@@ -41,6 +41,9 @@ private:
     void updateRotation();
     void increasePower();
     void hit();
+    Tapioca::Vector3 translateToWorld(const Tapioca::Vector3& direction);
+
+
 
 public:
     COMPONENT_ID("CueController");

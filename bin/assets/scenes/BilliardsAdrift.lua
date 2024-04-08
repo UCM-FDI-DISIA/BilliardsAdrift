@@ -80,39 +80,39 @@ scene = {
             }
         }
     },
-    -- Sinbad={
-    --    components={
-    --        Transform = {
-    --            positionX = 0.0,
-    --            positionY = 0.0,
-    --            positionZ = -8.0,
-    --            scaleX = 0.6,
-    --            scaleY = 0.6,
-    --            scaleZ = 0.6,
-    --            rotationX = 0.0,
-    --            rotationY = 0.0,
-    --            rotationZ = 0.0
-    --        }, 
-    --        MeshRenderer = {
-    --            meshName = "models/Sinbad/Sinbad.mesh",
-    --        },
-    --        RigidBody = {    
-    --            colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-    --            colliderScaleX=1.0,
-    --            colliderScaleY=1.0,
-    --            colliderScaleZ=1.0,
-    --            isTrigger=false,
-    --            movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-    --            mass=3.0,
-    --            friction=2.0,
-    --            damping=0.4,
-    --            bounciness=0.5
-    --        },
-    --        Animator = {
-    --            playbackSpeed=0.001
-    --        }
-    --    }
-   -- },
+    Sinbad={
+       components={
+           Transform = {
+               positionX = 0.0,
+               positionY = 0.0,
+               positionZ = -8.0,
+               scaleX = 0.6,
+               scaleY = 0.6,
+               scaleZ = 0.6,
+               rotationX = 0.0,
+               rotationY = 0.0,
+               rotationZ = 0.0
+           }, 
+           MeshRenderer = {
+             meshName = "models/Sinbad/Sinbad.mesh"
+           },
+           RigidBody = {    
+               colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+               colliderScaleX=1.0,
+               colliderScaleY=1.0,
+               colliderScaleZ=1.0,
+               isTrigger=false,
+               movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+               mass=3.0,
+               friction=2.0,
+               damping=0.4,
+               bounciness=0.5
+           },
+           Animator = {
+            playbackSpeed=0.001
+        }
+       }
+   },
 --    CueContainer={
 --     components={
 --         Transform = {
@@ -174,10 +174,7 @@ scene = {
  --NO BORRAR
     Cue={
         components={
-            MeshRenderer = {
-                meshName = "models/CueStick/CueStick.mesh",
-            },
-            Transform = {
+        Transform = {
                 positionX = 0.0,
                 positionY = 0.0,
                 positionZ = 0.0,
@@ -217,52 +214,52 @@ scene = {
             }
         }
     },
-    -- MovableWall1={
-    --     components={
-    --         Transform = {
-    --             positionX = 0.0,
-    --             positionY = 0.0,
-    --             positionZ = -2.0,
-    --             scaleX = 2.6,
-    --             scaleY = 0.52,
-    --             scaleZ = 5.2,
-    --             rotationX = 0.0,
-    --             rotationY = 0.0,
-    --             rotationZ = 0.0
-    --         },
-    --         MeshRenderer = {
-    --             meshName = "models/cube2.mesh",
-    --             materialName= "grey"
-    --         },
-    --         RigidBody = {    
-    --             colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-    --             colliderScaleX=3.0,
-    --             colliderScaleY=0.5,
-    --             colliderScaleZ=5.0,
-    --             isTrigger=false,
-    --             movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-    --             mass=0.0,
-    --             friction=1.0,
-    --             damping=0.0,
-    --             bounciness=1.0
-    --         },
-    --         MovableWall = {    
-    --             speed=0.02,
-    --             destX=8.0,
-    --             destZ=-2.0
+    MovableWall1={
+        components={
+            Transform = {
+                positionX = -5.0,
+                positionY = 5.0,
+                positionZ = 4.0,
+                scaleX = 2.6,
+                scaleY = 0.52,
+                scaleZ = 1.2,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            MeshRenderer = {
+                meshName = "models/cube2.mesh",
+                materialName= "grey"
+            },
+            RigidBody = {    
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=3.0,
+                colliderScaleY=0.5,
+                colliderScaleZ=1.0,
+                isTrigger=false,
+                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=0.0,
+                friction=1.0,
+                damping=0.0,
+                bounciness=1.0
+            },
+            MovableWall = {    
+                speed=0.02,
+                destX=8.0,
+                destZ=4.0
               
-    --         }
-    --     }
-    -- },
+            }
+        }
+    },
     Accelerator1={
         components={
             Transform = {
-                positionX = 0.0,
-                positionY = -2.8,
+                positionX = 8.0,
+                positionY = -4.8,
                 positionZ = 0.0,
-                scaleX = 5.0,
-                scaleY = 5.0,
-                scaleZ = 5.0,
+                scaleX = 9.0,
+                scaleY = 9.0,
+                scaleZ =9.0,
                 rotationX = 0.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
@@ -284,7 +281,7 @@ scene = {
                 bounciness=0.0
             },
             Accelerator = {    
-                speedFactor=1.5,
+                speedFactor=5.0,
             },
             PlaneComponent = {  
                 materialName="lighting",
@@ -294,8 +291,8 @@ scene = {
                 rkNormalX=0.0,
                 rkNormalY=1.0,
                 rkNormalZ=0.0,
-                -- width=200.0,
-                -- height=200.0
+                width=3.0,
+                height=3.0
             }
         }
     },
@@ -671,9 +668,9 @@ scene = {
     },
     HoleYellow = {
         components = {
-            MeshRenderer = {
-                 meshName = "models/Sinbad/Sinbad.mesh"
-            },
+            -- MeshRenderer = {
+            --      meshName = "models/Sinbad/Sinbad.mesh"
+            -- },
             ColoredHole = {
                 ballId = "yellow"
             },
@@ -689,9 +686,9 @@ scene = {
                 damping=0.4,
                 bounciness=0.5
             },
-            Animator = {
-                playbackSpeed=0.001
-            }
+            -- Animator = {
+            --     playbackSpeed=0.001
+            -- }
         }
     }
 }
