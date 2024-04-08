@@ -28,9 +28,7 @@ ExplosiveComponent::~ExplosiveComponent() { }
 
 bool ExplosiveComponent::initComponent(const CompMap& variables) {
     if (!setValueFromMap(force, "force", variables)) {
-#ifdef _DEBUG
-        std::cerr << "Warning: No se ha dado valor a force. Se inicializa con valor por defecto 1.\n";
-#endif
+        Tapioca::logWarn("ExplosiveComponent: No se ha dado valor a force. Se inicializa con valor por defecto 1.");
     }
     return true;
 }

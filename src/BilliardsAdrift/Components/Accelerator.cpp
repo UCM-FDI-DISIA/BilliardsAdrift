@@ -12,11 +12,8 @@ Accelerator::Accelerator() : rb(nullptr), speedFactor(0) { }
 
 bool Accelerator::initComponent(const CompMap& variables) {
 
-    bool speedSet = setValueFromMap(speedFactor, "speedFactor", variables);
-    if (!speedSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: Accelerator: no se pudo inicializar speedFactor.\n";
-#endif
+    if (!setValueFromMap(speedFactor, "speedFactor", variables)) {
+        Tapioca::logError("Accelerator: no se pudo inicializar speedFactor.");
         return false;
     }
 

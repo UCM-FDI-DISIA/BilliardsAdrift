@@ -21,47 +21,30 @@ bool CueController::initComponent(const CompMap& variables) {
     mouseLastPosition = Tapioca::Vector2(0, 0);
     actualPower = 0;
 
-    bool powerFactorSet = setValueFromMap(powerFactor, "powerFactor", variables);
-    if (!powerFactorSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: CueController: no se pudo inicializar powerFactor.\n";
-#endif
+    if (!setValueFromMap(powerFactor, "powerFactor", variables)) {
+        Tapioca::logError("CueController: no se pudo inicializar powerFactor.");
         return false;
     }
 
-    bool moveFactorSet = setValueFromMap(moveFactor, "moveBackwardFactor", variables);
-    if (!moveFactorSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: CueController: no se pudo inicializar moveFactor.\n";
-#endif
+    if (!setValueFromMap(moveFactor, "moveBackwardFactor", variables)) {
+        Tapioca::logError("CueController: no se pudo inicializar moveFactor.");
         return false;
     }
 
-
-    bool rotateFactorSet = setValueFromMap(rotateFactor, "rotateFactor", variables);
-    if (!rotateFactorSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: CueController: no se pudo inicializar rotateFactor.\n";
-#endif
+    if (!setValueFromMap(rotateFactor, "rotateFactor", variables)) {
+        Tapioca::logError("CueController: no se pudo inicializar rotateFactor.");
         return false;
     }
 
     float impulse;
-    bool impulseTimeSet = setValueFromMap(impulse, "impulseTime", variables);
-    if (!impulseTimeSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: CueController: no se pudo inicializar impulseTime.\n";
-#endif
+    if (!setValueFromMap(impulse, "impulseTime", variables)) {
+        Tapioca::logError("CueController: no se pudo inicializar impulseTime.");
         return false;
     }
-
     impulseTime = impulse * 1000;
 
-    bool impulseFactorSet = setValueFromMap(impulseFactor, "impulseFactor", variables);
-    if (!impulseFactorSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: CueController: no se pudo inicializar impulseFactor.\n";
-#endif
+    if (!setValueFromMap(impulseFactor, "impulseFactor", variables)) {
+        Tapioca::logError("CueController: no se pudo inicializar impulseFactor.");
         return false;
     }
 
@@ -129,7 +112,6 @@ void CueController::updateRotation() {
 #endif
     tr->getParent()->rotate(v);
     Tapioca::Vector3 u = tr->getRotationPosition();
-      std::cout << u.x << " " << u.y << " " << u.z << "\n";
     //  std::cout << u.x << " " << u.y << " " << u.z << "\n";
     //tr->rotate(v);
     /*  std::cout << v.x << " " << v.y << " " << v.z << "\n";*/

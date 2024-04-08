@@ -686,9 +686,17 @@ scene = {
                 damping=0.4,
                 bounciness=0.5
             },
-            -- Animator = {
-            --     playbackSpeed=0.001
-            -- }
+            PlaneComponent = {  
+                materialName="holeImage",
+                upX=0.0,
+                upY=0.0,
+                upZ=-1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                width=3.0,
+                height=3.0,
+            }
         }
     }
 }

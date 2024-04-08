@@ -6,11 +6,8 @@
 ColoredHole::ColoredHole() : ballId("") { }
 
 bool ColoredHole::initComponent(const CompMap& variables) {
-    bool fine = setValueFromMap(ballId, "ballId", variables);
-    if (!fine) {
-#ifdef _DEBUG
-        std::cerr << "[ERROR] ColoredHole: No se pudo inicializar ballId. Se necesita esta variable.\n";
-#endif
+    if (!setValueFromMap(ballId, "ballId", variables)) {
+        Tapioca::logError("ColoredHole: No se pudo inicializar ballId. Se necesita esta variable.");
         return false;
     }
 
@@ -22,9 +19,7 @@ void ColoredHole::handleEvent(std::string const& id, void* info) {
         Tapioca::GameObject* obj = (Tapioca::GameObject*)info;
         ColoredBall* ball = obj->getComponent<ColoredBall>();
         if (ball != nullptr && ball->getID() == ballId) {
-#ifdef _DEBUG
-            std::cerr << "ColoredHole: La bola con ID " << ballId << " ha entrado en su agujero.\n";
-#endif
+            Tapioca::logInfo(("ColoredHole: La bola con ID \"" + std::string(ballId) + "\" ha entrado en su agujero.").c_str());
             pushEvent("BallShot", info, true);
             obj->die();
         }

@@ -11,19 +11,14 @@ MovableWall::MovableWall() : rb(nullptr), tr(nullptr), actualDest(-1, -1), origi
 
 bool MovableWall::initComponent(const CompMap& variables) {
 
-    bool speedSet = setValueFromMap(speed, "speed", variables);
-    if (!speedSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: MovableWall: no se pudo inicializar speed.\n";
-#endif
+    if (!setValueFromMap(speed, "speed", variables)) {
+        Tapioca::logError("MovableWall: no se pudo inicializar speed.");
         return false;
     }
 
     bool destSet = setValueFromMap(dest.x, "destX", variables) && setValueFromMap(dest.y, "destZ", variables);
     if (!destSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: MovableWall: no se pudo inicializar dest.\n";
-#endif
+        Tapioca::logError("MovableWall: no se pudo inicializar dest.");
         return false;
     }
 

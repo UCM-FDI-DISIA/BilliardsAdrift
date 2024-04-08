@@ -20,20 +20,13 @@ GameManager::GameManager()
 bool initComponent(const CompMap& variables) { return false; }
 
 bool GameManager::initComponent(const CompMap& variables) {
-
-    bool initLifeSet = setValueFromMap(INIT_LIFE, "initLife", variables);
-    if (!initLifeSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: GameManager: no se pudo inicializar INIT_LIFE.\n";
-#endif
+    if (!setValueFromMap(INIT_LIFE, "initLife", variables)) {
+        Tapioca::logError("GameManager: no se pudo inicializar INIT_LIFE.");
         return false;
     }
     float timeAux;
-    bool initTimeSet = setValueFromMap(timeAux, "initTime", variables);
-    if (!initTimeSet) {
-#ifdef _DEBUG
-        std::cerr << "Error: GameManager: no se pudo inicializar INIT_TIME.\n";
-#endif
+    if (!setValueFromMap(timeAux, "initTime", variables)) {
+        Tapioca::logError("GameManager: no se pudo inicializar INIT_TIME.");
         return false;
     }
     INIT_TIME = (long long int)timeAux;
