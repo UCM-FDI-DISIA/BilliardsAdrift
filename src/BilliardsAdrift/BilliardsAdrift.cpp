@@ -5,10 +5,6 @@
 #include "Structure/FactoryManager.h"
 #include "Structure/BasicBuilder.h"
 
-// TODO: PRUEBA
-#include "GraphicsManager.h"
-#include "LightDirectional.h"
-
 #include "Components/CueController.h"
 #include "Components/GameManager.h"
 #include "Components/HeartComponent.h"
@@ -20,12 +16,6 @@
 
 void init() {
     addComponentFactories();
-
-    // PRUEBA (deja memory leaks)
-    auto graphics = Tapioca::GraphicsManager::instance();
-    auto node = graphics->createNode();
-    auto light = graphics->createLightDirectional(node, Tapioca::Vector3(0.0f, -1.0f, -1.0f));
-    light->produceShadows(true);
 }
 
 void addComponentFactories() {
