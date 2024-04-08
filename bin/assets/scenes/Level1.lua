@@ -222,12 +222,12 @@ scene = {
     MovableWall1={
         components={
             Transform = {
-                positionX = 0.0,
-                positionY = 0.0,
-                positionZ = -2.0,
-                scaleX = 2.6,
-                scaleY = 0.52,
-                scaleZ = 5.2,
+                positionX = 12.2,
+                positionY = 8.2,
+                positionZ = -2.5,
+                scaleX = 1.0,
+                scaleY = 1.0,
+                scaleZ = 4.0,
                 rotationX = 0.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
@@ -238,9 +238,9 @@ scene = {
             },
             RigidBody = {    
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=3.0,
-                colliderScaleY=0.5,
-                colliderScaleZ=5.0,
+                colliderScaleX=1.0,
+                colliderScaleY=1.0,
+                colliderScaleZ=4.0,
                 isTrigger=false,
                 movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass=0.0,
@@ -250,57 +250,59 @@ scene = {
             },
             MovableWall = {    
                 speed=0.02,
-                destX=8.0,
-                destZ=-2.0
+                destX=12.2,
+                destZ=8.0,
+                --destX=8.0,
+                --destZ=-2.0
               
             }
         }
     },
-    Accelerator1={
-        components={
-            Transform = {
-                positionX = 0.0,
-                positionY = -2.8,
-                positionZ = 0.0,
-                scaleX = 5.0,
-                scaleY = 5.0,
-                scaleZ = 5.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
-            },
-            -- MeshRenderer = {
-            --     meshName = "models/cube.mesh",
-            --     materialName= "grey"
-            -- },
-            RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=2.0,
-                colliderScaleY=2.0,
-                colliderScaleZ=2.0,
-                isTrigger=true,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=0.0,
-                friction=0.0,
-                damping=0.0,
-                bounciness=0.0
-            },
-            Accelerator = {    
-                speedFactor=1.5,
-            },
-            PlaneComponent = {  
-                materialName="lighting",
-                upX=0.0,
-                upY=0.0,
-                upZ=1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                -- width=200.0,
-                -- height=200.0
-            }
-        }
-    },
+    -- Accelerator1={
+    --     components={
+    --         Transform = {
+    --             positionX = 0.0,
+    --             positionY = -2.8,
+    --             positionZ = 0.0,
+    --             scaleX = 5.0,
+    --             scaleY = 5.0,
+    --             scaleZ = 5.0,
+    --             rotationX = 0.0,
+    --             rotationY = 0.0,
+    --             rotationZ = 0.0
+    --         },
+    --         -- MeshRenderer = {
+    --         --     meshName = "models/cube.mesh",
+    --         --     materialName= "grey"
+    --         -- },
+    --         RigidBody = {    
+    --             colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+    --             colliderScaleX=2.0,
+    --             colliderScaleY=2.0,
+    --             colliderScaleZ=2.0,
+    --             isTrigger=true,
+    --             movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+    --             mass=0.0,
+    --             friction=0.0,
+    --             damping=0.0,
+    --             bounciness=0.0
+    --         },
+    --         Accelerator = {    
+    --             speedFactor=1.5,
+    --         },
+    --         PlaneComponent = {  
+    --             materialName="lighting",
+    --             upX=0.0,
+    --             upY=0.0,
+    --             upZ=1.0,
+    --             rkNormalX=0.0,
+    --             rkNormalY=1.0,
+    --             rkNormalZ=0.0,
+    --             -- width=200.0,
+    --             -- height=200.0
+    --         }
+    --     }
+    -- },
     Ground={
         components={
             Transform = {
@@ -642,13 +644,13 @@ scene = {
     Heart={
         components={
             Transform = {
-                positionX = 10.0,
-                positionY = 0.0,
-                positionZ = 10.0,
-                scaleX = 0.6,
-                scaleY = 0.6,
-                scaleZ = 0.6,
-                rotationX = -90.0,
+                positionX = -12.0,
+                positionY = 8.2,
+                positionZ = -5.8,
+                scaleX = 0.8,
+                scaleY = 0.8,
+                scaleZ = 0.8,
+                rotationX = 180.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
             }, 
@@ -658,9 +660,9 @@ scene = {
             },
             RigidBody = {    
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.6,
-                colliderScaleY=0.6,
-                colliderScaleZ=0.6,
+                colliderScaleX=0.8,
+                colliderScaleY=0.8,
+                colliderScaleZ=0.8,
                 isTrigger=true,
                 movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass=3.0,

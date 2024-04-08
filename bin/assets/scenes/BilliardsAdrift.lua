@@ -15,8 +15,14 @@ scene = {
             LightDirComp = {
                 directionX = 0.0,
                 directionY = -1.0,
-                directionZ = -1.0,
+                directionZ = 0.0,
                 mainLight = true,
+            },
+            AudioListenerComponent = {},
+            AudioSourceComponent = {
+                islooping = true,
+                ispaused = false,
+                sourcepath= "assets/audio/PokerNight.mp3"
             }
         }
     },
@@ -637,8 +643,8 @@ scene = {
     Heart={
         components={
             Transform = {
-                positionX = 8.0,
-                positionY = 0.0,
+                positionX = 15.0,
+                positionY = -4.0,
                 positionZ = 8.0,
                 scaleX = 0.6,
                 scaleY = 0.6,

@@ -66,11 +66,12 @@ void CueController::start() {
 
 void CueController::update(const uint64_t deltaTime) {
     if (hitting) {
-        tr->translate( translateToWorld(moveSpeed) * deltaTime);
-        Tapioca::Vector3 distance = tr->getRotationPosition() + tr->getParent()->forward() * 6.f - ballTr->getGlobalPosition();
+        tr->translate(translateToWorld(moveSpeed) * deltaTime);
+        Tapioca::Vector3 distance =
+            tr->getRotationPosition() + tr->getParent()->forward() * 6.f - ballTr->getGlobalPosition();
         distance.y = 0;
 #ifdef _DEBUG
-     //   std::cout << distance.magnitude() << "\n";
+        //   std::cout << distance.magnitude() << "\n";
 #endif
         if (distance.magnitude() <= 2.f) {
 
@@ -89,12 +90,14 @@ void CueController::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_MouseButtonDownLeft") {
         hitting = true;
-        moveSpeed =
-            (ballTr->getGlobalPosition() - (tr->getRotationPosition() + tr->getParent()->forward() * 6.f)) / impulseTime;
+        moveSpeed = (ballTr->getGlobalPosition() - (tr->getRotationPosition() + tr->getParent()->forward() * 6.f)) /
+            impulseTime;
         moveSpeed.y = 0;
     }
     else if (id == "ev_endProcessing") {
         mesh->setVisible(active = true);
+        tr->getParent()->setPosition(ballTr->getGlobalPosition());
+        tr->setPosition(ballDistanceOffset);
     }
 }
 
@@ -108,10 +111,11 @@ void CueController::updateRotation() {
     Tapioca::Vector3 v =
         Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * rotateFactor;
 #ifdef _DEBUG
-  //  std::cout << (inputMng->getMousePos().first - mouseLastPosition.x) * rotateFactor << "\n";
+    //  std::cout << (inputMng->getMousePos().first - mouseLastPosition.x) * rotateFactor << "\n";
 #endif
     tr->getParent()->rotate(v);
     Tapioca::Vector3 u = tr->getRotationPosition();
+    Tapioca::logInfo((std::string(u.x) + ' ' + std::string(u.y) + ' ' + std::string(u.z)).c_str());
     //  std::cout << u.x << " " << u.y << " " << u.z << "\n";
     //tr->rotate(v);
     /*  std::cout << v.x << " " << v.y << " " << v.z << "\n";*/
@@ -120,7 +124,7 @@ void CueController::updateRotation() {
 }
 
 void CueController::increasePower() {
-    tr->translate(translateToWorld(tr->forward())* (-moveFactor));
+    tr->translate(translateToWorld(tr->forward()) * (-moveFactor));
     Tapioca::Vector3 v = tr->getParent()->forward();
     // std::cout << v.x << " " << v.y << " " << v.z << "\n";
     actualPower += powerFactor;
@@ -138,14 +142,13 @@ void CueController::hit() {
     pushEvent("ev_Processing", nullptr, true);
     //  rb->addForce(tr->forward() * (actualPower));
     actualPower = 0;
-
 }
 
 Tapioca::Vector3 CueController::translateToWorld(const Tapioca::Vector3& direction) {
 
-    // Obtener la rotación global inversa del objeto hijo
+    // Obtener la rotaciï¿½n global inversa del objeto hijo
     Tapioca::Quaternion childGlobalRotationInverse = tr->getGlobalRotation().inverse();
-    //Aplicar la rotación global inversa al vector direccional respecto al mundo
+    //Aplicar la rotaciï¿½n global inversa al vector direccional respecto al mundo
     Tapioca::Vector3 directionalVectorLocal = childGlobalRotationInverse.rotatePoint(direction);
 
     // Devolver el vector direccional en el sistema de coordenadas local del objeto hijo
