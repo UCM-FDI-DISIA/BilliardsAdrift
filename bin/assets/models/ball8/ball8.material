@@ -1,7 +1,6 @@
 material ball8 {
     technique {
         pass {
-           
             // - base_color_texture
             texture_unit {
                 texture models/ball8/ball8.png
