@@ -287,12 +287,12 @@ scene = {
                 materialName="lighting",
                 upX=0.0,
                 upY=0.0,
-                upZ=1.0,
+                upZ=-1.0,
                 rkNormalX=0.0,
                 rkNormalY=1.0,
                 rkNormalZ=0.0,
                 width=3.0,
-                height=3.0
+                height=3.0,
             }
         }
     },
@@ -637,14 +637,14 @@ scene = {
     Heart={
         components={
             Transform = {
-                positionX = 10.0,
+                positionX = 8.0,
                 positionY = 0.0,
-                positionZ = 10.0,
+                positionZ = 8.0,
                 scaleX = 0.6,
                 scaleY = 0.6,
                 scaleZ = 0.6,
-                rotationX = -90.0,
-                rotationY = 0.0,
+                rotationX = 0.0,
+                rotationY = 180.0,
                 rotationZ = 0.0
             }, 
             MeshRenderer = {
