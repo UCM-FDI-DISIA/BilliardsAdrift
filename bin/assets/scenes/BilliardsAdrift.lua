@@ -17,6 +17,12 @@ scene = {
                 directionY = -1.0,
                 directionZ = 0.0,
                 mainLight = true,
+            },
+            AudioListenerComponent = {},
+            AudioSourceComponent = {
+                islooping = true,
+                ispaused = false,
+                sourcepath= "assets/audio/PokerNight.mp3"
             }
         }
     },
