@@ -41,6 +41,10 @@ events = {
         src = "ie_keyUp",
         control = 112     -- SDLK_p
     },
+    ev_ToggleAnim = {
+        src = "ie_keyUp",
+        control = 116     -- SDLK_t
+    },
     ev_MouseButtonDownRight = {
         src = "ie_mouseButtonDown",
         control = 3     -- SDL_BUTTON_RIGHT

@@ -46,5 +46,5 @@ void addComponentFactories() {
 
 std::string getWindowName() { return "Billiards Adrift"; }
 
-std::string getInitScene() { return "Level1.lua"; }
+std::string getInitScene() { return "BilliardsAdrift.lua"; }
 

@@ -3,6 +3,7 @@
 #include "Structure/GameObject.h"
 #include "Structure/Scene.h"
 #include "Components/RigidBody.h"
+#include "Components/Animator.h"
 
 #include <iomanip>
 
@@ -88,6 +89,14 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_Processing") {
         processing = true;
+    }
+    else if (id == "ev_ToggleAnim") {
+        Tapioca::Animator* animator =
+            getObject()->getScene()->getHandler("HoleYellow")->getComponent<Tapioca::Animator>();
+
+        animator->playAnim("Dance");
+
+        animator->setPlaying(animator->getPlaying());
     }
     else if (id == "BallShot") {
         Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
