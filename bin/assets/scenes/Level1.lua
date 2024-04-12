@@ -706,6 +706,51 @@ scene = {
             HeartComponent = { }
         }
     },
+    Accelerator1={
+        components={
+            Transform = {
+                positionX = 0.0,
+                positionY = 7.0,
+                positionZ = 7.6,
+                scaleX = 9.0,
+                scaleY = 9.0,
+                scaleZ =9.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            -- MeshRenderer = {
+            --     meshName = "models/cube.mesh",
+            --     materialName= "grey"
+            -- },
+            RigidBody = {    
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=2.0,
+                colliderScaleY=2.0,
+                colliderScaleZ=2.0,
+                isTrigger=true,
+                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=0.0,
+                friction=0.0,
+                damping=0.0,
+                bounciness=0.0
+            },
+            Accelerator = {    
+                speedFactor=5.0,
+            },
+            PlaneComponent = {  
+                materialName="lighting",
+                upX=0.0,
+                upY=0.0,
+                upZ=-1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                width=3.0,
+                height=3.0,
+            }
+        }
+    },
     HoleYellow = {
         components = {
             -- MeshRenderer = {
