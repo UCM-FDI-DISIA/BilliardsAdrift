@@ -47,8 +47,8 @@ scene = {
     TimerText={
         components = {
             Transform = {
-                positionX = WINDOW_WIDTH / 2 - 25,
-                positionY = 5.0,
+                positionX = WINDOW_WIDTH / 2,
+                positionY = 10.0,
                 positionZ = 0.0,
                 scaleX = 0.0,
                 scaleY = 0.0,
@@ -60,7 +60,7 @@ scene = {
             Text = {
                 name = "TimerText",
                 text = "Timer",
-                --textSize = 20.0,
+                textSize = 20.0,
                 textFontName = "AGENCYB.TTF"
             }
         }
@@ -655,7 +655,7 @@ scene = {
                 rotationZ = 90.0
             }, 
             MeshRenderer = {
-                meshName = "models/ball8/Ball8.mesh"
+                meshName = "models/Ball8/Ball8.mesh"
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
