@@ -98,6 +98,11 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     else if (id == "ev_GameOver") {
         onGameOver();
     }
+    else if (id == "BallShotWrongColor") {
+        Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
+        balls.erase(b);
+        loseLife();
+    }
 }
 
 
