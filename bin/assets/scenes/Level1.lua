@@ -641,6 +641,39 @@ scene = {
             }
         }
     },
+    BallBlack={
+        components={
+            Transform = {
+                positionX = 6.6,
+                positionY = 8.2,
+                positionZ = -11.4,
+                scaleX = 0.7,
+                scaleY = 0.7,
+                scaleZ = 0.7,
+                rotationX = 180.0,
+                rotationY = 0.0,
+                rotationZ = 90.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/Ball8/Ball8.mesh"
+            },
+            RigidBody = {    
+                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX=0.7,
+                colliderScaleY=0.7,
+                colliderScaleZ=0.7,
+                isTrigger=false,
+                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass=3.0,
+                friction=2.0,
+                damping=0.4,
+                bounciness=0.5
+            },
+            ColoredBall = {
+                ballId = "black"
+            }
+        }
+    },
     Heart={
         components={
             Transform = {
