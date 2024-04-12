@@ -4,7 +4,7 @@
 #include "Components/Transform.h"
 #include "Structure/GameObject.h"
 #include "Structure/BasicBuilder.h"
-#include "Structure/Game.h"
+#include "Structure/MainLoop.h"
 
 namespace BilliardsAdrift {
 MovableWall::MovableWall() : rb(nullptr), tr(nullptr), actualDest(-1, -1), origin(-1, -1), dest(-1, -1), speed(0) { }
@@ -39,6 +39,6 @@ void MovableWall::update(const uint64_t deltaTime) {
     else if (v.x > dest.x + 0.5f || v.z > dest.y + 0.5f) direction = origin - dest;
 
     Tapioca::Vector2 auxD = direction.getNormalized();
-    tr->translate(Tapioca::Vector3(auxD.x, 0, auxD.y) * speed * Tapioca::Game::FIXED_DELTA_TIME);
+    tr->translate(Tapioca::Vector3(auxD.x, 0, auxD.y) * speed * Tapioca::MainLoop::FIXED_DELTA_TIME);
 }
 }

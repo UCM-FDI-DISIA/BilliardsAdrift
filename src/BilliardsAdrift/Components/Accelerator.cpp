@@ -3,7 +3,7 @@
 #include "Components/RigidBody.h"
 #include "Structure/GameObject.h"
 #include "Structure/BasicBuilder.h"
-#include "Structure/Game.h"
+#include "Structure/MainLoop.h"
 
 #include <string>
 

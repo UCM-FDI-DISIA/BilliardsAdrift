@@ -1,7 +1,6 @@
 #include "BilliardsAdrift.h"
 
 #include "WindowManager.h"
-#include "SceneManager.h"
 #include "Structure/FactoryManager.h"
 #include "Structure/BasicBuilder.h"
 

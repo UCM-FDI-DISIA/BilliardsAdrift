@@ -1,5 +1,5 @@
 #include "GameManager.h"
-#include "SceneManager.h"
+#include "SceneLoader.h"
 #include "Structure/GameObject.h"
 #include "Structure/Scene.h"
 #include "Components/RigidBody.h"
@@ -131,7 +131,7 @@ int GameManager::getLife() { return life; }
 uint64_t GameManager::getTime() { return (uint64_t)(time / 1000.f); }
 
 bool GameManager::changeScene(std::string const& scene) const {
-    return Tapioca::SceneManager::instance()->loadScene(scene);
+    return Tapioca::SceneLoader::instance()->loadScene(scene);
 }
 
 void GameManager::setScore(const int s) { score = s; }
