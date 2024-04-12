@@ -655,7 +655,7 @@ scene = {
                 rotationZ = 90.0
             }, 
             MeshRenderer = {
-                meshName = "models/Ball8/Ball8.mesh"
+                meshName = "models/ball8/Ball8.mesh"
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
