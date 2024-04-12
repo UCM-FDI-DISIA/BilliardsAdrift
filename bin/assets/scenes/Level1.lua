@@ -39,7 +39,7 @@ scene = {
             LightDirComp = {
                 directionX = 0.0,
                 directionY = -1.0,
-                directionZ = -1.0,
+                directionZ = 0.0,
                 mainLight = true,
             }
         }
@@ -65,44 +65,9 @@ scene = {
             }
         }
     },
-    -- Sinbad={
-    --    components={
-    --        Transform = {
-    --            positionX = 0.0,
-    --            positionY = 0.0,
-    --            positionZ = -8.0,
-    --            scaleX = 0.6,
-    --            scaleY = 0.6,
-    --            scaleZ = 0.6,
-    --            rotationX = 0.0,
-    --            rotationY = 0.0,
-    --            rotationZ = 0.0
-    --        }, 
-    --        MeshRenderer = {
-    --            meshName = "models/Sinbad/Sinbad.mesh",
-    --        },
-    --        RigidBody = {    
-    --            colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-    --            colliderScaleX=1.0,
-    --            colliderScaleY=1.0,
-    --            colliderScaleZ=1.0,
-    --            isTrigger=false,
-    --            movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-    --            mass=3.0,
-    --            friction=2.0,
-    --            damping=0.4,
-    --            bounciness=0.5
-    --        },
-    --        Animator = {
-    --            playbackSpeed=0.001
-    --        }
-    --    }
-   -- },
+
    Cue={
     components={
-        MeshRenderer = {
-            meshName = "models/CueStick/CueStick.mesh",
-        },
         Transform = {
             positionX = 0.0,
             positionY = 0.0,
@@ -133,7 +98,7 @@ scene = {
                     meshName = "models/CueStick/CueStick.mesh",
                 },
                 CueController = {    
-                    powerFactor=3.0,
+                    powerFactor=600.0,
                     moveBackwardFactor=0.5,
                     rotateFactor=0.3,
                     impulseTime=0.5,
@@ -147,7 +112,7 @@ scene = {
         components={
             Transform = {
                 positionX = 0.0,
-                positionY = 8.2,
+                positionY = 8.0,
                 positionZ = 0.0,
                 scaleX = 0.8,
                 scaleY = 0.8,
@@ -167,10 +132,13 @@ scene = {
                 colliderScaleZ=0.8,
                 isTrigger=false,
                 movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=0.5,
                 damping=0.4,
-                bounciness=0.5
+                bounciness=1.0
+            },
+            ColoredBall = {
+                ballId = "white"
             }
         }
             
@@ -246,10 +214,10 @@ scene = {
                 mass=0.0,
                 friction=1.0,
                 damping=0.0,
-                bounciness=1.0
+                bounciness=0.5
             },
             MovableWall = {    
-                speed=0.02,
+                speed=0.01,
                 destX=12.2,
                 destZ=8.0,
                 --destX=8.0,
@@ -327,7 +295,7 @@ scene = {
                 isTrigger=false,
                 movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass=0.0,
-                friction=1.0,
+                friction=0.5,
                 damping=0.0,
                 bounciness=1.0
             }
@@ -354,7 +322,7 @@ scene = {
                         isTrigger=false,
                         movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                         mass=0.0,
-                        friction=1.0,
+                        friction=0.5,
                         damping=0.0,
                         bounciness=1.0
                     }
@@ -466,10 +434,10 @@ scene = {
                 colliderScaleZ=0.7,
                 isTrigger=false,
                 movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=0.5,
                 damping=0.4,
-                bounciness=0.5
+                bounciness=1.0
             },
             ColoredBall = {
                 ballId = "yellow"
@@ -499,10 +467,10 @@ scene = {
                 colliderScaleZ=0.7,
                 isTrigger=false,
                 movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=0.5,
                 damping=0.4,
-                bounciness=0.5
+                bounciness=1.0
             },
             ColoredBall = {
                 ballId = "blue"
@@ -532,10 +500,10 @@ scene = {
                 colliderScaleZ=0.7,
                 isTrigger=false,
                 movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=0.5,
                 damping=0.4,
-                bounciness=0.5
+                bounciness=1.0
             },
             ColoredBall = {
                 ballId = "red"
@@ -565,10 +533,10 @@ scene = {
                 colliderScaleZ=0.7,
                 isTrigger=false,
                 movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=0.5,
                 damping=0.4,
-                bounciness=0.5
+                bounciness=1.0
             },
             ColoredBall = {
                 ballId = "purple"
@@ -598,10 +566,10 @@ scene = {
                 colliderScaleZ=0.7,
                 isTrigger=false,
                 movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=0.5,
                 damping=0.4,
-                bounciness=0.5
+                bounciness=1.0
             },
             ColoredBall = {
                 ballId = "orange"
@@ -631,10 +599,10 @@ scene = {
                 colliderScaleZ=0.7,
                 isTrigger=false,
                 movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=0.5,
                 damping=0.4,
-                bounciness=0.5
+                bounciness=1.0
             },
             ColoredBall = {
                 ballId = "green"
@@ -698,8 +666,8 @@ scene = {
                 colliderScaleZ=0.8,
                 isTrigger=true,
                 movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=1.0,
                 damping=0.4,
                 bounciness=0.5
             },
@@ -777,8 +745,8 @@ scene = {
                 colliderScaleZ=0.6,
                 isTrigger=true,
                 movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=1.0,
                 damping=0.4,
                 bounciness=0.5
             }
@@ -807,8 +775,8 @@ scene = {
                 colliderScaleZ=0.6,
                 isTrigger=true,
                 movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=1.0,
                 damping=0.4,
                 bounciness=0.5
             }
@@ -837,8 +805,8 @@ scene = {
                 colliderScaleZ=0.6,
                 isTrigger=true,
                 movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
+                mass=2.0,
+                friction=1.0,
                 damping=0.4,
                 bounciness=0.5
             }

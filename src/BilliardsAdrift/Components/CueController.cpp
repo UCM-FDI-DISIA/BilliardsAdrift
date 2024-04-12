@@ -14,7 +14,7 @@
 namespace BilliardsAdrift {
 CueController::CueController()
     : inputMng(nullptr), ballRb(nullptr), ballTr(nullptr), ball(nullptr), tr(nullptr), actualPower(0), moveFactor(0),
-      powerFactor(0), hitting(false), moveSpeed(0) { }
+      powerFactor(0), hitting(false), moveSpeed(0), canMove(true) { }
 
 bool CueController::initComponent(const CompMap& variables) {
 
@@ -52,16 +52,19 @@ bool CueController::initComponent(const CompMap& variables) {
 }
 
 void CueController::start() {
-    //  rb = object->getComponent<Tapioca::RigidBody>();
     tr = object->getComponent<Tapioca::Transform>();
+
     ballDistanceOffset = tr->getGlobalPosition();
     inputMng = Tapioca::InputManager::instance();
+
     ball = object->getScene()->getHandler("BallPlayer");
+
     ballTr = ball->getComponent<Tapioca::Transform>();
     ballRb = ball->getComponent<Tapioca::RigidBody>();
     mesh = object->getComponent<Tapioca::MeshRenderer>();
-    tr->getParent()->setPosition(ballTr->getGlobalPosition());
-    tr->setPosition(ballDistanceOffset);
+
+    ballRb->setVelocity(Tapioca::Vector3(0));
+    followBall();
 }
 
 void CueController::update(const uint64_t deltaTime) {
@@ -70,13 +73,7 @@ void CueController::update(const uint64_t deltaTime) {
         Tapioca::Vector3 distance =
             tr->getRotationPosition() + tr->getParent()->forward() * 6.f - ballTr->getGlobalPosition();
         distance.y = 0;
-#ifdef _DEBUG
-        //   std::cout << distance.magnitude() << "\n";
-#endif
-        if (distance.magnitude() <= 2.f) {
-
-            hit();
-        }
+        if (distance.magnitude() <= 3.f) hit();
     }
     else {
         updateRotation();
@@ -85,10 +82,9 @@ void CueController::update(const uint64_t deltaTime) {
 }
 
 void CueController::handleEvent(std::string const& id, void* info) {
-    if (id == "ev_MouseButtonDownRight") {
-        increasePower();
-    }
-    else if (id == "ev_MouseButtonDownLeft") {
+    if (id == "ev_MouseButtonDownRight") increasePower();
+
+    else if (id == "ev_MouseButtonDownLeft" && actualPower != 0) {
         hitting = true;
         moveSpeed = (ballTr->getGlobalPosition() - (tr->getRotationPosition() + tr->getParent()->forward() * 6.f)) /
             impulseTime;
@@ -96,52 +92,59 @@ void CueController::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_endProcessing") {
         mesh->setVisible(active = true);
-        tr->getParent()->setPosition(ballTr->getGlobalPosition());
-        tr->setPosition(ballDistanceOffset);
+        if (!canMove) {
+            canMove = true;
+            resetCue();
+        }
+    }
+    else if (id == "ev_ballMoved") {
+        mesh->setVisible(active = false);
+        if (canMove) {
+            canMove = false;
+            resetCue();
+        }
+       
     }
 }
 
 void CueController::updatePosition() {
     mouseLastPosition.x = inputMng->getMousePos().first;
     mouseLastPosition.y = inputMng->getMousePos().second;
+    if (!canMove) {
+        followBall();
+    }
 }
 
 void CueController::updateRotation() {
 
     Tapioca::Vector3 v =
         Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * rotateFactor;
-#ifdef _DEBUG
-    //  std::cout << (inputMng->getMousePos().first - mouseLastPosition.x) * rotateFactor << "\n";
-#endif
+
     tr->getParent()->rotate(v);
     Tapioca::Vector3 u = tr->getRotationPosition();
-    Tapioca::logInfo((std::to_string(u.x) + ' ' + std::to_string(u.y) + ' ' + std::to_string(u.z)).c_str());
-    //  std::cout << u.x << " " << u.y << " " << u.z << "\n";
-    //tr->rotate(v);
-    /*  std::cout << v.x << " " << v.y << " " << v.z << "\n";*/
-    // tr->getParent()->rotate(Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * 0.1f);
-    //  std::cout <<rb->getMovementType() << "\n";
 }
 
 void CueController::increasePower() {
     tr->translate(translateToWorld(tr->forward()) * (-moveFactor));
     Tapioca::Vector3 v = tr->getParent()->forward();
-    // std::cout << v.x << " " << v.y << " " << v.z << "\n";
     actualPower += powerFactor;
-#ifdef _DEBUG
-    // std::cout << "IncreasePower: " << actualPower << "\n";
-#endif
 }
 
 void CueController::hit() {
-
-    hitting = false;
-    ballRb->addImpulse(tr->getParent()->forward() * (actualPower));
-
     mesh->setVisible(active = false);
-    pushEvent("ev_Processing", nullptr, true);
-    //  rb->addForce(tr->forward() * (actualPower));
+    hitting = false;
+    ballRb->addForce(tr->getParent()->forward() * (actualPower));
+}
+
+void CueController::resetCue() {
+
     actualPower = 0;
+    followBall();
+}
+
+void CueController::followBall() {
+    tr->getParent()->setPosition(ballTr->getGlobalPosition() + Tapioca::Vector3(0, 2, 0));
+    tr->setPosition(ballDistanceOffset);
 }
 
 Tapioca::Vector3 CueController::translateToWorld(const Tapioca::Vector3& direction) {

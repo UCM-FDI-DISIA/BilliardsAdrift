@@ -36,11 +36,14 @@ private:
     float actualPower;   //fuerza acumulada para tirar la bola
     Tapioca::Vector3 moveSpeed;
     bool hitting;
+    bool canMove;
 
     void updatePosition();
     void updateRotation();
     void increasePower();
     void hit();
+    void resetCue();
+    void followBall();
     Tapioca::Vector3 translateToWorld(const Tapioca::Vector3& direction);
 
 

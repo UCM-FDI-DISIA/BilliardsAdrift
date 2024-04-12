@@ -4,7 +4,7 @@
 #include "Structure/Scene.h"
 #include "Components/RigidBody.h"
 #include "Components/Animator.h"
-
+#include "ColoredBall.h"
 #include <iomanip>
 
 template class JUEGO_API Tapioca::Singleton<BilliardsAdrift::GameManager>;
@@ -56,22 +56,23 @@ void GameManager::update(const uint64_t deltaTime) {
         }
 #endif
         //comprobar que todas las bolas están inmovilizadas
-        if (processing) {
-            auto it = balls.begin();
+        auto it = balls.begin();
 
-            while (it != balls.end()) {
-
-                auto v = (*it)->getComponent<Tapioca::RigidBody>()->getVelocity();
-                if (std::abs(v.x < 1e-2) && std::abs(v.y < 1e-2) && std::abs(v.z < 1e-2)) {
-                    ++it;
-                }
-                else
-                    break;
+        while (it != balls.end()) {
+            Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
+            auto v = rb->getVelocity();
+            if (std::abs(v.x < 1e-4) && std::abs(v.y < 1e-4) && std::abs(v.z < 1e-4)) {
+                //rb->setVelocity(Tapioca::Vector3(0));
+                ++it;
             }
-            if (it == balls.end()) {
-                processing = false;
-                pushEvent("ev_endProcessing", nullptr, true);
+            else {
+                pushEvent("ev_ballMoved", nullptr, true);
+                break;
             }
+        }
+        if (it == balls.end()) {
+            processing = false;
+            pushEvent("ev_endProcessing", nullptr, true);
         }
     }
 }
@@ -84,8 +85,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         processing = true;
     }
     else if (id == "ev_ToggleAnim") {
-        Tapioca::Animator* animator =
-            getObject()->getScene()->getHandler("Sinbad")->getComponent<Tapioca::Animator>();
+        Tapioca::Animator* animator = getObject()->getScene()->getHandler("Sinbad")->getComponent<Tapioca::Animator>();
 
         animator->playAnim("Dance");
 
@@ -112,10 +112,10 @@ void GameManager::onStart() {
     life = INIT_LIFE;
     auto v = object->getScene()->getObjects();
     for (auto& g : v) {
-        std::string s = "Ball";
-        if (strstr(g->getHandler().c_str(), s.c_str())) {
-
+        ColoredBall* ball = g->getComponent<ColoredBall>();
+        if (ball != nullptr) {
             balls.insert(g);
+            g->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(0));
         }
     }
 }
