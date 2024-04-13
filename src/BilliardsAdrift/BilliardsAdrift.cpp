@@ -13,9 +13,7 @@
 #include "Components/ColoredHole.h"
 #include "Components/ColoredBall.h"
 
-void init() {
-    addComponentFactories();
-}
+void init() { addComponentFactories(); }
 
 void addComponentFactories() {
 #ifdef _DEBUG
@@ -35,3 +33,18 @@ void addComponentFactories() {
 std::string getWindowName() { return "Billiards Adrift"; }
 
 std::string getInitScene() { return "Level1.lua"; }
+
+int getFunctions(Function* gameFunctions, int maxFunctions) {
+    if (!gameFunctions) return 0;
+
+    int numFunctions = 0;
+
+    // Comprobar que no supere el numero maximo de funciones
+    if ((numFunctions + 1) <= maxFunctions)
+        gameFunctions[numFunctions++] = {"Ejemplo1", []() { Tapioca::logInfo("Funcion 1 creada desde el Billiards"); }};
+    if ((numFunctions + 1) <= maxFunctions)
+        gameFunctions[numFunctions++] = {"Ejemplo2", []() { Tapioca::logInfo("Funcion 2 creada desde el Billiards"); }};
+    // ...
+
+    return numFunctions;
+}

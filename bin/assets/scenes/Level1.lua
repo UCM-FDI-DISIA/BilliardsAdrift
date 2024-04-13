@@ -65,6 +65,53 @@ scene = {
             }
         }
     },
+    -- ContinueImageButton={
+    --     components = {
+    --         Transform = {
+    --             positionX = WINDOW_WIDTH / 2,
+    --             positionY = WINDOW_HEIGHT / 2-50,
+    --             positionZ = 0.0,
+    --             scaleX = 200.0,
+    --             scaleY = 70.0,
+    --             scaleZ = 0.0,
+    --             rotationX = 0.0,
+    --             rotationY = 0.0,
+    --             rotationZ = 0.0
+    --         },
+    --         ImageTextButton = {
+    --             name = "ContinueButton",
+    --             onClickId = "Ejemplo2",
+    --             wantText = false,
+    --             imagePathNormal = "textures/buttons/continue1.png",
+    --             imagePathHover = "textures/buttons/continue2.png",
+    --             imagePathActive = "textures/buttons/continue2.png",
+    --             uv0X = 0.0,
+    --             uv0Y = 0.0,
+    --             uv1X = 1.0,
+    --             uv1Y = 1.0,
+    --             imageBgColorR = 0.0,
+    --             imageBgColorG = 0.0,
+    --             imageBgColorB = 0.0,
+    --             imageBgColorA = 0.0,
+    --             imageTintR = 1.0,
+    --             imageTintG = 1.0,
+    --             imageTintB = 1.0,
+    --             imageTintA = 1.0,
+    --             normalColorR = 0.0, -- Con el alpha en 0.0 en todos los estados solo se vera las imagenes del boton
+    --             normalColorG = 0.0,
+    --             normalColorB = 0.0,
+    --             normalColorA = 0.0,
+    --             hoverColorR = 0.0,
+    --             hoverColorG = 0.0,
+    --             hoverColorB = 0.0,
+    --             hoverColorA = 0.0,
+    --             activeColorR = 0.0,
+    --             activeColorG = 0.0,
+    --             activeColorB = 0.0,
+    --             activeColorA = 0.0,
+    --         }
+    --     }
+    -- },
 
    Cue={
     components={
