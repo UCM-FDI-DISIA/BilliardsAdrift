@@ -66,7 +66,7 @@ public:
 
     inline int getScore() const { return score; }
     inline int getLife() const {  return life; }
-    inline uint64_t getTime() const { return (uint64_t)(time / 1000.f); }
+    inline float getTime() const { return time / 1000.f; }
 
     /*
     * @brief Cambia la escena
@@ -88,7 +88,7 @@ public:
     * @brief Setea el valor absoluto de tiempo
     * @param t tiempo
     */
-    inline void setTime(const uint64_t t) { time = t * 1000; }
+    inline void setTime(const float t) { time = t * 1000; }
 
     /*
     * @brief Incrementa/decrementa s cantidad de puntuaci�n
@@ -104,7 +104,7 @@ public:
     * @brief Incrementa/decrementa t cantidad de tiempo
     * @param t cantidad de tiempo a incrementar/decrementar
     */
-    void changeTime(const uint64_t t);
+    void changeTime(const float t);
 
     /*
     * @brief Resta una vida a la vida total del jugador

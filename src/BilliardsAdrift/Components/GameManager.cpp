@@ -232,7 +232,7 @@ void GameManager::changeScore(int s) { score += s; }
 
 void GameManager::changeLife(int l) { life += l; }
 
-void GameManager::changeTime(uint64_t t) { time += t * 1000; }
+void GameManager::changeTime(float t) { time += t * 1000; }
 
 void GameManager::loseLife() {
     if (life > 0) {
