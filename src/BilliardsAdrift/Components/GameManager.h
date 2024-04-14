@@ -4,15 +4,21 @@
 #include "gameDefs.h"
 #include <string>
 #include <unordered_set>
+#include "Structure/BasicBuilder.h"
 
 namespace Tapioca {
 class GameObject;
+class MainLoop;
+class SceneLoader;
 }
 
 namespace BilliardsAdrift {
 class JUEGO_API GameManager : public Tapioca::Component, public Tapioca::Singleton<GameManager> {
 private:
     friend Singleton<GameManager>;
+
+    Tapioca::SceneLoader* sceneLoader;
+    Tapioca::MainLoop* mainLoop;
 
     enum State { MainMenu, InGame, GameOver, Pause };
 
@@ -108,6 +114,8 @@ public:
     * @brief Cuando se ha pulsado el boton de jugar
     */
     void onPlayConfirmed();
+
+    void pause();
     void onContinueConffirmed();
     void onRestartConffirmed();
     void onMainMenuConffirmed();

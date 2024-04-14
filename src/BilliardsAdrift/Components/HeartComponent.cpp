@@ -9,7 +9,7 @@
 namespace BilliardsAdrift {
 HeartComponent::HeartComponent() : gameM(nullptr) { }
 
-HeartComponent ::~HeartComponent() { }
+HeartComponent ::~HeartComponent() { delete gameM; }
 
 bool HeartComponent::initComponent(const CompMap& variables) {
     /*bool activeSet = setValueFromMap(active, "active", variables);
