@@ -1,6 +1,7 @@
 #pragma once
 #include "Structure/Component.h"
 #include "Utilities/Singleton.h"
+#include "Structure/ComponentBuilder.h"
 #include "gameDefs.h"
 #include <string>
 #include <unordered_set>
@@ -48,10 +49,10 @@ private:
    
     void onWin();
 
+    GameManager();
 public:
     COMPONENT_ID("GameManager");
 
-    GameManager();
     GameManager(GameManager&) = delete;
     GameManager(GameManager&&) = delete;
     GameManager& operator=(GameManager&) = delete;
@@ -119,5 +120,12 @@ public:
     void onContinueConffirmed();
     void onRestartConffirmed();
     void onMainMenuConffirmed();
+};
+
+class JUEGO_API GameManagerBuilder : public Tapioca::ComponentBuilder {
+public:
+    GameManagerBuilder() : Tapioca::ComponentBuilder(GameManager::id) { }
+
+    inline Tapioca::Component* createComponent() override { return GameManager::create(); }
 };
 }

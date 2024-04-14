@@ -22,7 +22,8 @@ void addComponentFactories() {
     std::cout << "Anadiendo las factorias del juego\n";
 #endif
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
-    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::GameManager>());
+    factMngr->addBuilder(new BilliardsAdrift::GameManagerBuilder());
+    //factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::GameManager>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
