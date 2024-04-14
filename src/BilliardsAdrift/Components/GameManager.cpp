@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "UIManager.h"
 #include "SceneLoader.h"
 #include "Structure/GameObject.h"
 #include "Structure/Scene.h"
@@ -16,17 +17,30 @@ BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::
 namespace BilliardsAdrift {
 
 GameManager::GameManager()
-    : INIT_TIME(0), INIT_LIFE(0), time(0), life(0), state(MainMenu), score(0), processing(false), actualLevel(1) { }
+    : firstStateName(""), currentStateName(""), currentState(), INIT_TIME(0), INIT_LIFE(0), time(0), life(0), score(0),
+      processing(false), actualLevel(1) { }
+
+GameManager::~GameManager() { 
+    // HAY QUE ELIMINAR LAS FUNCIONES CREADAS EN EL START
+    Tapioca::UIManager::instance()->removeFunction("Play");
+    Tapioca::UIManager::instance()->removeFunction("Continue");
+    Tapioca::UIManager::instance()->removeFunction("Restart");
+    Tapioca::UIManager::instance()->removeFunction("MainMenu");
+}
 
 void GameManager::reset() { }
 
-bool initComponent(const CompMap& variables) { return false; }
-
 bool GameManager::initComponent(const CompMap& variables) {
+    if (!setValueFromMap(firstStateName, "firstStateName", variables)) {
+        Tapioca::logError("GameManager: no se pudo inicializar firstSceneName.");
+        return false;
+    }
+
     if (!setValueFromMap(INIT_LIFE, "initLife", variables)) {
         Tapioca::logError("GameManager: no se pudo inicializar INIT_LIFE.");
         return false;
     }
+
     float timeAux;
     if (!setValueFromMap(timeAux, "initTime", variables)) {
         Tapioca::logError("GameManager: no se pudo inicializar INIT_TIME.");
@@ -39,12 +53,31 @@ bool GameManager::initComponent(const CompMap& variables) {
 }
 
 void GameManager::start() {
-    state = InGame;
-    onStart();
+    // Funciones de los botones
+    Tapioca::UIManager::instance()->setFunction(
+        "Play", [&]() { this->onPlayConfirmed(); });
+    Tapioca::UIManager::instance()->setFunction(
+        "Continue", [&]() { this->onContinueConffirmed(); });
+    Tapioca::UIManager::instance()->setFunction(
+        "Restart", [&]() { this->onRestartConffirmed(); });
+    Tapioca::UIManager::instance()->setFunction(
+        "MainMenu", [&]() { this->onMainMenuConffirmed(); });
+
+    currentStateName = firstStateName;
+    if (currentStateName == "MainMenu") currentState = MainMenu;
+    else if (currentStateName == "InGame") {
+        currentState = InGame;
+        onStart();
+    }
+    else if (currentStateName == "EndScreen")
+        currentState = GameOver;
+    else if (currentStateName == "PauseMenu")
+        currentState = Pause;
+    changeScene(currentStateName);
 }
 
 void GameManager::update(const uint64_t deltaTime) {
-    if (state == InGame) {
+    if (currentState == InGame) {
         time -= deltaTime;
 
 #ifdef _DEBUG
@@ -110,7 +143,6 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     }
 }
 
-
 void GameManager::onStart() {
     time = INIT_TIME * 1000;
     score = 0;
@@ -126,8 +158,15 @@ void GameManager::onStart() {
 }
 
 void GameManager::onGameOver() {
-    state = GameOver;
+    currentState = GameOver;
     changeScene("EndScreen.lua");
+}
+
+void GameManager::onPlayConfirmed() {
+    currentState = InGame;
+    onStart();
+    changeScene("Level" + std::to_string(actualLevel));
+    Tapioca::MainLoop::instance()->deleteScene("MainMenu");
 }
 
 void GameManager::onContinueConffirmed() {
@@ -153,7 +192,7 @@ void GameManager::onRestartConffirmed() {
 
 void GameManager::onMainMenuConffirmed() {
 
-    state = MainMenu;
+    currentState = MainMenu;
     std::string str1 = "Level";
     std::string str2 = std::to_string(actualLevel);
     std::string str3 = ".lua";
@@ -164,21 +203,8 @@ void GameManager::onMainMenuConffirmed() {
 
 void GameManager::onWin() { }
 
-int GameManager::getScore() { return score; }
-
-int GameManager::getLife() { return life; }
-
-uint64_t GameManager::getTime() { return (uint64_t)(time / 1000.f); }
-
-bool GameManager::changeScene(std::string const& scene) const {
-    return Tapioca::SceneLoader::instance()->loadScene(scene);
-}
-
-void GameManager::setScore(const int s) { score = s; }
-
-void GameManager::setLife(const int l) { life = l; }
-
-void GameManager::setTime(uint64_t t) { time = t * 1000; }
+// Igual hay pasarle el nombre de la escena al motor y que el motor se encargue de cargarla, pero COMO?
+void GameManager::changeScene(std::string const& scene) const { Tapioca::SceneLoader::instance()->loadScene(scene); }
 
 void GameManager::changeScore(int s) { score += s; }
 

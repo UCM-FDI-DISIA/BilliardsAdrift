@@ -1,5 +1,5 @@
 #pragma once
-#include "../gameDefs.h"
+#include "gameDefs.h"
 #include "Structure/Component.h"
 #include "Utilities/Vector2.h"
 #include "Utilities/Vector3.h"

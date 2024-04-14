@@ -1,5 +1,5 @@
 #pragma once
-#include "../gameDefs.h"
+#include "gameDefs.h"
 #include "Structure/Component.h"
 
 namespace Tapioca {

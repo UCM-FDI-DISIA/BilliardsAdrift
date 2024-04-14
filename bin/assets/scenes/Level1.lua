@@ -32,10 +32,6 @@ scene = {
                 targetToLookY = 0.0,
                 targetToLookZ = 0.0
             },
-            GameManager = {
-                initLife = 3,
-                initTime = 9999.0
-            },
             LightDirComp = {
                 directionX = 0.0,
                 directionY = -1.0,
@@ -44,7 +40,7 @@ scene = {
             }
         }
     },
-    TimerText={
+    TimerText = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
@@ -65,98 +61,51 @@ scene = {
             }
         }
     },
-    -- ContinueImageButton={
-    --     components = {
-    --         Transform = {
-    --             positionX = WINDOW_WIDTH / 2,
-    --             positionY = WINDOW_HEIGHT / 2-50,
-    --             positionZ = 0.0,
-    --             scaleX = 200.0,
-    --             scaleY = 70.0,
-    --             scaleZ = 0.0,
-    --             rotationX = 0.0,
-    --             rotationY = 0.0,
-    --             rotationZ = 0.0
-    --         },
-    --         ImageTextButton = {
-    --             name = "ContinueButton",
-    --             onClickId = "Ejemplo2",
-    --             wantText = false,
-    --             imagePathNormal = "textures/buttons/continue1.png",
-    --             imagePathHover = "textures/buttons/continue2.png",
-    --             imagePathActive = "textures/buttons/continue2.png",
-    --             uv0X = 0.0,
-    --             uv0Y = 0.0,
-    --             uv1X = 1.0,
-    --             uv1Y = 1.0,
-    --             imageBgColorR = 0.0,
-    --             imageBgColorG = 0.0,
-    --             imageBgColorB = 0.0,
-    --             imageBgColorA = 0.0,
-    --             imageTintR = 1.0,
-    --             imageTintG = 1.0,
-    --             imageTintB = 1.0,
-    --             imageTintA = 1.0,
-    --             normalColorR = 0.0, -- Con el alpha en 0.0 en todos los estados solo se vera las imagenes del boton
-    --             normalColorG = 0.0,
-    --             normalColorB = 0.0,
-    --             normalColorA = 0.0,
-    --             hoverColorR = 0.0,
-    --             hoverColorG = 0.0,
-    --             hoverColorB = 0.0,
-    --             hoverColorA = 0.0,
-    --             activeColorR = 0.0,
-    --             activeColorG = 0.0,
-    --             activeColorB = 0.0,
-    --             activeColorA = 0.0,
-    --         }
-    --     }
-    -- },
-
-   Cue={
-    components={
-        Transform = {
-            positionX = 0.0,
-            positionY = 0.0,
-            positionZ = 0.0,
-            scaleX = 1.0,
-            scaleY = 1.0,
-            scaleZ = 1.0,
-            rotationX = 0.0,
-            rotationY = 0.0,
-            rotationZ = 0.0
-        } 
-     },
-    children ={
-        CueContainer={
-            components={
-                Transform = {
-                    positionX = 0.0,
-                    positionY = 0.0,
-                    positionZ =-8.0,--offset
-                    scaleX = 10.0,
-                    scaleY = 10.0,
-                    scaleZ = 10.0,
-                    rotationX = 0.0,
-                    rotationY = 0.0,
-                    rotationZ = 0.0
-                }, 
-                MeshRenderer = {
-                    meshName = "models/CueStick/CueStick.mesh",
-                },
-                CueController = {    
-                    powerFactor=600.0,
-                    moveBackwardFactor=0.5,
-                    rotateFactor=0.3,
-                    impulseTime=0.5,
-                    impulseFactor=0.05
+    
+    Cue = {
+        components = {
+            Transform = {
+                positionX = 0.0,
+                positionY = 0.0,
+                positionZ = 0.0,
+                scaleX = 1.0,
+                scaleY = 1.0,
+                scaleZ = 1.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            } 
+        },
+        children = {
+            CueContainer = {
+                components = {
+                    Transform = {
+                        positionX = 0.0,
+                        positionY = 0.0,
+                        positionZ = -8.0,--offset
+                        scaleX = 10.0,
+                        scaleY = 10.0,
+                        scaleZ = 10.0,
+                        rotationX = 0.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    }, 
+                    MeshRenderer = {
+                        meshName = "models/CueStick/CueStick.mesh",
+                    },
+                    CueController = {    
+                        powerFactor = 600.0,
+                        moveBackwardFactor = 0.5,
+                        rotateFactor = 0.3,
+                        impulseTime = 0.5,
+                        impulseFactor = 0.05
+                    }
                 }
             }
         }
-    }
-},
-    BallPlayer={
-        components={
+    },
+    BallPlayer = {
+        components = {
             Transform = {
                 positionX = 0.0,
                 positionY = 8.0,
@@ -170,26 +119,24 @@ scene = {
             }, 
             MeshRenderer = {
                 meshName = "models/Ball1/Ball1.mesh",
-                materialName="white"
+                materialName = "white"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.8,
-                colliderScaleY=0.8,
-                colliderScaleZ=0.8,
-                isTrigger=false,
-                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=0.5,
-                damping=0.4,
-                bounciness=1.0
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.8,
+                colliderScaleY = 0.8,
+                colliderScaleZ = 0.8,
+                isTrigger = false,
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
             },
             ColoredBall = {
                 ballId = "white"
             }
         }
-            
-           
     },
  --NO BORRAR
     -- Cue={
@@ -206,13 +153,13 @@ scene = {
     --             rotationZ = 0.0
     --         } 
     --      },
-    --     children ={
-    --         CueContainer={
-    --             components={
+    --      children = {
+    --         CueContainer = {
+    --             components = {
     --                 Transform = {
     --                     positionX = 0.0,
     --                     positionY = 0.0,
-    --                     positionZ =5.0,--offset
+    --                     positionZ = 5.0,--offset
     --                     scaleX = 10.0,
     --                     scaleY = 10.0,
     --                     scaleZ = 10.0,
@@ -224,18 +171,18 @@ scene = {
     --                     meshName = "models/CueStick/CueStick.mesh",
     --                 },
     --                 CueController = {    
-    --                     powerFactor=3.0,
-    --                     moveBackwardFactor=0.5,
-    --                     rotateFactor=0.5,
-    --                     impulseTime=0.5,
-    --                     impulseFactor=0.05
+    --                     powerFactor = 3.0,
+    --                     moveBackwardFactor = 0.5,
+    --                     rotateFactor = 0.5,
+    --                     impulseTime = 0.5,
+    --                     impulseFactor = 0.05
     --                 }
     --             }
     --         }
     --     }
     -- },
-    MovableWall1={
-        components={
+    MovableWall1 = {
+        components = {
             Transform = {
                 positionX = 12.2,
                 positionY = 8.2,
@@ -249,32 +196,32 @@ scene = {
             },
             MeshRenderer = {
                 meshName = "models/cube2.mesh",
-                materialName= "grey"
+                materialName = "grey"
             },
             RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=1.0,
-                colliderScaleY=1.0,
-                colliderScaleZ=4.0,
-                isTrigger=false,
-                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=0.0,
-                friction=1.0,
-                damping=0.0,
-                bounciness=0.5
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 4.0,
+                isTrigger = false,
+                movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 0.0,
+                friction = 1.0,
+                damping = 0.0,
+                bounciness = 0.5
             },
             MovableWall = {    
-                speed=0.01,
-                destX=12.2,
-                destZ=8.0,
-                --destX=8.0,
-                --destZ=-2.0
+                speed = 0.01,
+                destX = 12.2,
+                destZ = 8.0,
+                --destX = 8.0,
+                --destZ = -2.0
               
             }
         }
     },
-    -- Accelerator1={
-    --     components={
+    -- Accelerator1 = {
+    --     components = {
     --         Transform = {
     --             positionX = 0.0,
     --             positionY = -2.8,
@@ -288,38 +235,38 @@ scene = {
     --         },
     --         -- MeshRenderer = {
     --         --     meshName = "models/cube.mesh",
-    --         --     materialName= "grey"
+    --         --     materialName = "grey"
     --         -- },
     --         RigidBody = {    
-    --             colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-    --             colliderScaleX=2.0,
-    --             colliderScaleY=2.0,
-    --             colliderScaleZ=2.0,
-    --             isTrigger=true,
-    --             movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-    --             mass=0.0,
-    --             friction=0.0,
-    --             damping=0.0,
-    --             bounciness=0.0
+    --             colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+    --             colliderScaleX = 2.0,
+    --             colliderScaleY = 2.0,
+    --             colliderScaleZ = 2.0,
+    --             isTrigger = true,
+    --             movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+    --             mass = 0.0,
+    --             friction = 0.0,
+    --             damping = 0.0,
+    --             bounciness = 0.0
     --         },
     --         Accelerator = {    
-    --             speedFactor=1.5,
+    --             speedFactor = 1.5,
     --         },
     --         PlaneComponent = {  
-    --             materialName="lighting",
-    --             upX=0.0,
-    --             upY=0.0,
-    --             upZ=1.0,
-    --             rkNormalX=0.0,
-    --             rkNormalY=1.0,
-    --             rkNormalZ=0.0,
-    --             -- width=200.0,
-    --             -- height=200.0
+    --             materialName = "lighting",
+    --             upX = 0.0,
+    --             upY = 0.0,
+    --             upZ = 1.0,
+    --             rkNormalX = 0.0,
+    --             rkNormalY = 1.0,
+    --             rkNormalZ = 0.0,
+    --             -- width = 200.0,
+    --             -- height = 200.0
     --         }
     --     }
     -- },
-    Ground={
-        components={
+    Ground = {
+        components = {
             Transform = {
                 positionX = 0.0,
                 positionY = 0.0,
@@ -335,16 +282,16 @@ scene = {
                 meshName = "models/Table2/Table.mesh"
             },
             RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=33.0,
-                colliderScaleY=15.0,
-                colliderScaleZ=7.0,
-                isTrigger=false,
-                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=0.0,
-                friction=0.5,
-                damping=0.0,
-                bounciness=1.0
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 33.0,
+                colliderScaleY = 15.0,
+                colliderScaleZ = 7.0,
+                isTrigger = false,
+                movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 0.0,
+                friction = 0.5,
+                damping = 0.0,
+                bounciness = 1.0
             }
         },
         children = {
@@ -362,16 +309,16 @@ scene = {
                         rotationZ = 0.0
                     },
                     RigidBody = {    
-                        colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                        colliderScaleX=1.0,
-                        colliderScaleY=3.0,
-                        colliderScaleZ=17.0,
-                        isTrigger=false,
-                        movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                        mass=0.0,
-                        friction=0.5,
-                        damping=0.0,
-                        bounciness=1.0
+                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX = 1.0,
+                        colliderScaleY = 3.0,
+                        colliderScaleZ = 17.0,
+                        isTrigger = false,
+                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass = 0.0,
+                        friction = 0.5,
+                        damping = 0.0,
+                        bounciness = 1.0
                     }
                 }
             },
@@ -389,16 +336,16 @@ scene = {
                         rotationZ = 0.0
                     },
                     RigidBody = {    
-                        colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                        colliderScaleX=1.0,
-                        colliderScaleY=3.0,
-                        colliderScaleZ=17.0,
-                        isTrigger=false,
-                        movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                        mass=0.0,
-                        friction=1.0,
-                        damping=0.0,
-                        bounciness=1.0
+                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX = 1.0,
+                        colliderScaleY = 3.0,
+                        colliderScaleZ = 17.0,
+                        isTrigger = false,
+                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass = 0.0,
+                        friction = 1.0,
+                        damping = 0.0,
+                        bounciness = 1.0
                     }
                 }
             },
@@ -416,16 +363,16 @@ scene = {
                         rotationZ = 0.0
                     },
                     RigidBody = {    
-                        colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                        colliderScaleX=30.0,
-                        colliderScaleY=3.0,
-                        colliderScaleZ=1.0,
-                        isTrigger=false,
-                        movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                        mass=0.0,
-                        friction=1.0,
-                        damping=0.0,
-                        bounciness=1.0
+                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX = 30.0,
+                        colliderScaleY = 3.0,
+                        colliderScaleZ = 1.0,
+                        isTrigger = false,
+                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass = 0.0,
+                        friction = 1.0,
+                        damping = 0.0,
+                        bounciness = 1.0
                     }
                 }
             },
@@ -443,22 +390,22 @@ scene = {
                         rotationZ = 0.0
                     },
                     RigidBody = {    
-                        colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                        colliderScaleX=30.0,
-                        colliderScaleY=3.0,
-                        colliderScaleZ=1.0,
-                        isTrigger=false,
-                        movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                        mass=0.0,
-                        friction=1.0,
-                        damping=0.0,
-                        bounciness=1.0
+                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX = 30.0,
+                        colliderScaleY = 3.0,
+                        colliderScaleZ = 1.0,
+                        isTrigger = false,
+                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass = 0.0,
+                        friction = 1.0,
+                        damping = 0.0,
+                        bounciness = 1.0
                     }
                 }
             }
         }
     },
-    BallYellow={
+    BallYellow = {
         components={
             Transform = {
                 positionX = 5.5,
@@ -475,23 +422,23 @@ scene = {
                 meshName = "models/Ball1/Ball1.mesh"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.7,
-                colliderScaleY=0.7,
-                colliderScaleZ=0.7,
-                isTrigger=false,
-                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=0.5,
-                damping=0.4,
-                bounciness=1.0
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.7,
+                colliderScaleY = 0.7,
+                colliderScaleZ = 0.7,
+                isTrigger = false,
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
             },
             ColoredBall = {
                 ballId = "yellow"
             }
         }
     },
-    BallBlue={
+    BallBlue = {
         components={
             Transform = {
                 positionX = -22.5,
@@ -508,16 +455,16 @@ scene = {
                 meshName = "models/Ball2/Ball2.mesh"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.7,
-                colliderScaleY=0.7,
-                colliderScaleZ=0.7,
-                isTrigger=false,
-                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=0.5,
-                damping=0.4,
-                bounciness=1.0
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.7,
+                colliderScaleY = 0.7,
+                colliderScaleZ = 0.7,
+                isTrigger = false,
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
             },
             ColoredBall = {
                 ballId = "blue"
@@ -541,16 +488,16 @@ scene = {
                 meshName = "models/Ball3/Ball3.mesh"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.7,
-                colliderScaleY=0.7,
-                colliderScaleZ=0.7,
-                isTrigger=false,
-                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=0.5,
-                damping=0.4,
-                bounciness=1.0
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.7,
+                colliderScaleY = 0.7,
+                colliderScaleZ = 0.7,
+                isTrigger = false, 
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
             },
             ColoredBall = {
                 ballId = "red"
@@ -574,16 +521,16 @@ scene = {
                 meshName = "models/Ball4/Ball4.mesh"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.7,
-                colliderScaleY=0.7,
-                colliderScaleZ=0.7,
-                isTrigger=false,
-                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=0.5,
-                damping=0.4,
-                bounciness=1.0
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.7,
+                colliderScaleY = 0.7,
+                colliderScaleZ = 0.7,
+                isTrigger = false,
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
             },
             ColoredBall = {
                 ballId = "purple"
@@ -607,16 +554,16 @@ scene = {
                 meshName = "models/Ball5/Ball5.mesh"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.7,
-                colliderScaleY=0.7,
-                colliderScaleZ=0.7,
-                isTrigger=false,
-                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=0.5,
-                damping=0.4,
-                bounciness=1.0
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.7,
+                colliderScaleY = 0.7,
+                colliderScaleZ = 0.7,
+                isTrigger = false,
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
             },
             ColoredBall = {
                 ballId = "orange"
@@ -640,16 +587,16 @@ scene = {
                 meshName = "models/Ball6/Ball6.mesh"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.7,
-                colliderScaleY=0.7,
-                colliderScaleZ=0.7,
-                isTrigger=false,
-                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=0.5,
-                damping=0.4,
-                bounciness=1.0
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.7,
+                colliderScaleY = 0.7,
+                colliderScaleZ = 0.7,
+                isTrigger = false,
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
             },
             ColoredBall = {
                 ballId = "green"
@@ -674,22 +621,22 @@ scene = {
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.7,
-                colliderScaleY=0.7,
-                colliderScaleZ=0.7,
-                isTrigger=false,
-                movementType=0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
-                damping=0.4,
-                bounciness=0.5
+                colliderScaleX = 0.7,
+                colliderScaleY = 0.7,
+                colliderScaleZ = 0.7,
+                isTrigger = false,
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 3.0,
+                friction = 2.0,
+                damping = 0.4,
+                bounciness = 0.5
             },
             ColoredBall = {
                 ballId = "black"
             }
         }
     },
-    Heart={
+    Heart={ -- Esto deja memory leaks ?
         components={
             Transform = {
                 positionX = -12.0,
@@ -708,15 +655,15 @@ scene = {
             },
             RigidBody = {    
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.8,
-                colliderScaleY=0.8,
-                colliderScaleZ=0.8,
-                isTrigger=true,
-                movementType=2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=1.0,
-                damping=0.4,
-                bounciness=0.5
+                colliderScaleX = 0.8,
+                colliderScaleY = 0.8,
+                colliderScaleZ = 0.8,
+                isTrigger = true,
+                movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 1.0,
+                damping = 0.4,
+                bounciness = 0.5
             },
             HeartComponent = { }
         }
@@ -729,7 +676,7 @@ scene = {
                 positionZ = 7.6,
                 scaleX = 9.0,
                 scaleY = 9.0,
-                scaleZ =9.0,
+                scaleZ = 9.0,
                 rotationX = 0.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
@@ -739,30 +686,30 @@ scene = {
             --     materialName= "grey"
             -- },
             RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=2.0,
-                colliderScaleY=2.0,
-                colliderScaleZ=2.0,
-                isTrigger=true,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=0.0,
-                friction=0.0,
-                damping=0.0,
-                bounciness=0.0
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 2.0,
+                colliderScaleY = 2.0,
+                colliderScaleZ = 2.0,
+                isTrigger = true,
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 0.0,
+                friction = 0.0,
+                damping = 0.0,
+                bounciness = 0.0
             },
             Accelerator = {    
-                speedFactor=5.0,
+                speedFactor = 5.0,
             },
             PlaneComponent = {  
-                materialName="lighting",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName = "lighting",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -787,15 +734,15 @@ scene = {
             },
             RigidBody = {
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.6,
-                colliderScaleY=0.6,
-                colliderScaleZ=0.6,
-                isTrigger=true,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=1.0,
-                damping=0.4,
-                bounciness=0.5
+                colliderScaleX = 0.6,
+                colliderScaleY = 0.6,
+                colliderScaleZ = 0.6,
+                isTrigger = true,
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 1.0,
+                damping = 0.4,
+                bounciness = 0.5
             }
         }
     },
@@ -816,16 +763,16 @@ scene = {
                 ballId = "orange"
             },
             RigidBody = {
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.6,
-                colliderScaleY=0.6,
-                colliderScaleZ=0.6,
-                isTrigger=true,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=1.0,
-                damping=0.4,
-                bounciness=0.5
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.6,
+                colliderScaleY = 0.6,
+                colliderScaleZ = 0.6,
+                isTrigger = true,
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 1.0,
+                damping = 0.4,
+                bounciness = 0.5
             }
         }
     },
@@ -846,16 +793,16 @@ scene = {
                 ballId = "green"
             },
             RigidBody = {
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.6,
-                colliderScaleY=0.6,
-                colliderScaleZ=0.6,
-                isTrigger=true,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=2.0,
-                friction=1.0,
-                damping=0.4,
-                bounciness=0.5
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.6,
+                colliderScaleY = 0.6,
+                colliderScaleZ = 0.6,
+                isTrigger = true,
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 1.0,
+                damping = 0.4,
+                bounciness = 0.5
             }
         }
     },
@@ -876,16 +823,16 @@ scene = {
                 ballId = "red"
             },
             RigidBody = {
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.6,
-                colliderScaleY=0.6,
-                colliderScaleZ=0.6,
-                isTrigger=true,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
-                damping=0.4,
-                bounciness=0.5
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.6,
+                colliderScaleY = 0.6,
+                colliderScaleZ = 0.6,
+                isTrigger = true,
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 3.0,
+                friction = 2.0,
+                damping = 0.4,
+                bounciness = 0.5
             }
         }
     },
@@ -906,16 +853,16 @@ scene = {
                 ballId = "blue"
             },
             RigidBody = {
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.6,
-                colliderScaleY=0.6,
-                colliderScaleZ=0.6,
-                isTrigger=true,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
-                damping=0.4,
-                bounciness=0.5
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.6,
+                colliderScaleY = 0.6,
+                colliderScaleZ = 0.6,
+                isTrigger = true,
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 3.0,
+                friction = 2.0,
+                damping = 0.4,
+                bounciness = 0.5
             }
         }
     },
@@ -936,16 +883,16 @@ scene = {
                 ballId = "purple"
             },
             RigidBody = {
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX=0.6,
-                colliderScaleY=0.6,
-                colliderScaleZ=0.6,
-                isTrigger=true,
-                movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass=3.0,
-                friction=2.0,
-                damping=0.4,
-                bounciness=0.5
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.6,
+                colliderScaleY = 0.6,
+                colliderScaleZ = 0.6,
+                isTrigger = true,
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 3.0,
+                friction = 2.0,
+                damping = 0.4,
+                bounciness = 0.5
             }
         }
     }

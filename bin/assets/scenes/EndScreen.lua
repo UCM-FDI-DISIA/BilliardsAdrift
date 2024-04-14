@@ -1,5 +1,28 @@
 scene = {
-
+    {
+        components = {
+            Transform = {
+                positionX = 0.0,
+                positionY = 0.0,
+                positionZ = 0.0,
+                scaleX = 1.0,
+                scaleY = 1.0,
+                scaleZ = 1.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            CameraComponent = {
+                zOrder = 2, -- Cuando se arregle lo del viewport, se podrá cambiar a 0
+                bgColorR = 0.0,
+                bgColorG = 0.8,
+                bgColorB = 0.0,
+                targetToLookX = 0.0,
+                targetToLookY = 0.0,
+                targetToLookZ = 0.0
+            }
+        }
+    },
     ContinueImageButton={
         -- zIndex = 0, -- No importa si es 0
         components = {

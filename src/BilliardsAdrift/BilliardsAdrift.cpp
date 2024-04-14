@@ -1,6 +1,8 @@
 #include "BilliardsAdrift.h"
 
 #include "WindowManager.h"
+#include "Structure/MainLoop.h"
+#include "SceneLoader.h"
 #include "Structure/FactoryManager.h"
 #include "Structure/BasicBuilder.h"
 
@@ -20,7 +22,7 @@ void addComponentFactories() {
     std::cout << "Anadiendo las factorias del juego\n";
 #endif
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
-    factMngr->addBuilder(new BilliardsAdrift::GameManagerBuilder());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::GameManager>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
@@ -32,26 +34,21 @@ void addComponentFactories() {
 
 std::string getWindowName() { return "Billiards Adrift"; }
 
-std::string getInitScene() { return "Level1.lua"; }
+std::string getInitScene() { return "GameManager.lua"; }
 
 int getFunctions(Function* gameFunctions, int maxFunctions) {
     if (!gameFunctions) return 0;
 
     int numFunctions = 0;
 
+    // CREAR UNICAMENTE FUNCIONES QUE NO SEAN DEPENDIENTES GAME MANAGER INSTANCE,
+    // SI NO, HAY QUE CREAR LAS FUNCIONES EN EL START DE GAME MANAGER
+
     // Comprobar que no supere el numero maximo de funciones
     if ((numFunctions + 1) <= maxFunctions)
         gameFunctions[numFunctions++] = {"Ejemplo1", []() { Tapioca::logInfo("Funcion 1 creada desde el Billiards"); }};
     if ((numFunctions + 1) <= maxFunctions)
         gameFunctions[numFunctions++] = {"Ejemplo2", []() { Tapioca::logInfo("Funcion 2 creada desde el Billiards"); }};
-    if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"Continue", []() { BilliardsAdrift::GameManager::instance()->onContinueConffirmed(); }};
-    if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"Restart",
-                                         []() { BilliardsAdrift::GameManager::instance()->onRestartConffirmed(); }};
-    if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"MainMenu",
-                                         []() { BilliardsAdrift::GameManager::instance()->onMainMenuConffirmed(); }};
     // ...
 
     return numFunctions;
