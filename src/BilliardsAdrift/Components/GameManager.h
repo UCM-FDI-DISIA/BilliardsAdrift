@@ -29,14 +29,18 @@ private:
     int life;
     int64_t time;
 
+    int actualLevel;
+
     std::unordered_set<Tapioca::GameObject*> balls;
 
     bool processing;   //tras golpear el palo
 
     GameManager();
+    void reset();
 
     void onStart();
     void onGameOver();
+   
     void onWin();
 
     //    static GameManager* create() {
@@ -84,6 +88,10 @@ public:
 
     //resta una vida a la vida total del jugador
     void loseLife();
+
+    void onContinueConffirmed();
+    void onRestartConffirmed();
+    void onMainMenuConffirmed();
 };
 
 class JUEGO_API GameManagerBuilder : public Tapioca::ComponentBuilder {

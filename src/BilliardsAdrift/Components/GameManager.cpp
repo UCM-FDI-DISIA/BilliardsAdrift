@@ -2,11 +2,12 @@
 #include "SceneLoader.h"
 #include "Structure/GameObject.h"
 #include "Structure/Scene.h"
+#include "Structure/MainLoop.h"
 #include "Components/RigidBody.h"
 #include "Components/Animator.h"
 #include "ColoredBall.h"
 #include <iomanip>
-
+#include <string>
 template class JUEGO_API Tapioca::Singleton<BilliardsAdrift::GameManager>;
 
 template<>
@@ -15,7 +16,9 @@ BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::
 namespace BilliardsAdrift {
 
 GameManager::GameManager()
-    : INIT_TIME(0), INIT_LIFE(0), time(0), life(0), state(MainMenu), score(0), processing(false) { }
+    : INIT_TIME(0), INIT_LIFE(0), time(0), life(0), state(MainMenu), score(0), processing(false), actualLevel(1) { }
+
+void GameManager::reset() { }
 
 bool initComponent(const CompMap& variables) { return false; }
 
@@ -47,8 +50,7 @@ void GameManager::update(const uint64_t deltaTime) {
 #ifdef _DEBUG
         //std::cout << std::fixed << std::setprecision(2) << time / 1000. << "\n";
         if (time <= 0) {
-            state = Pause;
-            changeScene("PauseMenu.lua");
+            onGameOver();
 #ifdef _DEBUG
             std::cout << "El jugador se ha quedado sin tiempo.\n";
 #endif
@@ -79,6 +81,9 @@ void GameManager::update(const uint64_t deltaTime) {
 
 void GameManager::handleEvent(std::string const& id, void* info) {
     if (id == "ev_Pause") {
+        changeScene("PauseMenu.lua");
+    }
+    if (id == "Continue") {
         changeScene("PauseMenu.lua");
     }
     else if (id == "ev_Processing") {
@@ -120,7 +125,42 @@ void GameManager::onStart() {
     }
 }
 
-void GameManager::onGameOver() { }
+void GameManager::onGameOver() {
+    state = GameOver;
+    changeScene("EndScreen.lua");
+}
+
+void GameManager::onContinueConffirmed() {
+    actualLevel++;
+    std::string str1 = "Level";
+    std::string str2 = std::to_string(actualLevel);
+    std::string str3 = ".lua";
+    std::string result = str1 + str2 + str3;
+    changeScene(result);
+    start();
+}
+
+void GameManager::onRestartConffirmed() {
+    std::string str1 = "Level";
+    std::string str2 = std::to_string(actualLevel);
+    std::string str3 = ".lua";
+    std::string result = str1 + str2 + str3;
+    Tapioca::MainLoop::instance()->deleteScene("EndScreen.lua");
+    changeScene(result);
+
+    start();
+}
+
+void GameManager::onMainMenuConffirmed() {
+
+    state = MainMenu;
+    std::string str1 = "Level";
+    std::string str2 = std::to_string(actualLevel);
+    std::string str3 = ".lua";
+    std::string result = str1 + str2 + str3;
+    Tapioca::MainLoop::instance()->deleteScene(result);
+    changeScene("MainMenu.lua");
+}
 
 void GameManager::onWin() { }
 

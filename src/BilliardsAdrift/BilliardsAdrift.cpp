@@ -44,6 +44,14 @@ int getFunctions(Function* gameFunctions, int maxFunctions) {
         gameFunctions[numFunctions++] = {"Ejemplo1", []() { Tapioca::logInfo("Funcion 1 creada desde el Billiards"); }};
     if ((numFunctions + 1) <= maxFunctions)
         gameFunctions[numFunctions++] = {"Ejemplo2", []() { Tapioca::logInfo("Funcion 2 creada desde el Billiards"); }};
+    if ((numFunctions + 1) <= maxFunctions)
+        gameFunctions[numFunctions++] = {"Continue", []() { BilliardsAdrift::GameManager::instance()->onContinueConffirmed(); }};
+    if ((numFunctions + 1) <= maxFunctions)
+        gameFunctions[numFunctions++] = {"Restart",
+                                         []() { BilliardsAdrift::GameManager::instance()->onRestartConffirmed(); }};
+    if ((numFunctions + 1) <= maxFunctions)
+        gameFunctions[numFunctions++] = {"MainMenu",
+                                         []() { BilliardsAdrift::GameManager::instance()->onMainMenuConffirmed(); }};
     // ...
 
     return numFunctions;
