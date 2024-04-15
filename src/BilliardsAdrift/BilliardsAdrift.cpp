@@ -23,7 +23,6 @@ void addComponentFactories() {
 #endif
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
     factMngr->addBuilder(new BilliardsAdrift::GameManagerBuilder());
-    //factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::GameManager>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
@@ -42,14 +41,19 @@ int getFunctions(Function* gameFunctions, int maxFunctions) {
 
     int numFunctions = 0;
 
-    // CREAR UNICAMENTE FUNCIONES QUE NO SEAN DEPENDIENTES GAME MANAGER INSTANCE,
-    // SI NO, HAY QUE CREAR LAS FUNCIONES EN EL START DE GAME MANAGER
-
+    // Para las funciones lambda, se deben crear en los mismos componentes y eliminarlas en el mismo componente
     // Comprobar que no supere el numero maximo de funciones
     if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"Ejemplo1", []() { Tapioca::logInfo("Funcion 1 creada desde el Billiards"); }};
+        gameFunctions[numFunctions++] = {"Play", []() { BilliardsAdrift::GameManager::instance()->onPlayConfirmed(); }};
     if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"Ejemplo2", []() { Tapioca::logInfo("Funcion 2 creada desde el Billiards"); }};
+        gameFunctions[numFunctions++] = {"Continue",
+                                         []() { BilliardsAdrift::GameManager::instance()->onContinueConffirmed(); }};
+    if ((numFunctions + 1) <= maxFunctions)
+        gameFunctions[numFunctions++] = {"Restart",
+                                         []() { BilliardsAdrift::GameManager::instance()->onRestartConffirmed(); }};
+    if ((numFunctions + 1) <= maxFunctions)
+        gameFunctions[numFunctions++] = {"MainMenu",
+                                         []() { BilliardsAdrift::GameManager::instance()->onMainMenuConffirmed(); }};
     // ...
 
     return numFunctions;
