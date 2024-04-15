@@ -134,6 +134,7 @@ void CueController::hit() {
     mesh->setVisible(active = false);
     hitting = false;
     ballRb->addForce(tr->getParent()->forward() * (actualPower));
+    pushEvent("cueShot", nullptr, true);
 }
 
 void CueController::resetCue() {

@@ -135,6 +135,9 @@ scene = {
             },
             ColoredBall = {
                 ballId = "white"
+            },
+            WhiteBallComponent={
+
             }
         }
     },

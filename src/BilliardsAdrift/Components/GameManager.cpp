@@ -47,7 +47,7 @@ bool GameManager::initComponent(const CompMap& variables) {
 void GameManager::start() {
     sceneLoader = Tapioca::SceneLoader::instance();
     mainLoop = Tapioca::MainLoop::instance();
-    onStart();
+ 
 
     currentStateName = firstStateName;
     if (currentStateName == "MainMenu") currentState = MainMenu;
@@ -67,14 +67,13 @@ void GameManager::update(const uint64_t deltaTime) {
 #ifdef _DEBUG
         //std::cout << std::fixed << std::setprecision(2) << time / 1000. << "\n";
         if (time <= 0) {
-            onGameOver();
 #ifdef _DEBUG
             std::cout << "El jugador se ha quedado sin tiempo.\n";
 #endif
             pushEvent("ev_GameOver", nullptr);
         }
 #endif
-        // Compruueba que todas las bolas están inmovilizadas
+        // Compruueba que todas las bolas estï¿½n inmovilizadas
         auto it = balls.begin();
         while (it != balls.end()) {
             Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
@@ -99,9 +98,23 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     if (id == "ev_Pause") {
         onPause();
     }
-    if (id == "Continue") {
-        changeScene("PauseMenu.lua");
+    else if (id == "loadBalls") {
+       /* std::string str1 = "Level";
+        std::string str2 = std::to_string(actualLevel);
+        std::string result = str1 + str2;
+        auto v = mainLoop->getScene(result)->getObjects();
+        for (auto& g : v) {
+            ColoredBall* ball = g->getComponent<ColoredBall>();
+            if (ball != nullptr) {
+                balls.insert(g);
+                g->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(0));
+            }
+        }*/
     }
+    else if (id == "ev_onStart") {
+        onStart();
+    }
+
     else if (id == "ev_Processing") {
         processing = true;
     }
@@ -121,6 +134,15 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
         balls.erase(b);
         loseLife();
+    }
+    else if (id == "whiteBallHasHit") {
+        bool hit = *((bool*)info);
+        if (!hit) {
+            changeScore(-1);
+#ifdef _DEBUG
+            std::cout << "No se ha colisionado con ninguna bola\n";
+#endif
+        }
     }
 }
 
@@ -153,22 +175,18 @@ std::string GameManager::getActualLevelName() const { return "Level" + std::to_s
 void GameManager::onReset() { }
 
 void GameManager::onStart() {
+
     time = INIT_TIME * 1000;
     score = 0;
     life = INIT_LIFE;
-    auto v = object->getScene()->getObjects();
-    for (auto& g : v) {
-        ColoredBall* ball = g->getComponent<ColoredBall>();
-        if (ball != nullptr) {
-            balls.insert(g);
-            g->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(0));
-        }
-    }
+
+    pushEvent("loadBalls", nullptr, true);
 }
 
 void GameManager::onGameOver() {
     currentState = GameOver;
     changeScene("EndScreen.lua");
+    mainLoop->getScene("EndScreen.lua")->getHandler("ContinueButton")->die();
 }
 
 void GameManager::onWin() { }
@@ -194,9 +212,9 @@ void GameManager::onPause() {
 
 void GameManager::onPlayConfirmed() {
     currentState = InGame;
-    onStart();
     changeScene("Level" + std::to_string(actualLevel));
-    Tapioca::MainLoop::instance()->deleteScene("MainMenu");
+    mainLoop->deleteScene("MainMenu");
+    pushEvent("ev_onStart", nullptr, true);
 }
 
 void GameManager::onContinueConffirmed() { goToNextLevel(); }
@@ -213,4 +231,8 @@ void GameManager::onMainMenuConffirmed() {
     mainLoop->deleteScene(result);
     changeScene("MainMenu.lua");
 }
+
+
+
+
 }

@@ -14,6 +14,7 @@
 #include "Components/ExplosiveComponent.h"
 #include "Components/ColoredHole.h"
 #include "Components/ColoredBall.h"
+#include "Components/WhiteBallComponent.h"
 
 void init() { addComponentFactories(); }
 
@@ -30,6 +31,7 @@ void addComponentFactories() {
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::ExplosiveComponent>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<ColoredHole>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<ColoredBall>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<WhiteBallComponent>());
 }
 
 std::string getWindowName() { return "Billiards Adrift"; }
