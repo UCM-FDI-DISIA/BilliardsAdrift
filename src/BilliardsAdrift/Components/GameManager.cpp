@@ -47,7 +47,7 @@ bool GameManager::initComponent(const CompMap& variables) {
 void GameManager::start() {
     sceneLoader = Tapioca::SceneLoader::instance();
     mainLoop = Tapioca::MainLoop::instance();
- 
+
 
     currentStateName = firstStateName;
     if (currentStateName == "MainMenu") currentState = MainMenu;
@@ -99,7 +99,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         onPause();
     }
     else if (id == "loadBalls") {
-       /* std::string str1 = "Level";
+        /* std::string str1 = "Level";
         std::string str2 = std::to_string(actualLevel);
         std::string result = str1 + str2;
         auto v = mainLoop->getScene(result)->getObjects();
@@ -235,4 +235,5 @@ void GameManager::onMainMenuConffirmed() {
     std::string result = "Level" + std::to_string(actualLevel);
     mainLoop->deleteScene(result);
     changeScene("MainMenu.lua");
+}
 }
