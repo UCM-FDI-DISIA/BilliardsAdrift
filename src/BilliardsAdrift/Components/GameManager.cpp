@@ -144,6 +144,11 @@ void GameManager::handleEvent(std::string const& id, void* info) {
 #endif
         }
     }
+    else if (id == "whiteBallIn") {
+        if (balls.size() == 0) {
+            onGameOver();
+        }
+    }
 }
 
 // Igual hay pasarle el nombre de la escena al motor y que el motor se encargue de cargarla, pero COMO?
@@ -230,9 +235,4 @@ void GameManager::onMainMenuConffirmed() {
     std::string result = "Level" + std::to_string(actualLevel);
     mainLoop->deleteScene(result);
     changeScene("MainMenu.lua");
-}
-
-
-
-
 }
