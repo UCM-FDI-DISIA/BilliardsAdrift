@@ -238,21 +238,30 @@ void GameManager::onPlayConfirmed() {
     changeScene("Level" + std::to_string(actualLevel));
 
     mainLoop->deleteScene("MainMenu");
-    pushEvent("ev_onStart", nullptr, true,true);
+    pushEvent("ev_onStart", nullptr, true, true);
+
+    //PRUEBA NO BORRAR
+   /* currentState = Lose;
+    pushEvent("ev_GameOver", nullptr, true, true);*/
 }
 
 void GameManager::onContinueConfirmed() { goToNextLevel(); }
 
 void GameManager::onRestartConfirmed() {
     std::string result = "Level" + std::to_string(actualLevel);
-    mainLoop->deleteScene("EndScreen.lua");
+    mainLoop->deleteScene("EndScreen");
     changeScene(result);
 }
 
 void GameManager::onMainMenuConfirmed() {
+   
+    if (currentState == Lose || currentState == Win) mainLoop->deleteScene("EndScreen");
+    else {
+        std::string result = "Level" + std::to_string(actualLevel);
+        mainLoop->deleteScene(result);
+    }
+
     currentState = MainMenu;
-    std::string result = "Level" + std::to_string(actualLevel);
-    mainLoop->deleteScene(result);
     changeScene("MainMenu.lua");
 }
 }

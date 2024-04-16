@@ -25,6 +25,27 @@ scene = {
            
         }
     },
+    GameOverText={
+        components = {
+            Transform = {
+                positionX = WINDOW_WIDTH / 2,
+                positionY = WINDOW_HEIGHT / 2-150,
+                positionZ = 0.0,
+                scaleX = 0.0,
+                scaleY = 0.0,
+                scaleZ = 0.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            Text = {
+                name = "GameOverText",
+                text = "You Lose",
+                textSize = 90.0,
+                textFontName = "06126_BRITANIC.TTF"
+            }
+        }
+    },
     ContinueImageButton={
         -- zIndex = 0, -- No importa si es 0
         components = {
