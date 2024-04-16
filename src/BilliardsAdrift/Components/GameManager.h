@@ -23,7 +23,7 @@ private:
     /*
     * @brief Estados del juego
     */
-    enum State { MainMenu, InGame, GameOver, Pause };
+    enum State { MainMenu, InGame, GameOver, Pause,Lose,Win };
 
     Tapioca::SceneLoader* sceneLoader;   // Puntero al cargador de escenas
     Tapioca::MainLoop* mainLoop;         // Puntero al bucle principal
@@ -64,6 +64,11 @@ private:
     * coge la referencia a las bolas en balls e inicializa su velocidad a 0
     */
     void onStart();
+
+     /*
+    * @brief pierde la partida
+    */
+    void onLose();
 
     /*
     * @brief Cambia el estado del juego a GameOver y cambia de escena
@@ -207,17 +212,17 @@ public:
     /*
     * @brief Cuando se ha pulsado el boton de continuar desde EndScreen
     */
-    void onContinueConffirmed();
+    void onContinueConfirmed();
 
     /*
     * @brief Cuando se ha pulsado el boton de reiniciar desde EndScreen
     */
-    void onRestartConffirmed();
+    void onRestartConfirmed();
 
     /*
     * @brief Cuando se ha pulsado el boton de ir al MainMenu desde EndScreen
     */
-    void onMainMenuConffirmed();
+    void onMainMenuConfirmed();
 };
 
 class JUEGO_API GameManagerBuilder : public Tapioca::ComponentBuilder {

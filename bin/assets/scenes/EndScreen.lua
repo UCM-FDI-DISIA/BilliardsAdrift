@@ -21,6 +21,8 @@ scene = {
                 targetToLookY = 0.0,
                 targetToLookZ = 0.0
             }
+            
+           
         }
     },
     ContinueImageButton={
@@ -171,7 +173,25 @@ scene = {
                 -- windowFlags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoSavedSettings
             }
         }
+    } ,
+    BackgroundImage={ 
+        components = {
+            Transform = {
+                positionX = 0.0,
+                positionY = 0.0,
+                positionZ = -1.0,
+                scaleX = 1500.0,
+                scaleY = 900.0,
+                scaleZ = 1.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            ImageUI={
+                name="endBackground",
+                sourcefile="menuBackground.png"
+            }
+       }
     }
-
 
 }

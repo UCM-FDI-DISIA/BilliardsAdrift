@@ -49,13 +49,13 @@ int getFunctions(Function* gameFunctions, int maxFunctions) {
         gameFunctions[numFunctions++] = {"Play", []() { BilliardsAdrift::GameManager::instance()->onPlayConfirmed(); }};
     if ((numFunctions + 1) <= maxFunctions)
         gameFunctions[numFunctions++] = {"Continue",
-                                         []() { BilliardsAdrift::GameManager::instance()->onContinueConffirmed(); }};
+                                         []() { BilliardsAdrift::GameManager::instance()->onContinueConfirmed(); }};
     if ((numFunctions + 1) <= maxFunctions)
         gameFunctions[numFunctions++] = {"Restart",
-                                         []() { BilliardsAdrift::GameManager::instance()->onRestartConffirmed(); }};
+                                         []() { BilliardsAdrift::GameManager::instance()->onRestartConfirmed(); }};
     if ((numFunctions + 1) <= maxFunctions)
         gameFunctions[numFunctions++] = {"MainMenu",
-                                         []() { BilliardsAdrift::GameManager::instance()->onMainMenuConffirmed(); }};
+                                         []() { BilliardsAdrift::GameManager::instance()->onMainMenuConfirmed(); }};
     // ...
 
     return numFunctions;

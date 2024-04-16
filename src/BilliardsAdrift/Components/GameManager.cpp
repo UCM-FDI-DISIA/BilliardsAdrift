@@ -6,6 +6,7 @@
 #include "Structure/GameObject.h"
 #include "Components/RigidBody.h"
 #include "Components/Animator.h"
+#include "Components/MeshRenderer.h"
 #include "ColoredBall.h"
 #include "checkML.h"
 
@@ -70,6 +71,7 @@ void GameManager::update(const uint64_t deltaTime) {
 #ifdef _DEBUG
             std::cout << "El jugador se ha quedado sin tiempo.\n";
 #endif
+            currentState = Lose;
             pushEvent("ev_GameOver", nullptr);
         }
 #endif
@@ -78,8 +80,10 @@ void GameManager::update(const uint64_t deltaTime) {
         while (it != balls.end()) {
             Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
             auto v = rb->getVelocity();
-            if (std::abs(v.x < 1e-4) && std::abs(v.y < 1e-4) && std::abs(v.z < 1e-4)) {
-                //rb->setVelocity(Tapioca::Vector3(0));
+            auto f = rb->getTotalForce();
+            if (std::abs(v.x < 1e-4) && std::abs(v.y < 1e-4) && std::abs(v.z < 1e-4) && std::abs(f.x < 1e-4) &&
+                std::abs(f.y < 1e-4) && std::abs(f.z < 1e-4)) {
+                // rb->setVelocity(Tapioca::Vector3(0));
                 ++it;
             }
             else {
@@ -99,7 +103,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         onPause();
     }
     else if (id == "loadBalls") {
-        /* std::string str1 = "Level";
+        std::string str1 = "Level";
         std::string str2 = std::to_string(actualLevel);
         std::string result = str1 + str2;
         auto v = mainLoop->getScene(result)->getObjects();
@@ -109,7 +113,16 @@ void GameManager::handleEvent(std::string const& id, void* info) {
                 balls.insert(g);
                 g->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(0));
             }
-        }*/
+        }
+    }
+    else if (id == "ev_Lose") {
+        onLose();
+    }
+    else if (id == "ev_Win") {
+        onWin();
+    }
+    else if (id == "delete_ContinueButton") {
+        mainLoop->getScene("EndScreen")->getHandler("ContinueImageButton")->die();
     }
     else if (id == "ev_onStart") {
         onStart();
@@ -157,6 +170,7 @@ void GameManager::changeScene(std::string const& scene) const { Tapioca::SceneLo
 void GameManager::goToNextLevel() {
     actualLevel++;
     changeScene(getActualLevelName());
+    pushEvent("ev_onStart", nullptr, false, true);
 }
 
 void GameManager::changeScore(int s) { score += s; }
@@ -167,7 +181,8 @@ void GameManager::loseLife() {
     if (life > 0) life--;
     else {
         Tapioca::logInfo("El jugador se ha quedado sin vidas.\n");
-        pushEvent("ev_GameOver", nullptr);
+        currentState = Lose;
+        pushEvent("ev_GameOver", nullptr, false, true);
     }
 }
 
@@ -185,13 +200,16 @@ void GameManager::onStart() {
     score = 0;
     life = INIT_LIFE;
 
-    pushEvent("loadBalls", nullptr, true);
+    pushEvent("loadBalls", nullptr, true, true);
 }
 
+void GameManager::onLose() { pushEvent("delete_ContinueButton", nullptr, true, true); }
+
 void GameManager::onGameOver() {
-    currentState = GameOver;
     changeScene("EndScreen.lua");
-    mainLoop->getScene("EndScreen.lua")->getHandler("ContinueButton")->die();
+    if (currentState == Lose) pushEvent("ev_Lose", nullptr, false, true);
+    else
+        pushEvent("ev_Win", nullptr, false, true);
 }
 
 void GameManager::onWin() { }
@@ -218,19 +236,20 @@ void GameManager::onPause() {
 void GameManager::onPlayConfirmed() {
     currentState = InGame;
     changeScene("Level" + std::to_string(actualLevel));
+
     mainLoop->deleteScene("MainMenu");
     pushEvent("ev_onStart", nullptr, true);
 }
 
-void GameManager::onContinueConffirmed() { goToNextLevel(); }
+void GameManager::onContinueConfirmed() { goToNextLevel(); }
 
-void GameManager::onRestartConffirmed() {
+void GameManager::onRestartConfirmed() {
     std::string result = "Level" + std::to_string(actualLevel);
     mainLoop->deleteScene("EndScreen.lua");
     changeScene(result);
 }
 
-void GameManager::onMainMenuConffirmed() {
+void GameManager::onMainMenuConfirmed() {
     currentState = MainMenu;
     std::string result = "Level" + std::to_string(actualLevel);
     mainLoop->deleteScene(result);
