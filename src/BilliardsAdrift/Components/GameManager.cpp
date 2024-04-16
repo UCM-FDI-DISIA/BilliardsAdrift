@@ -238,7 +238,7 @@ void GameManager::onPlayConfirmed() {
     changeScene("Level" + std::to_string(actualLevel));
 
     mainLoop->deleteScene("MainMenu");
-    pushEvent("ev_onStart", nullptr, true);
+    pushEvent("ev_onStart", nullptr, true,true);
 }
 
 void GameManager::onContinueConfirmed() { goToNextLevel(); }
