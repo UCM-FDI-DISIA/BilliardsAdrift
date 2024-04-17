@@ -7,6 +7,7 @@
 #include "Components/RigidBody.h"
 #include "Components/Animator.h"
 #include "Components/MeshRenderer.h"
+#include "Components/Transform.h"
 #include "ColoredBall.h"
 #include "checkML.h"
 
@@ -115,6 +116,11 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             }
         }
     }
+    else if (id == "ev_MouseButtonDownLeft") {
+        iniBallPos = mainLoop->getScene("Level" + std::to_string(actualLevel))
+                                   ->getHandler("BallPlayer")
+                                   ->getComponent<Tapioca::Transform>()->getPosition();
+    }
     else if (id == "ev_Lose") {
         onLose();
     }
@@ -132,12 +138,20 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         processing = true;
     }
     else if (id == "ev_ToggleAnim") {
-        Tapioca::Animator* animator = getObject()->getScene()->getHandler("Sinbad")->getComponent<Tapioca::Animator>();
-        animator->playAnim("Dance");
+        Tapioca::Animator* animator = mainLoop->getScene("Level" + std::to_string(actualLevel))
+                                          ->getHandler("MilkTea")
+                                          ->getComponent<Tapioca::Animator>();
+        animator->playAnim("Idle");
         animator->setPlaying(animator->getPlaying());
     }
     else if (id == "BallShot") {
         Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
+        Tapioca::Animator* animator = mainLoop->getScene("Level" + std::to_string(actualLevel))
+                                          ->getHandler("MilkTea")
+                                          ->getComponent<Tapioca::Animator>();
+        animator->playAnim("Idle");
+        animator->setPlaying(animator->getPlaying());
+
         balls.erase(b);
     }
     else if (id == "ev_GameOver") {
@@ -160,6 +174,18 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     else if (id == "whiteBallIn") {
         if (balls.size() == 0) {
             onGameOver();
+        }
+        else {
+            setLife(-1);
+
+            Tapioca::GameObject* playerBall = mainLoop->getScene("Level" + std::to_string(actualLevel))
+                        ->getHandler("BallPlayer");
+
+            playerBall->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
+            playerBall->getComponent<Tapioca::Transform>()->setPosition(iniBallPos);
+            playerBall->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
+
+            Tapioca::logInfo("BOLA BLANCA EN AGUJERO");
         }
     }
 }
@@ -219,7 +245,7 @@ void GameManager::onPause() {
     std::string str2 = std::to_string(actualLevel);
     std::string result = str1 + str2;
 
-    Tapioca::logInfo("wdaujkdwaundawiudklawdaw\n");
+    //Tapioca::logInfo("wdaujkdwaundawiudklawdaw\n");
 
     if (currentState == InGame) {
         currentState = Pause;

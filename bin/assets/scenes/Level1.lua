@@ -898,5 +898,25 @@ scene = {
                 bounciness = 0.5
             }
         }
+    },
+    MilkTea = {
+        components = {
+            Transform = {
+                positionX = -5.8,
+                positionY = 50.0,
+                positionZ = 0.0,
+                scaleX = 0.2,
+                scaleY = 0.2,
+                scaleZ = 0.2,
+                rotationX = -45.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/cat/Cat.mesh",
+                --materialName = "white"
+            },
+            Animator = { }
+        }
     }
 }

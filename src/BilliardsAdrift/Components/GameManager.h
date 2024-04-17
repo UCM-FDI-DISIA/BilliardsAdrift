@@ -5,11 +5,14 @@
 #include <unordered_set>
 #include "Structure/ComponentBuilder.h"
 #include "gameDefs.h"
+#include "Utilities/Vector3.h"
+
 
 namespace Tapioca {
 class GameObject;
 class MainLoop;
 class SceneLoader;
+class Vector3;
 }
 
 namespace BilliardsAdrift {
@@ -42,6 +45,8 @@ private:
 
     std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
+
+    Tapioca::Vector3 iniBallPos;
 
     /*
     * @brief Cambia la escena
