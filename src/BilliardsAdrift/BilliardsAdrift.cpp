@@ -19,9 +19,8 @@
 void init() { addComponentFactories(); }
 
 void addComponentFactories() {
-#ifdef _DEBUG
-    std::cout << "Anadiendo las factorias del juego\n";
-#endif
+    Tapioca::logInfo("Anadiendo las factorias del juego");
+
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
     factMngr->addBuilder(new BilliardsAdrift::GameManagerBuilder());
     factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
@@ -37,26 +36,3 @@ void addComponentFactories() {
 std::string getWindowName() { return "Billiards Adrift"; }
 
 std::string getInitScene() { return "GameManager.lua"; }
-
-int getFunctions(Function* gameFunctions, int maxFunctions) {
-    if (!gameFunctions) return 0;
-
-    int numFunctions = 0;
-
-    // Para las funciones lambda, se deben crear en los mismos componentes y eliminarlas en el mismo componente
-    // Comprobar que no supere el numero maximo de funciones
-    if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"Play", []() { BilliardsAdrift::GameManager::instance()->onPlayConfirmed(); }};
-    if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"Continue",
-                                         []() { BilliardsAdrift::GameManager::instance()->onContinueConfirmed(); }};
-    if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"Restart",
-                                         []() { BilliardsAdrift::GameManager::instance()->onRestartConfirmed(); }};
-    if ((numFunctions + 1) <= maxFunctions)
-        gameFunctions[numFunctions++] = {"MainMenu",
-                                         []() { BilliardsAdrift::GameManager::instance()->onMainMenuConfirmed(); }};
-    // ...
-
-    return numFunctions;
-}

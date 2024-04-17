@@ -20,11 +20,4 @@ JUEGO_API std::string getWindowName();
 * @brief Devuelve el nombre de la primera escena del juego
 */
 JUEGO_API std::string getInitScene();
-/*
-* @brief Devuelve las funciones del juego
-* @param gameFunctions Array de funciones
-* @param maxFunctions Tamanio del array
-* @return Numero de funciones
-*/
-JUEGO_API int getFunctions(Function* gameFunctions, int maxFunctions);
 }

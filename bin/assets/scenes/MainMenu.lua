@@ -1,25 +1,11 @@
 scene = {
     {
         components = {
-            Transform = {
-                positionX = 0.0,
-                positionY = 0.0,
-                positionZ = 0.0,
-                scaleX = 1.0,
-                scaleY = 1.0,
-                scaleZ = 1.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
-            },
             CameraComponent = {
-                zOrder = 1, -- Cuando se arregle lo del viewport, se podrá cambiar a 0
+                zOrder = 1, -- Cuando se arregle, se podrá cambiar a 0
                 bgColorR = 0.0,
                 bgColorG = 0.8,
-                bgColorB = 0.0,
-                targetToLookX = 0.0,
-                targetToLookY = 0.0,
-                targetToLookZ = 0.0
+                bgColorB = 0.0
             }
         }
     },
@@ -27,14 +13,7 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 - 150,
-                positionZ = 0.0,
-                scaleX = 0.0,
-                scaleY = 0.0,
-                scaleZ = 0.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                positionY = WINDOW_HEIGHT / 2 - 150
             },
             Text = {
                 name = "BilliardsAdriftText",
@@ -57,10 +36,9 @@ scene = {
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
-            Button = {
+            Button = { -- Usar PlayButton component cuando se cree
                 name = "PlayButton",
                 text = "Play",
-                onClickId = "Play"
             }
         }
     },

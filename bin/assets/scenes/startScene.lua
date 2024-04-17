@@ -1,66 +1,39 @@
 scene = {
     {
         components = {
-            Transform = {
-                positionX = 0.0,
-                positionY = 30.0,
-                positionZ = 0.0,
-                scaleX = 1.0,
-                scaleY = 1.0,
-                scaleZ = 1.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 90.0
+            CameraComponent = { -- Para tener un fondo
+                zOrder = -1, -- Cuando se arregle, se podrá cambiar a 0
             },
-            CameraComponent = {
-                zOrder = -1, -- Cuando se arregle lo de cargar las escenas después de haber recorrido todas las entidades, se podrá cambiar a 0
-                bgColorR = 0.0,
-                bgColorG = 0.8,
-                bgColorB = 0.0,
-                targetToLookX = 0.0,
-                targetToLookY = 0.0,
-                targetToLookZ = 0.0
+            SplashScreenComponent = {
+                changeTime = 2000,
+                gameName = "game"
             }
         }
     },
-    madeWithText={
+    madeWithText = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 - 20,
-                positionZ = 0.0,
-                scaleX = 0.0,
-                scaleY = 0.0,
-                scaleZ = 0.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                positionY = WINDOW_HEIGHT / 2 - 20
             },
             Text = {
                 name = "madeWithText",
                 text = "made with",
-                textFontName = "AGENCYB.TTF"
+                textFontName = "AGENCYB.TTF",
             }
         }
     },
-    StartText={
+    TapiocaText = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2,
-                positionZ = 0.0,
-                scaleX = 0.0,
-                scaleY = 0.0,
-                scaleZ = 0.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                positionY = WINDOW_HEIGHT / 2
             },
             Text = {
-                name = "StartText",
+                name = "TapiocaText",
                 text = "Tapioca Engine",
                 textSize = 36.0,
-                textFontName = "AGENCYB.TTF"
+                textFontName = "AGENCYB.TTF",
             }
         }
     }
