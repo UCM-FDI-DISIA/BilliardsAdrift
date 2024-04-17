@@ -117,9 +117,10 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         }
     }
     else if (id == "ev_MouseButtonDownLeft") {
-        iniBallPos = mainLoop->getScene("Level" + std::to_string(actualLevel))
-                                   ->getHandler("BallPlayer")
-                                   ->getComponent<Tapioca::Transform>()->getPosition();
+        Tapioca::Scene* currScene = mainLoop->getScene("Level" + std::to_string(actualLevel));
+
+        if (currScene != nullptr)
+            iniBallPos = currScene->getHandler("BallPlayer")->getComponent<Tapioca::Transform>()->getPosition();
     }
     else if (id == "ev_Lose") {
         onLose();
