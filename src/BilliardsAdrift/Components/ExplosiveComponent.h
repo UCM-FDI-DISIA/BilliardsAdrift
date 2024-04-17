@@ -11,6 +11,7 @@ class JUEGO_API ExplosiveComponent : public Tapioca::Component {
 private:
     float force;
     float duration;
+    float lifeTime;
     Tapioca::GameObject* gO; 
     void explode(const uint64_t deltaTime);
 

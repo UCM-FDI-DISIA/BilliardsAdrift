@@ -902,12 +902,12 @@ scene = {
     MilkTea = {
         components = {
             Transform = {
-                positionX = -5.8,
-                positionY = 50.0,
+                positionX = -29.0,
+                positionY = 12.2,
                 positionZ = 0.0,
-                scaleX = 0.2,
-                scaleY = 0.2,
-                scaleZ = 0.2,
+                scaleX = 0.5,
+                scaleY = 0.5,
+                scaleZ = 0.5,
                 rotationX = -45.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
@@ -917,6 +917,40 @@ scene = {
                 --materialName = "white"
             },
             Animator = { }
+        }
+    },
+    Bomb = {
+        components = {
+            Transform = {
+                positionX = -3.8,
+                positionY = 8.2,
+                positionZ = 0.0,
+                scaleX = 1.2,
+                scaleY = 1.2,
+                scaleZ = 1.2,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/Bomb/Bomb.mesh",
+                --materialName = "white"
+            },
+            RigidBody = {    
+                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
+                isTrigger = true,
+                movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 1.0,
+                damping = 0.4,
+                bounciness = 0.0
+            },
+            ExplosiveComponent = { 
+                force = 150.0
+            }
         }
     }
 }
