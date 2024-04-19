@@ -4,10 +4,12 @@
 #include "Structure/MainLoop.h"
 #include "Structure/Scene.h"
 #include "Structure/GameObject.h"
+#include "Structure/Component.h"
 #include "Components/RigidBody.h"
 #include "Components/Animator.h"
 #include "Components/MeshRenderer.h"
 #include "Components/Transform.h"
+#include "Components/Text.h"
 #include "ColoredBall.h"
 #include "checkML.h"
 
@@ -50,18 +52,14 @@ void GameManager::start() {
     sceneLoader = Tapioca::SceneLoader::instance();
     mainLoop = Tapioca::MainLoop::instance();
 
-
     currentStateName = firstStateName;
     if (currentStateName == "MainMenu") currentState = MainMenu;
-    else if (currentStateName == "InGame")
-        currentState = InGame;
     else if (currentStateName == "LoseScreen") {
         pushEvent("ev_GameOver", nullptr);
         currentState = Lose;
     }
     else if (currentStateName == "PauseMenu")
         currentState = Pause;
-
     else {
         currentState = InGame;
         pushEvent("ev_onStart", nullptr, true, true);
@@ -72,9 +70,9 @@ void GameManager::start() {
 void GameManager::update(const uint64_t deltaTime) {
     if (currentState == InGame) {
         time -= deltaTime;
+        updateTimerText();
 
 #ifdef _DEBUG
-        //std::cout << std::fixed << std::setprecision(2) << time / 1000. << "\n";
         if (time <= 0) {
 #ifdef _DEBUG
             std::cout << "El jugador se ha quedado sin tiempo.\n";
@@ -83,7 +81,7 @@ void GameManager::update(const uint64_t deltaTime) {
             //  pushEvent("ev_GameOver", nullptr);
         }
 #endif
-        // Compruueba que todas las bolas est�n inmovilizadas
+        // Compruueba que todas las bolas estan inmovilizadas
         auto it = balls.begin();
         while (it != balls.end()) {
             Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
@@ -129,11 +127,9 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     else if (id == "ev_Win") {
         onWin();
     }
-
     else if (id == "ev_onStart") {
         onStart();
     }
-
     else if (id == "ev_Processing") {
         processing = true;
     }
@@ -178,115 +174,119 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     }
 }
 
-    // Igual hay pasarle el nombre de la escena al motor y que el motor se encargue de cargarla, pero COMO?
-    void GameManager::changeScene(std::string const& scene) const {
-        Tapioca::SceneLoader::instance()->loadScene(scene);
+void GameManager::changeScene(std::string const& scene) const { Tapioca::SceneLoader::instance()->loadScene(scene); }
+
+void GameManager::goToNextLevel() {
+    actualLevel++;
+    changeScene(getActualLevelName());
+    pushEvent("ev_onStart", nullptr, false, true);
+}
+
+void GameManager::changeScore(int s) { score += s; }
+
+void GameManager::changeLife(int l) { life += l; }
+
+void GameManager::loseLife() {
+    if (life > 0) life--;
+    else {
+        Tapioca::logInfo("El jugador se ha quedado sin vidas.\n");
+        currentState = Lose;
+        pushEvent("ev_GameOver", nullptr, false, true);
     }
+}
 
-    void GameManager::goToNextLevel() {
-        actualLevel++;
-        changeScene(getActualLevelName());
-        pushEvent("ev_onStart", nullptr, false, true);
+void GameManager::changeTime(float t) { time += t * 1000; }
+
+void GameManager::changeActualLevel(int l) { actualLevel += l; }
+
+std::string GameManager::getActualLevelName() const { return "Level" + std::to_string(actualLevel); }
+
+void GameManager::updateTimerText() {
+    if (timerTextComponent != nullptr) timerTextComponent->setText(std::to_string(getTime()));
+}
+
+void GameManager::onReset() { }
+
+void GameManager::onStart() {
+
+    time = INIT_TIME * 1000;
+    score = 0;
+    life = INIT_LIFE;
+    timerText = mainLoop->getScene(currentStateName)->getHandler("TimerText");
+    if (timerText != nullptr) timerTextComponent = timerText->getComponent<Tapioca::Text>();
+    updateTimerText();
+
+    pushEvent("loadBalls", nullptr, true, true);
+}
+
+void GameManager::onLose() { }
+
+void GameManager::onGameOver() {
+    if (currentState == Lose) {
+        pushEvent("ev_Lose", nullptr, false, true);
+        changeScene("LoseScreen");
     }
-
-    void GameManager::changeScore(int s) { score += s; }
-
-    void GameManager::changeLife(int l) { life += l; }
-
-    void GameManager::loseLife() {
-        if (life > 0) life--;
-        else {
-            Tapioca::logInfo("El jugador se ha quedado sin vidas.\n");
-            currentState = Lose;
-            pushEvent("ev_GameOver", nullptr, false, true);
-        }
+    else {
+        pushEvent("ev_Win", nullptr, false, true);
+        changeScene("WinScreen");
     }
+}
 
-    void GameManager::changeTime(float t) { time += t * 1000; }
+void GameManager::onWin() { }
 
-    void GameManager::changeActualLevel(int l) { actualLevel += l; }
+void GameManager::onPause() {
+    std::string str1 = "Level";
+    std::string str2 = std::to_string(actualLevel);
+    std::string result = str1 + str2;
 
-    std::string GameManager::getActualLevelName() const { return "Level" + std::to_string(actualLevel); }
-
-    void GameManager::onReset() { }
-
-    void GameManager::onStart() {
-
-        time = INIT_TIME * 1000;
-        score = 0;
-        life = INIT_LIFE;
-
-        pushEvent("loadBalls", nullptr, true, true);
+    if (currentState == InGame) {
+        currentState = Pause;
+        mainLoop->getScene(result)->setActive(false);
+        changeScene("PauseMenu");
     }
-
-    void GameManager::onLose() { }
-
-    void GameManager::onGameOver() {
-        if (currentState == Lose) {
-            pushEvent("ev_Lose", nullptr, false, true);
-            changeScene("LoseScreen");
-        }
-        else {
-            pushEvent("ev_Win", nullptr, false, true);
-            changeScene("WinScreen");
-        }
-    }
-
-    void GameManager::onWin() { }
-
-    void GameManager::onPause() {
-        std::string str1 = "Level";
-        std::string str2 = std::to_string(actualLevel);
-        std::string result = str1 + str2;
-
-        if (currentState == InGame) {
-            currentState = Pause;
-            mainLoop->getScene(result)->setActive(false);
-            changeScene("PauseMenu");
-        }
-        else if (currentState == Pause) {
-            currentState = InGame;
-            mainLoop->getScene(result)->setActive(true);
-            mainLoop->deleteScene("PauseMenu");
-        }
-    }
-
-    void GameManager::onPlayConfirmed() {
+    else if (currentState == Pause) {
         currentState = InGame;
-        changeScene("Level" + std::to_string(actualLevel));
-
-        mainLoop->deleteScene("MainMenu");
-        pushEvent("ev_onStart", nullptr, true, true);
-
-        //PRUEBA NO BORRAR
-        //currentState = Lose;
-        //pushEvent("ev_GameOver", nullptr, true, true);
+        mainLoop->getScene(result)->setActive(true);
+        mainLoop->deleteScene("PauseMenu");
     }
+}
 
-    void GameManager::onResumeConfirmed() { onPause(); }
+void GameManager::onPlayConfirmed() {
+    currentState = InGame;
+    changeScene("Level" + std::to_string(actualLevel));
 
-    void GameManager::onContinueConfirmed() { goToNextLevel(); }
+    mainLoop->deleteScene("MainMenu");
+    pushEvent("ev_onStart", nullptr, true, true);
 
-    void GameManager::onRestartConfirmed() {
+    //PRUEBA NO BORRAR
+    //currentState = Lose;
+    //pushEvent("ev_GameOver", nullptr, true, true);
+}
+
+void GameManager::onResumeConfirmed() { onPause(); }
+
+void GameManager::onContinueConfirmed() { goToNextLevel(); }
+
+void GameManager::onRestartConfirmed() {
+    std::string result = "Level" + std::to_string(actualLevel);
+    if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
+    else if (currentState == Win)
+        mainLoop->deleteScene("WinScreen");
+
+    changeScene(result);
+}
+
+void GameManager::onMainMenuConfirmed() {
+
+    if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
+    else if (currentState == Win)
+        mainLoop->deleteScene("WinScreen");
+    else {
         std::string result = "Level" + std::to_string(actualLevel);
-        if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
-        else if (currentState == Win)
-            mainLoop->deleteScene("WinScreen");
-
-        changeScene(result);
+        mainLoop->deleteScene(result);
     }
 
-    void GameManager::onMainMenuConfirmed() {
-
-        if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
-        else if (currentState == Win)
-            mainLoop->deleteScene("WinScreen");
-        else {
-            std::string result = "Level" + std::to_string(actualLevel);
-            mainLoop->deleteScene(result);
-        }
-
-        currentState = MainMenu;
-        changeScene("MainMenu");
-    }
+    currentState = MainMenu;
+    changeScene("MainMenu");
+}
 }

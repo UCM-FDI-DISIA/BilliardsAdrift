@@ -36,9 +36,10 @@ scene = {
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
-            Button = { -- Usar PlayButton component cuando se cree
+            Button = {
                 name = "PlayButton",
                 text = "Play",
+                onClickId = "play"
             }
         }
     },

@@ -12,6 +12,7 @@ class GameObject;
 class MainLoop;
 class SceneLoader;
 class Vector3;
+class Text;
 }
 
 namespace BilliardsAdrift {
@@ -25,7 +26,7 @@ private:
     /*
     * @brief Estados del juego
     */
-    enum State { MainMenu, InGame, GameOver, Pause,Lose,Win };
+    enum State { MainMenu, InGame, GameOver, Pause, Lose, Win };
 
     Tapioca::SceneLoader* sceneLoader;   // Puntero al cargador de escenas
     Tapioca::MainLoop* mainLoop;         // Puntero al bucle principal
@@ -41,6 +42,9 @@ private:
     int life;          // Vida actual
     int64_t time;      // Tiempo actual
     int actualLevel;   // Nivel actual
+
+    Tapioca::GameObject* timerText;      // Texto del temporizador
+    Tapioca::Text* timerTextComponent;   // Componente de texto del temporizador
 
     std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
@@ -67,7 +71,7 @@ private:
     */
     void onStart();
 
-     /*
+    /*
     * @brief pierde la partida
     */
     void onLose();
@@ -86,6 +90,11 @@ private:
     * @brief Cambia el estado del juego a Pause y cambia de escena
     */
     void onPause();
+
+    /*
+    * @brief Actualiza el texto del temporizador
+    */
+    void updateTimerText();
 
     /*
     * @brief Constructor por defecto
