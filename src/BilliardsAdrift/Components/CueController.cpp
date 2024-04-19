@@ -103,7 +103,6 @@ void CueController::handleEvent(std::string const& id, void* info) {
             canMove = false;
             resetCue();
         }
-       
     }
 }
 
@@ -125,9 +124,11 @@ void CueController::updateRotation() {
 }
 
 void CueController::increasePower() {
-    tr->translate(translateToWorld(tr->forward()) * (-moveFactor));
-    Tapioca::Vector3 v = tr->getParent()->forward();
-    actualPower += powerFactor;
+    if (actualPower < 6000) {
+        tr->translate(translateToWorld(tr->forward()) * (-moveFactor));
+        Tapioca::Vector3 v = tr->getParent()->forward();
+        actualPower += powerFactor;
+    }
 }
 
 void CueController::hit() {

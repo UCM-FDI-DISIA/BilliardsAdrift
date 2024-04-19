@@ -40,9 +40,12 @@ scene = {
             },
             Text = {
                 name = "GameOverText",
-                text = "You Lose",
+                text = "You Win",
                 textSize = 90.0,
-                textFontName = "06126_BRITANIC.TTF"
+                textFontName = "06126_BRITANIC.TTF",
+                textColorR=0.0,
+                textColorG=0.0,
+                textColorB=0.0
             }
         }
     },

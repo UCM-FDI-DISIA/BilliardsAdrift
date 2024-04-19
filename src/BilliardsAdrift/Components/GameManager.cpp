@@ -55,10 +55,17 @@ void GameManager::start() {
     if (currentStateName == "MainMenu") currentState = MainMenu;
     else if (currentStateName == "InGame")
         currentState = InGame;
-    else if (currentStateName == "EndScreen")
-        currentState = GameOver;
+    else if (currentStateName == "LoseScreen") {
+        pushEvent("ev_GameOver", nullptr);
+        currentState = Lose;
+    }
     else if (currentStateName == "PauseMenu")
         currentState = Pause;
+
+    else {
+        currentState = InGame;
+        pushEvent("ev_onStart", nullptr, true, true);
+    }
     changeScene(currentStateName);
 }
 
@@ -72,8 +79,8 @@ void GameManager::update(const uint64_t deltaTime) {
 #ifdef _DEBUG
             std::cout << "El jugador se ha quedado sin tiempo.\n";
 #endif
-            currentState = Lose;
-            pushEvent("ev_GameOver", nullptr);
+           // currentState = Lose;
+          //  pushEvent("ev_GameOver", nullptr);
         }
 #endif
         // Compruueba que todas las bolas est�n inmovilizadas
@@ -82,9 +89,9 @@ void GameManager::update(const uint64_t deltaTime) {
             Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
             auto v = rb->getVelocity();
             auto f = rb->getTotalForce();
-            if (std::abs(v.x < 1e-4) && std::abs(v.y < 1e-4) && std::abs(v.z < 1e-4) && std::abs(f.x < 1e-4) &&
-                std::abs(f.y < 1e-4) && std::abs(f.z < 1e-4)) {
-                // rb->setVelocity(Tapioca::Vector3(0));
+            if (std::abs(v.x < 1e-3) && std::abs(v.y < 1e-3) && std::abs(v.z < 1e-3) && std::abs(f.x < 1e-3) &&
+                std::abs(f.y < 1e-3) && std::abs(f.z < 1e-3)) {
+                rb->setVelocity(Tapioca::Vector3(0));
                 ++it;
             }
             else {
@@ -128,9 +135,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     else if (id == "ev_Win") {
         onWin();
     }
-    else if (id == "delete_ContinueButton") {
-        mainLoop->getScene("EndScreen")->getHandler("ContinueImageButton")->die();
-    }
+
     else if (id == "ev_onStart") {
         onStart();
     }
@@ -179,8 +184,8 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         else {
             setLife(-1);
 
-            Tapioca::GameObject* playerBall = mainLoop->getScene("Level" + std::to_string(actualLevel))
-                        ->getHandler("BallPlayer");
+            Tapioca::GameObject* playerBall =
+                mainLoop->getScene("Level" + std::to_string(actualLevel))->getHandler("BallPlayer");
 
             playerBall->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
             playerBall->getComponent<Tapioca::Transform>()->setPosition(iniBallPos);
@@ -230,13 +235,17 @@ void GameManager::onStart() {
     pushEvent("loadBalls", nullptr, true, true);
 }
 
-void GameManager::onLose() { pushEvent("delete_ContinueButton", nullptr, true, true); }
+void GameManager::onLose() { }
 
 void GameManager::onGameOver() {
-    changeScene("EndScreen.lua");
-    if (currentState == Lose) pushEvent("ev_Lose", nullptr, false, true);
-    else
+    if (currentState == Lose) {
+        pushEvent("ev_Lose", nullptr, false, true);
+        changeScene("LoseScreen");
+    }
+    else {
         pushEvent("ev_Win", nullptr, false, true);
+        changeScene("WinScreen");
+    }
 }
 
 void GameManager::onWin() { }
@@ -246,17 +255,15 @@ void GameManager::onPause() {
     std::string str2 = std::to_string(actualLevel);
     std::string result = str1 + str2;
 
-    //Tapioca::logInfo("wdaujkdwaundawiudklawdaw\n");
-
     if (currentState == InGame) {
         currentState = Pause;
         mainLoop->getScene(result)->setActive(false);
-        changeScene("PauseMenu.lua");
+        changeScene("PauseMenu");
     }
     else if (currentState == Pause) {
         currentState = InGame;
         mainLoop->getScene(result)->setActive(true);
-        mainLoop->deleteScene("PauseMenu.lua");
+        mainLoop->deleteScene("PauseMenu");
     }
 }
 
@@ -268,27 +275,32 @@ void GameManager::onPlayConfirmed() {
     pushEvent("ev_onStart", nullptr, true, true);
 
     //PRUEBA NO BORRAR
-   /* currentState = Lose;
-    pushEvent("ev_GameOver", nullptr, true, true);*/
+    //currentState = Lose;
+    //pushEvent("ev_GameOver", nullptr, true, true);
 }
 
 void GameManager::onContinueConfirmed() { goToNextLevel(); }
 
 void GameManager::onRestartConfirmed() {
     std::string result = "Level" + std::to_string(actualLevel);
-    mainLoop->deleteScene("EndScreen");
+    if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
+    else if (currentState == Win)
+        mainLoop->deleteScene("WinScreen");
+
     changeScene(result);
 }
 
 void GameManager::onMainMenuConfirmed() {
-   
-    if (currentState == Lose || currentState == Win) mainLoop->deleteScene("EndScreen");
+
+    if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
+    else if (currentState == Win)
+        mainLoop->deleteScene("WinScreen");
     else {
         std::string result = "Level" + std::to_string(actualLevel);
         mainLoop->deleteScene(result);
     }
 
     currentState = MainMenu;
-    changeScene("MainMenu.lua");
+    changeScene("MainMenu");
 }
 }
