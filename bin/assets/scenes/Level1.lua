@@ -746,6 +746,17 @@ scene = {
                 friction = 1.0,
                 damping = 0.4,
                 bounciness = 0.5
+            },
+            PlaneComponent = {  
+                materialName="yellowHoleImage",
+                upX=0.0,
+                upY=0.0,
+                upZ=-1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                width=3.0,
+                height=3.0,
             }
         }
     },
@@ -776,6 +787,17 @@ scene = {
                 friction = 1.0,
                 damping = 0.4,
                 bounciness = 0.5
+            },
+            PlaneComponent = {  
+                materialName="orangeHoleImage",
+                upX=0.0,
+                upY=0.0,
+                upZ=-1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                width=3.0,
+                height=3.0,
             }
         }
     },
@@ -806,6 +828,17 @@ scene = {
                 friction = 1.0,
                 damping = 0.4,
                 bounciness = 0.5
+            },
+            PlaneComponent = {  
+                materialName="greenHoleImage",
+                upX=0.0,
+                upY=0.0,
+                upZ=-1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                width=3.0,
+                height=3.0,
             }
         }
     },
@@ -836,6 +869,17 @@ scene = {
                 friction = 2.0,
                 damping = 0.4,
                 bounciness = 0.5
+            },
+            PlaneComponent = {  
+                materialName="redHoleImage",
+                upX=0.0,
+                upY=0.0,
+                upZ=-1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                width=3.0,
+                height=3.0,
             }
         }
     },
@@ -866,13 +910,24 @@ scene = {
                 friction = 2.0,
                 damping = 0.4,
                 bounciness = 0.5
+            },
+            PlaneComponent = {  
+                materialName="blueHoleImage",
+                upX=0.0,
+                upY=0.0,
+                upZ=-1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                width=3.0,
+                height=3.0,
             }
         }
     },
     HolePurple = {
         components = {
             Transform = {
-                positionX = 28.5,
+                positionX = -28.5,
                 positionY = 7.5,
                 positionZ = 15.0,
                 scaleX = 0.6,
@@ -896,6 +951,17 @@ scene = {
                 friction = 2.0,
                 damping = 0.4,
                 bounciness = 0.5
+            },
+            PlaneComponent = {  
+                materialName="purpleHoleImage",
+                upX=0.0,
+                upY=0.0,
+                upZ=-1.0,
+                rkNormalX=0.0,
+                rkNormalY=1.0,
+                rkNormalZ=0.0,
+                width=3.0,
+                height=3.0,
             }
         }
     },

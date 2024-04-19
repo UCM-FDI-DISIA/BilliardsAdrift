@@ -1,0 +1,19 @@
+material orangeHoleImage {
+    receive_shadows on
+    technique {
+        pass {
+
+            diffuse 1.0 1.0 0.0 1.0
+            specular 0.5 0.0 0 0 0
+            lighting off
+		    scene_blend alpha_blend  //IMPORTANTE MATERIAL: para que sea transparente
+		    depth_write off  //IMPORTANTE MATERIAL LUZ para ser más eficiente de decirle no tener en cuenta el depth
+            texture_unit {
+                
+                texture textures/orangeHoleImage.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
