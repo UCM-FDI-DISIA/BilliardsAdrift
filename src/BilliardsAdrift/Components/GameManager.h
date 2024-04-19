@@ -5,7 +5,6 @@
 #include <unordered_set>
 #include "Structure/ComponentBuilder.h"
 #include "gameDefs.h"
-#include "Utilities/Vector3.h"
 
 
 namespace Tapioca {
@@ -45,8 +44,6 @@ private:
 
     std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
-
-    Tapioca::Vector3 iniBallPos;
 
     /*
     * @brief Cambia la escena
@@ -213,6 +210,11 @@ public:
     * @brief Cuando se ha pulsado el boton de jugar desde MainMenu
     */
     void onPlayConfirmed();
+
+    /*
+    * @brief Cuando se ha pulsado el boton de resume desde PauseMenu
+    */
+    void onResumeConfirmed();
 
     /*
     * @brief Cuando se ha pulsado el boton de continuar desde EndScreen

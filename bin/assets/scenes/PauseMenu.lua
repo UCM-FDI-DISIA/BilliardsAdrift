@@ -1,6 +1,52 @@
 scene = {
-
-    ContinueImageButton={
+    {
+        components = {
+            Transform = {
+                positionX = 0.0,
+                positionY = 0.0,
+                positionZ = 0.0,
+                scaleX = 1.0,
+                scaleY = 1.0,
+                scaleZ = 1.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            CameraComponent = {
+                zOrder = 2, -- Cuando se arregle lo del viewport, se podrá cambiar a 0
+                bgColorR = 0.0,
+                bgColorG = 0.8,
+                bgColorB = 0.0,
+                targetToLookX = 0.0,
+                targetToLookY = 0.0,
+                targetToLookZ = 0.0
+            }
+            
+           
+        }
+    },
+    PauseMenuText={
+        components = {
+            Transform = {
+                positionX = WINDOW_WIDTH / 2,
+                positionY = WINDOW_HEIGHT / 2-150,
+                positionZ = 0.0,
+                scaleX = 0.0,
+                scaleY = 0.0,
+                scaleZ = 0.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            Text = {
+                name = "PauseMenuText",
+                text = "Game paused",
+                textSize = 90.0,
+                textFontName = "06126_BRITANIC.TTF"
+            }
+        }
+    },
+    ResumeImageButton={
         -- zIndex = 0, -- No importa si es 0
         components = {
             Transform = {
@@ -15,12 +61,12 @@ scene = {
                 rotationZ = 0.0 -- No importa
             },
             ImageTextButton = {
-                name = "ContinueButton",
-                onClickId = "Continue",
+                name = "ResumeButton",
+                onClickId = "Resume",
                 wantText = false,
-                imagePathNormal = "textures/buttons/continue1.png",
-                imagePathHover = "textures/buttons/continue2.png",
-                imagePathActive = "textures/buttons/continue3.png",
+                imagePathNormal = "textures/buttons/resume1.png",
+                imagePathHover = "textures/buttons/resume2.png",
+                imagePathActive = "textures/buttons/resume3.png",
                 uv0X = 0.0,
                 uv0Y = 0.0,
                 uv1X = 1.0,
@@ -50,7 +96,7 @@ scene = {
         }
     },
 
-    RestartImageButton={
+    OptionsImageButton={
         -- zIndex = 0, -- No importa si es 0
         components = {
             Transform = {
@@ -68,9 +114,9 @@ scene = {
                 name = "RestartButton",
                 onClickId = "Restart",
                 wantText = false,
-                imagePathNormal = "textures/buttons/restart1.png",
-                imagePathHover = "textures/buttons/restart2.png",
-                imagePathActive = "textures/buttons/restart3.png",
+                imagePathNormal = "textures/buttons/options1.png",
+                imagePathHover = "textures/buttons/options2.png",
+                imagePathActive = "textures/buttons/options3.png",
                 uv0X = 0.0,
                 uv0Y = 0.0,
                 uv1X = 1.0,
@@ -83,7 +129,7 @@ scene = {
                 imageTintG = 1.0,
                 imageTintB = 1.0,
                 imageTintA = 1.0,
-                normalColorR = 0.0, -- Con el alpha en 0.0 en todos los estados solo se vera las imagenes del boton
+                normalColorR = 0.0, 
                 normalColorG = 0.0,
                 normalColorB = 0.0,
                 normalColorA = 0.0,
@@ -148,7 +194,25 @@ scene = {
                 -- windowFlags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoSavedSettings
             }
         }
+    } ,
+    BackgroundImage={ 
+        components = {
+            Transform = {
+                positionX = 0.0,
+                positionY = 0.0,
+                positionZ = -1.0,
+                scaleX = 1500.0,
+                scaleY = 900.0,
+                scaleZ = 1.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+            ImageUI={
+                name="endBackground",
+                sourcefile="menuBackground.png"
+            }
+       }
     }
-
 
 }
