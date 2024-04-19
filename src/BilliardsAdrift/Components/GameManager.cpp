@@ -52,7 +52,8 @@ void GameManager::start() {
 
 
     currentStateName = firstStateName;
-    if (currentStateName == "MainMenu") currentState = MainMenu;
+    if (currentStateName == "MainMenu") 
+        currentState = MainMenu;
     else if (currentStateName == "InGame")
         currentState = InGame;
     else if (currentStateName == "LoseScreen") {
@@ -123,12 +124,6 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             }
         }
     }
-    else if (id == "ev_MouseButtonDownLeft") {
-        Tapioca::Scene* currScene = mainLoop->getScene("Level" + std::to_string(actualLevel));
-
-        if (currScene != nullptr)
-            iniBallPos = currScene->getHandler("BallPlayer")->getComponent<Tapioca::Transform>()->getPosition();
-    }
     else if (id == "ev_Lose") {
         onLose();
     }
@@ -178,21 +173,10 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         }
     }
     else if (id == "whiteBallIn") {
-        if (balls.size() == 0) {
-            onGameOver();
-        }
-        else {
-            setLife(-1);
 
             Tapioca::GameObject* playerBall =
                 mainLoop->getScene("Level" + std::to_string(actualLevel))->getHandler("BallPlayer");
 
-            playerBall->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
-            playerBall->getComponent<Tapioca::Transform>()->setPosition(iniBallPos);
-            playerBall->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
-
-            Tapioca::logInfo("BOLA BLANCA EN AGUJERO");
-        }
     }
 }
 
@@ -278,6 +262,8 @@ void GameManager::onPlayConfirmed() {
     //currentState = Lose;
     //pushEvent("ev_GameOver", nullptr, true, true);
 }
+
+void GameManager::onResumeConfirmed() { onPause(); }
 
 void GameManager::onContinueConfirmed() { goToNextLevel(); }
 

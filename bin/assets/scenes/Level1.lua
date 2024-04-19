@@ -949,7 +949,7 @@ scene = {
                 bounciness = 0.0
             },
             ExplosiveComponent = { 
-                force = 150.0
+                force = 50.0
             }
         }
     }
