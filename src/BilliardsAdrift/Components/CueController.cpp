@@ -54,7 +54,7 @@ bool CueController::initComponent(const CompMap& variables) {
 void CueController::start() {
     tr = object->getComponent<Tapioca::Transform>();
 
-    ballDistanceOffset = tr->getGlobalPosition();
+    ballDistanceOffset = tr->getGlobalPositionWithoutRotation();
     inputMng = Tapioca::InputManager::instance();
 
     ball = object->getScene()->getHandler("BallPlayer");
@@ -71,7 +71,7 @@ void CueController::update(const uint64_t deltaTime) {
     if (hitting) {
         tr->translate(translateToWorld(moveSpeed) * deltaTime);
         Tapioca::Vector3 distance =
-            tr->getRotationPosition() + tr->getParent()->forward() * 6.f - ballTr->getGlobalPosition();
+            tr->getGlobalPosition() + tr->getParent()->forward() * 6.f - ballTr->getGlobalPositionWithoutRotation();
         distance.y = 0;
         if (distance.magnitude() <= 3.f) hit();
     }
@@ -86,7 +86,7 @@ void CueController::handleEvent(std::string const& id, void* info) {
 
     else if (id == "ev_MouseButtonDownLeft" && actualPower != 0) {
         hitting = true;
-        moveSpeed = (ballTr->getGlobalPosition() - (tr->getRotationPosition() + tr->getParent()->forward() * 6.f)) /
+        moveSpeed = (ballTr->getGlobalPositionWithoutRotation() - (tr->getGlobalPosition() + tr->getParent()->forward() * 6.f)) /
             impulseTime;
         moveSpeed.y = 0;
     }
@@ -120,7 +120,7 @@ void CueController::updateRotation() {
         Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * rotateFactor;
 
     tr->getParent()->rotate(v);
-    Tapioca::Vector3 u = tr->getRotationPosition();
+    Tapioca::Vector3 u = tr->getGlobalPosition();
 }
 
 void CueController::increasePower() {
@@ -145,7 +145,7 @@ void CueController::resetCue() {
 }
 
 void CueController::followBall() {
-    tr->getParent()->setPosition(ballTr->getGlobalPosition() + Tapioca::Vector3(0, 2, 0));
+    tr->getParent()->setPosition(ballTr->getGlobalPositionWithoutRotation() + Tapioca::Vector3(0, 2, 0));
     tr->setPosition(ballDistanceOffset);
 }
 
