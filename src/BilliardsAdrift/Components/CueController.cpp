@@ -13,8 +13,9 @@
 
 namespace BilliardsAdrift {
 CueController::CueController()
-    : inputMng(nullptr), ballRb(nullptr), ballTr(nullptr), ball(nullptr), tr(nullptr), actualPower(0), moveFactor(0),
-      powerFactor(0), hitting(false), moveSpeed(0), canMove(true) { }
+    : inputMng(nullptr), ballRb(nullptr), ballTr(nullptr), ball(nullptr), tr(nullptr), actualPower(0.0f),
+      moveFactor(0.0f), powerFactor(0.0f), hitting(false), moveSpeed(0), canMove(true), mesh(nullptr),
+      impulseFactor(0.0f), impulseTime(), rotateFactor(0.0f) { }
 
 bool CueController::initComponent(const CompMap& variables) {
 
@@ -86,7 +87,8 @@ void CueController::handleEvent(std::string const& id, void* info) {
 
     else if (id == "ev_MouseButtonDownLeft" && actualPower != 0) {
         hitting = true;
-        moveSpeed = (ballTr->getGlobalPositionWithoutRotation() - (tr->getGlobalPosition() + tr->getParent()->forward() * 6.f)) /
+        moveSpeed = (ballTr->getGlobalPositionWithoutRotation() -
+                     (tr->getGlobalPosition() + tr->getParent()->forward() * 6.f)) /
             impulseTime;
         moveSpeed.y = 0;
     }
