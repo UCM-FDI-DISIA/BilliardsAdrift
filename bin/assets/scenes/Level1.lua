@@ -298,7 +298,114 @@ scene = {
             }
         },
         children = {
-
+            Wall1 = {
+                components = {
+                    Transform = {
+                        positionX = -290.0,
+                        positionY = 6.0,
+                        positionZ = 0.0,
+                        scaleX = 0.05,
+                        scaleY = 0.05,
+                        scaleZ = 0.05,
+                        rotationX = -90.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    },
+                    RigidBody = {    
+                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX = 1.0,
+                        colliderScaleY = 3.0,
+                        colliderScaleZ = 17.0,
+                        isTrigger = false,
+                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass = 0.0,
+                        friction = 0.5,
+                        damping = 0.0,
+                        bounciness = 1.0
+                    }
+                }
+            },
+            Wall2 = {
+                components = {
+                    Transform = {
+                        positionX = 290.0,
+                        positionY = 6.0,
+                        positionZ = 0.0,
+                        scaleX = 0.05,
+                        scaleY = 0.05,
+                        scaleZ = 0.05,
+                        rotationX = -90.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    },
+                    RigidBody = {    
+                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX = 1.0,
+                        colliderScaleY = 3.0,
+                        colliderScaleZ = 17.0,
+                        isTrigger = false,
+                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass = 0.0,
+                        friction = 1.0,
+                        damping = 0.0,
+                        bounciness = 1.0
+                    }
+                }
+            },
+            Wall3 = {
+                components = {
+                    Transform = {
+                        positionX = 0.0,
+                        positionY = 160.0,
+                        positionZ = -16.5,
+                        scaleX = 0.05,
+                        scaleY = 0.05,
+                        scaleZ = 0.05,
+                        rotationX = -90.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    },
+                    RigidBody = {    
+                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX = 30.0,
+                        colliderScaleY = 4.0,
+                        colliderScaleZ = 1.0,
+                        isTrigger = false,
+                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass = 0.0,
+                        friction = 1.0,
+                        damping = 0.0,
+                        bounciness = 1.0
+                    }
+                }
+            },
+            Wall4 = {
+                components = {
+                    Transform = {
+                        positionX = 0.0,
+                        positionY = -160.0,
+                        positionZ = 16.5,
+                        scaleX = 0.05,
+                        scaleY = 0.05,
+                        scaleZ = 0.05,
+                        rotationX = -90.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    },
+                    RigidBody = {    
+                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                        colliderScaleX = 30.0,
+                        colliderScaleY = 4.0,
+                        colliderScaleZ = 1.0,
+                        isTrigger = false,
+                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                        mass = 0.0,
+                        friction = 1.0,
+                        damping = 0.0,
+                        bounciness = 1.0
+                    }
+                }
+            }
         }
     },
     BallYellow = {
