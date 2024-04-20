@@ -110,9 +110,9 @@ scene = {
                 positionX = 0.0,
                 positionY = 8.0,
                 positionZ = 0.0,
-                scaleX = 0.8,
-                scaleY = 0.8,
-                scaleZ = 0.8,
+                scaleX = 0.7,
+                scaleY = 0.7,
+                scaleZ = 0.7,
                 rotationX = 0.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
@@ -123,9 +123,9 @@ scene = {
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.8,
-                colliderScaleY = 0.8,
-                colliderScaleZ = 0.8,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false,
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -205,7 +205,7 @@ scene = {
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                 colliderScaleX = 1.0,
                 colliderScaleY = 1.0,
-                colliderScaleZ = 4.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false,
                 movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 0.0,
@@ -286,11 +286,11 @@ scene = {
             },
             RigidBody = {    
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 33.0,
-                colliderScaleY = 15.0,
-                colliderScaleZ = 7.0,
+                colliderScaleX = 15.0,
+                colliderScaleY = 5.0,
+                colliderScaleZ = 2.65,
                 isTrigger = false,
-                movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 0.0,
                 friction = 0.5,
                 damping = 0.0,
@@ -298,114 +298,7 @@ scene = {
             }
         },
         children = {
-            Wall1 = {
-                components = {
-                    Transform = {
-                        positionX = -30.0,
-                        positionY = 6.0,
-                        positionZ = 0.0,
-                        scaleX = 0.05,
-                        scaleY = 0.05,
-                        scaleZ = 0.05,
-                        rotationX = -90.0,
-                        rotationY = 0.0,
-                        rotationZ = 0.0
-                    },
-                    RigidBody = {    
-                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                        colliderScaleX = 1.0,
-                        colliderScaleY = 3.0,
-                        colliderScaleZ = 17.0,
-                        isTrigger = false,
-                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                        mass = 0.0,
-                        friction = 0.5,
-                        damping = 0.0,
-                        bounciness = 1.0
-                    }
-                }
-            },
-            Wall2 = {
-                components = {
-                    Transform = {
-                        positionX = 30.0,
-                        positionY = 6.0,
-                        positionZ = 0.0,
-                        scaleX = 0.05,
-                        scaleY = 0.05,
-                        scaleZ = 0.05,
-                        rotationX = -90.0,
-                        rotationY = 0.0,
-                        rotationZ = 0.0
-                    },
-                    RigidBody = {    
-                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                        colliderScaleX = 1.0,
-                        colliderScaleY = 3.0,
-                        colliderScaleZ = 17.0,
-                        isTrigger = false,
-                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                        mass = 0.0,
-                        friction = 1.0,
-                        damping = 0.0,
-                        bounciness = 1.0
-                    }
-                }
-            },
-            Wall3 = {
-                components = {
-                    Transform = {
-                        positionX = 0.0,
-                        positionY = 6.0,
-                        positionZ = -16.5,
-                        scaleX = 0.05,
-                        scaleY = 0.05,
-                        scaleZ = 0.05,
-                        rotationX = -90.0,
-                        rotationY = 0.0,
-                        rotationZ = 0.0
-                    },
-                    RigidBody = {    
-                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                        colliderScaleX = 30.0,
-                        colliderScaleY = 3.0,
-                        colliderScaleZ = 1.0,
-                        isTrigger = false,
-                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                        mass = 0.0,
-                        friction = 1.0,
-                        damping = 0.0,
-                        bounciness = 1.0
-                    }
-                }
-            },
-            Wall4 = {
-                components = {
-                    Transform = {
-                        positionX = 0.0,
-                        positionY = 6.0,
-                        positionZ = 16.5,
-                        scaleX = 0.05,
-                        scaleY = 0.05,
-                        scaleZ = 0.05,
-                        rotationX = -90.0,
-                        rotationY = 0.0,
-                        rotationZ = 0.0
-                    },
-                    RigidBody = {    
-                        colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                        colliderScaleX = 30.0,
-                        colliderScaleY = 3.0,
-                        colliderScaleZ = 1.0,
-                        isTrigger = false,
-                        movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                        mass = 0.0,
-                        friction = 1.0,
-                        damping = 0.0,
-                        bounciness = 1.0
-                    }
-                }
-            }
+
         }
     },
     BallYellow = {
@@ -426,9 +319,9 @@ scene = {
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.7,
-                colliderScaleY = 0.7,
-                colliderScaleZ = 0.7,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false,
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -459,9 +352,9 @@ scene = {
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.7,
-                colliderScaleY = 0.7,
-                colliderScaleZ = 0.7,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false,
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -492,9 +385,9 @@ scene = {
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.7,
-                colliderScaleY = 0.7,
-                colliderScaleZ = 0.7,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false, 
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -525,9 +418,9 @@ scene = {
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.7,
-                colliderScaleY = 0.7,
-                colliderScaleZ = 0.7,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false,
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -558,9 +451,9 @@ scene = {
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.7,
-                colliderScaleY = 0.7,
-                colliderScaleZ = 0.7,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false,
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -591,9 +484,9 @@ scene = {
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.7,
-                colliderScaleY = 0.7,
-                colliderScaleZ = 0.7,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false,
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -624,9 +517,9 @@ scene = {
             },
             RigidBody = {    
                 colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.7,
-                colliderScaleY = 0.7,
-                colliderScaleZ = 0.7,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = false,
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 3.0,
@@ -658,9 +551,9 @@ scene = {
             },
             RigidBody = {    
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.8,
-                colliderScaleY = 0.8,
-                colliderScaleZ = 0.8,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = true,
                 movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -690,9 +583,9 @@ scene = {
             -- },
             RigidBody = {    
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 2.0,
-                colliderScaleY = 2.0,
-                colliderScaleZ = 2.0,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = true,
                 movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 0.0,
@@ -737,9 +630,9 @@ scene = {
             },
             RigidBody = {
                 colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.6,
-                colliderScaleY = 0.6,
-                colliderScaleZ = 0.6,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = true,
                 movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -778,9 +671,9 @@ scene = {
             },
             RigidBody = {
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.6,
-                colliderScaleY = 0.6,
-                colliderScaleZ = 0.6,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = true,
                 movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -819,9 +712,9 @@ scene = {
             },
             RigidBody = {
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.6,
-                colliderScaleY = 0.6,
-                colliderScaleZ = 0.6,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = true,
                 movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
@@ -860,9 +753,9 @@ scene = {
             },
             RigidBody = {
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.6,
-                colliderScaleY = 0.6,
-                colliderScaleZ = 0.6,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = true,
                 movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 3.0,
@@ -901,9 +794,9 @@ scene = {
             },
             RigidBody = {
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.6,
-                colliderScaleY = 0.6,
-                colliderScaleZ = 0.6,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = true,
                 movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 3.0,
@@ -942,9 +835,9 @@ scene = {
             },
             RigidBody = {
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 0.6,
-                colliderScaleY = 0.6,
-                colliderScaleZ = 0.6,
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
                 isTrigger = true,
                 movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 3.0,
@@ -1003,12 +896,12 @@ scene = {
                 --materialName = "white"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                 colliderScaleX = 1.0,
                 colliderScaleY = 1.0,
-                colliderScaleZ = 1.0,
+                colliderScaleZ = 1.5,
                 isTrigger = true,
-                movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
                 friction = 1.0,
                 damping = 0.4,

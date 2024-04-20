@@ -20,7 +20,8 @@ BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::
 namespace BilliardsAdrift {
 GameManager::GameManager()
     : sceneLoader(nullptr), mainLoop(nullptr), firstStateName(""), currentStateName(""), currentState(), INIT_TIME(0),
-      INIT_LIFE(0), time(0), life(0), score(0), processing(false), actualLevel(1) { }
+      INIT_LIFE(0), time(0), life(0), score(0), processing(false), actualLevel(1), timerText(nullptr),
+      timerTextComponent(nullptr) { }
 
 GameManager::~GameManager() {
     sceneLoader = nullptr;
