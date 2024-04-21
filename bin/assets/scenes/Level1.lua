@@ -14,7 +14,7 @@ scene = {
             -- },
             Transform = {
                 positionX = 0.0,
-                positionY = 60.0,
+                positionY = 65.0,
                 positionZ = 0.0,
                 scaleX = 1.0,
                 scaleY = 1.0,
@@ -32,6 +32,7 @@ scene = {
                 targetToLookY = 0.0,
                 targetToLookZ = 0.0
             },
+            
             LightDirComp = {
                 directionX = 0.0,
                 directionY = -1.0,
@@ -40,10 +41,77 @@ scene = {
                 colorR = 1.0,
                 colorG = 1.0,
                 colorB = 1.0,
-                colorA = 1.0
-            }
+                colorA = 1.0,
+                powerScale=0.4
+            },  
         }
     },
+
+--     LightSpot = {
+--         components = {
+--             Transform = {
+--                 positionX = 0.0,
+--                 positionY =100.0,
+--                 positionZ = 0.0,
+--                 scaleX = 0.0,
+--                 scaleY = 0.0,
+--                 scaleZ = 0.0,
+--                 rotationX = 0.0,
+--                 rotationY = 0.0,
+--                 rotationZ = 0.0
+--             },
+--         LightSpotComp = {
+--             directionX = 0.0,
+--             directionY = -1.0,
+--             directionZ = 0.0,
+--             mainLight = true,
+--             colorR = 1.0,
+--             colorG = 0.7,
+--             colorB =0.5,
+--             colorA = 1.0,
+--             powerScale=100.0,
+--             attenuationFactor=1.0,
+--             falloff=500.0,
+--             innerAngle=500,
+--             outerAngle=1000
+
+
+--         }
+-- }
+-- },
+-- LightSpot2 = {
+--     components = {
+--         Transform = {
+--             positionX = 0.0,
+--             positionY =7.0,
+--             positionZ = -20.0,
+--             scaleX = 0.0,
+--             scaleY = 0.0,
+--             scaleZ = 0.0,
+--             rotationX = 0.0,
+--             rotationY = 0.0,
+--             rotationZ = 0.0
+--         },
+--     LightSpotComp = {
+--         directionX = 0.0,
+--         directionY = -1.0,
+--         directionZ = 0.0,
+--         mainLight = true,
+--         colorR = 1.0,
+--         colorG = 0.7,
+--         colorB =0.5,
+--         colorA = 1.0,
+--         powerScale=1000.0,
+--         attenuationFactor=1.0,
+--         falloff=100.0,
+--         innerAngle=180,
+--         outerAngle=300
+
+
+--     }
+-- }
+-- },
+
     TimerText = {
         components = {
             Transform = {
@@ -53,7 +121,7 @@ scene = {
                 scaleX = 0.0,
                 scaleY = 0.0,
                 scaleZ = 0.0,
-                rotationX = 0.0,
+                rotationX = 0.0,    
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
@@ -145,49 +213,7 @@ scene = {
             }
         }
     },
- --NO BORRAR
-    -- Cue={
-    --     components={
-    --         Transform = {
-    --             positionX = 0.0,
-    --             positionY = 0.0,
-    --             positionZ = 0.0,
-    --             scaleX = 1.0,
-    --             scaleY = 1.0,
-    --             scaleZ = 1.0,
-    --             rotationX = 0.0,
-    --             rotationY = 0.0,
-    --             rotationZ = 0.0
-    --         } 
-    --      },
-    --      children = {
-    --         CueContainer = {
-    --             components = {
-    --                 Transform = {
-    --                     positionX = 0.0,
-    --                     positionY = 0.0,
-    --                     positionZ = 5.0,--offset
-    --                     scaleX = 10.0,
-    --                     scaleY = 10.0,
-    --                     scaleZ = 10.0,
-    --                     rotationX = 0.0,
-    --                     rotationY = 0.0,
-    --                     rotationZ = 0.0
-    --                 }, 
-    --                 MeshRenderer = {
-    --                     meshName = "models/CueStick/CueStick.mesh",
-    --                 },
-    --                 CueController = {    
-    --                     powerFactor = 3.0,
-    --                     moveBackwardFactor = 0.5,
-    --                     rotateFactor = 0.5,
-    --                     impulseTime = 0.5,
-    --                     impulseFactor = 0.05
-    --                 }
-    --             }
-    --         }
-    --     }
-    -- },
+
     MovableWall1 = {
         components = {
             Transform = {
@@ -203,7 +229,7 @@ scene = {
             },
             MeshRenderer = {
                 meshName = "models/cube2.mesh",
-                materialName = "grey"
+                materialName = "floor"
             },
             RigidBody = {    
                 colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -227,52 +253,8 @@ scene = {
             }
         }
     },
-    -- Accelerator1 = {
-    --     components = {
-    --         Transform = {
-    --             positionX = 0.0,
-    --             positionY = -2.8,
-    --             positionZ = 0.0,
-    --             scaleX = 5.0,
-    --             scaleY = 5.0,
-    --             scaleZ = 5.0,
-    --             rotationX = 0.0,
-    --             rotationY = 0.0,
-    --             rotationZ = 0.0
-    --         },
-    --         -- MeshRenderer = {
-    --         --     meshName = "models/cube.mesh",
-    --         --     materialName = "grey"
-    --         -- },
-    --         RigidBody = {    
-    --             colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-    --             colliderScaleX = 2.0,
-    --             colliderScaleY = 2.0,
-    --             colliderScaleZ = 2.0,
-    --             isTrigger = true,
-    --             movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-    --             mass = 0.0,
-    --             friction = 0.0,
-    --             damping = 0.0,
-    --             bounciness = 0.0
-    --         },
-    --         Accelerator = {    
-    --             speedFactor = 1.5,
-    --         },
-    --         PlaneComponent = {  
-    --             materialName = "lighting",
-    --             upX = 0.0,
-    --             upY = 0.0,
-    --             upZ = 1.0,
-    --             rkNormalX = 0.0,
-    --             rkNormalY = 1.0,
-    --             rkNormalZ = 0.0,
-    --             -- width = 200.0,
-    --             -- height = 200.0
-    --         }
-    --     }
-    -- },
-    Ground = {
+  
+    Table = {
         components = {
             Transform = {
                 positionX = 0.0,
@@ -318,7 +300,7 @@ scene = {
                     RigidBody = {    
                         colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                         colliderScaleX = 1.0,
-                        colliderScaleY = 3.0,
+                        colliderScaleY = 4.0,
                         colliderScaleZ = 17.0,
                         isTrigger = false,
                         movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
@@ -345,7 +327,7 @@ scene = {
                     RigidBody = {    
                         colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                         colliderScaleX = 1.0,
-                        colliderScaleY = 3.0,
+                        colliderScaleY = 4.0,
                         colliderScaleZ = 17.0,
                         isTrigger = false,
                         movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
@@ -719,6 +701,90 @@ scene = {
                 height = 3.0,
             }
         }
+    },
+    --DECORACIONES
+    Floor={
+        
+        components={
+            Transform = {
+                positionX = 0.0,
+                positionY = -10.0,
+                positionZ = 0.0,
+                scaleX = 200.0,
+                scaleY = 200.0,
+                scaleZ = 200.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+
+            PlaneComponent = {  
+                materialName = "floor",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 200.0,
+                height = 200.0,
+            }
+        }
+    },
+    Tabouret1={
+        components={
+            Transform = {
+                positionX = 0.0,
+                positionY = -8.0,
+                positionZ = -23.0,
+                scaleX = 5.0,
+                scaleY = 5.0,
+                scaleZ = 5.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/tabouret/tabouret.mesh",
+            }
+          }
+    },
+
+    Tabouret2={
+        components={
+            Transform = {
+                positionX = -25.0,
+                positionY = -8.0,
+                positionZ = -23.0,
+                scaleX = 5.0,
+                scaleY = 5.0,
+                scaleZ = 5.0,
+                rotationX = 0.0,
+                rotationY = 60.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/tabouret/tabouret.mesh",
+            }
+          }
+    },
+    Tabouret3={
+        components={
+            Transform = {
+                positionX = 25.0,
+                positionY = -8.0,
+                positionZ = -23.0,
+                scaleX = 5.0,
+                scaleY = 5.0,
+                scaleZ = 5.0,
+                rotationX = 0.0,
+                rotationY = -60.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/tabouret/tabouret.mesh",
+            }
+          }
     },
     HoleYellow = {
         components = {

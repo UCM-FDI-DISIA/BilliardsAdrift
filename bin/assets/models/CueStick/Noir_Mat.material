@@ -7,9 +7,9 @@ material Noir_Mat {
             specular 0.475177 0.0 0 0 0
 
             // additional maps - requires RTSS
-            rtshader_system {
-                lighting_stage metal_roughness
-            }
+           // rtshader_system {
+              //  lighting_stage metal_roughness
+         //   }
         }
     }
 }

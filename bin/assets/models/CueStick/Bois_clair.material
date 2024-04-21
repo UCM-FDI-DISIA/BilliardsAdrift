@@ -6,10 +6,10 @@ material Bois_clair {
             diffuse 0.429226 0.318599 0.16209 1.0
             specular 0.970297 0.297872 0 0 0
 
-            // additional maps - requires RTSS
-            rtshader_system {
-                lighting_stage metal_roughness
-            }
+           // additional maps - requires RTSS
+           // rtshader_system {
+              //  lighting_stage metal_roughness
+         //   }
         }
     }
 }

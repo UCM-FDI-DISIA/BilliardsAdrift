@@ -1,0 +1,17 @@
+material floor {
+    receive_shadows on
+    technique {
+        pass {
+
+            diffuse 1.0 1.0 1.0 1.0
+            specular 0.5 0.5 0.5 0
+            texture_unit {
+                
+                texture textures/wood.jpg
+                colour_op modulate
+                tex_address_mode wrap
+
+            }
+        }
+    }
+}
