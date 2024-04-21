@@ -19,7 +19,26 @@ material TableM1 : ShadowTemplateTexture {
     }
 }
 
-material TableM4 : ShadowTemplateTexture {
+material TableM4 : ShadowTemplateColor {
+    receive_shadows on
+    technique {
+        pass Decal{
+           
+             diffuse 1.0 1.0 1.0 1.0
+            specular 0.5 0.5 0.5 0
+
+       
+            // - base_color_texture
+            texture_unit {
+                texture models/Table2/Image_2.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+
+
+        }
+    }
+} {
     receive_shadows on
     technique {
         pass {

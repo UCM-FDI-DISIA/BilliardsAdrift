@@ -4,7 +4,7 @@ material floor {
         pass {
 
             diffuse 1.0 1.0 1.0 1.0
-            specular 0.5 0.5 0.5 0
+            specular 1.0 1.0 1.0 0
             texture_unit {
                 
                 texture textures/wood.jpg
