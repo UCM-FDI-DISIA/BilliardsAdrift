@@ -37,6 +37,10 @@ scene = {
                 directionY = -1.0,
                 directionZ = 0.0,
                 mainLight = true,
+                colorR = 1.0,
+                colorG = 1.0,
+                colorB = 1.0,
+                colorA = 1.0
             }
         }
     },
