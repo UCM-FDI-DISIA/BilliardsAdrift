@@ -4,7 +4,7 @@ import ShadowTemplateTexture from "Shadows.material"
 material Dynamite : ShadowTemplateTexture {
     receive_shadows on
     technique {
-        pass Decal {
+        pass {
             diffuse 0.8 0.8 0.8 1.0
             specular 0.5 0.0 0 0 0
             /*

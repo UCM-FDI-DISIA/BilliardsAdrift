@@ -14,7 +14,7 @@ scene = {
             -- },
             Transform = {
                 positionX = 0.0,
-                positionY = 65.0,
+                positionY = 63.0,
                 positionZ = 0.0,
                 scaleX = 1.0,
                 scaleY = 1.0,
@@ -37,80 +37,49 @@ scene = {
                 directionX = 0.0,
                 directionY = -1.0,
                 directionZ = 0.0,
-                mainLight = true,
-                colorR = 1.0,
-                colorG = 1.0,
+                mainLight = false,
+                colorR = 0.6,
+                colorG = 0.6,
                 colorB = 1.0,
                 colorA = 1.0,
-                powerScale=0.4
+                powerScale=0.35
             },  
         }
     },
 
---     LightSpot = {
---         components = {
---             Transform = {
---                 positionX = 0.0,
---                 positionY =100.0,
---                 positionZ = 0.0,
---                 scaleX = 0.0,
---                 scaleY = 0.0,
---                 scaleZ = 0.0,
---                 rotationX = 0.0,
---                 rotationY = 0.0,
---                 rotationZ = 0.0
---             },
---         LightSpotComp = {
---             directionX = 0.0,
---             directionY = -1.0,
---             directionZ = 0.0,
---             mainLight = true,
---             colorR = 1.0,
---             colorG = 0.7,
---             colorB =0.5,
---             colorA = 1.0,
---             powerScale=100.0,
---             attenuationFactor=1.0,
---             falloff=500.0,
---             innerAngle=500,
---             outerAngle=1000
+    LightSpot = {
+        components = {
+            Transform = {
+                positionX = 0.0,
+                positionY =100.0,
+                positionZ = 0.0,
+                scaleX = 0.0,
+                scaleY = 0.0,
+                scaleZ = 0.0,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            },
+        LightSpotComp = {
+            directionX = 0.0,
+            directionY = -1.0,
+            directionZ = 0.0,
+            mainLight = true,
+            colorR = 1.0,
+            colorG = 0.9,
+            colorB =0.5,
+            colorA = 1.0,
+            powerScale=60.0,
+            attenuationFactor=1.0,
+            falloff=0.5,
+            innerAngle=500,
+            outerAngle=1500
 
 
---         }
--- }
--- },
--- LightSpot2 = {
---     components = {
---         Transform = {
---             positionX = 0.0,
---             positionY =7.0,
---             positionZ = -20.0,
---             scaleX = 0.0,
---             scaleY = 0.0,
---             scaleZ = 0.0,
---             rotationX = 0.0,
---             rotationY = 0.0,
---             rotationZ = 0.0
---         },
---     LightSpotComp = {
---         directionX = 0.0,
---         directionY = -1.0,
---         directionZ = 0.0,
---         mainLight = true,
---         colorR = 1.0,
---         colorG = 0.7,
---         colorB =0.5,
---         colorA = 1.0,
---         powerScale=1000.0,
---         attenuationFactor=1.0,
---         falloff=100.0,
---         innerAngle=180,
---         outerAngle=300
+        }
+}
+},
 
-
---     }
--- }
--- },
 
     TimerText = {
         components = {
