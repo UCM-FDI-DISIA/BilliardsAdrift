@@ -22,7 +22,6 @@ scene = {
                 rotationZ = 90.0
             },
             CameraComponent = {
-                zOrder = 0,
                 bgColorR = 0.925,
                 bgColorG = 0.698,
                 bgColorB = 0.941,
