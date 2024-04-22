@@ -30,17 +30,20 @@ GameManager::~GameManager() {
 
 bool GameManager::initComponent(const CompMap& variables) {
     if (!setValueFromMap(firstStateName, "firstStateName", variables)) {
+        // CAMBIAR A LOG DEL JUEGO
         Tapioca::logError("GameManager: no se pudo inicializar firstSceneName.");
         return false;
     }
 
     if (!setValueFromMap(INIT_LIFE, "initLife", variables)) {
+        // CAMBIAR A LOG DEL JUEGO
         Tapioca::logError("GameManager: no se pudo inicializar INIT_LIFE.");
         return false;
     }
 
     float timeAux;
     if (!setValueFromMap(timeAux, "initTime", variables)) {
+        // CAMBIAR A LOG DEL JUEGO
         Tapioca::logError("GameManager: no se pudo inicializar INIT_TIME.");
         return false;
     }
@@ -73,16 +76,15 @@ void GameManager::update(const uint64_t deltaTime) {
         time -= deltaTime;
         updateTimerText();
 
-#ifdef _DEBUG
         if (time <= 0) {
 #ifdef _DEBUG
             std::cout << "El jugador se ha quedado sin tiempo.\n";
 #endif
-            // currentState = Lose;
-            //  pushEvent("ev_GameOver", nullptr);
+            //currentState = Lose;
+            //pushEvent("ev_GameOver", nullptr);
         }
-#endif
-        // Compruueba que todas las bolas estan inmovilizadas
+
+        // Comprueba que todas las bolas estan inmovilizadas
         auto it = balls.begin();
         while (it != balls.end()) {
             Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
@@ -278,7 +280,6 @@ void GameManager::onRestartConfirmed() {
 }
 
 void GameManager::onMainMenuConfirmed() {
-
     if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
     else if (currentState == Win)
         mainLoop->deleteScene("WinScreen");

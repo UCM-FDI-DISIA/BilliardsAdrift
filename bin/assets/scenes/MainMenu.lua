@@ -1,14 +1,4 @@
 scene = {
-    {
-        components = {
-            CameraComponent = {
-                zOrder = 1, -- Cuando se arregle, se podrá cambiar a 0
-                bgColorR = 0.0,
-                bgColorG = 0.8,
-                bgColorB = 0.0
-            }
-        }
-    },
     TitleText = {
         components = {
             Transform = {
@@ -47,14 +37,7 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 + 100,
-                positionZ = 0.0,
-                scaleX = 0.0,
-                scaleY = 0.0,
-                scaleZ = 0.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                positionY = WINDOW_HEIGHT / 2 + 100
             },
             Text = {
                 name = "TemporalText",
@@ -62,37 +45,18 @@ scene = {
                 textSize = 20.0
             }
         }
+    },
+    BackgroundImage = { 
+        zIndex = 1,
+        components = {
+            Transform = {
+                scaleX = 1500.0, -- WINDOW_WIDTH
+                scaleY = 1000.0 -- WINDOW_HEIGHT
+            },
+            Image = {
+                name = "mainMenuBackground",
+                imagePath = "textures/menuBackground.png"
+            }
+        }
     }
-
-    -- Ground={
-    --     components={
-    --         Transform = {
-    --             positionX = 0.0,
-    --             positionY = -4.0,
-    --             positionZ = 0.0,
-    --             scaleX = 0.1,
-    --             scaleY = 0.02,
-    --             scaleZ = 0.2,
-    --             rotationX = 0.0,
-    --             rotationY = 0.0,
-    --             rotationZ = 0.0
-    --         },
-    --         MeshRenderer = {
-    --             meshName = "models/cube.mesh",
-    --             materialName= "green"
-    --         },
-    --         RigidBody = {    
-    --             colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-    --             colliderScaleX=6.0,
-    --             colliderScaleY=1.0,
-    --             colliderScaleZ=10.0,
-    --             isTrigger=false,
-    --             movementType=1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-    --             mass=0.0,
-    --             friction=1.0,
-    --             damping=0.0,
-    --             bounciness=1.0
-    --         }
-    --     }
-    -- }
 }
