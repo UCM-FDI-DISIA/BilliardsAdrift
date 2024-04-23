@@ -625,6 +625,37 @@ scene = {
             HeartComponent = { }
         }
     },
+    Clock={ 
+        components={
+            Transform = {
+                positionX = -12.0,
+                positionY = 8.2,
+                positionZ = 5.0,
+                scaleX = 1.2,
+                scaleY = 1.2,
+                scaleZ = 1.2,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/Clock/Clock.mesh"
+            },
+            RigidBody = {    
+                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 1.0,
+                colliderScaleY = 1.0,
+                colliderScaleZ = 1.0,
+                isTrigger = true,
+                movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 1.0,
+                damping = 0.4,
+                bounciness = 0.5
+            },
+            HeartComponent = { }
+        }
+    },
     Accelerator1={
         components={
             Transform = {
