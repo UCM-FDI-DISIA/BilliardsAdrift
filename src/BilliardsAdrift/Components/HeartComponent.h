@@ -2,28 +2,17 @@
 #include "gameDefs.h"
 #include "Structure/Component.h"
 
-namespace Tapioca {
-class RigidBody;
-class Transform;
-}
-
-namespace BilliardsAdrift {
 class GameManager;
 
 class JUEGO_API HeartComponent : public Tapioca::Component {
 private:
-    GameManager* gameM;
-
-    //bool active;
+    GameManager* gameMng; // Puntero al GameManager
 
 public:
     COMPONENT_ID("HeartComponent");
     
     HeartComponent();
     ~HeartComponent();
-    bool initComponent(const CompMap& variables) override;
     void start() override;
-    void update(const uint64_t deltaTime) override;
     void handleEvent(std::string const& id, void* info) override;
 };
-}

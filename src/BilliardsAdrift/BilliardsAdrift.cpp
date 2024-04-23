@@ -1,8 +1,4 @@
 #include "BilliardsAdrift.h"
-
-#include "WindowManager.h"
-#include "Structure/MainLoop.h"
-#include "SceneLoader.h"
 #include "Structure/FactoryManager.h"
 #include "Structure/BasicBuilder.h"
 
@@ -22,12 +18,12 @@ void addComponentFactories() {
     Tapioca::logInfo("Anadiendo las factorias del juego");
 
     Tapioca::FactoryManager* factMngr = Tapioca::FactoryManager::instance();
-    factMngr->addBuilder(new BilliardsAdrift::GameManagerBuilder());
-    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::CueController>());
-    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::HeartComponent>());
-    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::MovableWall>());
-    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::Accelerator>());
-    factMngr->addBuilder(new Tapioca::BasicBuilder<BilliardsAdrift::ExplosiveComponent>());
+    factMngr->addBuilder(new GameManagerBuilder());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<CueController>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<HeartComponent>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<MovableWall>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<Accelerator>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<ExplosiveComponent>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<ColoredHole>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<ColoredBall>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<WhiteBallComponent>());

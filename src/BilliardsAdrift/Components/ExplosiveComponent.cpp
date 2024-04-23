@@ -1,12 +1,36 @@
 #include "ExplosiveComponent.h"
-#include "Structure/BasicBuilder.h"
-#include "Components/RigidBody.h"
 #include "Structure/GameObject.h"
-#include "Components/Transform.h"
+#include "Components/RigidBody.h"
 #include "Components/MeshRenderer.h"
+#include "Components/Transform.h"
 #include "Utilities/Vector3.h"
 
-namespace BilliardsAdrift {
+ExplosiveComponent::ExplosiveComponent() : force(1.0f), duration(0.1f), lifeTime(duration), gO(nullptr) { }
+
+ExplosiveComponent::~ExplosiveComponent() { gO = nullptr; }
+
+bool ExplosiveComponent::initComponent(const CompMap& variables) {
+    if (!setValueFromMap(force, "force", variables)) {
+        Tapioca::logWarn("ExplosiveComponent: No se ha dado valor a force. Se inicializa con valor por defecto 1.");
+    }
+    return true;
+}
+
+void ExplosiveComponent::update(const uint64_t deltaTime) {
+    if (gO == nullptr) return;
+    explode(deltaTime);
+}
+
+void ExplosiveComponent::handleEvent(std::string const& id, void* info) {
+    if (id == "onCollisionEnter") {
+        Tapioca::GameObject* ball = (Tapioca::GameObject*)info;
+        if (ball->getHandler() == "BallPlayer") {
+            gO = ball;
+            object->getComponent<Tapioca::MeshRenderer>()->setVisible(false);
+        }
+    }
+}
+
 void ExplosiveComponent::explode(const uint64_t deltaTime) {
     Tapioca::RigidBody* rb = gO->getComponent<Tapioca::RigidBody>();
     Tapioca::Transform* tr = gO->getComponent<Tapioca::Transform>();
@@ -24,34 +48,4 @@ void ExplosiveComponent::explode(const uint64_t deltaTime) {
     rb->addImpulse(expF);
 
     if ((lifeTime -= deltaTime * 0.001) < 0) object->die();
-}
-
-ExplosiveComponent::ExplosiveComponent() : force(1.f), duration(.1f), lifeTime(duration), gO(nullptr) { }
-
-ExplosiveComponent::~ExplosiveComponent() { }
-
-bool ExplosiveComponent::initComponent(const CompMap& variables) {
-    if (!setValueFromMap(force, "force", variables)) {
-        Tapioca::logWarn("ExplosiveComponent: No se ha dado valor a force. Se inicializa con valor por defecto 1.");
-    }
-    return true;
-}
-
-void ExplosiveComponent::update(const uint64_t deltaTime) {
-    if (gO == nullptr) return;
-    
-    explode(deltaTime);
-}
-
-void ExplosiveComponent::handleEvent(std::string const& id, void* info) {
-    if (id == "onCollisionEnter") {
-        Tapioca::GameObject* ball = (Tapioca::GameObject*)info;
-        if (ball->getHandler() == "BallPlayer") {
-            gO = ball;
-            object->getComponent<Tapioca::MeshRenderer>()->setVisible(false);
-        }
-    }
-}
-
-
 }

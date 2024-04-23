@@ -1,23 +1,18 @@
 #pragma once
-#include <Structure/Component.h>
 #include "gameDefs.h"
+#include "Structure/Component.h"
 #include "Utilities/Vector3.h"
-
-namespace Tapioca {
-class MainLoop;
-}
 
 class JUEGO_API WhiteBallComponent : public Tapioca::Component {
 private:
-    bool hit;
-    bool collided;
-    Tapioca::Vector3 iniBallPos;
-    Tapioca::MainLoop* mainLoop;
+    bool hit;                      // Indica si la bola blanca ha sido golpeada
+    bool collided;                 // Indica si la bola blanca ha colisionado con otra bola
+    Tapioca::Vector3 iniBallPos;   // Posicion inicial de la bola blanca
 
 public:
     COMPONENT_ID("WhiteBallComponent");
 
     WhiteBallComponent();
-    bool initComponent(const CompMap& variables) override;
     void handleEvent(std::string const& id, void* info) override;
 };
+

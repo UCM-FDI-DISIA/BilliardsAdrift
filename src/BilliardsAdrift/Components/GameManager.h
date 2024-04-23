@@ -6,16 +6,13 @@
 #include "Structure/ComponentBuilder.h"
 #include "gameDefs.h"
 
-
 namespace Tapioca {
-class GameObject;
-class MainLoop;
 class SceneLoader;
-class Vector3;
+class MainLoop;
+class GameObject;
 class Text;
 }
 
-namespace BilliardsAdrift {
 /*
 * @brief Clase que gestiona el juego
 */
@@ -241,10 +238,12 @@ public:
     void onMainMenuConfirmed();
 };
 
+/*
+* @brief Builder de GameManager
+*/
 class JUEGO_API GameManagerBuilder : public Tapioca::ComponentBuilder {
 public:
     GameManagerBuilder() : Tapioca::ComponentBuilder(GameManager::id) { }
 
     inline Tapioca::Component* createComponent() override { return GameManager::create(); }
 };
-}

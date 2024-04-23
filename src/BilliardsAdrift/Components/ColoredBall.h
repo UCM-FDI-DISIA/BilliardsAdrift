@@ -1,6 +1,6 @@
 #pragma once
-#include <Structure/Component.h>
 #include "gameDefs.h"
+#include "Structure/Component.h"
 
 class JUEGO_API ColoredBall : public Tapioca::Component {
 private:
@@ -11,5 +11,5 @@ public:
 
     ColoredBall();
     bool initComponent(const CompMap& variables) override;
-    std::string getID() const { return ballId; }
+    inline std::string getID() const { return ballId; }
 };

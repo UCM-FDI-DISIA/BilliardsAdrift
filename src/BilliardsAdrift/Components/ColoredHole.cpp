@@ -10,7 +10,6 @@ bool ColoredHole::initComponent(const CompMap& variables) {
         Tapioca::logError("ColoredHole: No se pudo inicializar ballId. Se necesita esta variable.");
         return false;
     }
-
     return true;
 }
 

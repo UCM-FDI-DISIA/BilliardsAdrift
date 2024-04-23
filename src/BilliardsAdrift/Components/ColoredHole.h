@@ -1,6 +1,6 @@
 #pragma once
-#include <Structure/Component.h>
 #include "gameDefs.h"
+#include "Structure/Component.h"
 
 class JUEGO_API ColoredHole : public Tapioca::Component {
 private:

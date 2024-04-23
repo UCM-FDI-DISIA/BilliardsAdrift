@@ -6,13 +6,16 @@ namespace Tapioca {
 class GameObject;
 }
 
-namespace BilliardsAdrift {
+/*
+* @brief Componente que se encarga de aplicar una fuerza de explosion
+*/
 class JUEGO_API ExplosiveComponent : public Tapioca::Component {
 private:
-    float force;
-    float duration;
-    float lifeTime;
-    Tapioca::GameObject* gO; 
+    float force;               // Fuerza de la explosion
+    float duration;            // Duracion de la explosion
+    float lifeTime;            // Tiempo de vida de la explosion
+    Tapioca::GameObject* gO;   // GameObject al que pertenece el componente
+
     void explode(const uint64_t deltaTime);
 
 public:
@@ -24,5 +27,3 @@ public:
     void update(const uint64_t deltaTime) override;
     void handleEvent(std::string const& id, void* info) override;
 };
-
-}

@@ -11,17 +11,22 @@
 #include "Utilities/Quaternion.h"
 #include <cmath>
 
-namespace BilliardsAdrift {
 CueController::CueController()
-    : inputMng(nullptr), ballRb(nullptr), ballTr(nullptr), ball(nullptr), tr(nullptr), actualPower(0.0f),
-      moveFactor(0.0f), powerFactor(0.0f), hitting(false), moveSpeed(0), canMove(true), mesh(nullptr),
-      impulseFactor(0.0f), impulseTime(), rotateFactor(0.0f) { }
+    : tr(nullptr), ballTr(nullptr), ballRb(nullptr), ball(nullptr), mesh(nullptr), inputMng(nullptr),
+      mouseLastPosition(Tapioca::Vector2()), ballDistanceOffset(Tapioca::Vector3()), impulseTime(0), powerFactor(0.0f),
+      moveFactor(0.0f), rotateFactor(0.0f), impulseFactor(0.0f), actualPower(0.0f), moveSpeed(0), hitting(false),
+      canMove(true) { }
+
+CueController::~CueController() {
+    tr = nullptr;
+    ballTr = nullptr;
+    ballRb = nullptr;
+    ball = nullptr;
+    mesh = nullptr;
+    inputMng = nullptr;
+}
 
 bool CueController::initComponent(const CompMap& variables) {
-
-    mouseLastPosition = Tapioca::Vector2(0, 0);
-    actualPower = 0;
-
     if (!setValueFromMap(powerFactor, "powerFactor", variables)) {
         Tapioca::logError("CueController: no se pudo inicializar powerFactor.");
         return false;
@@ -48,23 +53,19 @@ bool CueController::initComponent(const CompMap& variables) {
         Tapioca::logError("CueController: no se pudo inicializar impulseFactor.");
         return false;
     }
-
     return true;
 }
 
 void CueController::start() {
     tr = object->getComponent<Tapioca::Transform>();
 
-    ballDistanceOffset = tr->getGlobalPositionWithoutRotation();
-    inputMng = Tapioca::InputManager::instance();
-
     ball = object->getScene()->getHandler("BallPlayer");
-
     ballTr = ball->getComponent<Tapioca::Transform>();
     ballRb = ball->getComponent<Tapioca::RigidBody>();
-    mesh = object->getComponent<Tapioca::MeshRenderer>();
-
     ballRb->setVelocity(Tapioca::Vector3(0));
+    mesh = object->getComponent<Tapioca::MeshRenderer>();
+    ballDistanceOffset = tr->getGlobalPositionWithoutRotation();
+    inputMng = Tapioca::InputManager::instance();
     followBall();
 }
 
@@ -117,7 +118,6 @@ void CueController::updatePosition() {
 }
 
 void CueController::updateRotation() {
-
     Tapioca::Vector3 v =
         Tapioca::Vector3(0, 1, 0) * (inputMng->getMousePos().first - mouseLastPosition.x) * rotateFactor;
 
@@ -141,7 +141,6 @@ void CueController::hit() {
 }
 
 void CueController::resetCue() {
-
     actualPower = 0;
     followBall();
 }
@@ -152,14 +151,10 @@ void CueController::followBall() {
 }
 
 Tapioca::Vector3 CueController::translateToWorld(const Tapioca::Vector3& direction) {
-
-    // Obtener la rotaci�n global inversa del objeto hijo
+    // Obtener la rotacion global inversa del objeto hijo
     Tapioca::Quaternion childGlobalRotationInverse = tr->getGlobalRotation().inverse();
-    //Aplicar la rotaci�n global inversa al vector direccional respecto al mundo
+    //Aplicar la rotacion global inversa al vector direccional respecto al mundo
     Tapioca::Vector3 directionalVectorLocal = childGlobalRotationInverse.rotatePoint(direction);
-
     // Devolver el vector direccional en el sistema de coordenadas local del objeto hijo
     return directionalVectorLocal;
-}
-
 }

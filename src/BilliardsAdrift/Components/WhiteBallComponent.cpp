@@ -1,21 +1,17 @@
 #include "WhiteBallComponent.h"
 #include "ColoredBall.h"
+#include "Structure/GameObject.h"
 #include "Components/Transform.h"
 #include "Components/RigidBody.h"
 #include "Structure/Scene.h"
-#include "Structure/GameObject.h"
-#include "Structure/MainLoop.h"
-WhiteBallComponent::WhiteBallComponent() : collided(false), hit(false), iniBallPos(Tapioca::Vector3(0.f,0.f,0.f)), mainLoop(nullptr) { }
 
-bool WhiteBallComponent::initComponent(const CompMap& variables) { return true; }
+WhiteBallComponent::WhiteBallComponent() : collided(false), hit(false), iniBallPos(Tapioca::Vector3()) { }
 
 void WhiteBallComponent::handleEvent(std::string const& id, void* info) {
     if (hit && id == "onCollisionEnter") {
         Tapioca::GameObject* obj = (Tapioca::GameObject*)info;
         ColoredBall* ball = obj->getComponent<ColoredBall>();
-        if (ball != nullptr) {
-            collided = true;
-        }
+        if (ball != nullptr) collided = true;
     }
     else if (id == "ev_MouseButtonDownLeft") {
         iniBallPos = object->getScene()->getHandler("BallPlayer")->getComponent<Tapioca::Transform>()->getPosition();

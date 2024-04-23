@@ -1,17 +1,15 @@
 #include "Accelerator.h"
 #include <math.h>
+#include <string>
 #include "Components/RigidBody.h"
 #include "Structure/GameObject.h"
-#include "Structure/BasicBuilder.h"
-#include "Structure/MainLoop.h"
+#include "Utilities/Vector3.h"
 
-#include <string>
-
-namespace BilliardsAdrift {
 Accelerator::Accelerator() : rb(nullptr), speedFactor(0) { }
 
-bool Accelerator::initComponent(const CompMap& variables) {
+Accelerator::~Accelerator() { rb = nullptr; }
 
+bool Accelerator::initComponent(const CompMap& variables) {
     if (!setValueFromMap(speedFactor, "speedFactor", variables)) {
         Tapioca::logError("Accelerator: no se pudo inicializar speedFactor.");
         return false;
@@ -32,5 +30,4 @@ void Accelerator::handleEvent(std::string const& id, void* info) {
             rb->setVelocity(Tapioca::Vector3(v.x * speedFactor, v.y, v.z * speedFactor));
         }
     }
-}
 }

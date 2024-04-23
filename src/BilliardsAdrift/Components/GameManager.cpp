@@ -13,11 +13,10 @@
 #include "ColoredBall.h"
 #include "checkML.h"
 
-template class JUEGO_API Tapioca::Singleton<BilliardsAdrift::GameManager>;
+template class JUEGO_API Tapioca::Singleton<GameManager>;
 template<>
-BilliardsAdrift::GameManager* Tapioca::Singleton<BilliardsAdrift::GameManager>::instance_ = nullptr;
+GameManager* Tapioca::Singleton<GameManager>::instance_ = nullptr;
 
-namespace BilliardsAdrift {
 GameManager::GameManager()
     : sceneLoader(nullptr), mainLoop(nullptr), firstStateName(""), currentStateName(""), currentState(), INIT_TIME(0),
       INIT_LIFE(0), time(0), life(0), score(0), processing(false), actualLevel(1), timerText(nullptr),
@@ -30,20 +29,17 @@ GameManager::~GameManager() {
 
 bool GameManager::initComponent(const CompMap& variables) {
     if (!setValueFromMap(firstStateName, "firstStateName", variables)) {
-        // CAMBIAR A LOG DEL JUEGO
         Tapioca::logError("GameManager: no se pudo inicializar firstSceneName.");
         return false;
     }
 
     if (!setValueFromMap(INIT_LIFE, "initLife", variables)) {
-        // CAMBIAR A LOG DEL JUEGO
         Tapioca::logError("GameManager: no se pudo inicializar INIT_LIFE.");
         return false;
     }
 
     float timeAux;
     if (!setValueFromMap(timeAux, "initTime", variables)) {
-        // CAMBIAR A LOG DEL JUEGO
         Tapioca::logError("GameManager: no se pudo inicializar INIT_TIME.");
         return false;
     }
@@ -211,7 +207,6 @@ void GameManager::updateTimerText() {
 void GameManager::onReset() { }
 
 void GameManager::onStart() {
-
     time = INIT_TIME * 1000;
     score = 0;
     life = INIT_LIFE;
@@ -290,5 +285,4 @@ void GameManager::onMainMenuConfirmed() {
 
     currentState = MainMenu;
     changeScene("MainMenu");
-}
 }
