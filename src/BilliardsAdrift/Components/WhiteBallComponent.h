@@ -15,4 +15,3 @@ public:
     WhiteBallComponent();
     void handleEvent(std::string const& id, void* info) override;
 };
-

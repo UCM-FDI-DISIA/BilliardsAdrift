@@ -8,7 +8,7 @@ scene = {
             Text = {
                 name = "BilliardsAdriftText",
                 text = "Billiards Adrift",
-                textFontName = "HARLOWSI.TTF",
+                textFontName = "06126_BRITANIC.ttf",
                 textSize = 75.0
             }
         }
@@ -18,31 +18,38 @@ scene = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
                 positionY = WINDOW_HEIGHT / 2,
-                positionZ = 0.0,
-                scaleX = 130.0,
-                scaleY = 40.0,
-                scaleZ = 1.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                scaleX = 200.0,
+                scaleY = 70.0
             },
-            Button = {
+            ImageTextButton = {
                 name = "PlayButton",
-                text = "Play",
-                onClickId = "play"
+                onClickId = "Play",
+                imagePathNormal = "textures/buttons/play1.png",
+                imagePathHover = "textures/buttons/play2.png",
+                imagePathActive = "textures/buttons/play3.png",
+                normalColorA = 0.0,
+                hoverColorA = 0.0,
+                activeColorA = 0.0
             }
         }
     },
-    TemporalText = {
+    QuitButton = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 + 100
+                positionY = WINDOW_HEIGHT * 2 / 3,
+                scaleX = 200.0,
+                scaleY = 70.0
             },
-            Text = {
-                name = "TemporalText",
-                text = "ESTO ES TEMPORAL :)",
-                textSize = 20.0
+            ImageTextButton = {
+                name = "QuitButton",
+                onClickId = "Quit",
+                imagePathNormal = "textures/buttons/quit1.png",
+                imagePathHover = "textures/buttons/quit2.png",
+                imagePathActive = "textures/buttons/quit3.png",
+                normalColorA = 0.0,
+                hoverColorA = 0.0,
+                activeColorA = 0.0
             }
         }
     },

@@ -9,6 +9,7 @@
 namespace Tapioca {
 class SceneLoader;
 class MainLoop;
+class LuaManager;
 class GameObject;
 class Text;
 }
@@ -27,6 +28,7 @@ private:
 
     Tapioca::SceneLoader* sceneLoader;   // Puntero al cargador de escenas
     Tapioca::MainLoop* mainLoop;         // Puntero al bucle principal
+    Tapioca::LuaManager* luaManager;     // Puntero al gestor de Lua
 
     std::string firstStateName;     // Nombre del primer estado del juego al iniciar
     std::string currentStateName;   // Nombre del estado actual
@@ -63,6 +65,11 @@ private:
     void onReset();
 
     /*
+    * @brief Cambia el estado del juego a InGame y cambia de escena
+    */
+    void onPlay();
+
+    /*
     * @brief Inicializa los valores como la vida, tiempo, puntuacion,
     * coge la referencia a las bolas en balls e inicializa su velocidad a 0
     */
@@ -91,7 +98,42 @@ private:
     /*
     * @brief Actualiza el texto del temporizador
     */
-    void updateTimerText();
+    void updateTimerText(int precision = 0);
+
+    /*
+    * @brief Cuando se ha pulsado el boton de jugar desde MainMenu
+    */
+    void onPlayConfirmed();
+
+    /*
+    * @brief Cuando se ha pulsado el boton de resume desde PauseMenu
+    */
+    void onResumeConfirmed();
+
+    /*
+    * @brief Cuando se ha pulsado el boton de continuar desde EndScreen
+    */
+    void onContinueConfirmed();
+
+    /*
+    * @brief Cuando se ha pulsado el boton de reiniciar desde EndScreen
+    */
+    void onRestartConfirmed();
+
+    /*
+    * @brief Cuando se ha pulsado el boton de ir al MainMenu desde EndScreen
+    */
+    void onMainMenuConfirmed();
+
+    /*
+    * @brief Registra funciones
+    */
+    void registerLuaFunctions();
+
+    /*
+    * @brief Actualiza el estado actual del juego
+    */
+    void updateCurrentState(const std::string name);
 
     /*
     * @brief Constructor por defecto
@@ -211,31 +253,6 @@ public:
     * @param p si se estan procesando los objetos
     */
     inline void setProcessing(const bool p) { processing = p; }
-
-    /*
-    * @brief Cuando se ha pulsado el boton de jugar desde MainMenu
-    */
-    void onPlayConfirmed();
-
-    /*
-    * @brief Cuando se ha pulsado el boton de resume desde PauseMenu
-    */
-    void onResumeConfirmed();
-
-    /*
-    * @brief Cuando se ha pulsado el boton de continuar desde EndScreen
-    */
-    void onContinueConfirmed();
-
-    /*
-    * @brief Cuando se ha pulsado el boton de reiniciar desde EndScreen
-    */
-    void onRestartConfirmed();
-
-    /*
-    * @brief Cuando se ha pulsado el boton de ir al MainMenu desde EndScreen
-    */
-    void onMainMenuConfirmed();
 };
 
 /*

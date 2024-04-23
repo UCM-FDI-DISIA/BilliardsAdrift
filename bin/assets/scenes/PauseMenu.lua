@@ -57,7 +57,7 @@ scene = {
             }
         }
     },
-    MainMenuImageButton={
+    MainMenuImageButton = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
@@ -68,7 +68,6 @@ scene = {
             ImageTextButton = {
                 name = "MainMenuButton",
                 onClickId = "MainMenu",
-                wantText = false,
                 imagePathNormal = "textures/buttons/mainMenu1.png",
                 imagePathHover = "textures/buttons/mainMenu2.png",
                 imagePathActive = "textures/buttons/mainMenu3.png",
