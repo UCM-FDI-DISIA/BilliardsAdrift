@@ -91,6 +91,22 @@ scene = {
             }
         }
     },
+    PowerBar = {
+        components = {
+            Transform = {
+                positionX = WINDOW_WIDTH / 5,
+                positionY = WINDOW_HEIGHT - 50,
+                scaleX = 200.0
+            },
+            ProgressBar = {
+                name = "PowerBar",
+                barColorR = 0.0,
+                barColorG = 1.0,
+                barColorB = 0.0,
+                barColorA = 1.0
+            }
+        }
+    },
     
     Cue = {
         components = {

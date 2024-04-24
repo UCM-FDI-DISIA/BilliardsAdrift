@@ -10,6 +10,7 @@ class RigidBody;
 class GameObject;
 class MeshRenderer;
 class InputManager;
+class ProgressBar;
 }
 
 /*
@@ -45,6 +46,10 @@ private:
     void resetCue();
     void followBall();
     Tapioca::Vector3 translateToWorld(const Tapioca::Vector3& direction);
+
+    Tapioca::GameObject* powerBar;   // Barra de fuerza
+    Tapioca::ProgressBar* powerBarPB; // Componente de la barra de progreso de la barra de fuerza
+    void updatePowerBar();
 
 public:
     COMPONENT_ID("CueController");
