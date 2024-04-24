@@ -13,14 +13,7 @@ scene = {
             --     rotationZ = 0.0
             -- },
             Transform = {
-                positionX = 0.0,
                 positionY = 63.0,
-                positionZ = 0.0,
-                scaleX = 1.0,
-                scaleY = 1.0,
-                scaleZ = 1.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
                 rotationZ = 90.0
             },
             CameraComponent = {
@@ -31,7 +24,6 @@ scene = {
                 targetToLookY = 0.0,
                 targetToLookZ = 0.0
             },
-            
             LightDirComp = {
                 directionX = 0.0,
                 directionY = -1.0,
@@ -41,7 +33,7 @@ scene = {
                 colorG = 0.6,
                 colorB = 1.0,
                 colorA = 1.0,
-                powerScale=0.35
+                powerScale = 0.35
             },  
         }
     },
@@ -49,49 +41,31 @@ scene = {
     LightSpot = {
         components = {
             Transform = {
-                positionX = 0.0,
-                positionY =100.0,
-                positionZ = 0.0,
-                scaleX = 0.0,
-                scaleY = 0.0,
-                scaleZ = 0.0,
-                rotationX = 0.0,
-                rotationY = 0.0,
-                rotationZ = 0.0
+                positionY = 100.0
             },
-        LightSpotComp = {
-            directionX = 0.0,
-            directionY = -1.0,
-            directionZ = 0.0,
-            mainLight = true,
-            colorR = 1.0,
-            colorG = 0.9,
-            colorB =0.5,
-            colorA = 1.0,
-            powerScale=60.0,
-            attenuationFactor=1.0,
-            falloff=0.5,
-            innerAngle=500,
-            outerAngle=1500
-
-
+            LightSpotComp = {
+                directionX = 0.0,
+                directionY = -1.0,
+                directionZ = 0.0,
+                mainLight = true,
+                colorR = 1.0,
+                colorG = 0.9,
+                colorB = 0.5,
+                colorA = 1.0,
+                powerScale = 60.0,
+                attenuationFactor = 1.0,
+                falloff = 0.5,
+                innerAngle = 500,
+                outerAngle = 1500
+            }
         }
-}
-},
-
+    },
 
     TimerText = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = 10.0,
-                positionZ = 0.0,
-                scaleX = 0.0,
-                scaleY = 0.0,
-                scaleZ = 0.0,
-                rotationX = 0.0,    
-                rotationY = 0.0,
-                rotationZ = 0.0
+                positionY = 10.0
             },
             Text = {
                 name = "TimerText",
@@ -114,7 +88,7 @@ scene = {
                 rotationX = 0.0,
                 rotationY = 0.0,
                 rotationZ = 0.0
-            } 
+            }
         },
         children = {
             CueContainer = {
@@ -122,7 +96,7 @@ scene = {
                     Transform = {
                         positionX = 0.0,
                         positionY = 0.0,
-                        positionZ = -8.0,--offset
+                        positionZ = -8.0, --offset
                         scaleX = 10.0,
                         scaleY = 10.0,
                         scaleZ = 10.0,
@@ -176,7 +150,7 @@ scene = {
             ColoredBall = {
                 ballId = "white"
             },
-            WhiteBallComponent={
+            WhiteBallComponent = {
 
             }
         }
@@ -217,7 +191,6 @@ scene = {
                 destZ = 8.0,
                 --destX = 8.0,
                 --destZ = -2.0
-              
             }
         }
     },
@@ -363,7 +336,7 @@ scene = {
         }
     },
     BallYellow = {
-        components={
+        components = {
             Transform = {
                 positionX = 5.5,
                 positionY = 8.2,
@@ -396,7 +369,7 @@ scene = {
         }
     },
     BallBlue = {
-        components={
+        components = {
             Transform = {
                 positionX = -22.5,
                 positionY = 8.2,
@@ -428,8 +401,8 @@ scene = {
             }
         }
     },
-    BallRed={
-        components={
+    BallRed = {
+        components = {
             Transform = {
                 positionX = -6.5,
                 positionY = 8.2,
@@ -461,8 +434,8 @@ scene = {
             }
         }
     },
-    BallPurple={
-        components={
+    BallPurple = {
+        components = {
             Transform = {
                 positionX = -1.1,
                 positionY = 8.2,
@@ -494,8 +467,8 @@ scene = {
             }
         }
     },
-    BallOrange={
-        components={
+    BallOrange = {
+        components = {
             Transform = {
                 positionX = -19.1,
                 positionY = 8.2,
@@ -527,8 +500,8 @@ scene = {
             }
         }
     },
-    BallGreen={
-        components={
+    BallGreen = {
+        components = {
             Transform = {
                 positionX = 19.4,
                 positionY = 8.2,
@@ -560,8 +533,8 @@ scene = {
             }
         }
     },
-    BallBlack={
-        components={
+    BallBlack = {
+        components = {
             Transform = {
                 positionX = 6.6,
                 positionY = 8.2,
@@ -593,8 +566,8 @@ scene = {
             }
         }
     },
-    Heart={ -- Esto deja memory leaks ?
-        components={
+    Heart = {
+        components = {
             Transform = {
                 positionX = -12.0,
                 positionY = 8.2,
@@ -611,7 +584,7 @@ scene = {
                 materialName = "heart"
             },
             RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                 colliderScaleX = 1.0,
                 colliderScaleY = 1.0,
                 colliderScaleZ = 1.0,
@@ -625,8 +598,8 @@ scene = {
             HeartComponent = { }
         }
     },
-    Clock={ 
-        components={
+    Clock = { 
+        components = {
             Transform = {
                 positionX = -12.0,
                 positionY = 8.2,
@@ -642,7 +615,7 @@ scene = {
                 meshName = "models/Clock/Clock.mesh"
             },
             RigidBody = {    
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                 colliderScaleX = 1.0,
                 colliderScaleY = 1.0,
                 colliderScaleZ = 1.0,
@@ -656,8 +629,8 @@ scene = {
             HeartComponent = { }
         }
     },
-    Accelerator1={
-        components={
+    Accelerator1 = {
+        components = {
             Transform = {
                 positionX = 0.0,
                 positionY = 7.0,
@@ -702,9 +675,8 @@ scene = {
         }
     },
     --DECORACIONES
-    Floor={
-        
-        components={
+    Floor = {
+        components = {
             Transform = {
                 positionX = 0.0,
                 positionY = -10.0,
@@ -716,7 +688,6 @@ scene = {
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
-
             PlaneComponent = {  
                 materialName = "floor",
                 upX = 0.0,
@@ -730,8 +701,8 @@ scene = {
             }
         }
     },
-    Tabouret1={
-        components={
+    Tabouret1 = {
+        components = {
             Transform = {
                 positionX = 0.0,
                 positionY = -8.0,
@@ -746,11 +717,10 @@ scene = {
             MeshRenderer = {
                 meshName = "models/tabouret/tabouret.mesh",
             }
-          }
+        }
     },
-
-    Tabouret2={
-        components={
+    Tabouret2 = {
+        components = {
             Transform = {
                 positionX = -25.0,
                 positionY = -8.0,
@@ -767,8 +737,8 @@ scene = {
             }
           }
     },
-    Tabouret3={
-        components={
+    Tabouret3 = {
+        components = {
             Transform = {
                 positionX = 25.0,
                 positionY = -8.0,
@@ -787,9 +757,6 @@ scene = {
     },
     HoleYellow = {
         components = {
-            -- MeshRenderer = {
-            --     meshName = "models/Sinbad/Sinbad.mesh"
-            -- },
             Transform = {
                 positionX = 28.5,
                 positionY = 7.5,
@@ -817,15 +784,15 @@ scene = {
                 bounciness = 0.5
             },
             PlaneComponent = {  
-                materialName="yellowHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName = "yellowHoleImage",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -859,14 +826,14 @@ scene = {
             },
             PlaneComponent = {  
                 materialName="orangeHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -899,15 +866,15 @@ scene = {
                 bounciness = 0.5
             },
             PlaneComponent = {  
-                materialName="greenHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName = "greenHoleImage",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -941,14 +908,14 @@ scene = {
             },
             PlaneComponent = {  
                 materialName="redHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -982,14 +949,14 @@ scene = {
             },
             PlaneComponent = {  
                 materialName="blueHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -1023,14 +990,14 @@ scene = {
             },
             PlaneComponent = {  
                 materialName="purpleHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },

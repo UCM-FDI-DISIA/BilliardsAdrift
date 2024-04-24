@@ -57,8 +57,10 @@ scene = {
         zIndex = 1,
         components = {
             Transform = {
-                scaleX = 1500.0, -- WINDOW_WIDTH
-                scaleY = 1000.0 -- WINDOW_HEIGHT
+                positionX = WINDOW_WIDTH / 2,
+                positionY = WINDOW_HEIGHT / 2,
+                scaleX = WINDOW_WIDTH,
+                scaleY = WINDOW_HEIGHT
             },
             Image = {
                 name = "mainMenuBackground",

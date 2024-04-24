@@ -41,7 +41,7 @@ scene = {
                 colorG = 0.6,
                 colorB = 1.0,
                 colorA = 1.0,
-                powerScale=0.35
+                powerScale = 0.35
             },  
         }
     },
@@ -50,7 +50,7 @@ scene = {
         components = {
             Transform = {
                 positionX = 0.0,
-                positionY =100.0,
+                positionY = 100.0,
                 positionZ = 0.0,
                 scaleX = 0.0,
                 scaleY = 0.0,
@@ -59,39 +59,29 @@ scene = {
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
-        LightSpotComp = {
-            directionX = 0.0,
-            directionY = -1.0,
-            directionZ = 0.0,
-            mainLight = true,
-            colorR = 1.0,
-            colorG = 0.9,
-            colorB =0.5,
-            colorA = 1.0,
-            powerScale=60.0,
-            attenuationFactor=1.0,
-            falloff=0.5,
-            innerAngle=500,
-            outerAngle=1500
-
-
+            LightSpotComp = {
+                directionX = 0.0,
+                directionY = -1.0,
+                directionZ = 0.0,
+                mainLight = true,
+                colorR = 1.0,
+                colorG = 0.9,
+                colorB = 0.5,
+                colorA = 1.0,
+                powerScale = 60.0,
+                attenuationFactor = 1.0,
+                falloff = 0.5,
+                innerAngle = 500,
+                outerAngle = 1500
+            }
         }
-}
-},
-
+    },
 
     TimerText = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = 10.0,
-                positionZ = 0.0,
-                scaleX = 0.0,
-                scaleY = 0.0,
-                scaleZ = 0.0,
-                rotationX = 0.0,    
-                rotationY = 0.0,
-                rotationZ = 0.0
+                positionY = 10.0
             },
             Text = {
                 name = "TimerText",
@@ -122,7 +112,7 @@ scene = {
                     Transform = {
                         positionX = 0.0,
                         positionY = 0.0,
-                        positionZ = -8.0,--offset
+                        positionZ = -8.0, --offset
                         scaleX = 10.0,
                         scaleY = 10.0,
                         scaleZ = 10.0,
@@ -176,7 +166,7 @@ scene = {
             ColoredBall = {
                 ballId = "white"
             },
-            WhiteBallComponent={
+            WhiteBallComponent = {
 
             }
         }
@@ -217,7 +207,6 @@ scene = {
                 destZ = 8.0,
                 --destX = 8.0,
                 --destZ = -2.0
-              
             }
         }
     },
@@ -363,7 +352,7 @@ scene = {
         }
     },
     BallYellow = {
-        components={
+        components = {
             Transform = {
                 positionX = -19.9,
                 positionY = 8.2,
@@ -396,7 +385,7 @@ scene = {
         }
     },
     BallBlue = {
-        components={
+        components = {
             Transform = {
                 positionX = 17.2,
                 positionY = 8.2,
@@ -428,8 +417,8 @@ scene = {
             }
         }
     },
-    BallRed={
-        components={
+    BallRed = {
+        components = {
             Transform = {
                 positionX = -24.0,
                 positionY = 8.2,
@@ -461,8 +450,8 @@ scene = {
             }
         }
     },
-    BallPurple={
-        components={
+    BallPurple = {
+        components = {
             Transform = {
                 positionX = 8.1,
                 positionY = 8.2,
@@ -494,8 +483,8 @@ scene = {
             }
         }
     },
-    BallOrange={
-        components={
+    BallOrange = {
+        components = {
             Transform = {
                 positionX = -11.6,
                 positionY = 8.2,
@@ -527,8 +516,8 @@ scene = {
             }
         }
     },
-    BallGreen={
-        components={
+    BallGreen = {
+        components = {
             Transform = {
                 positionX = 6.9,
                 positionY = 8.2,
@@ -560,8 +549,8 @@ scene = {
             }
         }
     },
-    BallBlack={
-        components={
+    BallBlack = {
+        components = {
             Transform = {
                 positionX = 22.5,
                 positionY = 8.2,
@@ -577,7 +566,7 @@ scene = {
                 meshName = "models/Ball8/Ball8.mesh"
             },
             RigidBody = {    
-                colShape=1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                 colliderScaleX = 1.0,
                 colliderScaleY = 1.0,
                 colliderScaleZ = 1.0,
@@ -593,8 +582,8 @@ scene = {
             }
         }
     },
-    Heart1={ -- Esto deja memory leaks ?
-        components={
+    Heart1 = {
+        components = {
             Transform = {
                 positionX = -14.4,
                 positionY = 8.2,
@@ -625,8 +614,8 @@ scene = {
             HeartComponent = { }
         }
     },
-    Heart2={ -- Esto deja memory leaks ?
-        components={
+    Heart2 = {
+        components = {
             Transform = {
                 positionX = 14.4,
                 positionY = 8.2,
@@ -657,8 +646,8 @@ scene = {
             HeartComponent = { }
         }
     },
-    Accelerator1={
-        components={
+    Accelerator1 = {
+        components = {
             Transform = {
                 positionX = -22.7,
                 positionY = 7.0,
@@ -698,8 +687,8 @@ scene = {
             }
         }
     },
-    Accelerator2={
-        components={
+    Accelerator2 = {
+        components = {
             Transform = {
                 positionX = 22.9,
                 positionY = 7.0,
@@ -740,9 +729,8 @@ scene = {
         }
     },
     --DECORACIONES
-    Floor={
-        
-        components={
+    Floor = {
+        components = {
             Transform = {
                 positionX = 0.0,
                 positionY = -10.0,
@@ -754,7 +742,6 @@ scene = {
                 rotationY = 0.0,
                 rotationZ = 0.0
             },
-
             PlaneComponent = {  
                 materialName = "floor",
                 upX = 0.0,
@@ -768,8 +755,8 @@ scene = {
             }
         }
     },
-    Tabouret1={
-        components={
+    Tabouret1 = {
+        components = {
             Transform = {
                 positionX = 0.0,
                 positionY = -8.0,
@@ -786,9 +773,8 @@ scene = {
             }
           }
     },
-
-    Tabouret2={
-        components={
+    Tabouret2 = {
+        components = {
             Transform = {
                 positionX = -25.0,
                 positionY = -8.0,
@@ -805,8 +791,8 @@ scene = {
             }
           }
     },
-    Tabouret3={
-        components={
+    Tabouret3 = {
+        components = {
             Transform = {
                 positionX = 25.0,
                 positionY = -8.0,
@@ -821,13 +807,10 @@ scene = {
             MeshRenderer = {
                 meshName = "models/tabouret/tabouret.mesh",
             }
-          }
+        }
     },
     HoleYellow = {
         components = {
-            -- MeshRenderer = {
-            --     meshName = "models/Sinbad/Sinbad.mesh"
-            -- },
             Transform = {
                 positionX = 28.5,
                 positionY = 7.5,
@@ -843,7 +826,7 @@ scene = {
                 ballId = "yellow"
             },
             RigidBody = {
-                colShape=0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
                 colliderScaleX = 1.0,
                 colliderScaleY = 1.0,
                 colliderScaleZ = 1.0,
@@ -855,15 +838,15 @@ scene = {
                 bounciness = 0.5
             },
             PlaneComponent = {  
-                materialName="yellowHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName = "yellowHoleImage",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -896,15 +879,15 @@ scene = {
                 bounciness = 0.5
             },
             PlaneComponent = {  
-                materialName="orangeHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName = "orangeHoleImage",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -937,15 +920,15 @@ scene = {
                 bounciness = 0.5
             },
             PlaneComponent = {  
-                materialName="greenHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName = "greenHoleImage",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -978,15 +961,15 @@ scene = {
                 bounciness = 0.5
             },
             PlaneComponent = {  
-                materialName="redHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName= "redHoleImage",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -1019,15 +1002,15 @@ scene = {
                 bounciness = 0.5
             },
             PlaneComponent = {  
-                materialName="blueHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName = "blueHoleImage",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
@@ -1060,15 +1043,15 @@ scene = {
                 bounciness = 0.5
             },
             PlaneComponent = {  
-                materialName="purpleHoleImage",
-                upX=0.0,
-                upY=0.0,
-                upZ=-1.0,
-                rkNormalX=0.0,
-                rkNormalY=1.0,
-                rkNormalZ=0.0,
-                width=3.0,
-                height=3.0,
+                materialName = "purpleHoleImage",
+                upX = 0.0,
+                upY = 0.0,
+                upZ = -1.0,
+                rkNormalX = 0.0,
+                rkNormalY = 1.0,
+                rkNormalZ = 0.0,
+                width = 3.0,
+                height = 3.0,
             }
         }
     },
