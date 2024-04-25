@@ -300,9 +300,11 @@ void GameManager::onMainMenuConfirmed() {
     if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
     else if (currentState == Win)
         mainLoop->deleteScene("WinScreen");
-    else
-        mainLoop->deleteScene(getActualLevelName());
+    else if (currentState == Pause) {
+        mainLoop->deleteScene("PauseMenu");
+    }
 
+    mainLoop->deleteScene(getActualLevelName());
     std::string result = "MainMenu";
     updateCurrentState(result);
     changeScene(result);
