@@ -84,7 +84,6 @@ scene = {
                 positionY = 10.0
             },
             Text = {
-                name = "TimerText",
                 text = "Timer",
                 textSize = 20.0,
                 textFontName = "AGENCYB.TTF"
@@ -98,12 +97,14 @@ scene = {
                 positionY = WINDOW_HEIGHT - 50,
                 scaleX = 200.0
             },
-            ProgressBar = {
-                name = "PowerBar",
-                barColorR = 0.0,
-                barColorG = 1.0,
-                barColorB = 0.0,
-                barColorA = 1.0
+            ProgressBar = { }
+        }
+    },
+    CueLine = {
+        components = {
+            Line = { 
+                lineThickness = 2.0,
+                addBorder = true
             }
         }
     },

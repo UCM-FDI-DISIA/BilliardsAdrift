@@ -3,6 +3,7 @@
 #include "Structure/Component.h"
 #include "Utilities/Vector2.h"
 #include "Utilities/Vector3.h"
+#include "WindowManager.h"
 
 namespace Tapioca {
 class Transform;
@@ -11,6 +12,7 @@ class GameObject;
 class MeshRenderer;
 class InputManager;
 class ProgressBar;
+class Line;
 }
 
 /*
@@ -47,9 +49,14 @@ private:
     void followBall();
     Tapioca::Vector3 translateToWorld(const Tapioca::Vector3& direction);
 
-    Tapioca::GameObject* powerBar;   // Barra de fuerza
-    Tapioca::ProgressBar* powerBarPB; // Componente de la barra de progreso de la barra de fuerza
+    Tapioca::WindowManager* windowMng;           // Gestor de ventanas
+    Tapioca::GameObject* powerBar;               // Barra de fuerza
+    Tapioca::ProgressBar* powerBarPB;            // Componente de la barra de progreso de la barra de fuerza
+    Tapioca::GameObject* line;                   // Linea que indica la direccion del palo
+    Tapioca::Line* lineComponent;                // Componente de la linea que indica la direccion del palo
+    void updateHUD();
     void updatePowerBar();
+    void updateLine();
 
 public:
     COMPONENT_ID("CueController");

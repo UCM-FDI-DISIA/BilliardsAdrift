@@ -6,7 +6,6 @@ scene = {
                 positionY = WINDOW_HEIGHT / 2 - 150
             },
             Text = {
-                name = "BilliardsAdriftText",
                 text = "Billiards Adrift",
                 textFontName = "06126_BRITANIC.ttf",
                 textSize = 75.0
@@ -22,7 +21,6 @@ scene = {
                 scaleY = 70.0
             },
             ImageTextButton = {
-                name = "PlayButton",
                 onClickId = "Play",
                 imagePathNormal = "textures/buttons/play1.png",
                 imagePathHover = "textures/buttons/play2.png",
@@ -42,7 +40,6 @@ scene = {
                 scaleY = 70.0
             },
             ImageTextButton = {
-                name = "QuitButton",
                 onClickId = "Quit",
                 imagePathNormal = "textures/buttons/quit1.png",
                 imagePathHover = "textures/buttons/quit2.png",
@@ -63,7 +60,6 @@ scene = {
                 scaleY = WINDOW_HEIGHT
             },
             Image = {
-                name = "mainMenuBackground",
                 imagePath = "textures/menuBackground.png"
             }
         }

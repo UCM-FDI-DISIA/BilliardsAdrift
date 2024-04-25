@@ -6,7 +6,6 @@ scene = {
                 positionY = WINDOW_HEIGHT / 2 - 150,
             },
             Text = {
-                name = "PauseMenuText",
                 text = "Game paused",
                 textSize = 90.0,
                 textFontName = "06126_BRITANIC.TTF",
@@ -25,7 +24,6 @@ scene = {
                 scaleY = 70.0
             },
             ImageTextButton = {
-                name = "ResumeButton",
                 onClickId = "Resume",
                 imagePathNormal = "textures/buttons/resume1.png",
                 imagePathHover = "textures/buttons/resume2.png",
@@ -45,7 +43,6 @@ scene = {
                 scaleY = 70.0,
             },
             ImageTextButton = {
-                name = "RestartButton",
                 onClickId = "Restart",
                 wantText = false,
                 imagePathNormal = "textures/buttons/options1.png",
@@ -66,7 +63,6 @@ scene = {
                 scaleY = 70.0
             },
             ImageTextButton = {
-                name = "MainMenuButton",
                 onClickId = "MainMenu",
                 imagePathNormal = "textures/buttons/mainMenu1.png",
                 imagePathHover = "textures/buttons/mainMenu2.png",
@@ -87,7 +83,6 @@ scene = {
                 scaleY = WINDOW_HEIGHT
             },
             Image = {
-                name = "endBackground",
                 imagePath = "textures/menuBackground.png"
             }
         }
