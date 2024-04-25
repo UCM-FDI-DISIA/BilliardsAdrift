@@ -21,7 +21,6 @@ if errorlevel 1 (
     echo Error al crear enlace con el motor
 ) else (
     echo Enlace con el motor creado correctamente
-    call %LNK_DIR%buildEngine.bat
 )
 
 
