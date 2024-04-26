@@ -1,0 +1,250 @@
+/*
+Se utiliza para calcular el depthmap, es decir, la profundidad de cada pixel
+*/
+material ShadowCaster
+{
+	technique
+    {
+        // solo se usa en el paso de la Z puesto que solo se necesita para coger la profundidad
+        // Z-write
+        pass
+        {
+            vertex_program_ref ShadowCasterVS {}
+
+            fragment_program_ref ShadowCasterFS {}
+        }
+    }
+}
+
+// -------------------------------//
+// PSSM
+
+/*
+Ogre mezcla ambos materiales, el propio del objeto como el indicado aqui, que es el que define las sombras
+En las ultimas versiones de Ogre no es necesario definir un material aparte que reciba las sombras, sino que se
+puede especificar que content_type shadow, de modo que recibe las sombras el propio material y ya las aplica
+*/
+material ShadowReceiver
+{
+    technique
+    {
+        // solo se necesita hacer en el paso de luz, que es cuando se estableceen zonas de claroscuro
+        // lighting
+        pass Lighting
+        {
+            //iteration once_per_light
+            
+            //scene_blend add
+
+            //ambient 0 0 0
+
+            vertex_program_ref ShadowReceiverVS {}
+
+            fragment_program_ref ShadowReceiverFS {}
+
+            // textura con el depth map
+            texture_unit ShadowMap0
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+
+            texture_unit ShadowMap1
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+
+            texture_unit ShadowMap2
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+
+            //depth_bias 0.0001
+        }
+    }
+}
+
+// -------------------------------//
+// TEXTURE-BASED
+material ShadowReceiverText
+{
+    technique
+    {
+        // solo se necesita hacer en el paso de luz, que es cuando se estableceen zonas de claroscuro
+        // lighting
+        pass
+        {
+            //iteration once_per_light
+            
+            //scene_blend add
+
+            //ambient 0 0 0
+
+            vertex_program_ref ShadowReceiverTextVS {}
+
+            fragment_program_ref ShadowReceiverTextFS {}
+
+            // textura con el depth map
+            texture_unit ShadowMap
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                filtering none
+            }
+
+            //depth_bias 0.0001
+        }
+    }
+}
+
+// -------------------------------//
+// TEMPLATES (MULTIPASS LIGHTING PIPELINE)
+material ShadowTemplateTexture {    
+    technique {
+        // Base ambient pass
+        pass Ambient
+        {
+            scene_blend modulate
+
+            // base colours, not needed for rendering, but as information
+            // to lighting pass categorisation routine
+            ambient 1 1 1
+            diffuse 0 0 0 
+            specular 0 0 0 0 
+        }
+
+        pass Lighting
+        {
+
+            iteration once_per_light
+            
+            scene_blend add
+
+            ambient 0 0 0
+            diffuse 1 1 1
+            specular 1 1 1 1
+
+            vertex_program_ref ShadowReceiverVS {}
+
+            fragment_program_ref ShadowReceiverFS {}
+
+            // textura con el depth map
+            texture_unit ShadowMap0
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+
+            texture_unit ShadowMap1
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+
+            texture_unit ShadowMap2
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+        }
+
+        pass Decal {
+            //lighting off
+            scene_blend modulate
+            
+            // Really basic vertex program
+            vertex_program_ref AmbientOneTextureVS
+            {
+                param_named ambient float4 1.0 1.0 1.0 1.0
+            }
+            fragment_program_ref AmbientOneTextureFS {}
+        }
+    }
+}
+
+material ShadowTemplateColor {
+    technique {
+        // Base ambient pass
+        pass Ambient
+        {
+            scene_blend modulate
+
+            // base colours, not needed for rendering, but as information
+            // to lighting pass categorisation routine
+            ambient 1 1 1
+            diffuse 0 0 0 
+            specular 0 0 0 0 
+        }
+        
+        pass Lighting
+        {
+            iteration once_per_light
+            
+            scene_blend add
+
+            ambient 0 0 0
+            diffuse 1 1 1
+            specular 1 1 1 1
+
+            vertex_program_ref ShadowReceiverVS {}
+
+            fragment_program_ref ShadowReceiverFS {}
+
+            // textura con el depth map
+            texture_unit ShadowMap0
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+
+            texture_unit ShadowMap1
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+
+            texture_unit ShadowMap2
+            {
+                tex_address_mode clamp
+                tex_border_colour 1.0 1.0 1.0 1.0
+                content_type shadow
+                filtering none
+            }
+
+            //depth_bias 0.01
+        }
+
+        pass Decal {
+            scene_blend modulate
+
+            ambient 1 1 1
+        }
+    }
+}
+
+material juan : ShadowTemplateColor {
+    technique {
+        pass Decal {
+            diffuse 1.0 0.0 0.0 1.0
+            specular 0.5 0.0 0 0 0
+        }
+    }
+}
