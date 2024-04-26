@@ -215,6 +215,7 @@ void CueController::updatePowerBar() {
 
 void CueController::updateLine() {
     if (lineComponent != nullptr) {
+        lineComponent->setActive(true);
         Tapioca::Vector3 ballPos = ballTr->getGlobalPosition();
         Tapioca::Vector3 cuePos = tr->getGlobalPosition();
         Tapioca::Vector3 direction = ballPos - cuePos;

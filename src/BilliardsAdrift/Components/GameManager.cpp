@@ -14,6 +14,8 @@
 #include "Components/Transform.h"
 #include "Components/Text.h"
 #include "ColoredBall.h"
+
+#include "PhysicsManager.h"
 #include "checkML.h"
 
 template class JUEGO_API Tapioca::Singleton<GameManager>;
@@ -53,6 +55,7 @@ bool GameManager::initComponent(const CompMap& variables) {
 }
 
 void GameManager::start() {
+    Tapioca::PhysicsManager::instance()->activateDebug(true);
     sceneLoader = Tapioca::SceneLoader::instance();
     mainLoop = Tapioca::MainLoop::instance();
     luaManager = Tapioca::LuaManager::instance();
@@ -185,9 +188,6 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         bool hit = *((bool*)info);
         if (!hit) {
             changeScore(-1);
-#ifdef _DEBUG
-            std::cout << "No se ha colisionado con ninguna bola\n";
-#endif
         }
     }
     else if (id == "whiteBallIn") {

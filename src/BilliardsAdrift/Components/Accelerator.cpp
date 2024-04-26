@@ -14,7 +14,6 @@ bool Accelerator::initComponent(const CompMap& variables) {
         Tapioca::logError("Accelerator: no se pudo inicializar speedFactor.");
         return false;
     }
-
     return true;
 }
 
