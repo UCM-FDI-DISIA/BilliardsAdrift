@@ -7,8 +7,11 @@ scene = {
             },
             Text = {
                 text = "Billiards Adrift",
+                textSize = 75.0,
                 textFontName = "06126_BRITANIC.ttf",
-                textSize = 75.0
+                textColorR = 0.0,
+                textColorG = 0.0,
+                textColorB = 0.0
             }
         }
     },

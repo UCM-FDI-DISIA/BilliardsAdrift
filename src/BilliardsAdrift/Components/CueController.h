@@ -13,6 +13,7 @@ class MeshRenderer;
 class InputManager;
 class ProgressBar;
 class Line;
+class AudioSourceComponent;
 }
 
 /*
@@ -26,6 +27,7 @@ private:
     Tapioca::GameObject* ball;
     Tapioca::MeshRenderer* mesh;
     Tapioca::InputManager* inputMng;
+    Tapioca::AudioSourceComponent* audio;
     Tapioca::Vector2 mouseLastPosition;
     Tapioca::Vector3 ballDistanceOffset;
 

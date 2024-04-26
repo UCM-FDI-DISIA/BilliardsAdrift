@@ -60,7 +60,7 @@
       <PreprocessorDefinitions>JUEGO_EXPORTS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)TapiocaEngine\src\Bridge\;$(SolutionDir)TapiocaEngine\src\Core\;$(SolutionDir)TapiocaEngine\src\Graphics\;$(SolutionDir)TapiocaEngine\src\Input\;$(SolutionDir)TapiocaEngine\src\Physics\;$(SolutionDir)TapiocaEngine\src\UI\;$(SolutionDir)TapiocaEngine\src\Window\;$(SolutionDir)TapiocaEngine\src\Exports\;$(SolutionDir)src\BilliardsAdrift\;$(SolutionDir)src\BilliardsAdrift\Components\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TapiocaEngine\src\Bridge\;$(SolutionDir)TapiocaEngine\src\Core\;$(SolutionDir)TapiocaEngine\src\Graphics\;$(SolutionDir)TapiocaEngine\src\Input\;$(SolutionDir)TapiocaEngine\src\Physics\;$(SolutionDir)TapiocaEngine\src\UI\;$(SolutionDir)TapiocaEngine\src\Window\;$(SolutionDir)TapiocaEngine\src\Exports\;$(SolutionDir)src\BilliardsAdrift\;$(SolutionDir)src\BilliardsAdrift\Components\;$(SolutionDir)TapiocaEngine\src\Sound\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -82,7 +82,7 @@ xcopy "$(SolutionDir)bin\game_d.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</C
       <PreprocessorDefinitions>JUEGO_EXPORTS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)TapiocaEngine\src\Bridge\;$(SolutionDir)TapiocaEngine\src\Core\;$(SolutionDir)TapiocaEngine\src\Graphics\;$(SolutionDir)TapiocaEngine\src\Input\;$(SolutionDir)TapiocaEngine\src\Physics\;$(SolutionDir)TapiocaEngine\src\UI\;$(SolutionDir)TapiocaEngine\src\Window\;$(SolutionDir)TapiocaEngine\src\Exports\;$(SolutionDir)src\BilliardsAdrift\;$(SolutionDir)src\BilliardsAdrift\Components\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)TapiocaEngine\src\Bridge\;$(SolutionDir)TapiocaEngine\src\Core\;$(SolutionDir)TapiocaEngine\src\Graphics\;$(SolutionDir)TapiocaEngine\src\Input\;$(SolutionDir)TapiocaEngine\src\Physics\;$(SolutionDir)TapiocaEngine\src\UI\;$(SolutionDir)TapiocaEngine\src\Window\;$(SolutionDir)TapiocaEngine\src\Exports\;$(SolutionDir)src\BilliardsAdrift\;$(SolutionDir)src\BilliardsAdrift\Components\;$(SolutionDir)TapiocaEngine\src\Sound\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

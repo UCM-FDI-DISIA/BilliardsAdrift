@@ -3,6 +3,7 @@
 #include <cmath>
 #include "InputManager.h"
 #include "Components/RigidBody.h"
+#include "Components/AudioSourceComponent.h"
 #include "Components/Transform.h"
 #include "Components/MeshRenderer.h"
 #include "Structure/GameObject.h"
@@ -16,8 +17,9 @@ CueController::CueController()
     : tr(nullptr), ballTr(nullptr), ballRb(nullptr), ball(nullptr), mesh(nullptr), inputMng(nullptr),
       mouseLastPosition(Tapioca::Vector2()), ballDistanceOffset(Tapioca::Vector3()), impulseTime(0), powerFactor(0.0f),
       moveFactor(0.0f), rotateFactor(0.0f), impulseFactor(0.0f), actualPower(0.0f), moveSpeed(0), hitting(false),
-      canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), line(nullptr), lineComponent(nullptr) {
+      canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), line(nullptr), lineComponent(nullptr) ,audio(nullptr) {
 }
+   
 
 CueController::~CueController() {
     tr = nullptr;
@@ -31,6 +33,7 @@ CueController::~CueController() {
     powerBarPB = nullptr;
     line = nullptr;
     lineComponent = nullptr;
+    audio = nullptr;
 }
 
 bool CueController::initComponent(const CompMap& variables) {
@@ -97,6 +100,8 @@ void CueController::start() {
         Tapioca::logError("CueController: no se pudo encontrar el line.");
 
     followBall();
+
+    audio = object->getComponent<Tapioca::AudioSourceComponent>();
 }
 
 void CueController::update(const uint64_t deltaTime) {
@@ -169,6 +174,7 @@ void CueController::hit() {
     hitting = false;
     ballRb->addForce(tr->getParent()->forward() * (actualPower));
     pushEvent("cueShot", nullptr, true);
+   // audio->playOnce();
 }
 
 void CueController::resetCue() {

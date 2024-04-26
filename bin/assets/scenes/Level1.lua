@@ -33,8 +33,12 @@ scene = {
                 colorG = 0.6,
                 colorB = 1.0,
                 colorA = 1.0,
-                powerScale = 0.35
-            },  
+                powerScale=0.6
+            }
+            ,  
+            AudioListenerComponent={
+
+            }
         }
     },
 
@@ -130,7 +134,11 @@ scene = {
                         rotateFactor = 0.3,
                         impulseTime = 0.5,
                         impulseFactor = 0.05
-                    }
+                    },
+                    
+                    -- AudioSourceComponent={
+                    --     sourcepath="assets/audio/cue.mp3"
+                    -- }
                 }
             }
         }
@@ -209,6 +217,10 @@ scene = {
                 --destX = 8.0,
                 --destZ = -2.0
             }
+            -- ,
+            -- AudioSourceComponent={
+            --     sourcepath="assets/audio/hitWall.mp3"
+            -- }
         }
     },
   
@@ -383,6 +395,10 @@ scene = {
             ColoredBall = {
                 ballId = "yellow"
             }
+            -- ,
+            -- AudioSourceComponent={
+            --     sourcepath="assets/audio/hitBall.mp3"
+            -- }
         }
     },
     BallBlue = {
@@ -416,6 +432,10 @@ scene = {
             ColoredBall = {
                 ballId = "blue"
             }
+            -- ,
+            -- AudioSourceComponent={
+            --     sourcepath="assets/audio/hitBall.mp3"
+            -- }
         }
     },
     BallRed = {
@@ -448,7 +468,11 @@ scene = {
             },
             ColoredBall = {
                 ballId = "red"
-            }
+            } 
+            -- ,
+            -- AudioSourceComponent={
+            --     sourcepath="assets/audio/hitBall.mp3"
+            -- }
         }
     },
     BallPurple = {
@@ -482,6 +506,10 @@ scene = {
             ColoredBall = {
                 ballId = "purple"
             }
+             -- ,
+            -- AudioSourceComponent={
+            --     sourcepath="assets/audio/hitBall.mp3"
+            -- }
         }
     },
     BallOrange = {
@@ -515,6 +543,10 @@ scene = {
             ColoredBall = {
                 ballId = "orange"
             }
+             -- ,
+            -- AudioSourceComponent={
+            --     sourcepath="assets/audio/hitBall.mp3"
+            -- }
         }
     },
     BallGreen = {
@@ -548,6 +580,10 @@ scene = {
             ColoredBall = {
                 ballId = "green"
             }
+             -- ,
+            -- AudioSourceComponent={
+            --     sourcepath="assets/audio/hitBall.mp3"
+            -- }
         }
     },
     BallBlack = {
@@ -581,6 +617,10 @@ scene = {
             ColoredBall = {
                 ballId = "black"
             }
+             -- ,
+            -- AudioSourceComponent={
+            --     sourcepath="assets/audio/hitBall.mp3"
+            -- }
         }
     },
     Heart = {
@@ -736,8 +776,8 @@ scene = {
             }
         }
     },
-    Tabouret2 = {
-        components = {
+    Tabouret2={
+        components={
             Transform = {
                 positionX = -25.0,
                 positionY = -8.0,
@@ -772,6 +812,43 @@ scene = {
             }
           }
     },
+    -- ,
+    -- Card = {
+    --     components={
+    --         Transform = {
+    --             positionX = 50.0,
+    --             positionY = -8.5,
+    --             positionZ = 20.0,
+    --             scaleX = 5.0,
+    --             scaleY = 5.0,
+    --             scaleZ = 5.0,
+    --             rotationX = 90.0,
+    --             rotationY = 0.0,
+    --             rotationZ = 0.0
+    --         }, 
+    --         MeshRenderer = {
+    --             meshName = "models/Card/Card1.mesh"
+    --         },
+    --     }
+    -- },
+    -- Bottle = {
+    --     components={
+    --         Transform = {
+    --             positionX = -50.0,
+    --             positionY = -8.5,
+    --             positionZ = 20.0,
+    --             scaleX = 8.0,
+    --             scaleY =8.0,
+    --             scaleZ =8.0,
+    --             rotationX = 0.0,
+    --             rotationY = 0.0,
+    --             rotationZ = 0.0
+    --         }, 
+    --         MeshRenderer = {
+    --             meshName = "models/bottle/bottle3.mesh"
+    --         },
+    --     }
+    -- },
     HoleYellow = {
         components = {
             Transform = {

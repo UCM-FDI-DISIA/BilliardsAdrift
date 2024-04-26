@@ -82,9 +82,13 @@ void GameManager::registerLuaFunctions() {
     std::function<void()> playFunction = [&]() { onPlayConfirmed(); };
     std::function<void()> mainMenuFunction = [&]() { onMainMenuConfirmed(); };
     std::function<void()> resumeFunction = [&]() { onResumeConfirmed(); };
+    std::function<void()> continueFunction = [&]() { onContinueConfirmed(); };
+    std::function<void()> restartFunction = [&]() { onRestartConfirmed(); };
     luaManager->addLuaFunction("Play", playFunction);
     luaManager->addLuaFunction("MainMenu", mainMenuFunction);
     luaManager->addLuaFunction("Resume", resumeFunction);
+    luaManager->addLuaFunction("Continue", continueFunction);
+    luaManager->addLuaFunction("Restart", restartFunction);
 }
 
 void GameManager::update(const uint64_t deltaTime) {
