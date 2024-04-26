@@ -25,9 +25,9 @@ scene = {
             },
             ImageTextButton = {
                 onClickId = "Resume",
-                imagePathNormal = "textures/buttons/resume1.png",
-                imagePathHover = "textures/buttons/resume2.png",
-                imagePathActive = "textures/buttons/resume3.png",
+                imagePathNormal = "buttons/resume1.png",
+                imagePathHover = "buttons/resume2.png",
+                imagePathActive = "buttons/resume3.png",
                 normalColorA = 0.0,
                 hoverColorA = 0.0,
                 activeColorA = 0.0
@@ -45,9 +45,9 @@ scene = {
             ImageTextButton = {
                 onClickId = "Restart",
                 wantText = false,
-                imagePathNormal = "textures/buttons/options1.png",
-                imagePathHover = "textures/buttons/options2.png",
-                imagePathActive = "textures/buttons/options3.png",
+                imagePathNormal = "buttons/options1.png",
+                imagePathHover = "buttons/options2.png",
+                imagePathActive = "buttons/options3.png",
                 normalColorA = 0.0,
                 hoverColorA = 0.0,
                 activeColorA = 0.0
@@ -64,9 +64,9 @@ scene = {
             },
             ImageTextButton = {
                 onClickId = "MainMenu",
-                imagePathNormal = "textures/buttons/mainMenu1.png",
-                imagePathHover = "textures/buttons/mainMenu2.png",
-                imagePathActive = "textures/buttons/mainMenu3.png",
+                imagePathNormal = "buttons/mainMenu1.png",
+                imagePathHover = "buttons/mainMenu2.png",
+                imagePathActive = "buttons/mainMenu3.png",
                 normalColorA = 0.0,
                 hoverColorA = 0.0,
                 activeColorA = 0.0
@@ -83,7 +83,7 @@ scene = {
                 scaleY = WINDOW_HEIGHT
             },
             Image = {
-                imagePath = "textures/menuBackground.png"
+                imagePath = "menuBackground.png"
             }
         }
     }

@@ -26,9 +26,9 @@ scene = {
             ImageTextButton = {
                 onClickId = "Continue",
                 wantText = false,
-                imagePathNormal = "textures/buttons/continue1.png",
-                imagePathHover = "textures/buttons/continue2.png",
-                imagePathActive = "textures/buttons/continue3.png",
+                imagePathNormal = "buttons/continue1.png",
+                imagePathHover = "buttons/continue2.png",
+                imagePathActive = "buttons/continue3.png",
                 normalColorA = 0.0,
                 hoverColorA = 0.0,
                 activeColorA = 0.0
@@ -45,9 +45,9 @@ scene = {
             },
             ImageTextButton = {
                 onClickId = "Restart",
-                imagePathNormal = "textures/buttons/restart1.png",
-                imagePathHover = "textures/buttons/restart2.png",
-                imagePathActive = "textures/buttons/restart3.png",
+                imagePathNormal = "buttons/restart1.png",
+                imagePathHover = "buttons/restart2.png",
+                imagePathActive = "buttons/restart3.png",
                 normalColorA = 0.0,
                 hoverColorA = 0.0,
                 activeColorA = 0.0,
@@ -64,9 +64,9 @@ scene = {
             },
             ImageTextButton = {
                 onClickId = "MainMenu",
-                imagePathNormal = "textures/buttons/mainMenu1.png",
-                imagePathHover = "textures/buttons/mainMenu2.png",
-                imagePathActive = "textures/buttons/mainMenu3.png",
+                imagePathNormal = "buttons/mainMenu1.png",
+                imagePathHover = "buttons/mainMenu2.png",
+                imagePathActive = "buttons/mainMenu3.png",
                 normalColorA = 0.0,
                 hoverColorA = 0.0,
                 activeColorA = 0.0,
@@ -83,7 +83,7 @@ scene = {
                 scaleY = WINDOW_HEIGHT
             },
             Image = {
-                imagePath = "textures/menuBackground.png"
+                imagePath = "menuBackground.png"
             }
         }
     }

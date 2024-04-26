@@ -22,9 +22,9 @@ scene = {
             },
             ImageTextButton = {
                 onClickId = "Play",
-                imagePathNormal = "textures/buttons/play1.png",
-                imagePathHover = "textures/buttons/play2.png",
-                imagePathActive = "textures/buttons/play3.png",
+                imagePathNormal = "buttons/play1.png",
+                imagePathHover = "buttons/play2.png",
+                imagePathActive = "buttons/play3.png",
                 normalColorA = 0.0,
                 hoverColorA = 0.0,
                 activeColorA = 0.0
@@ -41,9 +41,9 @@ scene = {
             },
             ImageTextButton = {
                 onClickId = "Quit",
-                imagePathNormal = "textures/buttons/quit1.png",
-                imagePathHover = "textures/buttons/quit2.png",
-                imagePathActive = "textures/buttons/quit3.png",
+                imagePathNormal = "buttons/quit1.png",
+                imagePathHover = "buttons/quit2.png",
+                imagePathActive = "buttons/quit3.png",
                 normalColorA = 0.0,
                 hoverColorA = 0.0,
                 activeColorA = 0.0
@@ -60,7 +60,7 @@ scene = {
                 scaleY = WINDOW_HEIGHT
             },
             Image = {
-                imagePath = "textures/menuBackground.png"
+                imagePath = "menuBackground.png"
             }
         }
     }
