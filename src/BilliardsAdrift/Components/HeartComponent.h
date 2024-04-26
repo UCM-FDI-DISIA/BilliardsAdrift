@@ -5,6 +5,9 @@
 class GameManager;
 
 class JUEGO_API HeartComponent : public Tapioca::Component {
+
+    static const int LIFE_TO_ADD = 1;
+
 private:
     GameManager* gameMng; // Puntero al GameManager
 

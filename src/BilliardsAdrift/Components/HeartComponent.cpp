@@ -12,7 +12,7 @@ void HeartComponent::handleEvent(std::string const& id, void* info) {
     if (id == "onCollisionEnter") {
         Tapioca::GameObject* ball = (Tapioca::GameObject*)info;
         if (ball->getHandler() == "BallPlayer") {
-            gameMng->setLife(gameMng->getLife() + 1);
+            gameMng->setLife(gameMng->getLife() + LIFE_TO_ADD);
             object->die();
         }
     }
