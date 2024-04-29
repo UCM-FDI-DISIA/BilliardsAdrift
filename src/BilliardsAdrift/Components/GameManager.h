@@ -49,6 +49,8 @@ private:
 
     std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
+    bool sceneLoaded;
+
     std ::vector<Tapioca::AudioSourceComponent*> audios;
     /*
     * @brief Cambia la escena

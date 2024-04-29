@@ -26,7 +26,7 @@ GameManager* Tapioca::Singleton<GameManager>::instance_ = nullptr;
 GameManager::GameManager()
     : sceneLoader(nullptr), mainLoop(nullptr), luaManager(nullptr), firstStateName(""), currentStateName(""),
       currentState(), INIT_TIME(0), INIT_LIFE(0), time(0), life(0), score(0), processing(false), actualLevel(1),
-      timerText(nullptr), timerTextComponent(nullptr) { }
+      timerText(nullptr), timerTextComponent(nullptr), sceneLoaded(false) { }
 
 GameManager::~GameManager() {
     sceneLoader = nullptr;
@@ -97,7 +97,7 @@ void GameManager::registerLuaFunctions() {
 }
 
 void GameManager::update(const uint64_t deltaTime) {
-    if (currentState == InGame) {
+    if (currentState == InGame && sceneLoaded) {
         time -= deltaTime;
         updateTimerText();
 
@@ -148,6 +148,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
                 g->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(0));
             }
         }
+        sceneLoaded = true;
     }
     else if (id == "ev_Lose") {
         onLose();
@@ -316,6 +317,8 @@ void GameManager::onMainMenuConfirmed() {
         mainLoop->deleteScene("PauseMenu");
     }
 
+    balls.clear();
+    sceneLoaded = false;
     mainLoop->deleteScene(getActualLevelName());
     std::string result = "MainMenu";
     updateCurrentState(result);

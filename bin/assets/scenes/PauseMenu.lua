@@ -19,7 +19,7 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 - 50,
+                positionY = WINDOW_HEIGHT / 2,
                 scaleX = 200.0,
                 scaleY = 70.0
             },
@@ -34,31 +34,11 @@ scene = {
             }
         }
     },
-    OptionsImageButton={
-        components = {
-            Transform = {
-                positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 + 50,
-                scaleX = 200.0,
-                scaleY = 70.0,
-            },
-            ImageTextButton = {
-                onClickId = "Restart",
-                wantText = false,
-                imagePathNormal = "buttons/options1.png",
-                imagePathHover = "buttons/options2.png",
-                imagePathActive = "buttons/options3.png",
-                normalColorA = 0.0,
-                hoverColorA = 0.0,
-                activeColorA = 0.0
-            }
-        }
-    },
     MainMenuImageButton = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 + 150,
+                positionY = WINDOW_HEIGHT * 2 / 3,
                 scaleX = 200.0,
                 scaleY = 70.0
             },
