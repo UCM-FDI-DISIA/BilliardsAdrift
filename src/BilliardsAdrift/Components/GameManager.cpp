@@ -7,6 +7,7 @@
 #include "LuaManager.h"
 #include "Structure/Scene.h"
 #include "Structure/GameObject.h"
+#include "Components/AudioSourceComponent.h"
 #include "Structure/Component.h"
 #include "Components/RigidBody.h"
 #include "Components/Animator.h"
@@ -55,13 +56,14 @@ bool GameManager::initComponent(const CompMap& variables) {
 }
 
 void GameManager::start() {
-    Tapioca::PhysicsManager::instance()->activateDebug(true);
+    //Tapioca::PhysicsManager::instance()->activateDebug(true);
     sceneLoader = Tapioca::SceneLoader::instance();
     mainLoop = Tapioca::MainLoop::instance();
     luaManager = Tapioca::LuaManager::instance();
     registerLuaFunctions();
     updateCurrentState(firstStateName);
     changeScene(firstStateName);
+    audios= object->getComponents<Tapioca::AudioSourceComponent>();
 }
 
 void GameManager::updateCurrentState(const std::string name) {
@@ -194,6 +196,12 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         if (balls.size() == 0) onGameOver();
         else
             loseLife();
+    }
+    else if (id == "ev_pickUp") {
+        audios[0]->playOnce();
+    }
+    else if (id == "ev_explosion") {
+       // audios[1]->playOnce();
     }
 }
 

@@ -6,13 +6,16 @@ HeartComponent::HeartComponent() : gameMng(nullptr) { }
 
 HeartComponent::~HeartComponent() { gameMng = nullptr; }
 
-void HeartComponent::start() { gameMng = GameManager::instance(); }
+void HeartComponent::start() {
+    gameMng = GameManager::instance();
+}
 
 void HeartComponent::handleEvent(std::string const& id, void* info) {
     if (id == "onCollisionEnter") {
         Tapioca::GameObject* ball = (Tapioca::GameObject*)info;
         if (ball->getHandler() == "BallPlayer") {
             gameMng->setLife(gameMng->getLife() + LIFE_TO_ADD);
+            pushEvent("ev_pickUp", nullptr);
             object->die();
         }
     }

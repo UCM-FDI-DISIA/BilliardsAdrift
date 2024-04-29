@@ -7,6 +7,8 @@
 namespace Tapioca {
 class RigidBody;
 class Transform;
+class AudioSourceComponent;
+
 }
 
 class JUEGO_API MovableWall : public Tapioca::Component {
@@ -17,6 +19,8 @@ private:
     Tapioca::Vector2 origin;      // Posicion inicial
     Tapioca::Vector2 dest;        // Posicion final
     Tapioca::Vector2 direction;   // Direccion de movimiento
+   
+    Tapioca::AudioSourceComponent* audio;
 
     float speed;   // Velocidad de movimiento
 
@@ -28,4 +32,5 @@ public:
     bool initComponent(const CompMap& variables) override;
     void start() override;
     void update(const uint64_t deltaTime) override;
+    void handleEvent(std::string const& id, void* info) override;
 };

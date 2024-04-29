@@ -2,6 +2,7 @@
 #include "gameDefs.h"
 #include "Structure/Component.h"
 
+
 class GameManager;
 
 class JUEGO_API HeartComponent : public Tapioca::Component {

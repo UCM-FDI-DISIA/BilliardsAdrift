@@ -6,14 +6,18 @@ ClockComponent::ClockComponent() : gameMng(nullptr) { }
 
 ClockComponent::~ClockComponent() { gameMng = nullptr; }
 
-void ClockComponent::start() { gameMng = GameManager::instance(); }
+void ClockComponent::start() {
+    gameMng = GameManager::instance();
+}
 
 void ClockComponent::handleEvent(std::string const& id, void* info) {
     if (id == "onCollisionEnter") {
         Tapioca::GameObject* ball = (Tapioca::GameObject*)info;
         if (ball->getHandler() == "BallPlayer") {
-            gameMng->setTime(gameMng->getTime() + TIME_TO_ADD);
+            gameMng->changeTime(TIME_ADDED);
+            pushEvent("ev_pickUp", nullptr);
             object->die();
+         
         }
     }
 }

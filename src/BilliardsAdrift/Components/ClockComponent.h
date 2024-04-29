@@ -2,6 +2,7 @@
 #include "gameDefs.h"
 #include "Structure/Component.h"
 
+
 class GameManager;
 
 class JUEGO_API ClockComponent : public Tapioca::Component {
@@ -10,7 +11,8 @@ class JUEGO_API ClockComponent : public Tapioca::Component {
 
 private:
     GameManager* gameMng;   // Puntero al GameManager 
-    
+    const float TIME_ADDED = 20.0f;
+
 public:
     COMPONENT_ID("ClockComponent");
 

@@ -6,11 +6,13 @@
 #include "Components/GameManager.h"
 #include "Components/HeartComponent.h"
 #include "Components/MovableWall.h"
+#include "Components/WallComponent.h"
 #include "Components/Accelerator.h"
 #include "Components/ExplosiveComponent.h"
 #include "Components/ColoredHole.h"
 #include "Components/ColoredBall.h"
 #include "Components/WhiteBallComponent.h"
+#include "Components/ClockComponent.h"
 
 void init() { addComponentFactories(); }
 
@@ -27,6 +29,8 @@ void addComponentFactories() {
     factMngr->addBuilder(new Tapioca::BasicBuilder<ColoredHole>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<ColoredBall>());
     factMngr->addBuilder(new Tapioca::BasicBuilder<WhiteBallComponent>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<WallComponent>());
+    factMngr->addBuilder(new Tapioca::BasicBuilder<ClockComponent>());
 }
 
 std::string getWindowName() { return "Billiards Adrift"; }

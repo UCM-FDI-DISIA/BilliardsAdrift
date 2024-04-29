@@ -4,6 +4,9 @@
 #include "Components/Transform.h"
 #include "Structure/GameObject.h"
 #include "Structure/MainLoop.h"
+#include "Structure/GameObject.h"
+#include "Components/AudioSourceComponent.h"
+#include "ColoredBall.h"
 
 MovableWall::MovableWall() : rb(nullptr), tr(nullptr), origin(-1, -1), dest(-1, -1), speed(0) { }
 
@@ -31,6 +34,7 @@ void MovableWall::start() {
     tr = object->getComponent<Tapioca::Transform>();
     origin = Tapioca::Vector2(tr->getGlobalPosition().x, tr->getGlobalPosition().z);
     direction = dest - origin;
+    audio = object->getComponent<Tapioca::AudioSourceComponent>();
 }
 
 void MovableWall::update(const uint64_t deltaTime) {
@@ -41,4 +45,13 @@ void MovableWall::update(const uint64_t deltaTime) {
 
     Tapioca::Vector2 auxD = direction.getNormalized();
     tr->translate(Tapioca::Vector3(auxD.x, 0, auxD.y) * speed * Tapioca::MainLoop::FIXED_DELTA_TIME);
+}
+void MovableWall::handleEvent(std::string const& id, void* info) {
+    if (id == "onCollisionEnter") {
+        Tapioca::GameObject* obj = (Tapioca::GameObject*)info;
+        ColoredBall* ball = obj->getComponent<ColoredBall>();
+        if (ball != nullptr ) {
+            audio->playOnce();
+        }
+    }
 }

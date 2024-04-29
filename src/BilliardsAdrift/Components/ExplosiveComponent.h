@@ -4,6 +4,7 @@
 
 namespace Tapioca {
 class GameObject;
+
 }
 
 /*

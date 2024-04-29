@@ -4,7 +4,7 @@
 #include "Components/MeshRenderer.h"
 #include "Components/Transform.h"
 #include "Utilities/Vector3.h"
-
+#include "Components/AudioSourceComponent.h"
 ExplosiveComponent::ExplosiveComponent() : force(1.0f), duration(0.1f), lifeTime(duration), gO(nullptr) { }
 
 ExplosiveComponent::~ExplosiveComponent() { gO = nullptr; }
@@ -21,11 +21,13 @@ void ExplosiveComponent::update(const uint64_t deltaTime) {
     explode(deltaTime);
 }
 
+
 void ExplosiveComponent::handleEvent(std::string const& id, void* info) {
     if (id == "onCollisionEnter") {
         Tapioca::GameObject* ball = (Tapioca::GameObject*)info;
         if (ball->getHandler() == "BallPlayer") {
             gO = ball;
+            pushEvent("ev_explosion", nullptr);
             object->getComponent<Tapioca::MeshRenderer>()->setVisible(false);
         }
     }

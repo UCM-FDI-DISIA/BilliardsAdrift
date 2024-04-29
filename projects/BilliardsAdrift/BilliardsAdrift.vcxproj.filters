@@ -54,6 +54,9 @@
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\ClockComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\WallComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\BilliardsAdrift\BilliardsAdrift.h">
@@ -93,6 +96,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\ClockComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\WallComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

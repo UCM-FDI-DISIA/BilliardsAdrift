@@ -12,6 +12,8 @@ class MainLoop;
 class LuaManager;
 class GameObject;
 class Text;
+class AudioSourceComponent;
+
 }
 
 /*
@@ -47,7 +49,7 @@ private:
 
     std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
-
+    std ::vector<Tapioca::AudioSourceComponent*> audios;
     /*
     * @brief Cambia la escena
     * @param scene nombre de la escena

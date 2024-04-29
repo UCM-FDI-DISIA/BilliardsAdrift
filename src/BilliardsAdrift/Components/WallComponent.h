@@ -5,18 +5,14 @@
 namespace Tapioca {
 class AudioSourceComponent;
 }
-
-class JUEGO_API ColoredBall : public Tapioca::Component {
+class JUEGO_API WallComponent : public Tapioca::Component {
 private:
-    std::string ballId;
     Tapioca::AudioSourceComponent* audio;
 
 public:
-    COMPONENT_ID("ColoredBall");
+    COMPONENT_ID("WallComponent");
 
-    ColoredBall();
+    WallComponent();
     void start() override;
-    bool initComponent(const CompMap& variables) override;
-    inline std::string getID() const { return ballId; }
     void handleEvent(std::string const& id, void* info) override;
 };

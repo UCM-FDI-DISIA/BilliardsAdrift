@@ -109,6 +109,7 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\HeartComponent.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\MovableWall.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\TimeComponent.cpp" />
+    <ClCompile Include="..\..\src\BilliardsAdrift\Components\WallComponent.cpp" />
     <ClCompile Include="..\..\src\BilliardsAdrift\Components\WhiteBallComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +124,7 @@ xcopy "$(SolutionDir)bin\game.dll" "$(SolutionDir)TapiocaEngine\bin\" /y /r</Com
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\HeartComponent.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\MovableWall.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\TimeComponent.h" />
+    <ClInclude Include="..\..\src\BilliardsAdrift\Components\WallComponent.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\Components\WhiteBallComponent.h" />
     <ClInclude Include="..\..\src\BilliardsAdrift\gameDefs.h" />
   </ItemGroup>

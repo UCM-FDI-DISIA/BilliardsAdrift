@@ -118,9 +118,9 @@ scene = {
                         impulseFactor = 0.05
                     },
                     
-                    -- AudioSourceComponent={
-                    --     sourcepath="assets/audio/cue.mp3"
-                    -- }
+                    AudioSourceComponent={
+                        sourcepath="assets/audio/hitBall.mp3"
+                    }
                 }
             }
         }
@@ -156,8 +156,14 @@ scene = {
             },
             ColoredBall = {
                 ballId = "white"
+            }
+            ,
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitBall.mp3"
             },
-            --WhiteBallComponent = { }
+            WhiteBallComponent = { 
+
+            }
         }
     },
 
@@ -194,11 +200,11 @@ scene = {
                 speed = 0.01,
                 destX = 12.2,
                 destZ = 8.0
+            },
+            WallComponent = { },
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitWall.mp3"
             }
-            -- ,
-            -- AudioSourceComponent={
-            --     sourcepath="assets/audio/hitWall.mp3"
-            -- }
         }
     },
   
@@ -256,6 +262,10 @@ scene = {
                         friction = 0.5,
                         damping = 0.0,
                         bounciness = 1.0
+                    },
+                    WallComponent = { },
+                    AudioSourceComponent={
+                        sourcepath="assets/audio/hitWall.mp3"
                     }
                 }
             },
@@ -283,6 +293,10 @@ scene = {
                         friction = 1.0,
                         damping = 0.0,
                         bounciness = 1.0
+                    },
+                    WallComponent = { },
+                    AudioSourceComponent={
+                        sourcepath="assets/audio/hitWall.mp3"
                     }
                 }
             },
@@ -310,6 +324,10 @@ scene = {
                         friction = 1.0,
                         damping = 0.0,
                         bounciness = 1.0
+                    },
+                    WallComponent = { },
+                    AudioSourceComponent={
+                        sourcepath="assets/audio/hitWall.mp3"
                     }
                 }
             },
@@ -337,6 +355,10 @@ scene = {
                         friction = 1.0,
                         damping = 0.0,
                         bounciness = 1.0
+                    },
+                    WallComponent = { },
+                    AudioSourceComponent={
+                        sourcepath="assets/audio/hitWall.mp3"
                     }
                 }
             }
@@ -373,10 +395,10 @@ scene = {
             ColoredBall = {
                 ballId = "yellow"
             }
-            -- ,
-            -- AudioSourceComponent={
-            --     sourcepath="assets/audio/hitBall.mp3"
-            -- }
+            ,
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitBall.mp3"
+            }
         }
     },
     BallBlue = {
@@ -410,10 +432,10 @@ scene = {
             ColoredBall = {
                 ballId = "blue"
             }
-            -- ,
-            -- AudioSourceComponent={
-            --     sourcepath="assets/audio/hitBall.mp3"
-            -- }
+            ,
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitBall.mp3"
+            }
         }
     },
     BallRed = {
@@ -447,10 +469,10 @@ scene = {
             ColoredBall = {
                 ballId = "red"
             } 
-            -- ,
-            -- AudioSourceComponent={
-            --     sourcepath="assets/audio/hitBall.mp3"
-            -- }
+            ,
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitBall.mp3"
+            }
         }
     },
     BallPurple = {
@@ -484,10 +506,10 @@ scene = {
             ColoredBall = {
                 ballId = "purple"
             }
-             -- ,
-            -- AudioSourceComponent={
-            --     sourcepath="assets/audio/hitBall.mp3"
-            -- }
+             ,
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitBall.mp3"
+            }
         }
     },
     BallOrange = {
@@ -521,10 +543,10 @@ scene = {
             ColoredBall = {
                 ballId = "orange"
             }
-             -- ,
-            -- AudioSourceComponent={
-            --     sourcepath="assets/audio/hitBall.mp3"
-            -- }
+             ,
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitBall.mp3"
+            }
         }
     },
     BallGreen = {
@@ -558,10 +580,10 @@ scene = {
             ColoredBall = {
                 ballId = "green"
             }
-             -- ,
-            -- AudioSourceComponent={
-            --     sourcepath="assets/audio/hitBall.mp3"
-            -- }
+             ,
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitBall.mp3"
+            }
         }
     },
     BallBlack = {
@@ -595,10 +617,10 @@ scene = {
             ColoredBall = {
                 ballId = "black"
             }
-             -- ,
-            -- AudioSourceComponent={
-            --     sourcepath="assets/audio/hitBall.mp3"
-            -- }
+             ,
+            AudioSourceComponent={
+                sourcepath="assets/audio/hitBall.mp3"
+            }
         }
     },
     Heart = {
@@ -630,7 +652,10 @@ scene = {
                 damping = 0.4,
                 bounciness = 0.5
             },
-            HeartComponent = { }
+            HeartComponent = { },
+            AudioSourceComponent={
+                sourcepath="assets/audio/pick.mp3"
+            }
         }
     },
     Clock = { 
@@ -661,7 +686,10 @@ scene = {
                 damping = 0.4,
                 bounciness = 0.5
             },
-            HeartComponent = { }
+            ClockComponent = { },
+            AudioSourceComponent={
+                sourcepath="assets/audio/pick.mp3"
+            }
         }
     },
     Accelerator1 = {
@@ -861,6 +889,9 @@ scene = {
                 rkNormalZ = 0.0,
                 width = 3.0,
                 height = 3.0,
+            },        
+            AudioSourceComponent={
+                sourcepath="assets/audio/hole.mp3"
             }
         }
     },
@@ -902,6 +933,9 @@ scene = {
                 rkNormalZ = 0.0,
                 width = 3.0,
                 height = 3.0,
+            },        
+            AudioSourceComponent={
+                sourcepath="assets/audio/hole.mp3"
             }
         }
     },
@@ -943,6 +977,9 @@ scene = {
                 rkNormalZ = 0.0,
                 width = 3.0,
                 height = 3.0,
+            },        
+            AudioSourceComponent={
+                sourcepath="assets/audio/hole.mp3"
             }
         }
     },
@@ -984,6 +1021,9 @@ scene = {
                 rkNormalZ = 0.0,
                 width = 3.0,
                 height = 3.0,
+            },        
+            AudioSourceComponent={
+                sourcepath="assets/audio/hole.mp3"
             }
         }
     },
@@ -1025,6 +1065,9 @@ scene = {
                 rkNormalZ = 0.0,
                 width = 3.0,
                 height = 3.0,
+            },        
+            AudioSourceComponent={
+                sourcepath="assets/audio/hole.mp3"
             }
         }
     },
@@ -1066,6 +1109,9 @@ scene = {
                 rkNormalZ = 0.0,
                 width = 3.0,
                 height = 3.0,
+            },        
+            AudioSourceComponent={
+                sourcepath="assets/audio/hole.mp3"
             }
         }
     },

@@ -174,7 +174,8 @@ void CueController::hit() {
     hitting = false;
     ballRb->addForce(tr->getParent()->forward() * (actualPower));
     pushEvent("cueShot", nullptr, true);
-   // audio->playOnce();
+    audio->pause(true);
+    audio->playOnce();
 }
 
 void CueController::resetCue() {
