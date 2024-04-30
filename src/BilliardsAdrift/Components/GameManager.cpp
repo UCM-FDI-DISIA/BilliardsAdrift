@@ -76,13 +76,17 @@ void GameManager::updateCurrentState(const std::string name) {
         currentState = Lose;
         pushEvent("ev_GameOver", nullptr);
     }
+    else if (currentStateName == "WinScreen") {
+        currentState = Win;
+        pushEvent("ev_GameOver", nullptr);
+    }
     else if (currentStateName == "PauseMenu") {
-        pushEvent("ev_Pause", nullptr);
         currentState = Pause;
+        pushEvent("ev_Pause", nullptr);
     }
     else if (currentStateName == "Level1" || currentStateName == "Level2") {
-        pushEvent("ev_onStart", nullptr, true, true);
         currentState = InGame;
+        pushEvent("ev_onStart", nullptr, true, true);
     }
 }
 
@@ -219,6 +223,17 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     else if (id == "ev_explosion") {
         audios[ExplosionSound]->playOnce();
     }
+    else if (id == "ev_debug1") {
+        Tapioca::logInfo("A pulsada \n");
+        
+        goToNextLevel();
+    }
+    else if (id == "ev_debug2") {
+        updateCurrentState("LoseScreen");
+    }
+    else if (id == "ev_debug3") {
+        updateCurrentState("WinScreen");
+    }
 }
 
 void GameManager::changeScene(std::string const& scene) const {
@@ -228,9 +243,13 @@ void GameManager::changeScene(std::string const& scene) const {
 }
 
 void GameManager::goToNextLevel() {
+    sceneLoaded = false;
+    mainLoop->deleteScene(getActualLevelName());
+    balls.clear();
     actualLevel++;
     changeScene(getActualLevelName());
-    pushEvent("ev_onStart", nullptr, false, true);
+    currentState = InGame;
+    pushEvent("ev_onPlay", nullptr, false, true);
 }
 
 void GameManager::changeScore(int s) {
@@ -302,20 +321,22 @@ void GameManager::onStart() {
     pushEvent("loadBalls", nullptr, true, true);
 }
 
-void GameManager::onLose() { }
+void GameManager::onLose() { changeScene("LoseScreen"); }
 
 void GameManager::onGameOver() {
+    sceneLoaded = false;
+    balls.clear();
+    mainLoop->deleteScene(getActualLevelName());
+
     if (currentState == Lose) {
         pushEvent("ev_Lose", nullptr, false, true);
-        changeScene("LoseScreen");
     }
     else {
         pushEvent("ev_Win", nullptr, false, true);
-        changeScene("WinScreen");
     }
 }
 
-void GameManager::onWin() { }
+void GameManager::onWin() { changeScene("WinScreen"); }
 
 void GameManager::onPause() {
     if (currentState == InGame) {
@@ -342,17 +363,32 @@ void GameManager::onPlayConfirmed() {
 
 void GameManager::onResumeConfirmed() { onPause(); }
 
-void GameManager::onContinueConfirmed() { goToNextLevel(); }
+void GameManager::onContinueConfirmed() {
+    if (actualLevel < 2) {
+        sceneLoaded = false;
+        mainLoop->deleteScene(getActualLevelName());
+        mainLoop->deleteScene("WinScreen");
+        balls.clear();
+        goToNextLevel();
+    }
+    else {
+        actualLevel = 1;
+        onMainMenuConfirmed();
+    }
+    
+}
 
 void GameManager::onRestartConfirmed() {
     if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
     else if (currentState == Win)
         mainLoop->deleteScene("WinScreen");
+    currentState = InGame;
     changeScene(getActualLevelName());
 }
 
 void GameManager::onMainMenuConfirmed() {
-    if (currentState == Lose) mainLoop->deleteScene("LoseScreen");
+    if (currentState == Lose) 
+        mainLoop->deleteScene("LoseScreen");
     else if (currentState == Win)
         mainLoop->deleteScene("WinScreen");
     else if (currentState == Pause) {
