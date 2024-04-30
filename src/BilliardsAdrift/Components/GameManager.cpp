@@ -121,6 +121,7 @@ void GameManager::update(const uint64_t deltaTime) {
             }
             else {
                 pushEvent("ev_ballMoved", nullptr, true);
+                processing = true;
                 break;
             }
         }
@@ -158,9 +159,6 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     else if (id == "ev_onStart") {
         onStart();
     }
-    else if (id == "ev_Processing") {
-        processing = true;
-    }
     else if (id == "ev_ToggleAnim") {
         Tapioca::Animator* animator = mainLoop->getScene("Level" + std::to_string(actualLevel))
                                           ->getHandler("MilkTea")
@@ -197,7 +195,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     else if (id == "whiteBallHasHit") {
         bool hit = *((bool*)info);
         if (!hit) {
-            changeScore(-1);
+            loseLife();
         }
     }
     else if (id == "blackBallIn") {
