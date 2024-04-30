@@ -101,7 +101,7 @@ void GameManager::registerLuaFunctions() {
 
 void GameManager::update(const uint64_t deltaTime) {
     if (currentState == InGame && sceneLoaded) {
-        changeTime(-(float)(deltaTime)/1000.f);
+        changeTime(-(float)(deltaTime) / 1000.f);
         updateTimerText();
 
         // Comprueba que todas las bolas estan inmovilizadas
@@ -173,6 +173,10 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         animator->setPlaying(animator->getPlaying());
 
         balls.erase(b);
+        if (balls.size() == 1 && currentState != Lose) {
+            currentState = Win;
+            pushEvent("ev_GameOver", nullptr, false, true);
+        }
     }
     else if (id == "ev_GameOver") {
         onGameOver();
@@ -181,6 +185,10 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
         balls.erase(b);
         loseLife();
+        if (balls.size() == 1 && currentState != Lose) {
+            currentState = Win;
+            pushEvent("ev_GameOver", nullptr, false, true);
+        }
     }
     else if (id == "whiteBallHasHit") {
         bool hit = *((bool*)info);
@@ -188,8 +196,20 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             changeScore(-1);
         }
     }
+    else if (id == "blackBallIn") {
+        Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
+        balls.erase(b);
+        if (balls.size() != 1) {
+            Tapioca::logInfo("Se ha metido la bola negra demasiado pronto.\n");
+            currentState = Lose;
+            pushEvent("ev_GameOver", nullptr, false, true);
+        }
+    }
     else if (id == "whiteBallIn") {
-        if (balls.size() == 0) onGameOver();
+        if (balls.size() == 0) {
+            currentState = Lose;
+            pushEvent("ev_GameOver", nullptr, false, true);
+        }
         else
             loseLife();
     }

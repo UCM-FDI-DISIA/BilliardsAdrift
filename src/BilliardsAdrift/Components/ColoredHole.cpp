@@ -38,6 +38,13 @@ void ColoredHole::handleEvent(std::string const& id, void* info) {
                 pushEvent("BallShotWrongColor", info, true);
                 obj->die();
             }
+            else if (ball->getID() != ballId && ball->getID() == "black") {
+                Tapioca::logInfo(("ColoredHole: La bola con ID \"" + std::string(ball->getID()) +
+                                  "\" ha entrado en el agujero" + std::string(ballId) + ".")
+                                     .c_str());
+                pushEvent("blackBallIn", info, true);
+                obj->die();
+            }
         }
     }
 }
