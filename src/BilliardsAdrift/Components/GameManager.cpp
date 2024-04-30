@@ -101,16 +101,8 @@ void GameManager::registerLuaFunctions() {
 
 void GameManager::update(const uint64_t deltaTime) {
     if (currentState == InGame && sceneLoaded) {
-        time -= deltaTime;
+        changeTime(-(float)(deltaTime)/1000.f);
         updateTimerText();
-
-        if (time <= 0) {
-#ifdef _DEBUG
-            std::cout << "El jugador se ha quedado sin tiempo.\n";
-#endif
-            currentState = Lose;
-            pushEvent("ev_GameOver", nullptr);
-        }
 
         // Comprueba que todas las bolas estan inmovilizadas
         auto it = balls.begin();
@@ -221,9 +213,27 @@ void GameManager::goToNextLevel() {
     pushEvent("ev_onStart", nullptr, false, true);
 }
 
-void GameManager::changeScore(int s) { score += s; }
+void GameManager::changeScore(int s) {
+    score += s;
+    if (score <= 0) {
+#ifdef _DEBUG
+        std::cout << "El jugador se ha quedado sin puntuacion.\n";
+#endif
+        currentState = Lose;
+        pushEvent("ev_GameOver", nullptr, false, true);
+    }
+}
 
-void GameManager::changeLife(int l) { life += l; }
+void GameManager::changeLife(int l) {
+    life += l;
+    if (life <= 0) {
+#ifdef _DEBUG
+        std::cout << "El jugador se ha quedado sin vida.\n";
+#endif
+        currentState = Lose;
+        pushEvent("ev_GameOver", nullptr, false, true);
+    }
+}
 
 void GameManager::loseLife() {
     if (life > 0) life--;
@@ -234,7 +244,16 @@ void GameManager::loseLife() {
     }
 }
 
-void GameManager::changeTime(float t) { time += t * 1000; }
+void GameManager::changeTime(float t) {
+    time += t * 1000;
+    if (time <= 0) {
+#ifdef _DEBUG
+        std::cout << "El jugador se ha quedado sin tiempo.\n";
+#endif
+        currentState = Lose;
+        pushEvent("ev_GameOver", nullptr, false, true);
+    }
+}
 
 void GameManager::changeActualLevel(int l) { actualLevel += l; }
 
