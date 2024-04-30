@@ -373,7 +373,7 @@ scene = {
             Transform = {
                 positionX = -19.9,
                 positionY = 8.2,
-                positionZ = -4.1,
+                positionZ = -7.0,
                 scaleX = 0.7,
                 scaleY = 0.7,
                 scaleZ = 0.7,
@@ -445,7 +445,7 @@ scene = {
             Transform = {
                 positionX = -24.0,
                 positionY = 8.2,
-                positionZ = 4.1,
+                positionZ = 6.0,
                 scaleX = 0.7,
                 scaleY = 0.7,
                 scaleZ = 0.7,
@@ -682,6 +682,40 @@ scene = {
                 bounciness = 0.5
             },
             HeartComponent = { }
+        }
+    },
+    Clock = { 
+        components = {
+            Transform = {
+                positionX = -16.0,
+                positionY = 8.2,
+                positionZ = 2.0,
+                scaleX = 1.2,
+                scaleY = 1.2,
+                scaleZ = 1.2,
+                rotationX = 0.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/Clock/Clock.mesh"
+            },
+            RigidBody = {    
+                colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 0.83,
+                colliderScaleY = 0.83,
+                colliderScaleZ = 0.83,
+                isTrigger = true,
+                movementType = 2, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 1.0,
+                damping = 0.4,
+                bounciness = 0.5
+            },
+            ClockComponent = { },
+            AudioSourceComponent={
+                sourcepath="assets/audio/pick.mp3"
+            }
         }
     },
     Accelerator1 = {
