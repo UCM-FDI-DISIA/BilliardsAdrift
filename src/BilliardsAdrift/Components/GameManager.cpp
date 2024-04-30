@@ -63,15 +63,18 @@ void GameManager::start() {
     registerLuaFunctions();
     updateCurrentState(firstStateName);
     changeScene(firstStateName);
-    audios= object->getComponents<Tapioca::AudioSourceComponent>();
+    audios = std::vector<Tapioca::AudioSourceComponent*>(Sounds_MAX);
+    audios[PickSound] = object->getScene()->getHandler("PickSound")->getComponent<Tapioca::AudioSourceComponent>();
+    audios[ExplosionSound] =
+        object->getScene()->getHandler("ExplosiveSound")->getComponent<Tapioca::AudioSourceComponent>();
 }
 
 void GameManager::updateCurrentState(const std::string name) {
     currentStateName = name;
     if (currentStateName == "MainMenu") currentState = MainMenu;
     else if (currentStateName == "LoseScreen") {
-        pushEvent("ev_GameOver", nullptr);
         currentState = Lose;
+        pushEvent("ev_GameOver", nullptr);
     }
     else if (currentStateName == "PauseMenu") {
         pushEvent("ev_Pause", nullptr);
@@ -105,8 +108,8 @@ void GameManager::update(const uint64_t deltaTime) {
 #ifdef _DEBUG
             std::cout << "El jugador se ha quedado sin tiempo.\n";
 #endif
-            //currentState = Lose;
-            //pushEvent("ev_GameOver", nullptr);
+            currentState = Lose;
+            pushEvent("ev_GameOver", nullptr);
         }
 
         // Comprueba que todas las bolas estan inmovilizadas
@@ -199,10 +202,10 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             loseLife();
     }
     else if (id == "ev_pickUp") {
-        audios[0]->playOnce();
+        audios[PickSound]->playOnce();
     }
     else if (id == "ev_explosion") {
-       // audios[1]->playOnce();
+        audios[ExplosionSound]->playOnce();
     }
 }
 
