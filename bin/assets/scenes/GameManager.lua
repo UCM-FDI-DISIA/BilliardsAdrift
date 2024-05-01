@@ -3,25 +3,23 @@ scene = {
         components = {
             GameManager = {
                 firstStateName = "MainMenu",
-                initLife = 3,
+                initLives = 3,
                 initTime = 9999.0
             }
         }
     },
-    PickSound={
+    PickSound = {
         components = {
-            AudioSourceComponent={
-                sourcepath="assets/audio/pick.mp3"
+            AudioSourceComponent = {
+                sourcepath = "assets/audio/pick.mp3"
             }
         }
     },
-    ExplosiveSound={
+    ExplosiveSound = {
         components = {
-            AudioSourceComponent={
-                sourcepath="assets/audio/explosion.mp3"
+            AudioSourceComponent = {
+                sourcepath = "assets/audio/explosion.mp3"
             }
         }
     }
-
-
 }

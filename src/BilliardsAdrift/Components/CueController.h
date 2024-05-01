@@ -34,9 +34,9 @@ private:
     int64_t impulseTime;   // Tiempo de impulso en milisegundos
 
     float powerFactor;     // Incremento de fuerza para tirar la bola
+    float maxPower;        // Fuerza maxima para tirar la bola
     float moveFactor;      // Factor de movimiento del palo
     float rotateFactor;    // Factor de movimiento del palo hacia atras
-    float impulseFactor;   // Factor de movimiento del palo hacia delante (impulso)
 
     float actualPower;            // Fuerza acumulada para tirar la bola
     Tapioca::Vector3 moveSpeed;   // Velocidad de movimiento del palo
@@ -56,8 +56,7 @@ private:
     Tapioca::ProgressBar* powerBarPB;            // Componente de la barra de progreso de la barra de fuerza
     Tapioca::GameObject* line;                   // Linea que indica la direccion del palo
     Tapioca::Line* lineComponent;                // Componente de la linea que indica la direccion del palo
-    void updateHUD();
-    void updatePowerBar();
+    void updatePowerBar(float power = 0);
     void updateLine();
 
 public:

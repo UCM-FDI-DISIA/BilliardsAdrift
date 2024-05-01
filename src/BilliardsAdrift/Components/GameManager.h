@@ -8,12 +8,13 @@
 
 namespace Tapioca {
 class SceneLoader;
+class Scene;
 class MainLoop;
 class LuaManager;
 class GameObject;
 class Text;
+class Image;
 class AudioSourceComponent;
-
 }
 
 /*
@@ -27,15 +28,16 @@ private:
     * @brief Estados del juego
     */
     enum State { MainMenu, InGame, GameOver, Pause, Lose, Win };
-    enum Sounds { PickSound, ExplosionSound,Sounds_MAX };
+    enum Sounds { PickSound, ExplosionSound, Sounds_MAX };
 
     Tapioca::SceneLoader* sceneLoader;   // Puntero al cargador de escenas
     Tapioca::MainLoop* mainLoop;         // Puntero al bucle principal
     Tapioca::LuaManager* luaManager;     // Puntero al gestor de Lua
 
-    std::string firstStateName;     // Nombre del primer estado del juego al iniciar
-    std::string currentStateName;   // Nombre del estado actual
-    State currentState;             // Estado actual
+    std::string firstStateName;          // Nombre del primer estado del juego al iniciar
+    std::string currentStateName;        // Nombre del estado actual
+    State currentState;                  // Estado actual
+    Tapioca::Scene* currentLevelScene;   // Escena de nivel actual
 
     int INIT_LIFE;       // Vida inicial
     int64_t INIT_TIME;   // Tiempo inicial
@@ -44,7 +46,9 @@ private:
     int life;          // Vida actual
     int64_t time;      // Tiempo actual
     int actualLevel;   // Nivel actual
+    int maxLevels;     // Numero maximo de niveles
 
+    Tapioca::GameObject* lives;          // Objeto de las vidas
     Tapioca::GameObject* timerText;      // Texto del temporizador
     Tapioca::Text* timerTextComponent;   // Componente de texto del temporizador
 
@@ -57,7 +61,7 @@ private:
     * @brief Cambia la escena
     * @param scene nombre de la escena
     */
-    void changeScene(std::string const& scene) const;
+    void changeScene(std::string const& scene);
 
     /*
     * @brief Avanza al siguiente nivel
@@ -70,40 +74,44 @@ private:
     void onReset();
 
     /*
-    * @brief Cambia el estado del juego a InGame y cambia de escena
+    * @brief Cambia el estado del juego a InGame
     */
     void onPlay();
+
+    /*
+    * @brief Cambia el estado del juego a Pause
+    */
+    void onPause();
+
+    /*
+    * @brief Cambia el estado del juego a InGame
+    */
+    void onResume();
 
     /*
     * @brief Inicializa los valores como la vida, tiempo, puntuacion,
     * coge la referencia a las bolas en balls e inicializa su velocidad a 0
     */
-    void onStart();
-
-    /*
-    * @brief pierde la partida
-    */
-    void onLose();
+    void startGame();
 
     /*
     * @brief Cambia el estado del juego a GameOver y cambia de escena
     */
-    void onGameOver();
-
-    /*
-    * @brief Cambia el estado del juego a MainMenu y cambia de escena
-    */
-    void onWin();
+    void gameOver();
 
     /*
     * @brief Cambia el estado del juego a Pause y cambia de escena
     */
-    void onPause();
+    void pause();
 
     /*
     * @brief Actualiza el texto del temporizador
     */
     void updateTimerText(int precision = 0);
+
+    /*
+    */
+    void updateLives();
 
     /*
     * @brief Cuando se ha pulsado el boton de jugar desde MainMenu

@@ -16,10 +16,10 @@
 CueController::CueController()
     : tr(nullptr), ballTr(nullptr), ballRb(nullptr), ball(nullptr), mesh(nullptr), inputMng(nullptr),
       mouseLastPosition(Tapioca::Vector2()), ballDistanceOffset(Tapioca::Vector3()), impulseTime(0), powerFactor(0.0f),
-      moveFactor(0.0f), rotateFactor(0.0f), impulseFactor(0.0f), actualPower(0.0f), moveSpeed(0), hitting(false),
-      canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), line(nullptr), lineComponent(nullptr) ,audio(nullptr) {
-}
-   
+      maxPower(100.0f), moveFactor(0.0f), rotateFactor(0.0f), actualPower(0.0f), moveSpeed(0), hitting(false),
+      canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), line(nullptr), lineComponent(nullptr),
+      audio(nullptr) { }
+
 
 CueController::~CueController() {
     tr = nullptr;
@@ -42,6 +42,11 @@ bool CueController::initComponent(const CompMap& variables) {
         return false;
     }
 
+    if (!setValueFromMap(maxPower, "maxPower", variables)) {
+        Tapioca::logError("CueController: no se pudo inicializar maxPower.");
+        return false;
+    }
+
     if (!setValueFromMap(moveFactor, "moveBackwardFactor", variables)) {
         Tapioca::logError("CueController: no se pudo inicializar moveFactor.");
         return false;
@@ -59,10 +64,6 @@ bool CueController::initComponent(const CompMap& variables) {
     }
     impulseTime = impulse * 1000;
 
-    if (!setValueFromMap(impulseFactor, "impulseFactor", variables)) {
-        Tapioca::logError("CueController: no se pudo inicializar impulseFactor.");
-        return false;
-    }
     return true;
 }
 
@@ -127,8 +128,8 @@ void CueController::handleEvent(std::string const& id, void* info) {
         moveSpeed = (ballTr->getGlobalPositionWithoutRotation() -
                      (tr->getGlobalPosition() + tr->getParent()->forward() * 6.f)) /
             impulseTime;
-        moveSpeed.y = 0;
         if (lineComponent != nullptr) lineComponent->setActive(false);
+        updatePowerBar();
     }
     else if (id == "ev_endProcessing") {
         mesh->setVisible(active = true);
@@ -161,19 +162,20 @@ void CueController::updateRotation() {
 }
 
 void CueController::increasePower() {
-    if (actualPower < 6000) {
+    if (actualPower < maxPower) {
         tr->translate(translateToWorld(tr->forward()) * (-moveFactor));
         Tapioca::Vector3 v = tr->getParent()->forward();
         actualPower += powerFactor;
-        updateHUD();
+        updatePowerBar(actualPower);
     }
 }
 
 void CueController::hit() {
     mesh->setVisible(active = false);
     hitting = false;
-    ballRb->addForce(tr->getParent()->forward() * (actualPower));
-    pushEvent("cueShot", nullptr, true);
+    Tapioca::Vector3 force = tr->getParent()->forward() * (actualPower);
+    ballRb->addImpulse(force);
+    pushEvent("ev_ballMoved", nullptr, true);
     audio->pause(true);
     audio->playOnce();
 }
@@ -181,7 +183,7 @@ void CueController::hit() {
 void CueController::resetCue() {
     actualPower = 0;
     followBall();
-    updateHUD();
+    updatePowerBar();
 }
 
 void CueController::followBall() {
@@ -198,16 +200,11 @@ Tapioca::Vector3 CueController::translateToWorld(const Tapioca::Vector3& directi
     return directionalVectorLocal;
 }
 
-void CueController::updateHUD() {
-    updatePowerBar();
-    updateLine();
-}
-
-void CueController::updatePowerBar() {
+void CueController::updatePowerBar(float power) {
     if (powerBarPB != nullptr) {
-        powerBarPB->setProgress(actualPower / 6000);
-        if (actualPower < 3000) powerBarPB->setBarColor(Tapioca::Vector4(0.0f, 1.0f, 0.0f, 1.0f));   // Verde
-        else if (actualPower < 5000)
+        powerBarPB->setProgress(power / maxPower);
+        if (power < maxPower / 2) powerBarPB->setBarColor(Tapioca::Vector4(0.0f, 1.0f, 0.0f, 1.0f));   // Verde
+        else if (power < maxPower / 1.2f)
             powerBarPB->setBarColor(Tapioca::Vector4(1.0f, 1.0f, 0.0f, 1.0f));   // Amarillo
         else
             powerBarPB->setBarColor(Tapioca::Vector4(1.0f, 0.0f, 0.0f, 1.0f));   // Rojo

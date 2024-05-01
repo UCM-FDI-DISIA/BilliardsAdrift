@@ -64,6 +64,20 @@ scene = {
         }
     },
 
+    -- HUD
+    Lives = {
+        components = {
+            Transform = {
+                positionX = 30.0,
+                positionY = 30.0,
+                scaleX = 20.0,
+                scaleY = 20.0
+            },
+            Image = {
+                imagePath = "heart.png"
+            }
+        }
+    },
     TimerText = {
         components = {
             Transform = {
@@ -116,15 +130,14 @@ scene = {
                         meshName = "models/CueStick/CueStick.mesh",
                     },
                     CueController = {    
-                        powerFactor = 600.0,
+                        powerFactor = 5.0,
                         moveBackwardFactor = 0.5,
                         rotateFactor = 0.3,
                         impulseTime = 0.5,
-                        impulseFactor = 0.05
                     },
                     
                     AudioSourceComponent={
-                        sourcepath="assets/audio/hitBall.mp3"
+                        sourcepath = "assets/audio/hitBall.mp3"
                     }
                 }
             }
@@ -265,7 +278,7 @@ scene = {
                         mass = 0.0,
                         friction = 0.5,
                         damping = 0.0,
-                        bounciness = 1.0
+                        bounciness = 2.0
                     },
                     WallComponent = { },
                     AudioSourceComponent={
@@ -296,7 +309,7 @@ scene = {
                         mass = 0.0,
                         friction = 1.0,
                         damping = 0.0,
-                        bounciness = 1.0
+                        bounciness = 2.0
                     },
                     WallComponent = { },
                     AudioSourceComponent={
@@ -327,7 +340,7 @@ scene = {
                         mass = 0.0,
                         friction = 1.0,
                         damping = 0.0,
-                        bounciness = 1.0
+                        bounciness = 2.0
                     },
                     WallComponent = { },
                     AudioSourceComponent={
@@ -358,7 +371,7 @@ scene = {
                         mass = 0.0,
                         friction = 1.0,
                         damping = 0.0,
-                        bounciness = 1.0
+                        bounciness = 2.0
                     },
                     WallComponent = { },
                     AudioSourceComponent={
@@ -400,7 +413,7 @@ scene = {
                 ballId = "yellow"
             } ,
             AudioSourceComponent={
-                sourcepath="assets/audio/hitBall.mp3"
+                sourcepath = "assets/audio/hitBall.mp3"
             }
         }
     },
