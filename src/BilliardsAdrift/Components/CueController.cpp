@@ -17,8 +17,7 @@ CueController::CueController()
     : tr(nullptr), ballTr(nullptr), ballRb(nullptr), ball(nullptr), mesh(nullptr), inputMng(nullptr),
       mouseLastPosition(Tapioca::Vector2()), ballDistanceOffset(Tapioca::Vector3()), impulseTime(0), powerFactor(0.0f),
       maxPower(100.0f), moveFactor(0.0f), rotateFactor(0.0f), actualPower(0.0f), moveSpeed(0), hitting(false),
-      canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), line(nullptr), lineComponent(nullptr),
-      audio(nullptr) { }
+      canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), audio(nullptr) { }
 
 
 CueController::~CueController() {
@@ -31,8 +30,6 @@ CueController::~CueController() {
     windowMng = nullptr;
     powerBar = nullptr;
     powerBarPB = nullptr;
-    line = nullptr;
-    lineComponent = nullptr;
     audio = nullptr;
 }
 
@@ -90,15 +87,6 @@ void CueController::start() {
     }
     else
         Tapioca::logError("CueController: no se pudo encontrar el powerBar.");
-    line = object->getScene()->getHandler("CueLine");
-    if (line != nullptr) {
-        lineComponent = line->getComponent<Tapioca::Line>();
-        if (lineComponent != nullptr) updateLine();
-        else
-            Tapioca::logError("CueController: no se pudo encontrar el componente Line.");
-    }
-    else
-        Tapioca::logError("CueController: no se pudo encontrar el line.");
 
     followBall();
 
@@ -116,7 +104,6 @@ void CueController::update(const uint64_t deltaTime) {
     else {
         updateRotation();
         updatePosition();
-        updateLine();
     }
 }
 
@@ -128,7 +115,6 @@ void CueController::handleEvent(std::string const& id, void* info) {
         moveSpeed = (ballTr->getGlobalPositionWithoutRotation() -
                      (tr->getGlobalPosition() + tr->getParent()->forward() * 6.f)) /
             impulseTime;
-        if (lineComponent != nullptr) lineComponent->setActive(false);
         updatePowerBar();
     }
     else if (id == "ev_endProcessing") {
@@ -208,18 +194,5 @@ void CueController::updatePowerBar(float power) {
             powerBarPB->setBarColor(Tapioca::Vector4(1.0f, 1.0f, 0.0f, 1.0f));   // Amarillo
         else
             powerBarPB->setBarColor(Tapioca::Vector4(1.0f, 0.0f, 0.0f, 1.0f));   // Rojo
-    }
-}
-
-void CueController::updateLine() {
-    if (lineComponent != nullptr) {
-        lineComponent->setActive(true);
-        Tapioca::Vector3 ballPos = ballTr->getGlobalPosition();
-        Tapioca::Vector3 cuePos = tr->getGlobalPosition();
-        Tapioca::Vector3 direction = ballPos - cuePos;
-        lineComponent->setStartPosition(
-            Tapioca::Vector2(ballPos.x + windowMng->getWindowW() / 2, ballPos.z + windowMng->getWindowH() / 2));
-        lineComponent->setEndPosition(Tapioca::Vector2(ballPos.x + windowMng->getWindowW() / 2 + direction.x * 10.0f,
-                                                       ballPos.z + windowMng->getWindowH() / 2 + direction.z * 10.0f));
     }
 }

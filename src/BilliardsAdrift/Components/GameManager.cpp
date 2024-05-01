@@ -26,15 +26,16 @@ GameManager* Tapioca::Singleton<GameManager>::instance_ = nullptr;
 GameManager::GameManager()
     : sceneLoader(nullptr), mainLoop(nullptr), luaManager(nullptr), firstStateName(""), currentStateName(""),
       currentState(), currentLevelScene(nullptr), INIT_TIME(0), INIT_LIFE(0), time(0), life(0), score(0),
-      processing(false), actualLevel(1), maxLevels(2), lives(nullptr), timerText(nullptr), timerTextComponent(nullptr),
-      sceneLoaded(false) { }
+      processing(false), actualLevel(1), maxLevels(2), livesText(nullptr), livesTextComponent(nullptr),
+      timerText(nullptr), timerTextComponent(nullptr), sceneLoaded(false) { }
 
 GameManager::~GameManager() {
     sceneLoader = nullptr;
     mainLoop = nullptr;
     luaManager = nullptr;
     currentLevelScene = nullptr;
-    lives = nullptr;
+    livesText = nullptr;
+    livesTextComponent = nullptr;
     timerText = nullptr;
     timerTextComponent = nullptr;
 }
@@ -248,18 +249,16 @@ void GameManager::changeLife(int l) {
         Tapioca::logInfo("El jugador se ha quedado sin vida.");
         updateCurrentState("LoseScreen");
     }
+    updateLives();
 }
 
 void GameManager::loseLife() {
     life--;
-    if (life > 0) {
-        Tapioca::GameObject* liveToDelete = currentLevelScene->getHandler("Lives" + std::to_string(life));
-        if (liveToDelete != nullptr) liveToDelete->die();
-    }
-    else {
+    if (life <= 0) {
         Tapioca::logInfo("El jugador se ha quedado sin vidas.\n");
         updateCurrentState("LoseScreen");
     }
+    updateLives();
 }
 
 void GameManager::changeTime(float t) { time += t * 1000; }
@@ -267,6 +266,8 @@ void GameManager::changeTime(float t) { time += t * 1000; }
 void GameManager::changeActualLevel(int l) { actualLevel += l; }
 
 std::string GameManager::getActualLevelName() const { return "Level" + std::to_string(actualLevel); }
+
+std::string GameManager::getActualLife() const { return "Lives: " + std::to_string(life); }
 
 void GameManager::updateTimerText(int precision) {
     if (timerTextComponent != nullptr) {
@@ -277,41 +278,7 @@ void GameManager::updateTimerText(int precision) {
 }
 
 void GameManager::updateLives() {
-    if (currentLevelScene == nullptr) {
-        Tapioca::logWarn("GameManager: No se ha encontrado la escena actual.");
-        return;
-    }
-    lives = currentLevelScene->getHandler("Lives");
-    if (lives == nullptr) {
-        Tapioca::logWarn("GameManager: No se ha encontrado el objeto Lives.");
-        return;
-    }
-    Tapioca::Transform* livesTransform = lives->getComponent<Tapioca::Transform>();
-    if (livesTransform == nullptr) {
-        Tapioca::logWarn("GameManager: No se ha encontrado el componente Transform en Lives.");
-        return;
-    }
-    Tapioca::Image* livesImage = lives->getComponent<Tapioca::Image>();
-    if (livesImage == nullptr) {
-        Tapioca::logWarn("GameManager: No se ha encontrado el componente Image en Lives.");
-        return;
-    }
-    std::string livesImagePath = "";
-    livesImagePath = livesImage->getImagePath();
-    for (int i = 1; i < life; ++i) {
-        Tapioca::GameObject* life = new Tapioca::GameObject();
-        Tapioca::Transform* transform = life->addComponent<Tapioca::Transform>();
-        if (transform != nullptr) {
-            Tapioca::Vector3 initialPos = livesTransform->getPosition();
-            Tapioca::Vector3 initialScale = livesTransform->getScale();
-            transform->setPosition(Tapioca::Vector3(initialPos.x + (initialScale.x + 10.0f) * i, initialPos.y, 0.0f));
-            transform->setScale(initialScale);
-        }
-        Tapioca::Image* image = life->addComponent<Tapioca::Image>({{"imagePath", livesImagePath}});
-        image->awake();
-        image->start();
-        currentLevelScene->addObject(life, "Lives" + std::to_string(i));
-    }
+    if (livesTextComponent != nullptr) livesTextComponent->setText(getActualLife());
 }
 
 void GameManager::onPlay() {
@@ -332,6 +299,8 @@ void GameManager::startGame() {
         Tapioca::GameObject* timerText = scene->getHandler("TimerText");
         if (timerText != nullptr) timerTextComponent = timerText->getComponent<Tapioca::Text>();
         updateTimerText();
+        Tapioca::GameObject* livesText = scene->getHandler("LivesText");
+        if (livesText != nullptr) livesTextComponent = livesText->getComponent<Tapioca::Text>();
         updateLives();
         pushEvent("loadBalls", nullptr, true, true);
     }

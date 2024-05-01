@@ -48,7 +48,8 @@ private:
     int actualLevel;   // Nivel actual
     int maxLevels;     // Numero maximo de niveles
 
-    Tapioca::GameObject* lives;          // Objeto de las vidas
+    Tapioca::GameObject* livesText;      // Objeto de las vidas
+    Tapioca::Text* livesTextComponent;   // Componente de texto de las vidas
     Tapioca::GameObject* timerText;      // Texto del temporizador
     Tapioca::Text* timerTextComponent;   // Componente de texto del temporizador
 
@@ -251,6 +252,12 @@ public:
     * @return Nombre del nivel actual
     */
     std::string getActualLevelName() const;
+
+    /*
+    * @brief Devuelve el texto de las vidas
+    * @return Texto de las vidas
+    */
+    std::string getActualLife() const;
 
     /*
     * @brief Devuelve si se estan procesando los objetos

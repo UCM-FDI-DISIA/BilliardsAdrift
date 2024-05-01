@@ -65,16 +65,16 @@ scene = {
     },
 
     -- HUD
-    Lives = {
+    LivesText = {
         components = {
             Transform = {
-                positionX = 30.0,
-                positionY = 30.0,
-                scaleX = 20.0,
-                scaleY = 20.0
+                positionX = 50.0,
+                positionY = 30.0
             },
-            Image = {
-                imagePath = "heart.png"
+            Text = {
+                text = "Lives: 0",
+                textSize = 30.0,
+                textFontName = "AGENCYB.TTF"
             }
         }
     },
@@ -82,7 +82,7 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = 10.0
+                positionY = 20.0
             },
             Text = {
                 text = "Timer",
@@ -95,18 +95,10 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 5,
-                positionY = WINDOW_HEIGHT - 50,
+                positionY = WINDOW_HEIGHT - 60,
                 scaleX = 200.0
             },
             ProgressBar = { }
-        }
-    },
-    CueLine = {
-        components = {
-            Line = { 
-                lineThickness = 2.0,
-                addBorder = true
-            }
         }
     },
     

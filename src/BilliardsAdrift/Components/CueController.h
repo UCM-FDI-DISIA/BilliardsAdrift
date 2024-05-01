@@ -33,10 +33,10 @@ private:
 
     int64_t impulseTime;   // Tiempo de impulso en milisegundos
 
-    float powerFactor;     // Incremento de fuerza para tirar la bola
-    float maxPower;        // Fuerza maxima para tirar la bola
-    float moveFactor;      // Factor de movimiento del palo
-    float rotateFactor;    // Factor de movimiento del palo hacia atras
+    float powerFactor;    // Incremento de fuerza para tirar la bola
+    float maxPower;       // Fuerza maxima para tirar la bola
+    float moveFactor;     // Factor de movimiento del palo
+    float rotateFactor;   // Factor de movimiento del palo hacia atras
 
     float actualPower;            // Fuerza acumulada para tirar la bola
     Tapioca::Vector3 moveSpeed;   // Velocidad de movimiento del palo
@@ -51,13 +51,10 @@ private:
     void followBall();
     Tapioca::Vector3 translateToWorld(const Tapioca::Vector3& direction);
 
-    Tapioca::WindowManager* windowMng;           // Gestor de ventanas
-    Tapioca::GameObject* powerBar;               // Barra de fuerza
-    Tapioca::ProgressBar* powerBarPB;            // Componente de la barra de progreso de la barra de fuerza
-    Tapioca::GameObject* line;                   // Linea que indica la direccion del palo
-    Tapioca::Line* lineComponent;                // Componente de la linea que indica la direccion del palo
+    Tapioca::WindowManager* windowMng;   // Gestor de ventanas
+    Tapioca::GameObject* powerBar;       // Barra de fuerza
+    Tapioca::ProgressBar* powerBarPB;    // Componente de la barra de progreso de la barra de fuerza
     void updatePowerBar(float power = 0);
-    void updateLine();
 
 public:
     COMPONENT_ID("CueController");
