@@ -21,7 +21,7 @@ if errorlevel 1 (
     echo Error al crear enlace con el motor
 ) else (
     echo Enlace con el motor creado correctamente
-	call %BAT_DIR%copyEngineFiles.bat
+	call %BAT_DIR%copyEngineFiles.bat --nopause
 )
 
 
