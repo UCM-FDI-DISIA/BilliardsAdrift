@@ -7,7 +7,7 @@ scene = {
             },
             Text = {
                 text = "You Win",
-                textSize = 90.0,
+                textSize = 75.0,
                 textFontName = "06126_BRITANIC.TTF",
                 textColorR = 0.0,
                 textColorG = 0.0,
@@ -39,7 +39,7 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2+50,
+                positionY = WINDOW_HEIGHT / 2 + 50,
                 scaleX = 200.0,
                 scaleY = 70.0,
             },

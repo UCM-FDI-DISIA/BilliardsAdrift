@@ -7,7 +7,7 @@ scene = {
             },
             Text = {
                 text = "Game paused",
-                textSize = 90.0,
+                textSize = 75.0,
                 textFontName = "06126_BRITANIC.TTF",
                 textColorR = 0.0,
                 textColorG = 0.0,
