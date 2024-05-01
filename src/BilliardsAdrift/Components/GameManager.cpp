@@ -231,7 +231,6 @@ void GameManager::goToNextLevel() {
     balls.clear();
     actualLevel++;
     changeScene(getActualLevelName());
-    updateCurrentState(getActualLevelName());
     pushEvent("ev_Start", nullptr, true, true);
 }
 
@@ -314,8 +313,6 @@ void GameManager::updateLives() {
         currentLevelScene->addObject(life, "Lives" + std::to_string(i));
     }
 }
-
-void GameManager::onReset() { }
 
 void GameManager::onPlay() {
     updateCurrentState(getActualLevelName());

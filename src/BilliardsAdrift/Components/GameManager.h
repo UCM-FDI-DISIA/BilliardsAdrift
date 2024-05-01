@@ -56,7 +56,8 @@ private:
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
     bool sceneLoaded;
 
-    std ::vector<Tapioca::AudioSourceComponent*> audios;
+    std ::vector<Tapioca::AudioSourceComponent*> audios;   // Sonidos del juego
+
     /*
     * @brief Cambia la escena
     * @param scene nombre de la escena
@@ -69,12 +70,7 @@ private:
     void goToNextLevel();
 
     /*
-    * @brief Empieza de nuevo el juego
-    */
-    void onReset();
-
-    /*
-    * @brief Cambia el estado del juego a InGame
+    * @brief Cambia el estado del juego a InGame inicializando los valores
     */
     void onPlay();
 
@@ -95,12 +91,12 @@ private:
     void startGame();
 
     /*
-    * @brief Cambia el estado del juego a GameOver y cambia de escena
+    * @brief Cambia de escena dependiendo de si se ha ganado o perdido
     */
     void gameOver();
 
     /*
-    * @brief Cambia el estado del juego a Pause y cambia de escena
+    * @brief Cambia de escena dependiendo de si estaba en pausa o no
     */
     void pause();
 
@@ -110,9 +106,9 @@ private:
     void updateTimerText(int precision = 0);
 
     /*
+    * @brief Actualiza el numero de vidas
     */
     void updateLives();
-
     /*
     * @brief Cuando se ha pulsado el boton de jugar desde MainMenu
     */
