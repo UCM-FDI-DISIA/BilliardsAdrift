@@ -121,8 +121,9 @@ scene = {
                     MeshRenderer = {
                         meshName = "models/CueStick/CueStick.mesh",
                     },
-                    CueController = {    
-                        powerFactor = 5.0,
+                    CueController = {
+                        powerFactor = 10.0,
+                        maxPower = 100.0,
                         moveBackwardFactor = 0.5,
                         rotateFactor = 0.3,
                         impulseTime = 0.5,

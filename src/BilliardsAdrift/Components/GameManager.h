@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 #include "Structure/Component.h"
 #include "Utilities/Singleton.h"
 #include <string>
@@ -144,6 +145,8 @@ private:
     * @brief Actualiza el estado actual del juego
     */
     void updateCurrentState(const std::string name);
+
+    void clearLevel();
 
     /*
     * @brief Constructor por defecto

@@ -91,6 +91,12 @@ void GameManager::updateCurrentState(const std::string name) {
         currentState = InGame;
 }
 
+void GameManager::clearLevel() { 
+    sceneLoaded = false;
+    balls.clear();
+    mainLoop->deleteScene(getActualLevelName());
+}
+
 void GameManager::registerLuaFunctions() {
     std::function<void()> playFunction = [&]() { onPlayConfirmed(); };
     std::function<void()> mainMenuFunction = [&]() { onMainMenuConfirmed(); };
@@ -227,11 +233,10 @@ void GameManager::changeScene(std::string const& scene) {
 }
 
 void GameManager::goToNextLevel() {
-    sceneLoaded = false;
-    mainLoop->deleteScene(getActualLevelName());
-    balls.clear();
+    clearLevel();
     actualLevel++;
     changeScene(getActualLevelName());
+    updateCurrentState(getActualLevelName());
     pushEvent("ev_Start", nullptr, true, true);
 }
 
@@ -307,16 +312,13 @@ void GameManager::startGame() {
 }
 
 void GameManager::gameOver() {
-    sceneLoaded = false;
-    balls.clear();
+    clearLevel();
 
     switch (currentState) {
     case Lose:
-        mainLoop->deleteScene(getActualLevelName());
         changeScene("LoseScreen");
         break;
     case Win:
-        mainLoop->deleteScene(getActualLevelName());
         changeScene("WinScreen");
         break;
     default: Tapioca::logInfo("Se ha hecho GAMEOVER sin estar en modo Lose ni Win"); break;
@@ -349,11 +351,8 @@ void GameManager::onResumeConfirmed() { pause(); }
 
 void GameManager::onContinueConfirmed() {
     if (actualLevel < maxLevels) {
-        sceneLoaded = false;
-        mainLoop->deleteScene(getActualLevelName());
         mainLoop->deleteScene("WinScreen");
-        balls.clear();
-        goToNextLevel();
+         goToNextLevel();
     }
     else {
         actualLevel = 1;
@@ -365,16 +364,14 @@ void GameManager::onRestartConfirmed() {
     switch (currentState) {
     case Lose:
         mainLoop->deleteScene("LoseScreen");
-        changeScene(getActualLevelName());
-        pushEvent("ev_onPlay", nullptr, true, true);
         break;
     case Win:
         mainLoop->deleteScene("WinScreen");
-        changeScene(getActualLevelName());
-        pushEvent("ev_onPlay", nullptr, true, true);
         break;
     default: Tapioca::logInfo("Se ha hecho RESTART sin estar en modo Lose ni Win"); break;
     }
+    changeScene(getActualLevelName());
+    pushEvent("ev_onPlay", nullptr, true, true);
 }
 
 void GameManager::onMainMenuConfirmed() {
@@ -384,9 +381,7 @@ void GameManager::onMainMenuConfirmed() {
     case Pause: mainLoop->deleteScene("PauseMenu"); break;
     }
 
-    balls.clear();
-    sceneLoaded = false;
-    mainLoop->deleteScene(getActualLevelName());
+    clearLevel();
     std::string result = "MainMenu";
     changeScene(result);
     updateCurrentState(result);
