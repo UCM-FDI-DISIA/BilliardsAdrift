@@ -161,8 +161,7 @@ void CueController::hit() {
     hitting = false;
     Tapioca::Vector3 force = tr->getParent()->forward() * (actualPower);
     ballRb->addImpulse(force);
-    pushEvent("ev_ballMoved", nullptr, true);
-    audio->pause(true);
+    pushEvent("cueShot", nullptr, true);
     audio->playOnce();
 }
 
