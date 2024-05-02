@@ -28,7 +28,7 @@ private:
     /*
     * @brief Estados del juego
     */
-    enum State { MainMenu, InGame, GameOver, Pause, Lose, Win };
+    enum State { MainMenu, InGame, GameOver, Pause, Lose, Win, Rules, Controls };
     enum Sounds { PickSound, ExplosionSound, Sounds_MAX };
 
     Tapioca::SceneLoader* sceneLoader;   // Puntero al cargador de escenas
@@ -131,6 +131,20 @@ private:
     */
     void onRestartConfirmed();
 
+    /*
+    * @brief Cuando se ha pulsado el boton de back desde Rules o Controls
+    */
+    void onBackConfirmed();
+
+    /*
+    * @brief Cuando se ha pulsado el boton de rules desde MainMenu
+    */
+    void onRulesConfirmed();
+
+    /*
+    * @brief Cuando se ha pulsado el boton de controls desde MainMenu
+    */
+    void onControlsConfirmed();
     /*
     * @brief Cuando se ha pulsado el boton de ir al MainMenu desde EndScreen
     */

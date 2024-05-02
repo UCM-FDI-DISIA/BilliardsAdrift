@@ -89,9 +89,13 @@ void GameManager::updateCurrentState(const std::string name) {
         currentState = Pause;
     else if (currentStateName == "Level1" || currentStateName == "Level2")
         currentState = InGame;
+    else if (currentStateName == "RulesMenu")
+        currentState = Rules;
+    else if (currentStateName == "ControlsMenu")
+        currentState = Controls;
 }
 
-void GameManager::clearLevel() { 
+void GameManager::clearLevel() {
     sceneLoaded = false;
     balls.clear();
     mainLoop->deleteScene(getActualLevelName());
@@ -103,11 +107,17 @@ void GameManager::registerLuaFunctions() {
     std::function<void()> resumeFunction = [&]() { onResumeConfirmed(); };
     std::function<void()> continueFunction = [&]() { onContinueConfirmed(); };
     std::function<void()> restartFunction = [&]() { onRestartConfirmed(); };
+    std::function<void()> controlsFunction = [&]() { onControlsConfirmed(); };
+    std::function<void()> rulesFunction = [&]() { onRulesConfirmed(); };
+    std::function<void()> backFunction = [&]() { onBackConfirmed(); };
     luaManager->addLuaFunction("Play", playFunction);
     luaManager->addLuaFunction("MainMenu", mainMenuFunction);
     luaManager->addLuaFunction("Resume", resumeFunction);
     luaManager->addLuaFunction("Continue", continueFunction);
     luaManager->addLuaFunction("Restart", restartFunction);
+    luaManager->addLuaFunction("Controls", controlsFunction);
+    luaManager->addLuaFunction("Rules", rulesFunction);
+    luaManager->addLuaFunction("Back", backFunction);
 }
 
 void GameManager::update(const uint64_t deltaTime) {
@@ -115,28 +125,29 @@ void GameManager::update(const uint64_t deltaTime) {
         changeTime(-(float)(deltaTime) / 1000.f);
         updateTimerText();
 
-        if (time <= 0) pushEvent("ev_GameOver", nullptr, true);
-
-        // Comprueba que todas las bolas estan inmovilizadas
-        auto it = balls.begin();
-        while (it != balls.end()) {
-            Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
-            auto v = rb->getVelocity();
-            auto f = rb->getTotalForce();
-            if (std::abs(v.x < 1e-3) && std::abs(v.y < 1e-3) && std::abs(v.z < 1e-3) && std::abs(f.x < 1e-3) &&
-                std::abs(f.y < 1e-3) && std::abs(f.z < 1e-3)) {
-                rb->setVelocity(Tapioca::Vector3(0));
-                ++it;
+        if (time <= 0) updateCurrentState("WinScreen");
+        else {
+            // Comprueba que todas las bolas estan inmovilizadas
+            auto it = balls.begin();
+            while (it != balls.end()) {
+                Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
+                auto v = rb->getVelocity();
+                auto f = rb->getTotalForce();
+                if (std::abs(v.x < 1e-3) && std::abs(v.y < 1e-3) && std::abs(v.z < 1e-3) && std::abs(f.x < 1e-3) &&
+                    std::abs(f.y < 1e-3) && std::abs(f.z < 1e-3)) {
+                    rb->setVelocity(Tapioca::Vector3(0));
+                    ++it;
+                }
+                else {
+                    pushEvent("ev_ballMoved", nullptr, true);
+                    processing = true;
+                    break;
+                }
             }
-            else {
-                pushEvent("ev_ballMoved", nullptr, true);
-                processing = true;
-                break;
+            if (it == balls.end()) {
+                processing = false;
+                pushEvent("ev_endProcessing", nullptr, true);
             }
-        }
-        if (it == balls.end()) {
-            processing = false;
-            pushEvent("ev_endProcessing", nullptr, true);
         }
     }
 }
@@ -315,12 +326,8 @@ void GameManager::gameOver() {
     clearLevel();
 
     switch (currentState) {
-    case Lose:
-        changeScene("LoseScreen");
-        break;
-    case Win:
-        changeScene("WinScreen");
-        break;
+    case Lose: changeScene("LoseScreen"); break;
+    case Win: changeScene("WinScreen"); break;
     default: Tapioca::logInfo("Se ha hecho GAMEOVER sin estar en modo Lose ni Win"); break;
     }
 }
@@ -352,7 +359,7 @@ void GameManager::onResumeConfirmed() { pause(); }
 void GameManager::onContinueConfirmed() {
     if (actualLevel < maxLevels) {
         mainLoop->deleteScene("WinScreen");
-         goToNextLevel();
+        goToNextLevel();
     }
     else {
         actualLevel = 1;
@@ -362,16 +369,34 @@ void GameManager::onContinueConfirmed() {
 
 void GameManager::onRestartConfirmed() {
     switch (currentState) {
-    case Lose:
-        mainLoop->deleteScene("LoseScreen");
-        break;
-    case Win:
-        mainLoop->deleteScene("WinScreen");
-        break;
+    case Lose: mainLoop->deleteScene("LoseScreen"); break;
+    case Win: mainLoop->deleteScene("WinScreen"); break;
     default: Tapioca::logInfo("Se ha hecho RESTART sin estar en modo Lose ni Win"); break;
     }
     changeScene(getActualLevelName());
     pushEvent("ev_onPlay", nullptr, true, true);
+}
+
+void GameManager::onBackConfirmed() {
+    switch (currentState) {
+    case Rules: mainLoop->deleteScene("RulesMenu"); break;
+    case Controls: mainLoop->deleteScene("ControlsMenu"); break;
+    }
+    std::string result = "MainMenu";
+    changeScene(result);
+    updateCurrentState(result);
+}
+
+void GameManager::onRulesConfirmed() {
+    mainLoop->deleteScene("MainMenu");
+    changeScene("RulesMenu");
+    updateCurrentState("RulesMenu");
+}
+
+void GameManager::onControlsConfirmed() {
+    mainLoop->deleteScene("MainMenu");
+    changeScene("ControlsMenu");
+    updateCurrentState("ControlsMenu");
 }
 
 void GameManager::onMainMenuConfirmed() {

@@ -19,9 +19,9 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2,
-                scaleX = 200.0,
-                scaleY = 70.0
+                positionY = WINDOW_HEIGHT / 2-50,
+                scaleX = 172.0, 
+                scaleY = 60.0
             },
             ImageTextButton = {
                 onClickId = "Play",
@@ -34,13 +34,51 @@ scene = {
             }
         }
     },
+    ControlsButton = {
+        components = {
+            Transform = {
+                positionX = WINDOW_WIDTH / 2,
+                positionY = WINDOW_HEIGHT / 2+20,
+                scaleX = 172.0, 
+                scaleY = 60.0
+            },
+            ImageTextButton = {
+                onClickId = "Controls",
+                imagePathNormal = "buttons/controls1.png",
+                imagePathHover = "buttons/controls2.png",
+                imagePathActive = "buttons/controls3.png",
+                normalColorA = 0.0,
+                hoverColorA = 0.0,
+                activeColorA = 0.0
+            }
+        }
+    },
+    RulesButton = {
+        components = {
+            Transform = {
+                positionX = WINDOW_WIDTH / 2,
+                positionY = WINDOW_HEIGHT / 2+90,
+                scaleX = 172.0, 
+                scaleY = 60.0
+            },
+            ImageTextButton = {
+                onClickId = "Rules",
+                imagePathNormal = "buttons/rules1.png",
+                imagePathHover = "buttons/rules2.png",
+                imagePathActive = "buttons/rules3.png",
+                normalColorA = 0.0,
+                hoverColorA = 0.0,
+                activeColorA = 0.0
+            }
+        }
+    },
     QuitButton = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT * 2 / 3,
-                scaleX = 200.0,
-                scaleY = 70.0
+                positionY = WINDOW_HEIGHT / 2+160,
+                scaleX = 172.0, 
+                scaleY = 60.0
             },
             ImageTextButton = {
                 onClickId = "Quit",
