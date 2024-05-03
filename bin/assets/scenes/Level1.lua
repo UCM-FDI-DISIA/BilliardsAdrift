@@ -1,19 +1,14 @@
 scene = {
     {
         components = {
-            -- Transform = {
-            --     positionX = 50.0,
-            --     positionY = 20.0,
-            --     positionZ = 50.0
-            -- },
             Transform = {
                 positionY = 63.0,
                 rotationZ = 90.0
             },
             CameraComponent = {
-                bgColorR = 0.925,
-                bgColorG = 0.698,
-                bgColorB = 0.941,
+                bgColorR = 0.0,
+                bgColorG = 0.0,
+                bgColorB = 0.0,
                 targetToLookX = 0.0,
                 targetToLookY = 0.0,
                 targetToLookZ = 0.0
@@ -27,12 +22,9 @@ scene = {
                 colorG = 0.6,
                 colorB = 1.0,
                 colorA = 1.0,
-                powerScale=0.6
-            }
-            ,  
-            AudioListenerComponent={
-
-            }
+                powerScale = 0.6
+            },  
+            AudioListenerComponent = {}
         }
     },
 
@@ -63,12 +55,12 @@ scene = {
     LivesText = {
         components = {
             Transform = {
-                positionX = 50.0,
-                positionY = 30.0
+                positionX = 100.0,
+                positionY = 50.0
             },
             Text = {
                 text = "Lives: 0",
-                textSize = 20.0,
+                textSize = 40.0,
                 textFontName = "AGENCYB.TTF"
             }
         }
@@ -77,11 +69,11 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = 30.0
+                positionY = 50.0
             },
             Text = {
                 text = "Timer",
-                textSize = 20.0,
+                textSize = 40.0,
                 textFontName = "AGENCYB.TTF",
             }
         }
@@ -91,7 +83,7 @@ scene = {
             Transform = {
                 positionX = WINDOW_WIDTH / 5,
                 positionY = WINDOW_HEIGHT - 60,
-                scaleX = 200.0
+                scaleX = 400.0
             },
             ProgressBar = { }
         }

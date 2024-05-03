@@ -1,11 +1,6 @@
 scene = {
     {
         components = {
-            -- Transform = {
-            --     positionX = 50.0,
-            --     positionY = 20.0,
-            --     positionZ = 50.0
-            -- },
             Transform = {
                 positionY = 63.0,
                 rotationZ = 90.0
@@ -68,12 +63,12 @@ scene = {
     LivesText = {
         components = {
             Transform = {
-                positionX = 50.0,
-                positionY = 30.0
+                positionX = 100.0,
+                positionY = 50.0
             },
             Text = {
                 text = "Lives: 0",
-                textSize = 30.0,
+                textSize = 40.0,
                 textFontName = "AGENCYB.TTF"
             }
         }
@@ -82,12 +77,12 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = 20.0
+                positionY = 50.0
             },
             Text = {
                 text = "Timer",
-                textSize = 20.0,
-                textFontName = "AGENCYB.TTF"
+                textSize = 40.0,
+                textFontName = "AGENCYB.TTF",
             }
         }
     },
@@ -96,7 +91,7 @@ scene = {
             Transform = {
                 positionX = WINDOW_WIDTH / 5,
                 positionY = WINDOW_HEIGHT - 60,
-                scaleX = 200.0
+                scaleX = 400.0
             },
             ProgressBar = { }
         }

@@ -3,8 +3,8 @@ scene = {
         components = {
             CameraComponent = {
                 bgColorR = 0.0,
-                bgColorG = 0.659,
-                bgColorB = 0.929
+                bgColorG = 0.5,
+                bgColorB = 0.0
             },
             SplashScreenComponent = {
                 changeTime = 2000,
@@ -17,10 +17,11 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 - 20
+                positionY = WINDOW_HEIGHT / 2 - 40
             },
             Text = {
                 text = "made with",
+                textSize = 32.0,
                 textFontName = "AGENCYB.TTF"
             }
         }
@@ -33,7 +34,7 @@ scene = {
             },
             Text = {
                 text = "Tapioca Engine",
-                textSize = 36.0,
+                textSize = 72.0,
                 textFontName = "AGENCYB.TTF"
             }
         }

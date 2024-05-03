@@ -4,9 +4,9 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2+200,
-                scaleX = 172.0, 
-                scaleY = 60.0
+                positionY = WINDOW_HEIGHT - 100,
+                scaleX = 344.0, 
+                scaleY = 120.0
             },
             ImageTextButton = {
                 onClickId = "Back",

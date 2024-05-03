@@ -35,4 +35,11 @@ void addComponentFactories() {
 
 std::string getWindowName() { return "Billiards Adrift"; }
 
+bool getFullScreen() { return true; }
+
+void getWindowSize(uint32_t& width, uint32_t& height) {
+    width = 600;
+    height = 600;
+}
+
 std::string getInitScene() { return "StartScene.lua"; }

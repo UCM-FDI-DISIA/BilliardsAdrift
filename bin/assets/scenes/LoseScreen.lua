@@ -3,11 +3,11 @@ scene = {
         components = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
-                positionY = WINDOW_HEIGHT / 2 - 150
+                positionY = WINDOW_HEIGHT / 2 - 250
             },
             Text = {
                 text = "You Lose",
-                textSize = 75.0,
+                textSize = 150.0,
                 textFontName = "06126_BRITANIC.TTF",
                 textColorR = 0.0,
                 textColorG = 0.0,
@@ -20,8 +20,8 @@ scene = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
                 positionY = WINDOW_HEIGHT / 2,
-                scaleX = 200.0,
-                scaleY = 70.0
+                scaleX = 344.0, 
+                scaleY = 120.0
             },
             ImageTextButton = {
                 onClickId = "Restart",
@@ -39,8 +39,8 @@ scene = {
             Transform = {
                 positionX = WINDOW_WIDTH / 2,
                 positionY = WINDOW_HEIGHT * 2 / 3,
-                scaleX = 200.0,
-                scaleY = 70.0
+                scaleX = 344.0, 
+                scaleY = 120.0
             },
             ImageTextButton = {
                 onClickId = "MainMenu",
