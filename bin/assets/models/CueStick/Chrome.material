@@ -6,10 +6,10 @@ material Chrome {
             diffuse 0.940392 0.940392 0.940392 1.0
             specular 0.110092 1.0 0 0 0
 
-               // additional maps - requires RTSS
-           // rtshader_system {
-              //  lighting_stage metal_roughness
-         //   }
+            // additional maps - requires RTSS
+            // rtshader_system {
+            //   lighting_stage metal_roughness
+            // }
         }
     }
 }

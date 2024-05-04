@@ -122,7 +122,7 @@ void GameManager::registerLuaFunctions() {
 
 void GameManager::update(const uint64_t deltaTime) {
     if (currentState == InGame && sceneLoaded) {
-        changeTime(-(float)(deltaTime) / 1000.f);
+        changeTime(-((int64_t)deltaTime));
         updateTimerText();
 
         if (time <= 0) updateCurrentState("WinScreen");
@@ -277,7 +277,7 @@ void GameManager::loseLife() {
     updateLives();
 }
 
-void GameManager::changeTime(float t) { time += t * 1000; }
+void GameManager::changeTime(int64_t t) { time += t; }
 
 void GameManager::changeActualLevel(int l) { actualLevel += l; }
 

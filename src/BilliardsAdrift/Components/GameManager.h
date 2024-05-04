@@ -247,7 +247,7 @@ public:
     * @brief Incrementa/decrementa t cantidad de tiempo
     * @param t cantidad de tiempo a incrementar/decrementar
     */
-    void changeTime(const float t);
+    void changeTime(const int64_t t);
 
     /*
     * @brief Devuelve el nivel actual

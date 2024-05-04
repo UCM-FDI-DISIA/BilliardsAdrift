@@ -6,10 +6,10 @@ material Noir {
             diffuse 0.001547 0.001547 0.001547 1.0
             specular 0.198582 0.0 0 0 0
 
-               // additional maps - requires RTSS
-           // rtshader_system {
-              //  lighting_stage metal_roughness
-         //   }
+            // additional maps - requires RTSS
+            // rtshader_system {
+            //   lighting_stage metal_roughness
+            // }
         }
     }
 }
