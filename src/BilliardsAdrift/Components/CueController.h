@@ -25,6 +25,8 @@ private:
     Tapioca::Transform* ballTr;
     Tapioca::RigidBody* ballRb;
     Tapioca::GameObject* ball;
+    Tapioca::Transform* trayectoryTransform;
+    Tapioca::MeshRenderer* trayectoryMesh;
     Tapioca::MeshRenderer* mesh;
     Tapioca::InputManager* inputMng;
     Tapioca::AudioSourceComponent* audio;
@@ -48,6 +50,7 @@ private:
     void increasePower();
     void hit();
     void resetCue();
+    void resetTrayectory();
     void followBall();
     Tapioca::Vector3 translateToWorld(const Tapioca::Vector3& direction);
 

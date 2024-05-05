@@ -128,6 +128,25 @@ scene = {
                         sourcepath = "assets/audio/hitBall.mp3"
                     }
                 }
+            },
+            Trayectory = {
+                components = {
+                    Transform = {
+                        positionX = 0.0,
+                        positionY = 0.0,
+                        positionZ = 1.0, --offset
+                        scaleX = 0.003,  
+                        scaleY = 0.003,
+                        scaleZ = 0.000,
+                        rotationX = 0.0,
+                        rotationY = 0.0,
+                        rotationZ = 0.0
+                    }, 
+                    MeshRenderer = {
+                        meshName = "models/cube.mesh",
+                        materialName = "white"
+                    }
+                }
             }
         }
     },

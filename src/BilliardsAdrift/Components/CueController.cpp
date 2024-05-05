@@ -17,7 +17,8 @@ CueController::CueController()
     : tr(nullptr), ballTr(nullptr), ballRb(nullptr), ball(nullptr), mesh(nullptr), inputMng(nullptr),
       mouseLastPosition(Tapioca::Vector2()), ballDistanceOffset(Tapioca::Vector3()), impulseTime(0), powerFactor(0.0f),
       maxPower(100.0f), moveFactor(0.0f), rotateFactor(0.0f), actualPower(0.0f), moveSpeed(0), hitting(false),
-      canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), audio(nullptr) { }
+      canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), audio(nullptr),
+      trayectoryTransform(nullptr), trayectoryMesh(nullptr) { }
 
 
 CueController::~CueController() {
@@ -31,6 +32,8 @@ CueController::~CueController() {
     powerBar = nullptr;
     powerBarPB = nullptr;
     audio = nullptr;
+    trayectoryTransform = nullptr;
+    trayectoryMesh = nullptr;
 }
 
 bool CueController::initComponent(const CompMap& variables) {
@@ -91,6 +94,9 @@ void CueController::start() {
     followBall();
 
     audio = object->getComponent<Tapioca::AudioSourceComponent>();
+
+    trayectoryTransform = object->getScene()->getHandler("Trayectory")->getComponent<Tapioca::Transform>();
+    trayectoryMesh = object->getScene()->getHandler("Trayectory")->getComponent<Tapioca::MeshRenderer>();
 }
 
 void CueController::update(const uint64_t deltaTime) {
@@ -119,6 +125,7 @@ void CueController::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_endProcessing") {
         mesh->setVisible(active = true);
+        trayectoryMesh->setVisible(active);
         if (!canMove) {
             canMove = true;
             resetCue();
@@ -126,6 +133,7 @@ void CueController::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_ballMoved") {
         mesh->setVisible(active = false);
+        trayectoryMesh->setVisible(active);
         if (canMove) {
             canMove = false;
             resetCue();
@@ -150,14 +158,18 @@ void CueController::updateRotation() {
 void CueController::increasePower() {
     if (actualPower < maxPower) {
         tr->translate(translateToWorld(tr->forward()) * (-moveFactor));
-        Tapioca::Vector3 v = tr->getParent()->forward();
         actualPower += powerFactor;
         updatePowerBar(actualPower);
+        Tapioca::Vector3 aux = trayectoryTransform->getScale();
+        aux.z = actualPower * 0.001;
+        trayectoryTransform->setScale(aux);
+        trayectoryTransform->translate(translateToWorld(tr->forward()) * (moveFactor));
     }
 }
 
 void CueController::hit() {
     mesh->setVisible(active = false);
+    trayectoryMesh->setVisible(active);
     hitting = false;
     Tapioca::Vector3 force = tr->getParent()->forward() * (actualPower);
     ballRb->addImpulse(force);
@@ -168,7 +180,15 @@ void CueController::hit() {
 void CueController::resetCue() {
     actualPower = 0;
     followBall();
+    resetTrayectory();
     updatePowerBar();
+}
+
+void CueController::resetTrayectory() { 
+    Tapioca::Vector3 aux = trayectoryTransform->getScale();
+    aux.z = 0.000;
+    trayectoryTransform->setScale(aux);
+    trayectoryTransform->setPosition(Tapioca::Vector3(0.0f,0.0f,1.0f));
 }
 
 void CueController::followBall() {
