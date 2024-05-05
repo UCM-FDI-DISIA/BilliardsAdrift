@@ -72,6 +72,8 @@ void GameManager::start() {
     audios[PickSound] = object->getScene()->getHandler("PickSound")->getComponent<Tapioca::AudioSourceComponent>();
     audios[ExplosionSound] =
         object->getScene()->getHandler("ExplosiveSound")->getComponent<Tapioca::AudioSourceComponent>();
+    audios[InGameMusic] =
+        object->getScene()->getHandler("InGameMusic")->getComponent<Tapioca::AudioSourceComponent>();
 }
 
 void GameManager::updateCurrentState(const std::string name) {
@@ -320,10 +322,12 @@ void GameManager::startGame() {
         updateLives();
         pushEvent("loadBalls", nullptr, true, true);
     }
+    audios[InGameMusic]->pause(false);
 }
 
 void GameManager::gameOver() {
     clearLevel();
+    audios[InGameMusic]->pause(true);
 
     switch (currentState) {
     case Lose: changeScene("LoseScreen"); break;
@@ -338,11 +342,13 @@ void GameManager::pause() {
         mainLoop->getScene(getActualLevelName())->setActive(false);
         changeScene("PauseMenu");
         pushEvent("ev_onPause", nullptr, true, true);
+        audios[InGameMusic]->pause(true);
         break;
     case Pause:
         mainLoop->getScene(getActualLevelName())->setActive(true);
         mainLoop->deleteScene("PauseMenu");
         pushEvent("ev_onResume", nullptr, true, true);
+        audios[InGameMusic]->pause(false);
         break;
     default: Tapioca::logInfo("Se ha hecho PAUSE sin estar en modo InGame ni Pause"); break;
     }

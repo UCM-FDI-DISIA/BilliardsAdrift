@@ -29,7 +29,7 @@ private:
     * @brief Estados del juego
     */
     enum State { MainMenu, InGame, GameOver, Pause, Lose, Win, Rules, Controls };
-    enum Sounds { PickSound, ExplosionSound, Sounds_MAX };
+    enum Sounds { PickSound, ExplosionSound,InGameMusic, Sounds_MAX };
 
     Tapioca::SceneLoader* sceneLoader;   // Puntero al cargador de escenas
     Tapioca::MainLoop* mainLoop;         // Puntero al bucle principal

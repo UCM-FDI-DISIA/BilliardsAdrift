@@ -22,4 +22,15 @@ scene = {
             }
         }
     }
+    ,
+    InGameMusic= {
+        components = {
+            AudioSourceComponent = {
+                isLooping=true,
+                sourcepath = "assets/audio/Suspicious_Pool_Loop.mp3"
+            }
+        }
+    }
+
+    
 }
