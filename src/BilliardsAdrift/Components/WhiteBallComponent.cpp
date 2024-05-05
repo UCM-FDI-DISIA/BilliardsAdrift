@@ -27,6 +27,7 @@ void WhiteBallComponent::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "whiteBallIn") {
         object->getComponent<Tapioca::Transform>()->setPosition(iniBallPos);
+        object->getComponent<Tapioca::RigidBody>()->clearForces();
         object->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
     }
 }

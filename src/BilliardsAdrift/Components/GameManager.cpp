@@ -125,7 +125,7 @@ void GameManager::update(const uint64_t deltaTime) {
         changeTime(-((int64_t)deltaTime));
         updateTimerText();
 
-        if (time <= 0) updateCurrentState("WinScreen");
+        if (time <= 0) updateCurrentState("LoseScreen");
         else {
             // Comprueba que todas las bolas estan inmovilizadas
             auto it = balls.begin();
@@ -133,18 +133,18 @@ void GameManager::update(const uint64_t deltaTime) {
                 Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
                 auto v = rb->getVelocity();
                 auto f = rb->getTotalForce();
-                if (std::abs(v.x < 1e-3) && std::abs(v.y < 1e-3) && std::abs(v.z < 1e-3) && std::abs(f.x < 1e-4) &&
+                if (std::abs(v.x < 1e-4) && std::abs(v.y < 1e-4) && std::abs(v.z < 1e-4) && std::abs(f.x < 1e-4) &&
                     std::abs(f.y < 1e-4) && std::abs(f.z < 1e-4)) {
                     //rb->setVelocity(Tapioca::Vector3(0));
                     ++it;
                 }
-                else {
+                else {                                                                      
                     pushEvent("ev_ballMoved", nullptr, true);
                     processing = true;
                     break;
                 }
             }
-            if (it == balls.end()) {
+            if (it == balls.end() && processing) {
                 processing = false;
                 pushEvent("ev_endProcessing", nullptr, true);
             }
