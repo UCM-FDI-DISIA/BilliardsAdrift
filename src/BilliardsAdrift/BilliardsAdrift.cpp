@@ -33,7 +33,7 @@ void addComponentFactories() {
     factMngr->addBuilder(new Tapioca::BasicBuilder<ClockComponent>());
 }
 
-std::string getWindowName() { return "Billiards Adrift"; }
+const char* getWindowName() { return "Billiards Adrift"; }
 
 bool getFullScreen() { return true; }
 
@@ -42,4 +42,4 @@ void getWindowSize(uint32_t& width, uint32_t& height) {
     height = 600;
 }
 
-std::string getInitScene() { return "StartScene.lua"; }
+const char* getInitScene() { return "StartScene.lua"; }

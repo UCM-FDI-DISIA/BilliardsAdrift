@@ -46,12 +46,3 @@ void MovableWall::update(const uint64_t deltaTime) {
     Tapioca::Vector2 auxD = direction.getNormalized();
     tr->translate(Tapioca::Vector3(auxD.x, 0, auxD.y) * speed * Tapioca::MainLoop::FIXED_DELTA_TIME);
 }
-void MovableWall::handleEvent(std::string const& id, void* info) {
-    if (id == "onCollisionEnter") {
-        Tapioca::GameObject* obj = (Tapioca::GameObject*)info;
-        ColoredBall* ball = obj->getComponent<ColoredBall>();
-        if (ball != nullptr ) {
-            audio->playOnce();
-        }
-    }
-}

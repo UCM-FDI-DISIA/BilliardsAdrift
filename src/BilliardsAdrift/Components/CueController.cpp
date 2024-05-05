@@ -184,11 +184,11 @@ void CueController::resetCue() {
     updatePowerBar();
 }
 
-void CueController::resetTrayectory() { 
+void CueController::resetTrayectory() {
     Tapioca::Vector3 aux = trayectoryTransform->getScale();
     aux.z = 0.000;
     trayectoryTransform->setScale(aux);
-    trayectoryTransform->setPosition(Tapioca::Vector3(0.0f,0.0f,1.0f));
+    trayectoryTransform->setPosition(Tapioca::Vector3(0.0f, 0.0f, 1.0f));
 }
 
 void CueController::followBall() {

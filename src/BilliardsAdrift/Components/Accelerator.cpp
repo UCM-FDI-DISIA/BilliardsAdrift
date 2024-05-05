@@ -5,9 +5,7 @@
 #include "Structure/GameObject.h"
 #include "Utilities/Vector3.h"
 
-Accelerator::Accelerator() : rb(nullptr), speedFactor(0) { }
-
-Accelerator::~Accelerator() { rb = nullptr; }
+Accelerator::Accelerator() : speedFactor(0) { }
 
 bool Accelerator::initComponent(const CompMap& variables) {
     if (!setValueFromMap(speedFactor, "speedFactor", variables)) {
@@ -16,8 +14,6 @@ bool Accelerator::initComponent(const CompMap& variables) {
     }
     return true;
 }
-
-void Accelerator::start() { rb = object->getComponent<Tapioca::RigidBody>(); }
 
 void Accelerator::handleEvent(std::string const& id, void* info) {
     if (id == "onCollisionEnter") {
