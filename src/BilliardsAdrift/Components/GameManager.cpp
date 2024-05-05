@@ -133,9 +133,9 @@ void GameManager::update(const uint64_t deltaTime) {
                 Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
                 auto v = rb->getVelocity();
                 auto f = rb->getTotalForce();
-                if (std::abs(v.x < 1e-3) && std::abs(v.y < 1e-3) && std::abs(v.z < 1e-3) && std::abs(f.x < 1e-3) &&
-                    std::abs(f.y < 1e-3) && std::abs(f.z < 1e-3)) {
-                    rb->setVelocity(Tapioca::Vector3(0));
+                if (std::abs(v.x < 1e-3) && std::abs(v.y < 1e-3) && std::abs(v.z < 1e-3) && std::abs(f.x < 1e-4) &&
+                    std::abs(f.y < 1e-4) && std::abs(f.z < 1e-4)) {
+                    //rb->setVelocity(Tapioca::Vector3(0));
                     ++it;
                 }
                 else {

@@ -285,7 +285,7 @@ scene = {
                         mass = 0.0,
                         friction = 0.5,
                         damping = 0.0,
-                        bounciness = 2.0
+                        bounciness = 1.0
                     },
                     WallComponent = { },
                     AudioSourceComponent={
@@ -316,7 +316,7 @@ scene = {
                         mass = 0.0,
                         friction = 1.0,
                         damping = 0.0,
-                        bounciness = 2.0
+                        bounciness = 1.0
                     },
                     WallComponent = { },
                     AudioSourceComponent={
@@ -347,7 +347,7 @@ scene = {
                         mass = 0.0,
                         friction = 1.0,
                         damping = 0.0,
-                        bounciness = 2.0
+                        bounciness = 1.0
                     },
                     WallComponent = { },
                     AudioSourceComponent={
@@ -378,7 +378,7 @@ scene = {
                         mass = 0.0,
                         friction = 1.0,
                         damping = 0.0,
-                        bounciness = 2.0
+                        bounciness = 1.0
                     },
                     WallComponent = { },
                     AudioSourceComponent={
