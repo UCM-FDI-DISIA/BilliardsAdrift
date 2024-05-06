@@ -11,14 +11,14 @@ scene = {
     PickSound = {
         components = {
             AudioSourceComponent = {
-                sourcepath = "assets/audio/pick.mp3"
+                sourcepath = "pick.mp3"
             }
         }
     },
     ExplosiveSound = {
         components = {
             AudioSourceComponent = {
-                sourcepath = "assets/audio/explosion.mp3"
+                sourcepath = "explosion.mp3"
             }
         }
     }
@@ -26,10 +26,24 @@ scene = {
     InGameMusic= {
         components = {
             AudioSourceComponent = {
-                isLooping=true,
-                sourcepath = "assets/audio/Suspicious_Pool_Loop.mp3"
+                islooping=true,
+                sourcepath = "Suspicious_Pool_Loop.mp3"
             }
+           
         }
+    },
+    MainMenuMusic={
+        components={
+
+            AudioSourceComponent = {
+                islooping=true,
+                ispaused=false,
+                sourcepath = "BilliardsMainMenu.wav"
+            }
+
+
+        }
+
     }
 
     

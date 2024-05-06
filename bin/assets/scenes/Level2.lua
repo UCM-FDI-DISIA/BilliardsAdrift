@@ -125,7 +125,7 @@ scene = {
                     },
                     
                     AudioSourceComponent={
-                        sourcepath = "assets/audio/hitBall.mp3"
+                        sourcepath = "hitBall.mp3"
                     }
                 }
             },
@@ -183,7 +183,7 @@ scene = {
                 ballId = "white"
             },
             AudioSourceComponent={
-                sourcepath="assets/audio/hitBall.mp3"
+                sourcepath="hitBall.mp3"
             },
             WhiteBallComponent = { 
 
@@ -227,7 +227,7 @@ scene = {
             },
             WallComponent = { },
             AudioSourceComponent={
-                sourcepath="assets/audio/hitWall.mp3"
+                sourcepath="hitWall.mp3"
             }
         }
     },
@@ -289,7 +289,7 @@ scene = {
                     },
                     WallComponent = { },
                     AudioSourceComponent={
-                        sourcepath="assets/audio/hitWall.mp3"
+                        sourcepath="hitWall.mp3"
                     }
                 }
             },
@@ -320,7 +320,7 @@ scene = {
                     },
                     WallComponent = { },
                     AudioSourceComponent={
-                        sourcepath="assets/audio/hitWall.mp3"
+                        sourcepath="hitWall.mp3"
                     }
                 }
             },
@@ -351,7 +351,7 @@ scene = {
                     },
                     WallComponent = { },
                     AudioSourceComponent={
-                        sourcepath="assets/audio/hitWall.mp3"
+                        sourcepath="hitWall.mp3"
                     }
                 }
             },
@@ -382,7 +382,7 @@ scene = {
                     },
                     WallComponent = { },
                     AudioSourceComponent={
-                        sourcepath="assets/audio/hitWall.mp3"
+                        sourcepath="hitWall.mp3"
                     }
                 }
             }
@@ -420,7 +420,7 @@ scene = {
                 ballId = "yellow"
             } ,
             AudioSourceComponent={
-                sourcepath = "assets/audio/hitBall.mp3"
+                sourcepath = "hitBall.mp3"
             }
         }
     },
@@ -456,7 +456,7 @@ scene = {
                 ballId = "blue"
             } ,
             AudioSourceComponent={
-                sourcepath="assets/audio/hitBall.mp3"
+                sourcepath="hitBall.mp3"
             }
         }
     },
@@ -492,7 +492,7 @@ scene = {
                 ballId = "red"
             } ,
             AudioSourceComponent={
-                sourcepath="assets/audio/hitBall.mp3"
+                sourcepath="hitBall.mp3"
             }
         }
     },
@@ -528,7 +528,7 @@ scene = {
                 ballId = "purple"
             } ,
             AudioSourceComponent={
-                sourcepath="assets/audio/hitBall.mp3"
+                sourcepath="hitBall.mp3"
             }
         }
     },
@@ -564,7 +564,7 @@ scene = {
                 ballId = "orange"
             } ,
             AudioSourceComponent={
-                sourcepath="assets/audio/hitBall.mp3"
+                sourcepath="hitBall.mp3"
             }
         }
     },
@@ -600,7 +600,7 @@ scene = {
                 ballId = "green"
             } ,
             AudioSourceComponent={
-                sourcepath="assets/audio/hitBall.mp3"
+                sourcepath="hitBall.mp3"
             }
         }
     },
@@ -636,7 +636,7 @@ scene = {
                 ballId = "black"
             } ,
             AudioSourceComponent={
-                sourcepath="assets/audio/hitBall.mp3"
+                sourcepath="hitBall.mp3"
             }
         }
     },
@@ -734,7 +734,7 @@ scene = {
             },
             ClockComponent = { },
             AudioSourceComponent={
-                sourcepath="assets/audio/pick.mp3"
+                sourcepath="pick.mp3"
             }
         }
     },
@@ -941,7 +941,7 @@ scene = {
                 height = 3.0,
             },        
             AudioSourceComponent={
-                sourcepath="assets/audio/hole.mp3"
+                sourcepath="hole.mp3"
             }
         }
     },
@@ -1029,7 +1029,7 @@ scene = {
                 height = 3.0,
             },        
             AudioSourceComponent={
-                sourcepath="assets/audio/hole.mp3"
+                sourcepath="hole.mp3"
             }
         }
     },
@@ -1073,7 +1073,7 @@ scene = {
                 height = 3.0,
             },        
             AudioSourceComponent={
-                sourcepath="assets/audio/hole.mp3"
+                sourcepath="hole.mp3"
             }
         }
     },
@@ -1117,7 +1117,7 @@ scene = {
                 height = 3.0,
             },        
             AudioSourceComponent={
-                sourcepath="assets/audio/hole.mp3"
+                sourcepath="hole.mp3"
             }
         }
     },
@@ -1161,7 +1161,7 @@ scene = {
                 height = 3.0,
             },        
             AudioSourceComponent={
-                sourcepath="assets/audio/hole.mp3"
+                sourcepath="hole.mp3"
             }
         }
     },

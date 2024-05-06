@@ -74,6 +74,9 @@ void GameManager::start() {
         object->getScene()->getHandler("ExplosiveSound")->getComponent<Tapioca::AudioSourceComponent>();
     audios[InGameMusic] =
         object->getScene()->getHandler("InGameMusic")->getComponent<Tapioca::AudioSourceComponent>();
+    audios[MainMenuMusic] =
+        object->getScene()->getHandler("MainMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
+
 }
 
 void GameManager::updateCurrentState(const std::string name) {
@@ -322,7 +325,10 @@ void GameManager::startGame() {
         updateLives();
         pushEvent("loadBalls", nullptr, true, true);
     }
+    audios[MainMenuMusic]->pause(true);
     audios[InGameMusic]->pause(false);
+
+
 }
 
 void GameManager::gameOver() {
@@ -391,6 +397,7 @@ void GameManager::onBackConfirmed() {
     std::string result = "MainMenu";
     changeScene(result);
     updateCurrentState(result);
+    audios[MainMenuMusic]->pause(false);
 }
 
 void GameManager::onRulesConfirmed() {
@@ -416,4 +423,5 @@ void GameManager::onMainMenuConfirmed() {
     std::string result = "MainMenu";
     changeScene(result);
     updateCurrentState(result);
+    audios[MainMenuMusic]->pause(false);
 }
