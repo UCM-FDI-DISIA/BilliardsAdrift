@@ -88,7 +88,7 @@ La cámara es fija con una vista cenital y muestra la mesa de billar en su total
 ### 3.4.3. Otros	
 | Nombre | Imagen | Descripción |
 |:------:|:------:|:-----------:|
-| Milk & Tea | ![](/documents/images/GDD/milk_tea.png) | Gatos que forman parte del escenario. Se les puede ver en uno de los lados de la mesa dando apoyo emocional al jugador. Sus bocas se abren cada vez que ocurre una colisión. **Son meramente decorativos.** |
+| Milk & Tea | ![](/documents/images/GDD/milk_tea.png) | Gato que forma parte del escenario. Se le puede ver en uno de los lados de la mesa dando apoyo emocional al jugador. Su boca se abre cada vez que se introduce una bola en uno de los agujeros. **Es meramente decorativo.** |
 | Puntuación |  | Al terminar el nivel, se muestra una pantalla en la que se indica la puntuación que ha obtenido el jugador en el nivel. La puntuación obtenida depende del tiempo y las vidas restantes. |
 
 ### 4. Reglas	
