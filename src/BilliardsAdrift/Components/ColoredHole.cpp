@@ -3,6 +3,7 @@
 #include <Structure/Scene.h>
 #include "ColoredBall.h"
 #include "Components/AudioSourceComponent.h"
+#include "GameManager.h"
 
 ColoredHole::ColoredHole() : ballId(""), audio(nullptr) { }
 
@@ -25,6 +26,8 @@ void ColoredHole::handleEvent(std::string const& id, void* info) {
         ColoredBall* ball = obj->getComponent<ColoredBall>();
 
         if (ball != nullptr) {
+            GameManager::instance()->playMilkTeaAnims();
+
             if (audio != nullptr) audio->playOnce();
             if (ball->getID() == ballId) {
                 Tapioca::logInfo(

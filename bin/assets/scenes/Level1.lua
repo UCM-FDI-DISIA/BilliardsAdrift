@@ -1134,7 +1134,7 @@ scene = {
             }
         }
     },
-    MilkTea = {
+    Milk = {
         components = {
             Transform = {
                 positionX = -29.0,
@@ -1152,7 +1152,29 @@ scene = {
                 --materialName = "white"
             },
             Animator = { }
-        }
+        }        
+    },
+    Tea = {
+        components = {
+            Transform = {
+                positionX = 29.0,
+                positionY = 12.2,
+                positionZ = 0.0,
+                scaleX = 0.5,
+                scaleY = 0.5,
+                scaleZ = 0.5,
+                rotationX = -45.0,
+                rotationY = 0.0,
+                rotationZ = 0.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/cat/Cat.mesh",
+                --materialName = "white"
+            },
+            Animator = { }
+        }        
+    }
+
     -- },
     -- Bomb = {
     --     components = {
@@ -1187,5 +1209,4 @@ scene = {
     --             force = 50.0
     --         }
     --     }
-    }
 }

@@ -2,6 +2,7 @@
 #include "Structure/GameObject.h"
 #include "Components/AudioSourceComponent.h"
 #include "ColoredBall.h"
+#include "GameManager.h"
 
 WallComponent::WallComponent() : audio(nullptr) { }
 

@@ -16,6 +16,7 @@ class GameObject;
 class Text;
 class Image;
 class AudioSourceComponent;
+class Animator;
 }
 
 /**
@@ -53,6 +54,8 @@ private:
     Tapioca::Text* livesTextComponent;   // Componente de texto de las vidas
     Tapioca::GameObject* timerText;      // Texto del temporizador
     Tapioca::Text* timerTextComponent;   // Componente de texto del temporizador
+    Tapioca::Animator* milkAnimator;
+    Tapioca::Animator* teaAnimator;
 
     Tapioca::GameObject* playerBall;
     std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
@@ -160,8 +163,6 @@ private:
     * @brief Limpia y elimina el nivel actual
     */
     void clearLevel();
-
-    bool ballStopped();
 
     /**
     * @brief Constructor por defecto
@@ -291,6 +292,11 @@ public:
     * @param p si se estan procesando los objetos
     */
     inline void setProcessing(const bool p) { processing = p; }
+
+    /**
+    * @brief Reproduce la animacion de abrir la boca de los gatos
+    */
+    void playMilkTeaAnims();
 };
 
 /**

@@ -26,8 +26,8 @@ GameManager* Tapioca::Singleton<GameManager>::instance_ = nullptr;
 GameManager::GameManager()
     : sceneLoader(nullptr), mainLoop(nullptr), luaManager(nullptr), firstStateName(""), currentStateName(""),
       currentState(), currentLevelScene(nullptr), INIT_TIME(0), INIT_LIFE(0), time(0), life(0), score(0),
-      processing(false), playerBall(nullptr), actualLevel(1), maxLevels(2), livesText(nullptr), livesTextComponent(nullptr),
-      timerText(nullptr), timerTextComponent(nullptr), sceneLoaded(false) { }
+      processing(false), playerBall(nullptr), actualLevel(1), maxLevels(2), livesText(nullptr),
+      livesTextComponent(nullptr), timerText(nullptr), timerTextComponent(nullptr), sceneLoaded(false) { }
 
 GameManager::~GameManager() {
     sceneLoader = nullptr;
@@ -72,11 +72,9 @@ void GameManager::start() {
     audios[PickSound] = object->getScene()->getHandler("PickSound")->getComponent<Tapioca::AudioSourceComponent>();
     audios[ExplosionSound] =
         object->getScene()->getHandler("ExplosiveSound")->getComponent<Tapioca::AudioSourceComponent>();
-    audios[InGameMusic] =
-        object->getScene()->getHandler("InGameMusic")->getComponent<Tapioca::AudioSourceComponent>();
+    audios[InGameMusic] = object->getScene()->getHandler("InGameMusic")->getComponent<Tapioca::AudioSourceComponent>();
     audios[MainMenuMusic] =
         object->getScene()->getHandler("MainMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
-
 }
 
 void GameManager::updateCurrentState(const std::string name) {
@@ -104,6 +102,13 @@ void GameManager::clearLevel() {
     sceneLoaded = false;
     balls.clear();
     mainLoop->deleteScene(getActualLevelName());
+}
+
+void GameManager::playMilkTeaAnims() {
+    milkAnimator->playAnim("Idle");
+    milkAnimator->setPlaying(milkAnimator->getPlaying());
+    teaAnimator->playAnim("Idle");
+    teaAnimator->setPlaying(teaAnimator->getPlaying());
 }
 
 void GameManager::registerLuaFunctions() {
@@ -140,11 +145,10 @@ void GameManager::update(const uint64_t deltaTime) {
                 auto f = rb->getTotalForce();
                 if (v.magnitude() < 1e-2 && f.magnitude() < 1e-2) {
                     rb->setVelocity(Tapioca::Vector3(0));
-                    if ((*it)->getHandler() == "BallPlayer" && processing) 
-                        Tapioca::logInfo("BOLA PARADA??????????\n");
+                    if ((*it)->getHandler() == "BallPlayer" && processing) Tapioca::logInfo("BOLA PARADA??????????\n");
                     ++it;
                 }
-                else {                                                                      
+                else {
                     pushEvent("ev_ballMoved", nullptr, true);
                     processing = true;
                     break;
@@ -174,7 +178,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             if (ball != nullptr) {
                 balls.insert(g);
                 g->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(0));
-                if (g->getHandler() == "BallPlayer") playerBall = g; 
+                if (g->getHandler() == "BallPlayer") playerBall = g;
             }
         }
         sceneLoaded = true;
@@ -183,12 +187,6 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         startGame();
     else if (id == "BallShot") {
         Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
-        Tapioca::Animator* animator = mainLoop->getScene("Level" + std::to_string(actualLevel))
-                                          ->getHandler("MilkTea")
-                                          ->getComponent<Tapioca::Animator>();
-        animator->playAnim("Idle");
-        animator->setPlaying(animator->getPlaying());
-
         balls.erase(b);
         if (balls.size() == 1 && currentState != Lose) updateCurrentState("WinScreen");
     }
@@ -224,8 +222,7 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         audios[ExplosionSound]->playOnce();
     }
     else if (id == "ev_debug1") {
-        Tapioca::logInfo("A pulsada \n");
-        goToNextLevel();
+
     }
     else if (id == "ev_debug2") {
         updateCurrentState("LoseScreen");
@@ -283,7 +280,7 @@ void GameManager::addLife() {
     updateLives();
 }
 
-void GameManager::changeTime(int64_t t) { 
+void GameManager::changeTime(int64_t t) {
     time += t;
     updateTimerText();
 }
@@ -332,7 +329,12 @@ void GameManager::startGame() {
     audios[MainMenuMusic]->pause(true);
     audios[InGameMusic]->pause(false);
 
-
+    milkAnimator = mainLoop->getScene("Level" + std::to_string(actualLevel))
+                       ->getHandler("Milk")->getComponent<Tapioca::Animator>();
+    milkAnimator->setLoop(false);
+    teaAnimator = mainLoop->getScene("Level" + std::to_string(actualLevel))
+                       ->getHandler("Tea")->getComponent<Tapioca::Animator>();
+    teaAnimator->setLoop(false);
 }
 
 void GameManager::gameOver() {
