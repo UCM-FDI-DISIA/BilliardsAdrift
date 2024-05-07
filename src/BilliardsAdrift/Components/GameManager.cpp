@@ -27,7 +27,8 @@ GameManager::GameManager()
     : sceneLoader(nullptr), mainLoop(nullptr), luaManager(nullptr), firstStateName(""), currentStateName(""),
       currentState(), currentLevelScene(nullptr), INIT_TIME(0), INIT_LIFE(0), time(0), life(0), score(0),
       processing(false), playerBall(nullptr), actualLevel(1), maxLevels(2), livesText(nullptr),
-      livesTextComponent(nullptr), timerText(nullptr), timerTextComponent(nullptr), sceneLoaded(false) { }
+      livesTextComponent(nullptr), timerText(nullptr), timerTextComponent(nullptr), sceneLoaded(false),
+      milkAnimator(nullptr), teaAnimator(nullptr) { }
 
 GameManager::~GameManager() {
     sceneLoader = nullptr;
@@ -222,7 +223,6 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         audios[ExplosionSound]->playOnce();
     }
     else if (id == "ev_debug1") {
-
     }
     else if (id == "ev_debug2") {
         updateCurrentState("LoseScreen");
@@ -330,10 +330,11 @@ void GameManager::startGame() {
     audios[InGameMusic]->pause(false);
 
     milkAnimator = mainLoop->getScene("Level" + std::to_string(actualLevel))
-                       ->getHandler("Milk")->getComponent<Tapioca::Animator>();
+                       ->getHandler("Milk")
+                       ->getComponent<Tapioca::Animator>();
     milkAnimator->setLoop(false);
-    teaAnimator = mainLoop->getScene("Level" + std::to_string(actualLevel))
-                       ->getHandler("Tea")->getComponent<Tapioca::Animator>();
+    teaAnimator =
+        mainLoop->getScene("Level" + std::to_string(actualLevel))->getHandler("Tea")->getComponent<Tapioca::Animator>();
     teaAnimator->setLoop(false);
 }
 

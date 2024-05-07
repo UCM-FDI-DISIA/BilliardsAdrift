@@ -54,13 +54,13 @@ private:
     Tapioca::Text* livesTextComponent;   // Componente de texto de las vidas
     Tapioca::GameObject* timerText;      // Texto del temporizador
     Tapioca::Text* timerTextComponent;   // Componente de texto del temporizador
-    Tapioca::Animator* milkAnimator;
-    Tapioca::Animator* teaAnimator;
+    Tapioca::Animator* milkAnimator;     // Animador de Milk
+    Tapioca::Animator* teaAnimator;      // Animador de Tea
 
     Tapioca::GameObject* playerBall;
     std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
-    bool sceneLoaded;
+    bool sceneLoaded;                                 // Indica si la escena ha sido cargada
 
     std ::vector<Tapioca::AudioSourceComponent*> audios;   // Sonidos del juego
 

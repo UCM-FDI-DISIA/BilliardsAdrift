@@ -19,6 +19,3 @@ build/
 
 # Ignora el archivo de plugins.cfg
 plugins.cfg
-
-# No ignora
-!cmake.exe

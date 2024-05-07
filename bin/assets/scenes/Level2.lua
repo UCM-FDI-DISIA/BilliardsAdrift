@@ -5,15 +5,6 @@ scene = {
                 positionY = 63.0,
                 rotationZ = 90.0
             },
-            CameraComponent = {
-                bgColorR = 0.925,
-                bgColorG = 0.698,
-                bgColorB = 0.941,
-                targetToLookX = 0.0,
-                targetToLookY = 0.0,
-                targetToLookZ = 0.0
-            },
-            
             LightDirComp = {
                 directionX = 0.0,
                 directionY = -1.0,
@@ -23,8 +14,24 @@ scene = {
                 colorG = 0.6,
                 colorB = 1.0,
                 colorA = 1.0,
-                powerScale = 0.35
+                powerScale = 0.6
             },  
+            AudioListenerComponent = {}
+        }
+    },
+    {
+        components = {
+            Transform = {
+                positionY = 63.0
+            },
+            CameraComponent = {
+                bgColorR = 0.0,
+                bgColorG = 0.0,
+                bgColorB = 0.0,
+                targetToLookX = 0.0,
+                targetToLookY = 0.0,
+                targetToLookZ = 0.0
+            }
         }
     },
 
