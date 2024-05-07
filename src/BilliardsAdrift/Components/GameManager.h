@@ -230,6 +230,10 @@ public:
     * @brief Resta una vida a la vida total del jugador
     */
     void loseLife();
+    /**
+    * @brief Añade una vida a la vida total del jugador
+    */
+    void addLife();
 
     /**
     * @brief Devuelve el tiempo, en segundos

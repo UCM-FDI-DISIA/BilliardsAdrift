@@ -282,6 +282,11 @@ void GameManager::loseLife() {
     updateLives();
 }
 
+void GameManager::addLife() {
+    life++;
+    updateLives();
+}
+
 void GameManager::changeTime(int64_t t) { time += t; }
 
 void GameManager::changeActualLevel(int l) { actualLevel += l; }
