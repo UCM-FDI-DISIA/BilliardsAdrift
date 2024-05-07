@@ -89,7 +89,6 @@ La cámara es fija con una vista cenital y muestra la mesa de billar en su total
 | Nombre | Imagen | Descripción |
 |:------:|:------:|:-----------:|
 | Milk & Tea | ![](/documents/images/GDD/milk_tea.png) | Gato que forma parte del escenario. Se le puede ver en uno de los lados de la mesa dando apoyo emocional al jugador. Su boca se abre cada vez que se introduce una bola en uno de los agujeros. **Es meramente decorativo.** |
-| Puntuación |  | Al terminar el nivel, se muestra una pantalla en la que se indica la puntuación que ha obtenido el jugador en el nivel. La puntuación obtenida depende del tiempo y las vidas restantes. |
 
 ### 4. Reglas	
 El objetivo consiste en meter todas las bolas antes de que acabe el tiempo. Cada bola tiene un color y debe meterse en el agujero del mismo color, a excepción de la blanca que es la que se lanza y sirve para golpear al resto de bolas  y la negra, que no se puede meter hasta haber metido el resto de bolas y debe introducirse en el hueco contrario a la última bola metida.
