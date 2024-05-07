@@ -18,7 +18,7 @@ CueController::CueController()
       mouseLastPosition(Tapioca::Vector2()), ballDistanceOffset(Tapioca::Vector3()), impulseTime(0), powerFactor(0.0f),
       maxPower(100.0f), moveFactor(0.0f), rotateFactor(0.0f), actualPower(0.0f), moveSpeed(0), hitting(false),
       canMove(true), windowMng(nullptr), powerBar(nullptr), powerBarPB(nullptr), audio(nullptr),
-      trayectoryTransform(nullptr), trayectoryMesh(nullptr) { }
+      trayectoryTransform(nullptr), trayectoryMesh(nullptr), trayectoryScale(0.0f) { }
 
 
 CueController::~CueController() {
@@ -63,6 +63,13 @@ bool CueController::initComponent(const CompMap& variables) {
         return false;
     }
     impulseTime = impulse * 1000;
+
+    bool trayectoryScaleSet = setValueFromMap(trayectoryScale.x, "trayectoryScaleX", variables) &&
+        setValueFromMap(trayectoryScale.y, "trayectoryScaleY", variables) &&
+        setValueFromMap(trayectoryScale.z, "trayectoryScaleZ", variables);
+    if (!trayectoryScaleSet) {
+        Tapioca::logInfo("PlaneComponent: No se ha definido una normal para el plano, se usara el valor por defecto (0, 0, 1).");
+    }
 
     return true;
 }
@@ -160,9 +167,7 @@ void CueController::increasePower() {
         tr->translate(translateToWorld(tr->forward()) * (-moveFactor));
         actualPower += powerFactor;
         updatePowerBar(actualPower);
-        Tapioca::Vector3 aux = trayectoryTransform->getScale();
-        aux.z = actualPower * 0.001;
-        trayectoryTransform->setScale(aux);
+        trayectoryTransform->setScale(Tapioca::Vector3(trayectoryScale.x, trayectoryScale.y, trayectoryScale.z * actualPower));
         trayectoryTransform->translate(translateToWorld(tr->forward()) * (moveFactor));
     }
 }
@@ -171,7 +176,8 @@ void CueController::hit() {
     mesh->setVisible(active = false);
     trayectoryMesh->setVisible(active);
     hitting = false;
-    Tapioca::Vector3 force = tr->getParent()->forward() * (actualPower);
+    Tapioca::Vector3 aux = tr->getParent()->forward();
+    Tapioca::Vector3 force = aux * (actualPower);
     ballRb->addImpulse(force);
     pushEvent("cueShot", nullptr, true);
     audio->playOnce();
@@ -185,9 +191,8 @@ void CueController::resetCue() {
 }
 
 void CueController::resetTrayectory() {
-    Tapioca::Vector3 aux = trayectoryTransform->getScale();
-    aux.z = 0.000;
-    trayectoryTransform->setScale(aux);
+    trayectoryTransform->setScale(
+        Tapioca::Vector3(0.0f, 0.0f, 0.0f));
     trayectoryTransform->setPosition(Tapioca::Vector3(0.0f, 0.0f, 1.0f));
 }
 

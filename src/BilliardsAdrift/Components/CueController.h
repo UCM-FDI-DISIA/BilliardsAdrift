@@ -44,6 +44,7 @@ private:
     Tapioca::Vector3 moveSpeed;   // Velocidad de movimiento del palo
     bool hitting;                 // Indica si se esta golpeando la bola
     bool canMove;                 // Indica si se puede mover el palo
+    Tapioca::Vector3 trayectoryScale;
 
     Tapioca::WindowManager* windowMng;   // Gestor de ventanas
     Tapioca::GameObject* powerBar;       // Barra de fuerza

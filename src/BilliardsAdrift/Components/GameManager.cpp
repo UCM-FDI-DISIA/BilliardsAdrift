@@ -26,7 +26,7 @@ GameManager* Tapioca::Singleton<GameManager>::instance_ = nullptr;
 GameManager::GameManager()
     : sceneLoader(nullptr), mainLoop(nullptr), luaManager(nullptr), firstStateName(""), currentStateName(""),
       currentState(), currentLevelScene(nullptr), INIT_TIME(0), INIT_LIFE(0), time(0), life(0), score(0),
-      processing(false), actualLevel(1), maxLevels(2), livesText(nullptr), livesTextComponent(nullptr),
+      processing(false), playerBall(nullptr), actualLevel(1), maxLevels(2), livesText(nullptr), livesTextComponent(nullptr),
       timerText(nullptr), timerTextComponent(nullptr), sceneLoaded(false) { }
 
 GameManager::~GameManager() {
@@ -138,9 +138,10 @@ void GameManager::update(const uint64_t deltaTime) {
                 Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
                 auto v = rb->getVelocity();
                 auto f = rb->getTotalForce();
-                if (std::abs(v.x < 1e-4) && std::abs(v.y < 1e-4) && std::abs(v.z < 1e-4) && std::abs(f.x < 1e-4) &&
-                    std::abs(f.y < 1e-4) && std::abs(f.z < 1e-4)) {
-                    //rb->setVelocity(Tapioca::Vector3(0));
+                if (v.magnitude() < 1e-2 && f.magnitude() < 1e-2) {
+                    rb->setVelocity(Tapioca::Vector3(0));
+                    if ((*it)->getHandler() == "BallPlayer" && processing) 
+                        Tapioca::logInfo("BOLA PARADA??????????\n");
                     ++it;
                 }
                 else {                                                                      
@@ -149,6 +150,7 @@ void GameManager::update(const uint64_t deltaTime) {
                     break;
                 }
             }
+            //si todas las bolas estan paradas y la bola se estaba moviendo
             if (it == balls.end() && processing) {
                 processing = false;
                 pushEvent("ev_endProcessing", nullptr, true);
@@ -172,19 +174,13 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             if (ball != nullptr) {
                 balls.insert(g);
                 g->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(0));
+                if (g->getHandler() == "BallPlayer") playerBall = g; 
             }
         }
         sceneLoaded = true;
     }
     else if (id == "ev_Start")
         startGame();
-    else if (id == "ev_ToggleAnim") {
-        Tapioca::Animator* animator = mainLoop->getScene("Level" + std::to_string(actualLevel))
-                                          ->getHandler("MilkTea")
-                                          ->getComponent<Tapioca::Animator>();
-        animator->playAnim("Idle");
-        animator->setPlaying(animator->getPlaying());
-    }
     else if (id == "BallShot") {
         Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
         Tapioca::Animator* animator = mainLoop->getScene("Level" + std::to_string(actualLevel))

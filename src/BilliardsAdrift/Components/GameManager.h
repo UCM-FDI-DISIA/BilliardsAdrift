@@ -54,6 +54,7 @@ private:
     Tapioca::GameObject* timerText;      // Texto del temporizador
     Tapioca::Text* timerTextComponent;   // Componente de texto del temporizador
 
+    Tapioca::GameObject* playerBall;
     std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
     bool sceneLoaded;
@@ -159,6 +160,8 @@ private:
     * @brief Limpia y elimina el nivel actual
     */
     void clearLevel();
+
+    bool ballStopped();
 
     /**
     * @brief Constructor por defecto
