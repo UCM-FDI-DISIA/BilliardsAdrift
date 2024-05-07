@@ -51,16 +51,16 @@ Cada uno de los niveles presenta un mapa distinto con diferentes objetos y enemi
 
 ### 3. Jugabilidad	
 
-### 3.1. Cámara	
+#### 3.1. Cámara	
 La cámara es fija con una vista cenital y muestra la mesa de billar en su totalidad. Se deja un pequeño margen a los lados para dar espacio al HUD.
 
-### 3.2. Mecánicas del jugador	
+#### 3.2. Mecánicas del jugador	
 | Mecánica | Descripción | Input |
 |:--------:|:-----------:|:-----:|
 | Golpe con el palo | La fuerza con la que se golpea depende de cuanto se ha echado hacia atrás el palo de la interfaz. | Click izquierdo |
 | Colocación del palo | El jugador puede elegir la dirección. El palo apunta en la dirección equivalente al vector que se forma entre la posición del ratón a la posición de la bola blanca. | Movimiento del  ratón |
 
-### 3.3. Mecánicas de las bolas	
+#### 3.3. Mecánicas de las bolas	
 | Mecánica | Descripción |
 |:--------:|:-----------:|
 | Rebote | El ángulo y la velocidad del rebote dependen de la trayectoria y la fuerza que lleva la bola en el momento del impacto con otras bolas o con alguna de las paredes. |
@@ -68,9 +68,9 @@ La cámara es fija con una vista cenital y muestra la mesa de billar en su total
 | Bola blanca | Es la bola que golpea el jugador con el palo. Sirve para que choque con el resto de bolas y las mueva. Si se mete en un hueco, se produce una falta. |
 | Bolas del resto de colores | El jugador debe meter cada una de las bolas en el hueco de su mismo color para poder terminar el juego. Son lisas. Hay 14 bolas en total. |
 
-### 3.4. Mecánicas de escenario y objetos
+#### 3.4. Mecánicas de escenario y objetos
 
-### 3.4.1. Objetos	
+##### 3.4.1. Objetos	
 | Nombre | Imagen | Descripción |
 |:------:|:------:|:-----------:|
 | Paredes estáticas |  | No se mueven. Las bolas pueden rebotar contra ellas. Los límites del tablero son también paredes estáticas. |
@@ -79,13 +79,13 @@ La cámara es fija con una vista cenital y muestra la mesa de billar en su total
 | Agujeros de color | ![](/documents/images/GDD/colored_hole.png) | Sólo pueden entrar bolas del mismo color. Se produce una falta si esto no se cumple. |
 | Acelerador | ![](/documents/images/GDD/accelerator.png) | Cuando una de las bolas pasa por encima de uno de ellos, aumenta su velocidad. |
 
-### 3.4.2. PowerUps	
+##### 3.4.2. PowerUps	
 | Nombre | Imagen | Forma de conseguirlo | Descripción |
 |:------:|:------:|:--------------------:|:-----------:|
 | Reloj | ![](/documents/images/GDD/clock_render.png) | Aparece en un lugar aleatorio de la mesa. Se consigue tocando con la bola blanca. | Aumenta el tiempo. |
 | Corazón | ![](/documents/images/GDD/heart_render.png) | Aparece en un lugar aleatorio de la mesa. Se consigue tocando con la bola blanca. | Restaura una vida. |
 
-### 3.4.3. Otros	
+##### 3.4.3. Otros	
 | Nombre | Imagen | Descripción |
 |:------:|:------:|:-----------:|
 | Milk & Tea | ![](/documents/images/GDD/milk_tea.png) | Gato que forma parte del escenario. Se le puede ver en uno de los lados de la mesa dando apoyo emocional al jugador. Su boca se abre cada vez que se introduce una bola en uno de los agujeros. **Es meramente decorativo.** |
@@ -107,7 +107,7 @@ La puntuación del jugador depende del tiempo y las vidas restantes que le han q
 
 ### 5. HUD	
 
-### 5.1. Mockup del HUD	
+#### 5.1. Mockup del HUD	
 <table>
     <thead>
         <tr>
@@ -123,7 +123,7 @@ La puntuación del jugador depende del tiempo y las vidas restantes que le han q
     </tbody>
 </table>
 
-### 5.2. Explicación de los elementos del HUD	
+#### 5.2. Explicación de los elementos del HUD	
 | Nombre | Descripción |
 |:------:|:-----------:|
 | Vida | El jugador pierde vidas cuando comete una falta. Al perder todas las vidas se resetea el nivel y se debe volver a intentar desde el principio. |
@@ -157,11 +157,11 @@ A pesar de tener un toque arcade y ser un minijuego se tratará de mantener un a
 
 ### 8. Referencias	
 
-### 8.1. Videojuegos	
+#### 8.1. Videojuegos	
 
-### 8.2. Recursos	
+#### 8.2. Recursos	
 
-### 8.2.1. Escenario y personajes	
+##### 8.2.1. Escenario y personajes	
 - [Milk & Tea](https://sketchfab.com/3d-models/pop-cat-2d1c8b8514684b0a8d1b8203caa01a95)
 - [Heart PowerUp](https://sketchfab.com/3d-models/heartlow-poly-8fa9f20549c74bc99dc209ac795d7ca1)
 - [Clock PowerUp](https://www.turbosquid.com/3d-models/alarm-clock-1007895)
@@ -171,6 +171,6 @@ A pesar de tener un toque arcade y ser un minijuego se tratará de mantener un a
 - [Ground](https://3dtextures.me/2022/05/21/wood-027/)
 - [Accelerator](https://www.google.com/search?q=lighting+icon&sca_esv=6bc39e904ccee14e&rlz=1C1CHBF_esES1074ES1074&udm=2&prmd=ivnbz&sxsrf=ADLYWIJYa2OcIKazPLOdjdFuHGLy9H2heQ:1715071884157&source=lnt&tbs=ic:trans&uds=ADvngMgpYEU-_VPft0z-hmM5h-H0BivEGtTadW4kmZWvVC16dYTCBe07oHX2S5VfCVcMsvBnVDtadkFoV3NIXc6bbjlTq0p1O_0BytLzS1vaKblljlzNEYWA8imbuDvnfgKhQC-fSGP0TB3NgiAN9BUjdb2iTl7Ze_3YrxTcp_aLqVpLwPWsuuf2BUJLdNGpCsKXKKwdHIAqkUE8E4tVRroFUsZYc-KBL3nOYj86hYpmzVi_5tJN-GH8D5Q6NQm8EwVgIeDg8TQNTaDkoLaJt65JSobnSY92LQ&sa=X&ved=2ahUKEwjEg63TlPuFAxUWA9sEHYpPDYQQpwV6BAgBEA8&biw=1536&bih=743&dpr=1.25#vhid=zbrCpRMbo-q-7M&vssid=mosaic)
 
-### 8.2.2. UI	
+##### 8.2.2. UI	
 
-### 8.2.3. Sonido
+##### 8.2.3. Sonido
