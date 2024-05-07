@@ -82,8 +82,8 @@ La cámara es fija con una vista cenital y muestra la mesa de billar en su total
 ### 3.4.2. PowerUps	
 | Nombre | Imagen | Forma de conseguirlo | Descripción |
 |:------:|:------:|:--------------------:|:-----------:|
-| Reloj |  | Aparece en un lugar aleatorio de la mesa. Se consigue tocando con la bola blanca. | Aumenta el tiempo. |
-| Corazón |  | Aparece en un lugar aleatorio de la mesa. Se consigue tocando con la bola blanca. | Restaura una vida si el jugador no tiene el contador de vida completo. |
+| Reloj | ![](/documents/images/GDD/clock_render.png) | Aparece en un lugar aleatorio de la mesa. Se consigue tocando con la bola blanca. | Aumenta el tiempo. |
+| Corazón | ![](/documents/images/GDD/heart_render.png) | Aparece en un lugar aleatorio de la mesa. Se consigue tocando con la bola blanca. | Restaura una vida. |
 
 ### 3.4.3. Otros	
 | Nombre | Imagen | Descripción |
@@ -127,8 +127,8 @@ La puntuación del jugador depende del tiempo y las vidas restantes que le han q
 | Nombre | Descripción |
 |:------:|:-----------:|
 | Vida | El jugador pierde vidas cuando comete una falta. Al perder todas las vidas se resetea el nivel y se debe volver a intentar desde el principio. |
-| Tiempo | El jugador dispone de una cantidad limitada de tiempo para terminar el nivel. El tiempo disponible depende del escenario. El jugador obtiene una puntuación que depende de lo rápido que ha terminado el nivel y de las vidas restantes. |
-| Interfaz fuerza de golpe | Esta interfaz sirve para elegir la fuerza del golpe. Para ello se arrastra el palo hacia atrás, de modo que cuanto más se arrastre mayor será la fuerza aplicada. Además, el palo que se muestra en el tablero imita el mismo movimiento, de modo que cuando el palo de la interfaz de golpe se eche para atrás, el palo del tablero también lo hará. |
+| Tiempo | El jugador dispone de una cantidad limitada de tiempo para terminar el nivel. El tiempo disponible depende del escenario. |
+| Interfaz fuerza de golpe | Esta interfaz sirve para elegir la fuerza del golpe. Para ello, se debe hacer click derecho hasta conseguir la potencia deseada. Cuantos más clicks derechos se den, mayor será la potencia del golpe. |
 | Dirección bola | La dirección del golpe se elige girando el palo del tablero alrededor de la bola blanca. Se indica con una línea blanca la trayectoria con la que saldría despedida esta bola. |
 
 ### 6. Visual	
@@ -159,6 +159,8 @@ A pesar de tener un toque arcade y ser un minijuego se tratará de mantener un a
 
 ### 8.2.1. Escenario y personajes	
 - [Milk & Tea](https://sketchfab.com/3d-models/pop-cat-2d1c8b8514684b0a8d1b8203caa01a95)
+- [Heart PowerUp](https://sketchfab.com/3d-models/heartlow-poly-8fa9f20549c74bc99dc209ac795d7ca1)
+- [Clock PowerUp](https://www.turbosquid.com/3d-models/alarm-clock-1007895)
 
 ### 8.2.2. UI	
 
