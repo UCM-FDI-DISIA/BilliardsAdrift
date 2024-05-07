@@ -74,10 +74,10 @@ La cámara es fija con una vista cenital y muestra la mesa de billar en su total
 | Nombre | Imagen | Descripción |
 |:------:|:------:|:-----------:|
 | Paredes estáticas |  | No se mueven. Las bolas pueden rebotar contra ellas. Los límites del tablero son también paredes estáticas. |
-| Paredes móviles |  | Se mueven de un punto a otro en línea recta. Las bolas pueden rebotar contra ellas. |
-| C4 |  | Objeto en la mesa, solo funciona una vez. Cuando una bola impacta se produce una explosión que repele todas las bolas a su alrededor.  |
-| Agujeros de color |  | Sólo pueden entrar bolas del mismo color. Se produce una falta si esto no se cumple. |
-| Acelerador |  | Cuando una de las bolas pasa por encima de uno de ellos, aumenta su velocidad. |
+| Paredes móviles | ![](/documents/images/GDD/movable_wall.png) | Se mueven de un punto a otro en línea recta. Las bolas pueden rebotar contra ellas. |
+| Explosivo | ![](/documents/images/GDD/explosive.png) | Objeto en la mesa, solo funciona una vez. Cuando una bola impacta se produce una explosión que repele todas las bolas a su alrededor.  |
+| Agujeros de color | ![](/documents/images/GDD/colored_hole.png) | Sólo pueden entrar bolas del mismo color. Se produce una falta si esto no se cumple. |
+| Acelerador | ![](/documents/images/GDD/accelerator.png) | Cuando una de las bolas pasa por encima de uno de ellos, aumenta su velocidad. |
 
 ### 3.4.2. PowerUps	
 | Nombre | Imagen | Forma de conseguirlo | Descripción |
@@ -140,12 +140,16 @@ A pesar de tener un toque arcade y ser un minijuego se tratará de mantener un a
 |:-----:|
 | ![](/documents/images/GDD/main_menu_mockup.png) |
 | *Menú principal* |
-| ![](/documents/images/GDD/options_menu_mockup.png) |
-| *Menú de opciones* |
+| ![](/documents/images/GDD/controls_menu_mockup.png) |
+| *Menú de controles* |
+| ![](/documents/images/GDD/rules_menu_mockup.png) |
+| *Menú de reglas* |
 | ![](/documents/images/GDD/pause_menu_mockup.png) |
 | *Menú de pausa* |
-| ![](/documents/images/GDD/end_menu_mockup.png) |
-| *Menú de victoria/derrota (El botón “Continue” sólo aparecerá cuando el jugador haya ganado y cuando aún queden niveles por completar)* |
+| ![](/documents/images/GDD/end_win_menu_mockup.png) |
+| *Menú de victoria* |
+| ![](/documents/images/GDD/end_lose_menu_mockup.png) |
+| *Menú de derrota* |
 
 | Diagrama de flujo de juego |
 |:-----:|
