@@ -1,6 +1,6 @@
 @echo off
 git submodule init
-git submodule update --remote
+git submodule update --init --recursive --remote
 
 set BAT_DIR=%~dp0
 set TAPIOCA_ENGINE_DIR=%BAT_DIR%TapiocaEngine\
