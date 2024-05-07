@@ -287,7 +287,10 @@ void GameManager::addLife() {
     updateLives();
 }
 
-void GameManager::changeTime(int64_t t) { time += t; }
+void GameManager::changeTime(int64_t t) { 
+    time += t;
+    updateTimerText();
+}
 
 void GameManager::changeActualLevel(int l) { actualLevel += l; }
 

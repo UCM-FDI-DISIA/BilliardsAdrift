@@ -10,7 +10,7 @@ class GameManager;
 class JUEGO_API ClockComponent : public Tapioca::Component {
 private:
     GameManager* gameMngr;            // Puntero al GameManager
-    const float TIME_ADDED = 20.0f;   // Tiempo que se anade al coger el reloj
+    const float TIME_ADDED = 60000.0f;   // Tiempo que se anade al coger el reloj
 
 public:
     COMPONENT_ID("ClockComponent");
