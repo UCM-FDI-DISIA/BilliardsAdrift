@@ -71,6 +71,8 @@ void GameManager::start() {
         object->getScene()->getHandler("MainMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
     audios[GameOverMenuMusic] =
         object->getScene()->getHandler("GameOverMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
+    audios[WinMenuMusic] =
+        object->getScene()->getHandler("WinMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
 }
 
 void GameManager::updateCurrentState(const std::string name) {
@@ -313,6 +315,7 @@ void GameManager::startGame() {
     audios[MainMenuMusic]->pause(true);
     audios[InGameMusic]->playLooped();
     audios[GameOverMenuMusic]->pause(true);
+    audios[WinMenuMusic]->pause(true);
 
     milkAnimator = mainLoop->getScene("Level" + std::to_string(actualLevel))
                        ->getHandler("Milk")
@@ -326,11 +329,18 @@ void GameManager::startGame() {
 void GameManager::gameOver() {
     clearLevel();
     audios[InGameMusic]->pause(true);
-    audios[GameOverMenuMusic]->playLooped();
 
     switch (currentState) {
-    case Lose: changeScene("LoseScreen"); break;
-    case Win: changeScene("WinScreen"); break;
+    case Lose: 
+        changeScene("LoseScreen");
+        audios[GameOverMenuMusic]->playLooped();
+        audios[WinMenuMusic]->pause(true);
+        break;
+    case Win:
+        changeScene("WinScreen");
+        audios[WinMenuMusic]->playLooped();
+        audios[GameOverMenuMusic]->pause(true);
+        break;
     default: Tapioca::logInfo("Se ha hecho GAMEOVER sin estar en modo Lose ni Win"); break;
     }
 }
@@ -343,6 +353,7 @@ void GameManager::pause() {
         pushEvent("ev_onPause", nullptr, true, true);
         audios[InGameMusic]->pause(true);
         audios[GameOverMenuMusic]->pause(true);
+        audios[WinMenuMusic]->pause(true);
         break;
     case Pause:
         mainLoop->getScene(getActualLevelName())->setActive(true);
@@ -350,6 +361,7 @@ void GameManager::pause() {
         pushEvent("ev_onResume", nullptr, true, true);
         audios[InGameMusic]->pause(false);
         audios[GameOverMenuMusic]->pause(true);
+        audios[WinMenuMusic]->pause(true);
         break;
     default: Tapioca::logInfo("Se ha hecho PAUSE sin estar en modo InGame ni Pause"); break;
     }
@@ -393,6 +405,8 @@ void GameManager::onBackConfirmed() {
     changeScene(result);
     updateCurrentState(result);
     audios[MainMenuMusic]->pause(false);
+    audios[GameOverMenuMusic]->pause(true);
+    audios[WinMenuMusic]->pause(true);
 }
 
 void GameManager::onRulesConfirmed() {
@@ -419,4 +433,6 @@ void GameManager::onMainMenuConfirmed() {
     changeScene(result);
     updateCurrentState(result);
     audios[MainMenuMusic]->playLooped();
+    audios[GameOverMenuMusic]->pause(true);
+    audios[WinMenuMusic]->pause(true);
 }

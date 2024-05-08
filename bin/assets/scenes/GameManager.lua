@@ -47,5 +47,14 @@ scene = {
                 sourcepath = "The_Bill_Is_On_You_Loop.mp3"
             }
         }
-    }    
+    },
+    WinMenuMusic={
+        components={
+            AudioSourceComponent = {
+                islooping=true,
+                ispaused=true,
+                sourcepath = "Colorful_Game_Loop.mp3"
+            }
+        }
+    }      
 }
