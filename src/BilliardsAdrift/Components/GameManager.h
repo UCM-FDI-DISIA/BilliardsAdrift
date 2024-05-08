@@ -62,7 +62,7 @@ private:
     bool processing;                                  // Indica si los objetos se estan procesando/moviendo
     bool sceneLoaded;                                 // Indica si la escena ha sido cargada
 
-    std ::vector<Tapioca::AudioSourceComponent*> audios;   // Sonidos del juego
+    std::vector<Tapioca::AudioSourceComponent*> audios;   // Sonidos del juego
 
     /**
     * @brief Cambia la escena

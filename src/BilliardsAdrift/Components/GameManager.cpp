@@ -16,12 +16,7 @@
 #include "Components/Text.h"
 #include "ColoredBall.h"
 #include "Components/Image.h"
-
 #include "checkML.h"
-
-template class JUEGO_API Tapioca::Singleton<GameManager>;
-template<>
-GameManager* Tapioca::Singleton<GameManager>::instance_ = nullptr;
 
 GameManager::GameManager()
     : sceneLoader(nullptr), mainLoop(nullptr), luaManager(nullptr), firstStateName(""), currentStateName(""),
