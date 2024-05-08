@@ -213,9 +213,9 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         else loseLife();
     }
     else if (id == "ev_pickUp")
-        audios[PickSound]->playOnce();
+        if (audios[PickSound] != nullptr) audios[PickSound]->playOnce();
     else if (id == "ev_explosion")
-        audios[ExplosionSound]->playOnce();
+        if (audios[ExplosionSound] != nullptr) audios[ExplosionSound]->playOnce();
 }
 
 void GameManager::changeScene(std::string const& scene) {
@@ -316,26 +316,26 @@ void GameManager::startGame() {
         if (teaAnimator != nullptr) teaAnimator->setLoop(false);    
         pushEvent("loadBalls", nullptr, true, true);
     }
-    audios[MainMenuMusic]->pause(true);
-    audios[InGameMusic]->playLooped();
-    audios[GameOverMenuMusic]->pause(true);
-    audios[WinMenuMusic]->pause(true);
+    if (audios[MainMenuMusic] != nullptr) audios[MainMenuMusic]->pause(true);
+    if (audios[InGameMusic] != nullptr) audios[InGameMusic]->playLooped();
+    if (audios[GameOverMenuMusic] != nullptr) audios[GameOverMenuMusic]->pause(true);
+    if (audios[WinMenuMusic] != nullptr) audios[WinMenuMusic]->pause(true);
 }
 
 void GameManager::gameOver() {
     clearLevel();
-    audios[InGameMusic]->pause(true);
+    if (audios[InGameMusic] != nullptr) audios[InGameMusic]->pause(true);
 
     switch (currentState) {
     case Lose: 
         changeScene("LoseScreen");
-        audios[GameOverMenuMusic]->playLooped();
-        audios[WinMenuMusic]->pause(true);
+        if (audios[GameOverMenuMusic] != nullptr) audios[GameOverMenuMusic]->playLooped();
+        if (audios[WinMenuMusic] != nullptr) audios[WinMenuMusic]->pause(true);
         break;
     case Win:
         changeScene("WinScreen");
-        audios[WinMenuMusic]->playLooped();
-        audios[GameOverMenuMusic]->pause(true);
+        if (audios[WinMenuMusic] != nullptr) audios[WinMenuMusic]->playLooped();
+        if (audios[GameOverMenuMusic] != nullptr) audios[GameOverMenuMusic]->pause(true);
         break;
     default: Tapioca::logInfo("Se ha hecho GAMEOVER sin estar en modo Lose ni Win"); break;
     }
@@ -347,17 +347,17 @@ void GameManager::pause() {
         mainLoop->getScene(getActualLevelName())->setActive(false);
         changeScene("PauseMenu");
         pushEvent("ev_onPause", nullptr, true, true);
-        audios[InGameMusic]->pause(true);
-        audios[GameOverMenuMusic]->pause(true);
-        audios[WinMenuMusic]->pause(true);
+        if (audios[InGameMusic] != nullptr) audios[InGameMusic]->pause(true);
+        if (audios[GameOverMenuMusic] != nullptr) audios[GameOverMenuMusic]->pause(true);
+        if (audios[WinMenuMusic] != nullptr) audios[WinMenuMusic]->pause(true);
         break;
     case Pause:
         mainLoop->getScene(getActualLevelName())->setActive(true);
         mainLoop->deleteScene("PauseMenu");
         pushEvent("ev_onResume", nullptr, true, true);
-        audios[InGameMusic]->pause(false);
-        audios[GameOverMenuMusic]->pause(true);
-        audios[WinMenuMusic]->pause(true);
+        if (audios[InGameMusic] != nullptr) audios[InGameMusic]->pause(false);
+        if (audios[GameOverMenuMusic] != nullptr) audios[GameOverMenuMusic]->pause(true);
+        if (audios[WinMenuMusic] != nullptr) audios[WinMenuMusic]->pause(true);
         break;
     default: Tapioca::logInfo("Se ha hecho PAUSE sin estar en modo InGame ni Pause"); break;
     }
