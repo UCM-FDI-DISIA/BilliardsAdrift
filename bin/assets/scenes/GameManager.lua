@@ -21,30 +21,31 @@ scene = {
                 sourcepath = "explosion.mp3"
             }
         }
-    }
-    ,
+    },
     InGameMusic= {
         components = {
             AudioSourceComponent = {
                 islooping=true,
                 sourcepath = "Suspicious_Pool_Loop.mp3"
-            }
-           
+            }           
         }
     },
     MainMenuMusic={
         components={
-
             AudioSourceComponent = {
                 islooping=true,
                 ispaused=false,
                 sourcepath = "BilliardsMainMenu.wav"
             }
-
-
         }
-
-    }
-
-    
+    },
+    GameOverMenuMusic={
+        components={
+            AudioSourceComponent = {
+                islooping=true,
+                ispaused=true,
+                sourcepath = "The_Bill_Is_On_You_Loop.mp3"
+            }
+        }
+    }    
 }
