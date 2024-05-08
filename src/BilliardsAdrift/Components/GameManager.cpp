@@ -324,7 +324,7 @@ void GameManager::startGame() {
         pushEvent("loadBalls", nullptr, true, true);
     }
     audios[MainMenuMusic]->pause(true);
-    audios[InGameMusic]->pause(false);
+    audios[InGameMusic]->playLooped();
     audios[GameOverMenuMusic]->pause(true);
 
     milkAnimator = mainLoop->getScene("Level" + std::to_string(actualLevel))
@@ -431,5 +431,5 @@ void GameManager::onMainMenuConfirmed() {
     std::string result = "MainMenu";
     changeScene(result);
     updateCurrentState(result);
-    audios[MainMenuMusic]->pause(false);
+    audios[MainMenuMusic]->playLooped();
 }
