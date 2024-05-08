@@ -14,7 +14,7 @@ void WhiteBallComponent::handleEvent(std::string const& id, void* info) {
         if (ball != nullptr) collided = true;
     }
     else if (id == "ev_MouseButtonDownLeft") {
-        iniBallPos = object->getScene()->getHandler("BallPlayer")->getComponent<Tapioca::Transform>()->getPosition();
+        iniBallPos = object->getComponent<Tapioca::Transform>()->getPosition();
     }
     else if (hit && id == "ev_endProcessing") {
         hit = false;
@@ -27,7 +27,10 @@ void WhiteBallComponent::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "whiteBallIn") {
         object->getComponent<Tapioca::Transform>()->setPosition(iniBallPos);
-        object->getComponent<Tapioca::RigidBody>()->clearForces();
-        object->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
+        Tapioca::RigidBody* aux = object->getComponent<Tapioca::RigidBody>();
+        if (aux != nullptr) {
+            aux->clearForces();
+            aux->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
+        }
     }
 }
