@@ -68,7 +68,8 @@ bool CueController::initComponent(const CompMap& variables) {
         setValueFromMap(trayectoryScale.y, "trayectoryScaleY", variables) &&
         setValueFromMap(trayectoryScale.z, "trayectoryScaleZ", variables);
     if (!trayectoryScaleSet) {
-        Tapioca::logInfo("PlaneComponent: No se ha definido una normal para el plano, se usara el valor por defecto (0, 0, 1).");
+        Tapioca::logInfo(
+            "PlaneComponent: No se ha definido una normal para el plano, se usara el valor por defecto (0, 0, 1).");
     }
 
     return true;
@@ -78,9 +79,11 @@ void CueController::start() {
     tr = object->getComponent<Tapioca::Transform>();
 
     ball = object->getScene()->getHandler("BallPlayer");
-    ballTr = ball->getComponent<Tapioca::Transform>();
-    ballRb = ball->getComponent<Tapioca::RigidBody>();
-    ballRb->setVelocity(Tapioca::Vector3(0));
+    if (ball != nullptr) {
+        ballTr = ball->getComponent<Tapioca::Transform>();
+        ballRb = ball->getComponent<Tapioca::RigidBody>();
+        if (ballRb != nullptr) ballRb->setVelocity(Tapioca::Vector3(0));
+    }
     mesh = object->getComponent<Tapioca::MeshRenderer>();
     ballDistanceOffset = tr->getGlobalPositionWithoutRotation();
     inputMng = Tapioca::InputManager::instance();
@@ -109,10 +112,12 @@ void CueController::start() {
 void CueController::update(const uint64_t deltaTime) {
     if (hitting) {
         tr->translate(translateToWorld(moveSpeed) * (float)deltaTime);
-        Tapioca::Vector3 distance =
-            tr->getGlobalPosition() + tr->getParent()->forward() * 6.f - ballTr->getGlobalPositionWithoutRotation();
-        distance.y = 0;
-        if (distance.magnitude() <= 3.f) hit();
+        if (ball != nullptr) {
+            Tapioca::Vector3 distance =
+                tr->getGlobalPosition() + tr->getParent()->forward() * 6.f - ballTr->getGlobalPositionWithoutRotation();
+            distance.y = 0;
+            if (distance.magnitude() <= 3.f) hit();
+        }
     }
     else {
         updateRotation();
@@ -125,22 +130,23 @@ void CueController::handleEvent(std::string const& id, void* info) {
 
     else if (id == "ev_MouseButtonDownLeft" && actualPower != 0) {
         hitting = true;
-        moveSpeed = (ballTr->getGlobalPositionWithoutRotation() -
-                     (tr->getGlobalPosition() + tr->getParent()->forward() * 6.f)) /
-            (float)impulseTime;
+        if (ballTr != nullptr)
+            moveSpeed = (ballTr->getGlobalPositionWithoutRotation() -
+                         (tr->getGlobalPosition() + tr->getParent()->forward() * 6.f)) /
+                (float)impulseTime;
         updatePowerBar();
     }
     else if (id == "ev_endProcessing") {
-        mesh->setVisible(active = true);
-        trayectoryMesh->setVisible(active);
+        if (mesh != nullptr) mesh->setVisible(active = true);
+        if (trayectoryMesh != nullptr) trayectoryMesh->setVisible(active);
         if (!canMove) {
             canMove = true;
             resetCue();
         }
     }
     else if (id == "ev_ballMoved") {
-        mesh->setVisible(active = false);
-        trayectoryMesh->setVisible(active);
+        if (mesh != nullptr) mesh->setVisible(active = false);
+        if (trayectoryMesh != nullptr) trayectoryMesh->setVisible(active);
         if (canMove) {
             canMove = false;
             resetCue();
@@ -167,20 +173,23 @@ void CueController::increasePower() {
         tr->translate(translateToWorld(tr->forward()) * (-moveFactor));
         actualPower += powerFactor;
         updatePowerBar(actualPower);
-        trayectoryTransform->setScale(Tapioca::Vector3(trayectoryScale.x, trayectoryScale.y, trayectoryScale.z * actualPower));
-        trayectoryTransform->translate(translateToWorld(tr->forward()) * (moveFactor));
+        if (trayectoryTransform != nullptr) {
+            trayectoryTransform->setScale(
+                Tapioca::Vector3(trayectoryScale.x, trayectoryScale.y, trayectoryScale.z * actualPower));
+            trayectoryTransform->translate(translateToWorld(tr->forward()) * (moveFactor));
+        }
     }
 }
 
 void CueController::hit() {
-    mesh->setVisible(active = false);
-    trayectoryMesh->setVisible(active);
+    if (mesh != nullptr) mesh->setVisible(active = false);
+    if (trayectoryMesh != nullptr) trayectoryMesh->setVisible(active);
     hitting = false;
     Tapioca::Vector3 aux = tr->getParent()->forward();
     Tapioca::Vector3 force = aux * (actualPower);
-    ballRb->addImpulse(force);
+    if (ballRb != nullptr) ballRb->addImpulse(force);
     pushEvent("cueShot", nullptr, true);
-    audio->playOnce();
+    if (audio != nullptr) audio->playOnce();
 }
 
 void CueController::resetCue() {
@@ -191,12 +200,13 @@ void CueController::resetCue() {
 }
 
 void CueController::resetTrayectory() {
-    trayectoryTransform->setScale(
-        Tapioca::Vector3(0.0f, 0.0f, 0.0f));
+    if (trayectoryTransform == nullptr) return;
+    trayectoryTransform->setScale(Tapioca::Vector3(0.0f, 0.0f, 0.0f));
     trayectoryTransform->setPosition(Tapioca::Vector3(0.0f, 0.0f, 1.0f));
 }
 
 void CueController::followBall() {
+    if (ball == nullptr) return;
     tr->getParent()->setPosition(ballTr->getGlobalPositionWithoutRotation() + Tapioca::Vector3(0, 2, 0));
     tr->setPosition(ballDistanceOffset);
 }

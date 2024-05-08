@@ -66,7 +66,6 @@ void GameManager::start() {
     audios[PickSound] = object->getScene()->getHandler("PickSound")->getComponent<Tapioca::AudioSourceComponent>();
     audios[ExplosionSound] =
         object->getScene()->getHandler("ExplosiveSound")->getComponent<Tapioca::AudioSourceComponent>();
-    audios[InGameMusic] = object->getScene()->getHandler("InGameMusic")->getComponent<Tapioca::AudioSourceComponent>();
     audios[MainMenuMusic] =
         object->getScene()->getHandler("MainMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
     audios[GameOverMenuMusic] =
@@ -162,7 +161,8 @@ void GameManager::update(const uint64_t deltaTime) {
 }
 
 void GameManager::handleEvent(std::string const& id, void* info) {
-    if (id == "ev_onPlay") onPlay();
+    if (id == "ev_onPlay") 
+        onPlay();
     else if (id == "ev_Pause")
         pause();
     else if (id == "ev_onPause")
@@ -310,20 +310,16 @@ void GameManager::startGame() {
         Tapioca::GameObject* livesText = scene->getHandler("LivesText");
         if (livesText != nullptr) livesTextComponent = livesText->getComponent<Tapioca::Text>();
         updateLives();
+        milkAnimator = scene->getHandler("Milk")->getComponent<Tapioca::Animator>();
+        if (milkAnimator != nullptr) milkAnimator->setLoop(false);
+        teaAnimator = scene->getHandler("Tea")->getComponent<Tapioca::Animator>();
+        if (teaAnimator != nullptr) teaAnimator->setLoop(false);    
         pushEvent("loadBalls", nullptr, true, true);
     }
     audios[MainMenuMusic]->pause(true);
     audios[InGameMusic]->playLooped();
     audios[GameOverMenuMusic]->pause(true);
     audios[WinMenuMusic]->pause(true);
-
-    milkAnimator = mainLoop->getScene("Level" + std::to_string(actualLevel))
-                       ->getHandler("Milk")
-                       ->getComponent<Tapioca::Animator>();
-    milkAnimator->setLoop(false);
-    teaAnimator =
-        mainLoop->getScene("Level" + std::to_string(actualLevel))->getHandler("Tea")->getComponent<Tapioca::Animator>();
-    teaAnimator->setLoop(false);
 }
 
 void GameManager::gameOver() {
