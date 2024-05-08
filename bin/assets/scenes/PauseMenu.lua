@@ -63,7 +63,8 @@ scene = {
                 scaleY = WINDOW_HEIGHT
             },
             Image = {
-                imagePath = "menuBackground.png"
+                imagePath = "menuBackground.png",
+                windowFlags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoInputs
             }
         }
     }
