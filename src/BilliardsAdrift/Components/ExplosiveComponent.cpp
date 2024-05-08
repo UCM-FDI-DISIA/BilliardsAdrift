@@ -42,12 +42,12 @@ void ExplosiveComponent::explode(const uint64_t deltaTime) {
     Tapioca::Vector3 origin = object->getComponent<Tapioca::Transform>()->getPosition();
 
     float r = (pos - origin).magnitude();
-    if (r < 1e-10) r = 0.1;
+    if (r < 1e-10) r = 0.1f;
 
-    Tapioca::Vector3 expF = (pos - origin) * force / (r * r) * exp(-(deltaTime * 0.001 / duration));
+    Tapioca::Vector3 expF = (pos - origin) * force / (r * r) * exp(-((float)(deltaTime * 0.001) / duration));
     expF.y = 0.f;
 
     rb->addImpulse(expF);
 
-    if ((lifeTime -= deltaTime * 0.001) < 0) object->die();
+    if ((lifeTime -= (float)(deltaTime * 0.001)) < 0) object->die();
 }

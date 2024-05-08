@@ -36,17 +36,15 @@ private:
     Tapioca::MainLoop* mainLoop;         // Puntero al bucle principal
     Tapioca::LuaManager* luaManager;     // Puntero al gestor de Lua
 
-    std::string firstStateName;          // Nombre del primer estado del juego al iniciar
-    std::string currentStateName;        // Nombre del estado actual
     State currentState;                  // Estado actual
     Tapioca::Scene* currentLevelScene;   // Escena de nivel actual
 
-    int INIT_LIFE;       // Vida inicial
-    int64_t INIT_TIME;   // Tiempo inicial
+    int INIT_LIFE;     // Vida inicial
+    float INIT_TIME;   // Tiempo inicial
 
     int score;         // Puntuacion actual
     int life;          // Vida actual
-    int64_t time;      // Tiempo actual
+    float time;        // Tiempo actual
     int actualLevel;   // Nivel actual
     int maxLevels;     // Numero maximo de niveles
 
@@ -58,11 +56,31 @@ private:
     Tapioca::Animator* teaAnimator;      // Animador de Tea
 
     Tapioca::GameObject* playerBall;
-    std::unordered_set<Tapioca::GameObject*> balls;   // Bolas en la escena
-    bool processing;                                  // Indica si los objetos se estan procesando/moviendo
-    bool sceneLoaded;                                 // Indica si la escena ha sido cargada
+    bool processing;    // Indica si los objetos se estan procesando/moviendo
+    bool sceneLoaded;   // Indica si la escena ha sido cargada
 
+    // warning C4251 'GameManager::firstStateName' :
+    // class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' necesita tener una interfaz DLL
+    // para que la utilicen los clientes de class 'GameManager'
+    // warning C4251 'GameManager::currentStateName' :
+    // class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' necesita tener una interfaz DLL
+    // para que la utilicen los clientes de class 'GameManager'
+    // warning C4251 'GameManager::balls' :
+    // class 'std::unordered_set<Tapioca::GameObject *,std::hash<Tapioca::GameObject *>,std::equal_to<Tapioca::GameObject *>,std::allocator<Tapioca::GameObject *>>' necesita
+    // tener una interfaz DLL para que la utilicen los clientes de class 'GameManager'
+    // warning C4251 'GameManager::audios' :
+    // class 'std::vector<Tapioca::AudioSourceComponent *,std::allocator<Tapioca::AudioSourceComponent *>>' necesita
+    // tener una interfaz DLL para que la utilicen los clientes de class 'GameManager'
+#ifdef _MSC_VER
+#pragma warning(disable : 4251)
+#endif
+    std::string firstStateName;                           // Nombre del primer estado del juego al iniciar
+    std::string currentStateName;                         // Nombre del estado actual
+    std::unordered_set<Tapioca::GameObject*> balls;       // Bolas en la escena
     std::vector<Tapioca::AudioSourceComponent*> audios;   // Sonidos del juego
+#ifdef _MSC_VER
+#pragma warning(default : 4251)
+#endif
 
     /**
     * @brief Cambia la escena
@@ -253,7 +271,7 @@ public:
     * @brief Incrementa/decrementa t cantidad de tiempo
     * @param t cantidad de tiempo a incrementar/decrementar
     */
-    void changeTime(const int64_t t);
+    void changeTime(const float t);
 
     /**
     * @brief Devuelve el nivel actual

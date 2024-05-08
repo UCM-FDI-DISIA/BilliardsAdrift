@@ -47,12 +47,10 @@ bool GameManager::initComponent(const CompMap& variables) {
         return false;
     }
 
-    float timeAux;
-    if (!setValueFromMap(timeAux, "initTime", variables)) {
+    if (!setValueFromMap(INIT_TIME, "initTime", variables)) {
         Tapioca::logError("GameManager: no se pudo inicializar INIT_TIME.");
         return false;
     }
-    INIT_TIME = (long long int)timeAux;
 
     return true;
 }
@@ -130,7 +128,7 @@ void GameManager::registerLuaFunctions() {
 
 void GameManager::update(const uint64_t deltaTime) {
     if (currentState == InGame && sceneLoaded) {
-        changeTime(-((int64_t)deltaTime));
+        changeTime(-((float)deltaTime));
         updateTimerText();
 
         if (time <= 0) updateCurrentState("LoseScreen");
@@ -277,7 +275,7 @@ void GameManager::addLife() {
     updateLives();
 }
 
-void GameManager::changeTime(int64_t t) {
+void GameManager::changeTime(float t) {
     time += t;
     updateTimerText();
 }

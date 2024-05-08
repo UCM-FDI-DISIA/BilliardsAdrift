@@ -62,7 +62,7 @@ bool CueController::initComponent(const CompMap& variables) {
         Tapioca::logError("CueController: no se pudo inicializar impulseTime.");
         return false;
     }
-    impulseTime = impulse * 1000;
+    impulseTime = (int64_t)impulse * 1000;
 
     bool trayectoryScaleSet = setValueFromMap(trayectoryScale.x, "trayectoryScaleX", variables) &&
         setValueFromMap(trayectoryScale.y, "trayectoryScaleY", variables) &&
@@ -108,7 +108,7 @@ void CueController::start() {
 
 void CueController::update(const uint64_t deltaTime) {
     if (hitting) {
-        tr->translate(translateToWorld(moveSpeed) * deltaTime);
+        tr->translate(translateToWorld(moveSpeed) * (float)deltaTime);
         Tapioca::Vector3 distance =
             tr->getGlobalPosition() + tr->getParent()->forward() * 6.f - ballTr->getGlobalPositionWithoutRotation();
         distance.y = 0;
@@ -127,7 +127,7 @@ void CueController::handleEvent(std::string const& id, void* info) {
         hitting = true;
         moveSpeed = (ballTr->getGlobalPositionWithoutRotation() -
                      (tr->getGlobalPosition() + tr->getParent()->forward() * 6.f)) /
-            impulseTime;
+            (float)impulseTime;
         updatePowerBar();
     }
     else if (id == "ev_endProcessing") {
@@ -149,8 +149,8 @@ void CueController::handleEvent(std::string const& id, void* info) {
 }
 
 void CueController::updatePosition() {
-    mouseLastPosition.x = inputMng->getMousePos().first;
-    mouseLastPosition.y = inputMng->getMousePos().second;
+    mouseLastPosition.x = (float)inputMng->getMousePos().first;
+    mouseLastPosition.y = (float)inputMng->getMousePos().second;
     if (!canMove) followBall();
 }
 
