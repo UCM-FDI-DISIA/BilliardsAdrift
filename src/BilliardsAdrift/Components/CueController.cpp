@@ -58,11 +58,11 @@ bool CueController::initComponent(const CompMap& variables) {
     }
 
     float impulse;
-    if (!setValueFromMap(impulse, "impulseTime", variables)) {
+    if (!setValueFromMap(impulse, "impulseTime", variables) && impulse > 0) {
         Tapioca::logError("CueController: no se pudo inicializar impulseTime.");
         return false;
     }
-    impulseTime = (int64_t)impulse * 1000;
+    impulseTime = impulse * 1000;
 
     bool trayectoryScaleSet = setValueFromMap(trayectoryScale.x, "trayectoryScaleX", variables) &&
         setValueFromMap(trayectoryScale.y, "trayectoryScaleY", variables) &&

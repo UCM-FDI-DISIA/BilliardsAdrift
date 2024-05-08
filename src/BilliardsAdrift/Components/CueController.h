@@ -33,7 +33,7 @@ private:
     Tapioca::Vector2 mouseLastPosition;        // Posicion del raton en el ultimo frame
     Tapioca::Vector3 ballDistanceOffset;       // Offset de la bola
 
-    int64_t impulseTime;   // Tiempo de impulso en milisegundos
+    float impulseTime;   // Tiempo de impulso en milisegundos
 
     float powerFactor;    // Incremento de fuerza para tirar la bola
     float maxPower;       // Fuerza maxima para tirar la bola

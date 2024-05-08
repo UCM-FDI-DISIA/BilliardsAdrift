@@ -208,23 +208,12 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "whiteBallIn") {
         if (balls.size() == 0) updateCurrentState("LoseScreen");
-        else
-            loseLife();
+        else loseLife();
     }
-    else if (id == "ev_pickUp") {
+    else if (id == "ev_pickUp")
         audios[PickSound]->playOnce();
-    }
-    else if (id == "ev_explosion") {
+    else if (id == "ev_explosion")
         audios[ExplosionSound]->playOnce();
-    }
-    else if (id == "ev_debug1") {
-    }
-    else if (id == "ev_debug2") {
-        updateCurrentState("LoseScreen");
-    }
-    else if (id == "ev_debug3") {
-        updateCurrentState("WinScreen");
-    }
 }
 
 void GameManager::changeScene(std::string const& scene) {
