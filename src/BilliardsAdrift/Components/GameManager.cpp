@@ -326,7 +326,7 @@ void GameManager::startGame() {
 void GameManager::gameOver() {
     clearLevel();
     audios[InGameMusic]->pause(true);
-    audios[GameOverMenuMusic]->pause(false);
+    audios[GameOverMenuMusic]->playLooped();
 
     switch (currentState) {
     case Lose: changeScene("LoseScreen"); break;
