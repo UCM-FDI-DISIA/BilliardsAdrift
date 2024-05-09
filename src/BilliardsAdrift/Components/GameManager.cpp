@@ -69,6 +69,8 @@ void GameManager::start() {
     if (aux != nullptr) audios[ExplosionSound] = aux->getComponent<Tapioca::AudioSourceComponent>();
     aux = object->getScene()->getHandler("MainMenuMusic");
     if (aux != nullptr) audios[MainMenuMusic] = aux->getComponent<Tapioca::AudioSourceComponent>();
+    aux = object->getScene()->getHandler("InGameMusic");
+    if (aux != nullptr) audios[InGameMusic] = aux->getComponent<Tapioca::AudioSourceComponent>();
     aux = object->getScene()->getHandler("GameOverMenuMusic");
     if (aux != nullptr) audios[GameOverMenuMusic] = aux->getComponent<Tapioca::AudioSourceComponent>();
     aux = object->getScene()->getHandler("WinMenuMusic");

@@ -390,86 +390,12 @@ scene = {
             }
         }
     },
-    BallYellow = {
+    BallRed = {
         components = {
             Transform = {
                 positionX = 5.5,
                 positionY = 8.2,
                 positionZ = 5.4,
-                scaleX = 0.7,
-                scaleY = 0.7,
-                scaleZ = 0.7,
-                rotationX = 180.0,
-                rotationY = 0.0,
-                rotationZ = 90.0
-            }, 
-            MeshRenderer = {
-                meshName = "models/Ball1/Ball1.mesh"
-            },
-            RigidBody = {    
-                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 1.43,
-                colliderScaleY = 1.43,
-                colliderScaleZ = 1.43,
-                isTrigger = false,
-                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass = 2.0,
-                friction = 0.5,
-                damping = 0.4,
-                bounciness = 1.0
-            },
-            ColoredBall = {
-                ballId = "yellow"
-            }
-            ,
-            AudioSourceComponent={
-                sourcepath="hitBall.mp3"
-            }
-        }
-    },
-    BallBlue = {
-        components = {
-            Transform = {
-                positionX = -22.5,
-                positionY = 8.2,
-                positionZ = -8.7,
-                scaleX = 0.7,
-                scaleY = 0.7,
-                scaleZ = 0.7,
-                rotationX = 180.0,
-                rotationY = 0.0,
-                rotationZ = 90.0
-            }, 
-            MeshRenderer = {
-                meshName = "models/Ball2/Ball2.mesh"
-            },
-            RigidBody = {    
-                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-                colliderScaleX = 1.43,
-                colliderScaleY = 1.43,
-                colliderScaleZ = 1.43,
-                isTrigger = false,
-                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-                mass = 2.0,
-                friction = 0.5,
-                damping = 0.4,
-                bounciness = 1.0
-            },
-            ColoredBall = {
-                ballId = "blue"
-            }
-            ,
-            AudioSourceComponent={
-                sourcepath="hitBall.mp3"
-            }
-        }
-    },
-    BallRed = {
-        components = {
-            Transform = {
-                positionX = -6.5,
-                positionY = 8.2,
-                positionZ = 9.5,
                 scaleX = 0.7,
                 scaleY = 0.7,
                 scaleZ = 0.7,
@@ -485,7 +411,7 @@ scene = {
                 colliderScaleX = 1.43,
                 colliderScaleY = 1.43,
                 colliderScaleZ = 1.43,
-                isTrigger = false, 
+                isTrigger = false,
                 movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
                 mass = 2.0,
                 friction = 0.5,
@@ -494,19 +420,19 @@ scene = {
             },
             ColoredBall = {
                 ballId = "red"
-            } 
+            }
             ,
             AudioSourceComponent={
                 sourcepath="hitBall.mp3"
             }
         }
     },
-    BallPurple = {
+    BallGreen = {
         components = {
             Transform = {
-                positionX = -1.1,
+                positionX = -22.5,
                 positionY = 8.2,
-                positionZ = -5.8,
+                positionZ = -8.7,
                 scaleX = 0.7,
                 scaleY = 0.7,
                 scaleZ = 0.7,
@@ -515,7 +441,7 @@ scene = {
                 rotationZ = 90.0
             }, 
             MeshRenderer = {
-                meshName = "models/Ball4/Ball4.mesh"
+                meshName = "models/Ball6/Ball6.mesh"
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -530,9 +456,46 @@ scene = {
                 bounciness = 1.0
             },
             ColoredBall = {
-                ballId = "purple"
+                ballId = "green"
             }
-             ,
+            ,
+            AudioSourceComponent={
+                sourcepath="hitBall.mp3"
+            }
+        }
+    },
+    BallBlue = {
+        components = {
+            Transform = {
+                positionX = -6.5,
+                positionY = 8.2,
+                positionZ = 9.5,
+                scaleX = 0.7,
+                scaleY = 0.7,
+                scaleZ = 0.7,
+                rotationX = 180.0,
+                rotationY = 0.0,
+                rotationZ = 90.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/Ball2/Ball2.mesh"
+            },
+            RigidBody = {    
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 1.43,
+                colliderScaleY = 1.43,
+                colliderScaleZ = 1.43,
+                isTrigger = false, 
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
+            },
+            ColoredBall = {
+                ballId = "blue"
+            } 
+            ,
             AudioSourceComponent={
                 sourcepath="hitBall.mp3"
             }
@@ -541,9 +504,9 @@ scene = {
     BallOrange = {
         components = {
             Transform = {
-                positionX = -19.1,
+                positionX = -1.1,
                 positionY = 8.2,
-                positionZ = 3.3,
+                positionZ = -5.8,
                 scaleX = 0.7,
                 scaleY = 0.7,
                 scaleZ = 0.7,
@@ -575,12 +538,12 @@ scene = {
             }
         }
     },
-    BallGreen = {
+    BallPurple = {
         components = {
             Transform = {
-                positionX = 19.4,
+                positionX = -19.1,
                 positionY = 8.2,
-                positionZ = -1.0,
+                positionZ = 3.3,
                 scaleX = 0.7,
                 scaleY = 0.7,
                 scaleZ = 0.7,
@@ -589,7 +552,7 @@ scene = {
                 rotationZ = 90.0
             }, 
             MeshRenderer = {
-                meshName = "models/Ball6/Ball6.mesh"
+                meshName = "models/Ball4/Ball4.mesh"
             },
             RigidBody = {    
                 colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
@@ -604,7 +567,44 @@ scene = {
                 bounciness = 1.0
             },
             ColoredBall = {
-                ballId = "green"
+                ballId = "purple"
+            }
+             ,
+            AudioSourceComponent={
+                sourcepath="hitBall.mp3"
+            }
+        }
+    },
+    BallYellow = {
+        components = {
+            Transform = {
+                positionX = 19.4,
+                positionY = 8.2,
+                positionZ = -1.0,
+                scaleX = 0.7,
+                scaleY = 0.7,
+                scaleZ = 0.7,
+                rotationX = 180.0,
+                rotationY = 0.0,
+                rotationZ = 90.0
+            }, 
+            MeshRenderer = {
+                meshName = "models/Ball1/Ball1.mesh"
+            },
+            RigidBody = {    
+                colShape = 1, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
+                colliderScaleX = 1.43,
+                colliderScaleY = 1.43,
+                colliderScaleZ = 1.43,
+                isTrigger = false,
+                movementType = 0, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
+                mass = 2.0,
+                friction = 0.5,
+                damping = 0.4,
+                bounciness = 1.0
+            },
+            ColoredBall = {
+                ballId = "yellow"
             }
              ,
             AudioSourceComponent={
