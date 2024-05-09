@@ -676,7 +676,10 @@ scene = {
                 damping = 0.4,
                 bounciness = 0.5
             },
-            HeartComponent = { }
+            HeartComponent = { },
+            AudioSourceComponent={
+                sourcepath="pick.mp3"
+            }
         }
     },
     Heart2 = {
@@ -708,7 +711,10 @@ scene = {
                 damping = 0.4,
                 bounciness = 0.5
             },
-            HeartComponent = { }
+            HeartComponent = { },
+            AudioSourceComponent={
+                sourcepath="pick.mp3"
+            }
         }
     },
     Clock = { 
@@ -1243,6 +1249,9 @@ scene = {
             },
             ExplosiveComponent = { 
                 force = 50.0
+            },
+            AudioSourceComponent = {
+                sourcepath = "explosion.mp3"
             }
         }
     }

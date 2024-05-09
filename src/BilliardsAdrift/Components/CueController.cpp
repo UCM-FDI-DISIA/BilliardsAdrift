@@ -105,8 +105,11 @@ void CueController::start() {
 
     audio = object->getComponent<Tapioca::AudioSourceComponent>();
 
-    trayectoryTransform = object->getScene()->getHandler("Trayectory")->getComponent<Tapioca::Transform>();
-    trayectoryMesh = object->getScene()->getHandler("Trayectory")->getComponent<Tapioca::MeshRenderer>();
+    Tapioca::GameObject* trayectory = object->getScene()->getHandler("Trayectory");
+    if (trayectory != nullptr) {
+        trayectoryTransform = trayectory->getComponent<Tapioca::Transform>();
+        trayectoryMesh = trayectory->getComponent<Tapioca::MeshRenderer>();
+    }
 }
 
 void CueController::update(const uint64_t deltaTime) {
@@ -200,15 +203,17 @@ void CueController::resetCue() {
 }
 
 void CueController::resetTrayectory() {
-    if (trayectoryTransform == nullptr) return;
-    trayectoryTransform->setScale(Tapioca::Vector3(0.0f, 0.0f, 0.0f));
-    trayectoryTransform->setPosition(Tapioca::Vector3(0.0f, 0.0f, 1.0f));
+    if (trayectoryTransform != nullptr) {
+        trayectoryTransform->setScale(Tapioca::Vector3(0.0f, 0.0f, 0.0f));
+        trayectoryTransform->setPosition(Tapioca::Vector3(0.0f, 0.0f, 1.0f));
+    }
 }
 
 void CueController::followBall() {
-    if (ball == nullptr) return;
-    tr->getParent()->setPosition(ballTr->getGlobalPositionWithoutRotation() + Tapioca::Vector3(0, 2, 0));
-    tr->setPosition(ballDistanceOffset);
+    if (ball != nullptr) {
+        tr->getParent()->setPosition(ballTr->getGlobalPositionWithoutRotation() + Tapioca::Vector3(0, 2, 0));
+        tr->setPosition(ballDistanceOffset);
+    }
 }
 
 Tapioca::Vector3 CueController::translateToWorld(const Tapioca::Vector3& direction) {

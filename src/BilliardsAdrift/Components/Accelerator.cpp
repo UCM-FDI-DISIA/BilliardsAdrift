@@ -21,8 +21,10 @@ void Accelerator::handleEvent(std::string const& id, void* info) {
         std::string s = "Ball";
         if (strstr(ball->getHandler().c_str(), s.c_str())) {
             Tapioca::RigidBody* rb = ball->getComponent<Tapioca::RigidBody>();
-            Tapioca::Vector3 v = rb->getVelocity();
-            rb->setVelocity(Tapioca::Vector3(v.x * speedFactor, v.y, v.z * speedFactor));
+            if (rb != nullptr) {
+                Tapioca::Vector3 v = rb->getVelocity();
+                rb->setVelocity(Tapioca::Vector3(v.x * speedFactor, v.y, v.z * speedFactor));
+            }
         }
     }
 }

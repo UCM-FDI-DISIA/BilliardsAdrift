@@ -63,15 +63,16 @@ void GameManager::start() {
     updateCurrentState(firstStateName);
     changeScene(firstStateName);
     audios = std::vector<Tapioca::AudioSourceComponent*>(Sounds_MAX);
-    audios[PickSound] = object->getScene()->getHandler("PickSound")->getComponent<Tapioca::AudioSourceComponent>();
-    audios[ExplosionSound] =
-        object->getScene()->getHandler("ExplosiveSound")->getComponent<Tapioca::AudioSourceComponent>();
-    audios[MainMenuMusic] =
-        object->getScene()->getHandler("MainMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
-    audios[GameOverMenuMusic] =
-        object->getScene()->getHandler("GameOverMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
-    audios[WinMenuMusic] =
-        object->getScene()->getHandler("WinMenuMusic")->getComponent<Tapioca::AudioSourceComponent>();
+    Tapioca::GameObject* aux = object->getScene()->getHandler("PickSound");
+    if (aux != nullptr) audios[PickSound] = aux->getComponent<Tapioca::AudioSourceComponent>();
+    aux = object->getScene()->getHandler("ExplosiveSound");
+    if (aux != nullptr) audios[ExplosionSound] = aux->getComponent<Tapioca::AudioSourceComponent>();
+    aux = object->getScene()->getHandler("MainMenuMusic");
+    if (aux != nullptr) audios[MainMenuMusic] = aux->getComponent<Tapioca::AudioSourceComponent>();
+    aux = object->getScene()->getHandler("GameOverMenuMusic");
+    if (aux != nullptr) audios[GameOverMenuMusic] = aux->getComponent<Tapioca::AudioSourceComponent>();
+    aux = object->getScene()->getHandler("WinMenuMusic");
+    if (aux != nullptr) audios[WinMenuMusic] = aux->getComponent<Tapioca::AudioSourceComponent>();
 }
 
 void GameManager::updateCurrentState(const std::string name) {
@@ -138,17 +139,20 @@ void GameManager::update(const uint64_t deltaTime) {
             auto it = balls.begin();
             while (it != balls.end()) {
                 Tapioca::RigidBody* rb = (*it)->getComponent<Tapioca::RigidBody>();
-                auto v = rb->getVelocity();
-                auto f = rb->getTotalForce();
-                if (v.magnitude() < 1e-2 && f.magnitude() < 1e-2) {
-                    rb->setVelocity(Tapioca::Vector3(0));
-                    if ((*it)->getHandler() == "BallPlayer" && processing) Tapioca::logInfo("BOLA PARADA??????????\n");
-                    ++it;
-                }
-                else {
-                    pushEvent("ev_ballMoved", nullptr, true);
-                    processing = true;
-                    break;
+                if (rb != nullptr) {
+                    auto v = rb->getVelocity();
+                    auto f = rb->getTotalForce();
+                    if (v.magnitude() < 1e-2 && f.magnitude() < 1e-2) {
+                        rb->setVelocity(Tapioca::Vector3(0));
+                        if ((*it)->getHandler() == "BallPlayer" && processing)
+                            Tapioca::logInfo("BOLA PARADA??????????\n");
+                        ++it;
+                    }
+                    else {
+                        pushEvent("ev_ballMoved", nullptr, true);
+                        processing = true;
+                        break;
+                    }
                 }
             }
             //si todas las bolas estan paradas y la bola se estaba moviendo
@@ -175,7 +179,8 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             ColoredBall* ball = g->getComponent<ColoredBall>();
             if (ball != nullptr) {
                 balls.insert(g);
-                g->getComponent<Tapioca::RigidBody>()->setVelocity(Tapioca::Vector3(0));
+                Tapioca::RigidBody* grb = g->getComponent<Tapioca::RigidBody>();
+                if (grb != nullptr) grb->setVelocity(Tapioca::Vector3(0));
                 if (g->getHandler() == "BallPlayer") playerBall = g;
             }
         }
@@ -214,8 +219,8 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_pickUp")
         if (audios[PickSound] != nullptr) audios[PickSound]->playOnce();
-    else if (id == "ev_explosion")
-        if (audios[ExplosionSound] != nullptr) audios[ExplosionSound]->playOnce();
+        else if (id == "ev_explosion")
+            if (audios[ExplosionSound] != nullptr) audios[ExplosionSound]->playOnce();
 }
 
 void GameManager::changeScene(std::string const& scene) {
@@ -313,7 +318,7 @@ void GameManager::startGame() {
         milkAnimator = scene->getHandler("Milk")->getComponent<Tapioca::Animator>();
         if (milkAnimator != nullptr) milkAnimator->setLoop(false);
         teaAnimator = scene->getHandler("Tea")->getComponent<Tapioca::Animator>();
-        if (teaAnimator != nullptr) teaAnimator->setLoop(false);    
+        if (teaAnimator != nullptr) teaAnimator->setLoop(false);
         pushEvent("loadBalls", nullptr, true, true);
     }
     if (audios[MainMenuMusic] != nullptr) audios[MainMenuMusic]->pause(true);
@@ -327,7 +332,7 @@ void GameManager::gameOver() {
     if (audios[InGameMusic] != nullptr) audios[InGameMusic]->pause(true);
 
     switch (currentState) {
-    case Lose: 
+    case Lose:
         changeScene("LoseScreen");
         if (audios[GameOverMenuMusic] != nullptr) audios[GameOverMenuMusic]->playLooped();
         if (audios[WinMenuMusic] != nullptr) audios[WinMenuMusic]->pause(true);
