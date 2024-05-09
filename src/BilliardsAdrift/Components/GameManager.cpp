@@ -105,10 +105,14 @@ void GameManager::clearLevel() {
 }
 
 void GameManager::playMilkTeaAnims() {
-    milkAnimator->playAnim("Idle");
-    milkAnimator->setPlaying(milkAnimator->getPlaying());
-    teaAnimator->playAnim("Idle");
-    teaAnimator->setPlaying(teaAnimator->getPlaying());
+    if (milkAnimator != nullptr) {
+        milkAnimator->playAnim("Idle");
+        milkAnimator->setPlaying(milkAnimator->getPlaying());
+    }
+    if (teaAnimator != nullptr) {
+        teaAnimator->playAnim("Idle");
+        teaAnimator->setPlaying(teaAnimator->getPlaying());
+    }
 }
 
 void GameManager::registerLuaFunctions() {
@@ -147,7 +151,10 @@ void GameManager::update(const uint64_t deltaTime) {
                 if (rb != nullptr) {
                     auto v = rb->getVelocity();
                     auto f = rb->getTotalForce();
-                    if (v.magnitude() < 1e-2 && f.magnitude() < 1e-2) {
+                    if (v.magnitude() > 80.0f) {
+                        rb->setVelocity(rb->getVelocity().getNormalized() * 80.0f);
+                    }
+                    else if (v.magnitude() < 1e-2 && f.magnitude() < 1e-2) {
                         rb->setVelocity(Tapioca::Vector3(0));
                     }
                     else {
