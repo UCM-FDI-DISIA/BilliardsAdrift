@@ -129,7 +129,7 @@ void CueController::update(const uint64_t deltaTime) {
 }
 
 void CueController::handleEvent(std::string const& id, void* info) {
-    if (id == "ev_MouseButtonDownRight") increasePower();
+    if (id == "ev_MouseButtonDownRight" && canMove) increasePower();
 
     else if (id == "ev_MouseButtonDownLeft" && actualPower != 0) {
         hitting = true;
