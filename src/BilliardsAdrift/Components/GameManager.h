@@ -228,8 +228,8 @@ public:
     */
     inline void setScore(const int s) { score = s; }
     /**
-    * @brief Incrementa/decrementa s cantidad de puntuaci�n
-    * @param s cantidad de puntuaci�n a incrementar/decrementar
+    * @brief Incrementa/decrementa s cantidad de puntuacion
+    * @param s cantidad de puntuacion a incrementar/decrementar
     */
     void changeScore(const int s);
 

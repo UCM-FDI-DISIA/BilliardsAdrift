@@ -190,19 +190,14 @@ void GameManager::handleEvent(std::string const& id, void* info) {
     }
     else if (id == "ev_Start")
         startGame();
-    else if (id == "BallShot") {
+    else if (id == "BallShot" || id == "BallShotWrongColor") {
         Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
         balls.erase(b);
+        if (id == "BallShotWrongColor") loseLife();
         if (balls.size() == 1 && currentState != Lose) updateCurrentState("WinScreen");
     }
     else if (id == "ev_GameOver")
         gameOver();
-    else if (id == "BallShotWrongColor") {
-        Tapioca::GameObject* b = ((Tapioca::GameObject*)info);
-        balls.erase(b);
-        loseLife();
-        if (balls.size() == 1 && currentState != Lose) updateCurrentState("WinScreen");
-    }
     else if (id == "whiteBallHasHit") {
         bool hit = *((bool*)info);
         if (!hit) loseLife();
@@ -214,15 +209,11 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             Tapioca::logInfo("Se ha metido la bola negra demasiado pronto.\n");
             updateCurrentState("LoseScreen");
         }
-        else {
-            if (currentState != Lose) updateCurrentState("WinScreen");
-        }
+        else if (currentState != Lose)
+            updateCurrentState("WinScreen");
     }
-    else if (id == "whiteBallIn") {
-        if (balls.size() == 0) updateCurrentState("LoseScreen");
-        else
-            loseLife();
-    }
+    else if (id == "whiteBallIn")
+        loseLife();
     else if (id == "ev_pickUp") {
         if (audios[PickSound] != nullptr) audios[PickSound]->playOnce();
         else if (id == "ev_explosion")
