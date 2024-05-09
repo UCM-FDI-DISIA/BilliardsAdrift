@@ -26,11 +26,11 @@ void WhiteBallComponent::handleEvent(std::string const& id, void* info) {
         collided = false;
     }
     else if (id == "whiteBallIn") {
+        hit = false;
         object->getComponent<Tapioca::Transform>()->setPosition(iniBallPos);
         Tapioca::RigidBody* aux = object->getComponent<Tapioca::RigidBody>();
         if (aux != nullptr) {
-            aux->clearForces();
-            aux->setVelocity(Tapioca::Vector3(.0f, .0f, .0f));
+            aux->clearAllForcesAndVelocities();
         }
     }
 }
