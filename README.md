@@ -1,4 +1,4 @@
-# Billiards Adrift
+![](/documents/images/GDD/logo.png)
 ### Autores
 - Matt Castellanos Silva
 - Pedro León Miranda
@@ -158,10 +158,9 @@ A pesar de tener un toque arcade y ser un minijuego se tratará de mantener un a
 ### 8. Referencias	
 
 #### 8.1. Videojuegos	
+- 8 Ball Pool (Miniclip)
 
 #### 8.2. Recursos	
-
-##### 8.2.1. Escenario y personajes	
 - [Milk & Tea](https://sketchfab.com/3d-models/pop-cat-2d1c8b8514684b0a8d1b8203caa01a95)
 - [Heart PowerUp](https://sketchfab.com/3d-models/heartlow-poly-8fa9f20549c74bc99dc209ac795d7ca1)
 - [Clock PowerUp](https://www.turbosquid.com/3d-models/alarm-clock-1007895)
@@ -171,6 +170,3 @@ A pesar de tener un toque arcade y ser un minijuego se tratará de mantener un a
 - [Ground](https://3dtextures.me/2022/05/21/wood-027/)
 - [Accelerator](https://www.google.com/search?q=lighting+icon&sca_esv=6bc39e904ccee14e&rlz=1C1CHBF_esES1074ES1074&udm=2&prmd=ivnbz&sxsrf=ADLYWIJYa2OcIKazPLOdjdFuHGLy9H2heQ:1715071884157&source=lnt&tbs=ic:trans&uds=ADvngMgpYEU-_VPft0z-hmM5h-H0BivEGtTadW4kmZWvVC16dYTCBe07oHX2S5VfCVcMsvBnVDtadkFoV3NIXc6bbjlTq0p1O_0BytLzS1vaKblljlzNEYWA8imbuDvnfgKhQC-fSGP0TB3NgiAN9BUjdb2iTl7Ze_3YrxTcp_aLqVpLwPWsuuf2BUJLdNGpCsKXKKwdHIAqkUE8E4tVRroFUsZYc-KBL3nOYj86hYpmzVi_5tJN-GH8D5Q6NQm8EwVgIeDg8TQNTaDkoLaJt65JSobnSY92LQ&sa=X&ved=2ahUKEwjEg63TlPuFAxUWA9sEHYpPDYQQpwV6BAgBEA8&biw=1536&bih=743&dpr=1.25#vhid=zbrCpRMbo-q-7M&vssid=mosaic)
 
-##### 8.2.2. UI	
-
-##### 8.2.3. Sonido
