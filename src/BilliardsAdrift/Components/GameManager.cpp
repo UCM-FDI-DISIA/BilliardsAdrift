@@ -149,9 +149,6 @@ void GameManager::update(const uint64_t deltaTime) {
                     auto f = rb->getTotalForce();
                     if (v.magnitude() < 1e-2 && f.magnitude() < 1e-2) {
                         rb->setVelocity(Tapioca::Vector3(0));
-                        if ((*it)->getHandler() == "BallPlayer" && processing)
-                            Tapioca::logInfo("BOLA PARADA??????????\n");
-                        ++it;
                     }
                     else {
                         pushEvent("ev_ballMoved", nullptr, true);
@@ -159,6 +156,7 @@ void GameManager::update(const uint64_t deltaTime) {
                         break;
                     }
                 }
+                ++it;
             }
             // Si todas las bolas estan paradas y la bola se estaba moviendo
             if (it == balls.end() && processing) {
@@ -225,10 +223,11 @@ void GameManager::handleEvent(std::string const& id, void* info) {
         else
             loseLife();
     }
-    else if (id == "ev_pickUp")
+    else if (id == "ev_pickUp") {
         if (audios[PickSound] != nullptr) audios[PickSound]->playOnce();
         else if (id == "ev_explosion")
             if (audios[ExplosionSound] != nullptr) audios[ExplosionSound]->playOnce();
+    }
 }
 
 void GameManager::changeScene(std::string const& scene) {
@@ -320,7 +319,7 @@ void GameManager::startGame() {
     time = INIT_TIME * 1000;
     score = 0;
     life = INIT_LIFE;
-    Tapioca::Scene* scene = mainLoop->getScene(currentStateName);
+    Tapioca::Scene* scene = mainLoop->getScene(getActualLevelName());
     if (scene != nullptr) {
         Tapioca::GameObject* timerText = scene->getHandler("TimerText");
         if (timerText != nullptr) timerTextComponent = timerText->getComponent<Tapioca::Text>();
