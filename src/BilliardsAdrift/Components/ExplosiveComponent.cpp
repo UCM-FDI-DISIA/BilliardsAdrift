@@ -28,7 +28,8 @@ void ExplosiveComponent::handleEvent(std::string const& id, void* info) {
         if (ball->getHandler() == "BallPlayer") {
             gO = ball;
             pushEvent("ev_explosion", nullptr);
-            object->getComponent<Tapioca::MeshRenderer>()->setVisible(false);
+            Tapioca::MeshRenderer* mr = object->getComponent<Tapioca::MeshRenderer>();
+            if (mr != nullptr) mr->setVisible(false);
         }
     }
 }
