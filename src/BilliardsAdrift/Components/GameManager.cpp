@@ -136,6 +136,9 @@ void GameManager::update(const uint64_t deltaTime) {
         updateTimerText();
 
         if (time <= 0) updateCurrentState("LoseScreen");
+        // Si solo queda la bola blanca o no hay bolas
+        else if ((balls.size() == 1 && (*balls.begin())->getHandler() == "BallPlayer") || balls.empty())
+            updateCurrentState("WinScreen");
         else {
             // Comprueba que todas las bolas estan inmovilizadas
             auto it = balls.begin();
@@ -157,7 +160,7 @@ void GameManager::update(const uint64_t deltaTime) {
                     }
                 }
             }
-            //si todas las bolas estan paradas y la bola se estaba moviendo
+            // Si todas las bolas estan paradas y la bola se estaba moviendo
             if (it == balls.end() && processing) {
                 processing = false;
                 pushEvent("ev_endProcessing", nullptr, true);
@@ -167,8 +170,7 @@ void GameManager::update(const uint64_t deltaTime) {
 }
 
 void GameManager::handleEvent(std::string const& id, void* info) {
-    if (id == "ev_onPlay") 
-        onPlay();
+    if (id == "ev_onPlay" || id == "ev_onGoToNextLevel") onPlay();
     else if (id == "ev_Pause")
         pause();
     else if (id == "ev_onPause")
@@ -215,12 +217,13 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             updateCurrentState("LoseScreen");
         }
         else {
-            if (currentState != Lose) updateCurrentState("WinScreen");        
+            if (currentState != Lose) updateCurrentState("WinScreen");
         }
     }
     else if (id == "whiteBallIn") {
         if (balls.size() == 0) updateCurrentState("LoseScreen");
-        else loseLife();
+        else
+            loseLife();
     }
     else if (id == "ev_pickUp")
         if (audios[PickSound] != nullptr) audios[PickSound]->playOnce();
@@ -240,9 +243,14 @@ void GameManager::changeScene(std::string const& scene) {
 void GameManager::goToNextLevel() {
     clearLevel();
     actualLevel++;
-    changeScene(getActualLevelName());
-    updateCurrentState(getActualLevelName());
-    pushEvent("ev_Start", nullptr, true, true);
+    if (actualLevel > maxLevels) {
+        actualLevel = 1;
+        updateCurrentState("WinScreen");
+    }
+    else {
+        changeScene(getActualLevelName());
+        pushEvent("ev_onGoToNextLevel", nullptr, true, true);
+    }
 }
 
 void GameManager::changeScore(int s) {
@@ -435,6 +443,7 @@ void GameManager::onMainMenuConfirmed() {
     }
 
     clearLevel();
+    actualLevel = 1;
     std::string result = "MainMenu";
     changeScene(result);
     updateCurrentState(result);

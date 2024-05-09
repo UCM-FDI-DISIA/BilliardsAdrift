@@ -610,7 +610,7 @@ scene = {
                 ballId = "green"
             } ,
             AudioSourceComponent={
-                sourcepath="hitBall.mp3"
+                sourcepath = "hitBall.mp3"
             }
         }
     },
@@ -645,8 +645,8 @@ scene = {
             ColoredBall = {
                 ballId = "black"
             } ,
-            AudioSourceComponent={
-                sourcepath="hitBall.mp3"
+            AudioSourceComponent = {
+                sourcepath = "hitBall.mp3"
             }
         }
     },

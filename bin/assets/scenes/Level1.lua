@@ -182,14 +182,11 @@ scene = {
             },
             ColoredBall = {
                 ballId = "white"
-            }
-            ,
-            AudioSourceComponent={
-                sourcepath="hitBall.mp3"
             },
-            WhiteBallComponent = { 
-
-            }
+            AudioSourceComponent = {
+                sourcepath = "hitBall.mp3"
+            },
+            WhiteBallComponent = { }
         }
     },
 
@@ -290,8 +287,8 @@ scene = {
                         bounciness = 1.0
                     },
                     WallComponent = { },
-                    AudioSourceComponent={
-                        sourcepath="hitWall.mp3"
+                    AudioSourceComponent = {
+                        sourcepath = "hitWall.mp3"
                     }
                 }
             },
@@ -642,13 +639,13 @@ scene = {
             },
             ColoredBall = {
                 ballId = "black"
-            }
-             ,
+            },
             AudioSourceComponent={
                 sourcepath="hitBall.mp3"
             }
         }
     },
+    
     Heart = {
         components = {
             Transform = {
@@ -840,43 +837,6 @@ scene = {
             }
           }
     },
-    -- ,
-    -- Card = {
-    --     components={
-    --         Transform = {
-    --             positionX = 50.0,
-    --             positionY = -8.5,
-    --             positionZ = 20.0,
-    --             scaleX = 5.0,
-    --             scaleY = 5.0,
-    --             scaleZ = 5.0,
-    --             rotationX = 90.0,
-    --             rotationY = 0.0,
-    --             rotationZ = 0.0
-    --         }, 
-    --         MeshRenderer = {
-    --             meshName = "models/Card/Card1.mesh"
-    --         },
-    --     }
-    -- },
-    -- Bottle = {
-    --     components={
-    --         Transform = {
-    --             positionX = -50.0,
-    --             positionY = -8.5,
-    --             positionZ = 20.0,
-    --             scaleX = 8.0,
-    --             scaleY =8.0,
-    --             scaleZ =8.0,
-    --             rotationX = 0.0,
-    --             rotationY = 0.0,
-    --             rotationZ = 0.0
-    --         }, 
-    --         MeshRenderer = {
-    --             meshName = "models/bottle/bottle3.mesh"
-    --         },
-    --     }
-    -- },
     HoleYellow = {
         components = {
             Transform = {
@@ -1181,39 +1141,4 @@ scene = {
             Animator = { }
         }        
     }
-
-    -- },
-    -- Bomb = {
-    --     components = {
-    --         Transform = {
-    --             positionX = -3.8,
-    --             positionY = 8.2,
-    --             positionZ = 0.0,
-    --             scaleX = 1.2,
-    --             scaleY = 1.2,
-    --             scaleZ = 1.2,
-    --             rotationX = 0.0,
-    --             rotationY = 0.0,
-    --             rotationZ = 0.0
-    --         }, 
-    --         MeshRenderer = {
-    --             meshName = "models/Bomb/Bomb.mesh",
-    --             --materialName = "white"
-    --         },
-    --         RigidBody = {    
-    --             colShape = 0, --0 BOX, 1 SPHERE, 2 PLANE, 3 CAPSULE
-    --             colliderScaleX = 1.0,
-    --             colliderScaleY = 1.0,
-    --             colliderScaleZ = 1.5,
-    --             isTrigger = true,
-    --             movementType = 1, --0 DYNAMIC , 1 STATIC, 2 KINEMATIC
-    --             mass = 2.0,
-    --             friction = 1.0,
-    --             damping = 0.4,
-    --             bounciness = 0.0
-    --         },
-    --         ExplosiveComponent = { 
-    --             force = 50.0
-    --         }
-    --     }
 }
