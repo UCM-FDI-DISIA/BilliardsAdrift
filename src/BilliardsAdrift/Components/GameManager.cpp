@@ -214,6 +214,9 @@ void GameManager::handleEvent(std::string const& id, void* info) {
             Tapioca::logInfo("Se ha metido la bola negra demasiado pronto.\n");
             updateCurrentState("LoseScreen");
         }
+        else {
+            if (currentState != Lose) updateCurrentState("WinScreen");        
+        }
     }
     else if (id == "whiteBallIn") {
         if (balls.size() == 0) updateCurrentState("LoseScreen");
