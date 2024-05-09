@@ -129,6 +129,9 @@ scene = {
                         moveBackwardFactor = 0.5,
                         rotateFactor = 0.3,
                         impulseTime = 0.5,
+                        trayectoryScaleX = 0.003,
+                        trayectoryScaleY = 0.003,
+                        trayectoryScaleZ = 0.001
                     },
                     
                     AudioSourceComponent={
