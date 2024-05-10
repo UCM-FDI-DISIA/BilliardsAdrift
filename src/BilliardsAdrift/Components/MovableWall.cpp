@@ -43,5 +43,5 @@ void MovableWall::update(const uint64_t deltaTime) {
     else if (v.x > dest.x + 0.5f || v.z > dest.y + 0.5f) direction = origin - dest;
 
     Tapioca::Vector2 auxD = direction.getNormalized();
-    tr->translate(Tapioca::Vector3(auxD.x, 0, auxD.y) * speed * deltaTime);
+    tr->translate(Tapioca::Vector3(auxD.x, 0, auxD.y) * speed * (float)deltaTime);
 }
